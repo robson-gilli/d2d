@@ -20,7 +20,7 @@
     <script src="Js/Initialize.js"></script>
     <script src="Js/Door2DoorCore.js"></script>
     <script src="Js/Buscar.js"></script>
-    <%--<script src="Js/Auxiliar.js"></script>--%>
+
 
 </head>
 <body>
