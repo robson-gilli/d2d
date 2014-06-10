@@ -1,122 +1,122 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Door2Door.Core.Types.Airport" Collapsed="true">
+  <Class Name="Door2DoorCore.Types.Airport" Collapsed="true">
     <Position X="5.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAAACAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Types\Rome2RioResponse.cs</FileName>
+      <FileName>Types\Rome2RioResponse\Rome2RioResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Door2Door.Core.Types.Airline" Collapsed="true">
+  <Class Name="Door2DoorCore.Types.Airline" Collapsed="true">
     <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAgAQQAFAAAAAAACAAAAAAAAAA=</HashCode>
-      <FileName>Types\Rome2RioResponse.cs</FileName>
+      <FileName>Types\Rome2RioResponse\Rome2RioResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Door2Door.Core.Types.Aircraft" Collapsed="true">
+  <Class Name="Door2DoorCore.Types.Aircraft" Collapsed="true">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
-      <FileName>Types\Rome2RioResponse.cs</FileName>
+      <FileName>Types\Rome2RioResponse\Rome2RioResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Door2Door.Core.Types.Agency" Collapsed="true">
+  <Class Name="Door2DoorCore.Types.Agency" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAgAQQAFAAAAAAACAAAAAAAAAA=</HashCode>
-      <FileName>Types\Rome2RioResponse.cs</FileName>
+      <FileName>Types\Rome2RioResponse\Rome2RioResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Door2Door.Core.Types.IndicativePrice" Collapsed="true">
+  <Class Name="Door2DoorCore.Types.IndicativePrice" Collapsed="true">
     <Position X="2.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQACAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Types\Rome2RioResponse.cs</FileName>
+      <FileName>Types\Rome2RioResponse\Rome2RioResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Door2Door.Core.Types.Stop" Collapsed="true">
+  <Class Name="Door2DoorCore.Types.Stop" Collapsed="true">
     <Position X="2.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAABAAAAAAAAgAAQAAACAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Types\Rome2RioResponse.cs</FileName>
+      <FileName>Types\Rome2RioResponse\Rome2RioResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Door2Door.Core.Types.IndicativePrice2" Collapsed="true">
+  <Class Name="Door2DoorCore.Types.IndicativePrice2" Collapsed="true">
     <Position X="4" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAAAAAQACAAAAAAAAAAAACAAAAIAAAAAAAAAAAAA=</HashCode>
-      <FileName>Types\Rome2RioResponse.cs</FileName>
+      <FileName>Types\Rome2RioResponse\Rome2RioResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Door2Door.Core.Types.IndicativePrice3" Collapsed="true">
+  <Class Name="Door2DoorCore.Types.IndicativePrice3" Collapsed="true">
     <Position X="5.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAAAAAQACAAAAAAAAAAAACAAAAIAAAAAAAAAAAAA=</HashCode>
-      <FileName>Types\Rome2RioResponse.cs</FileName>
+      <FileName>Types\Rome2RioResponse\Rome2RioResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Door2Door.Core.Types.Line" Collapsed="true">
+  <Class Name="Door2DoorCore.Types.Line" Collapsed="true">
     <Position X="4" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAACAAAAAAAAAAQABIAAAAIAQAAAAAAAAAA=</HashCode>
-      <FileName>Types\Rome2RioResponse.cs</FileName>
+      <FileName>Types\Rome2RioResponse\Rome2RioResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Door2Door.Core.Types.Codeshare" Collapsed="true">
+  <Class Name="Door2DoorCore.Types.Codeshare" Collapsed="true">
     <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Types\Rome2RioResponse.cs</FileName>
+      <FileName>Types\Rome2RioResponse\Rome2RioResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Door2Door.Core.Types.Hop" Collapsed="true">
+  <Class Name="Door2DoorCore.Types.Hop" Collapsed="true">
     <Position X="0.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QigAAAACAIACAAABAkAAAAAAAJAEAAACAQAAACAAgAA=</HashCode>
-      <FileName>Types\Rome2RioResponse.cs</FileName>
+      <HashCode>QigAAAACAIACAAABAkAAAAAAAJAEAAACAQAAACAAgCA=</HashCode>
+      <FileName>Types\Rome2RioResponse\Rome2RioResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Door2Door.Core.Types.IndicativePrice4" Collapsed="true">
+  <Class Name="Door2DoorCore.Types.IndicativePrice4" Collapsed="true">
     <Position X="7.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQACAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Types\Rome2RioResponse.cs</FileName>
+      <FileName>Types\Rome2RioResponse\Rome2RioResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Door2Door.Core.Types.Leg" Collapsed="true">
+  <Class Name="Door2DoorCore.Types.Leg" Collapsed="true">
     <Position X="2.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAACAEASAAAAAAAAAA=</HashCode>
-      <FileName>Types\Rome2RioResponse.cs</FileName>
+      <FileName>Types\Rome2RioResponse\Rome2RioResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Door2Door.Core.Types.Itinerary" Collapsed="true">
+  <Class Name="Door2DoorCore.Types.Itinerary" Collapsed="true">
     <Position X="0.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAEAA=</HashCode>
-      <FileName>Types\Rome2RioResponse.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAQAAAAAAAEAA=</HashCode>
+      <FileName>Types\Rome2RioResponse\Rome2RioResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Door2Door.Core.Types.Segment" Collapsed="true">
+  <Class Name="Door2DoorCore.Types.Segment" Collapsed="true">
     <Position X="0.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AghAAAACAIBCCAIAAEBAAAAABhAEAABAAAAAAAAAAAA=</HashCode>
-      <FileName>Types\Rome2RioResponse.cs</FileName>
+      <HashCode>AghAAAACAIBCCAIAAEJAAAAABpAEAABgAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Rome2RioResponse\Rome2RioResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Door2Door.Core.Types.Route" Collapsed="true">
+  <Class Name="Door2DoorCore.Types.Route" Collapsed="true">
     <Position X="7.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAACAAACAAAAAAAAAAQAACAAAABAAAAAAAAAAAA=</HashCode>
-      <FileName>Types\Rome2RioResponse.cs</FileName>
+      <FileName>Types\Rome2RioResponse\Rome2RioResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Door2Door.Core.Types.Rome2RioResponse" Collapsed="true">
+  <Class Name="Door2DoorCore.Types.Rome2RioResponse.Rome2RioResponse" Collapsed="true">
     <Position X="5.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACAAAAAAAAAAAAAAAEACAAAAAQAAAgAAIAAAAAAAAAA=</HashCode>
-      <FileName>Types\Rome2RioResponse.cs</FileName>
+      <FileName>Types\Rome2RioResponse\Rome2RioResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

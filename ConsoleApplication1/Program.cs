@@ -18,7 +18,7 @@ namespace ConsoleApplication1
         {
 
             D2DRequest req = new D2DRequest();
-            req.desiredArrivalDate = new DateTime(2014, 06, 20, 1, 0, 0);
+            req.desiredArrivalDate = new DateTime(2014, 06, 20, 2, 0, 0);
 
             D2DRequestLocation oriLoc = new D2DRequestLocation();
             oriLoc.lat="-23.5732882";

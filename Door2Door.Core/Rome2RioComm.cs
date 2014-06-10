@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 
 namespace Door2DoorCore
 {
-    public class Rome2RioComm
+    public class Rome2RioComm : IDisposable
     {
         private D2DRequest _req;
 
@@ -49,6 +49,9 @@ namespace Door2DoorCore
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void DownloadAsync()
         {
             using (WebClient client = new WebClient())
@@ -60,7 +63,7 @@ namespace Door2DoorCore
             }
         }
 
-     
+
         /// <summary>
         /// 
         /// </summary>
@@ -68,7 +71,7 @@ namespace Door2DoorCore
         /// <param name="e"></param>
         public void OnDownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
-            if (e.Error == null) 
+            if (e.Error == null)
             {
                 _resp = JsonConvert.DeserializeObject<Rome2RioResponse>(e.Result);
                 OnMessageReceived(_resp);
@@ -92,7 +95,7 @@ namespace Door2DoorCore
             collection.Add("flags", BuildSearchRequestFlags().ToString());
             collection.Add("oPos", Uri.EscapeDataString(_req.oriLocation.lat + "," + _req.oriLocation.lng));
             collection.Add("dPos", Uri.EscapeDataString(_req.destLocation.lat + "," + _req.destLocation.lng));
-            if(!_req.oriLocation.type.Equals(string.Empty))
+            if (!_req.oriLocation.type.Equals(string.Empty))
             {
                 collection.Add("oKind", Uri.EscapeDataString(_req.oriLocation.type));
             }
@@ -123,5 +126,13 @@ namespace Door2DoorCore
             return flagsIncludeAll;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Dispose()
+        {
+            _req = null;
+            _resp = null;
+        }
     }
 }
