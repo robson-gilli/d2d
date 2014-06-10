@@ -276,6 +276,7 @@ namespace Door2DoorCore.Types
         [JsonProperty("isHidden")]
         public int? IsHidden { get; set; }
 
+         [JsonProperty("validForSchedule")]
         public bool ValidForSchedule { get; set; }
 
     }
@@ -332,9 +333,13 @@ namespace Door2DoorCore.Types
         public Itinerary[] Itineraries { get; set; }
 
         //manually inserted
+        [JsonProperty("arrivalDateTime")]
         public DateTime? ArrivalDateTime { get; set; }
+        [JsonProperty("departureDateTime")]
         public DateTime? DepartureDateTime { get; set; }
+        [JsonProperty("chosenItinerary")]
         public int? ChosenItinerary { get; set; }
+        [JsonProperty("frequency")]
         public TimeSpan? Frequency { get; set; }
     }
 

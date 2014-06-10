@@ -6,7 +6,8 @@ var _placeDestino;
 var _dataChegada;
 var _timeSelected;
 var _panorama;
-var _d2d;
+var _resp;
+var _chosenRoute;
 
 //
 // document ready
@@ -15,7 +16,8 @@ $(document).ready(function(){
 
 	_dataChegada = new Date();
 	_timeSelected = false;
-	_d2d = null;
+	_resp = null;
+	_chosenRoute = null;
 
 	google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -159,3 +161,4 @@ function applyMapContainerHeight() {
     var height = $(window).height() - $("#divSearchBox").height() - 2;
     $("#mapa").height(height);
 };
+

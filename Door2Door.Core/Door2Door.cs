@@ -43,9 +43,23 @@ namespace Door2DoorCore
         public Door2Door(D2DRequest d2dReq)
         {
             if (RequestIsOK(d2dReq))
+            {
                 _d2dReq = d2dReq;
+                if (_d2dReq.chosenRoute != null)
+                {
+                    if (_d2dReq.chosenRoute.itineraryIndex.HasValue && _d2dReq.chosenRoute.segmentIndex.HasValue && _d2dReq.chosenRoute.routeIndex.HasValue )
+                    {
+                        _chosenItin = new List<int>(3);
+                        _chosenItin.Add(_d2dReq.chosenRoute.itineraryIndex.Value);
+                        _chosenItin.Add(_d2dReq.chosenRoute.segmentIndex.Value);
+                        _chosenItin.Add(_d2dReq.chosenRoute.routeIndex.Value);
+                    }
+                }
+            }
             else
+            {
                 throw new D2DRequestException("Please check your request.");
+            }
         }
 
         /// <summary>
@@ -135,10 +149,19 @@ namespace Door2DoorCore
                             if (vooEscolhido[1] == i)
                             {
                                 achouVoo = true;
+
+                                FindLatestItinerary(ref route.Segments[i]);
+
                                 route.Segments[i].ChosenItinerary = vooEscolhido[0];
                                 Leg itinerary = route.Segments[i].Itineraries[vooEscolhido[0]].Legs[0];
                                 //verifica se itinerario atual bate com o horario do proximo segmento
                                 itineraryDates = CalcItineraryDates(itinerary, arrivalDateNextStop);
+
+                                // tem que fazer isto só para marcar voos como validos ou nao
+                                for (var j = 0; j < route.Segments[i].Itineraries.Length; j++)
+                                {
+                                    route.Segments[i].Itineraries[j].ValidForSchedule = true;
+                                }
                             }
                         }
                         else
@@ -174,21 +197,17 @@ namespace Door2DoorCore
                             }
                         }
 
-                        if (achouVoo)
-                        { // tinha um voo que encaixava no horario
-                            route.Segments[i].DepartureDateTime = itineraryDates.departureDateTime;
-                            route.Segments[i].ArrivalDateTime = itineraryDates.arrivalDateTime;
-                        }
-                        else
+                        if (!achouVoo)
                         { // Nao tinha nenhum voo que chegaria no horario naquele dia, pegar o voo com maior horario de chegada e determinar que é no dia anterior
                             // acha o itinerario que tem a hora de chegada maior
                             Leg latestItinerary = FindLatestItinerary(ref route.Segments[i]);
 
                             itineraryDates = CalcItineraryDates(latestItinerary, arrivalDateNextStop);
-
-                            route.Segments[i].DepartureDateTime = itineraryDates.departureDateTime;
-                            route.Segments[i].ArrivalDateTime = itineraryDates.arrivalDateTime;
                         }
+
+                        route.Segments[i].DepartureDateTime = itineraryDates.departureDateTime;
+                        route.Segments[i].ArrivalDateTime = itineraryDates.arrivalDateTime;
+
 
                         // calcula o preco do segmento
                         if (route.Segments[i].IndicativePrice != null)
@@ -425,7 +444,7 @@ namespace Door2DoorCore
         /// <param name="itinerary"></param>
         /// <param name="arrivalDateNextStop"></param>
         /// <returns></returns>
-        private ItineraryDates CalcItineraryDates(Types.Leg itinerary, DateTime arrivalDateNextStop)
+        private ItineraryDates CalcItineraryDates(Leg itinerary, DateTime arrivalDateNextStop)
         {
             ItineraryDates itinerarySchedule = new ItineraryDates();
             // hora de partida do primeiro voo da opcao atual
@@ -446,8 +465,8 @@ namespace Door2DoorCore
                 if (itinerary.Hops[j].DayChange.HasValue)
                 {
                     depDayChange += itinerary.Hops[j].DayChange.Value;
-                };
-            };
+                }
+            }
 
             tempArrivalDate = tempArrivalDate.AddDays(-arrDayChange);
 

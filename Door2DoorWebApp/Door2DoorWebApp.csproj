@@ -73,6 +73,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Js\Auxiliar.js" />
+    <Content Include="Js\Date\date.js" />
+    <Content Include="Js\Door2Door.js" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -85,9 +88,7 @@
     <Content Include="Css\Style.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Js\Auxiliar.js" />
-    <Content Include="Js\Buscar.js" />
-    <Content Include="Js\Door2DoorCore.js" />
+    <Content Include="Js\Busca.js" />
     <Content Include="Js\Initialize.js" />
     <Content Include="Js\TimePicker\i18n\i18n.html" />
     <Content Include="Js\TimePicker\i18n\jquery.ui.timepicker-cs.js" />
@@ -118,7 +119,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\D2DController.cs" />
+    <Compile Include="Controllers\Door2DoorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

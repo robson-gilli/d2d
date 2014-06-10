@@ -17,9 +17,11 @@
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
     <script src="Js/TimePicker/jquery.ui.timepicker.js"></script>
+    <script src="Js/Date/date.js"></script>
     <script src="Js/Initialize.js"></script>
-    <script src="Js/Door2DoorCore.js"></script>
-    <script src="Js/Buscar.js"></script>
+    <script src="Js/Door2Door.js"></script>
+    <script src="Js/Auxiliar.js"></script>
+    <script src="Js/Busca.js"></script>
 
 
 </head>

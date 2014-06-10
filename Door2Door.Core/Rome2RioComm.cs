@@ -63,7 +63,6 @@ namespace Door2DoorCore
             }
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -113,7 +112,8 @@ namespace Door2DoorCore
         /// <returns></returns>
         private int BuildSearchRequestFlags()
         {
-            int flagsIncludeAll = Convert.ToInt32("0x00000000", 16);
+            //0x10000000 => Exclude path information ( saves bandwidth)
+            int flagsIncludeAll = Convert.ToInt32("0x10000000", 16);
             if (!_req.flags.includePublicTransp)
             {
 

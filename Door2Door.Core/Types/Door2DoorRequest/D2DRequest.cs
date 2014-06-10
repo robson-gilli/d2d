@@ -25,5 +25,6 @@ namespace Door2DoorCore.Types.Door2DoorRequest
         public D2DRequestFlags flags { get; set; }
         public D2DRequestLocation oriLocation { get; set; }
         public D2DRequestLocation destLocation { get; set; }
+        public D2DRequestChosenRoute chosenRoute { get; set; }
     }
 }

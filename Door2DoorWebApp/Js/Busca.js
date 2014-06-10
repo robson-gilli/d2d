@@ -7,35 +7,38 @@ function buscar() {
 	//tem que escolher origem e destino
     if (_placeOrigem && _placeDestino && _placeOrigem.geometry && _placeDestino.geometry) {
 
-        _d2d = null;
+        _resp = null;
 
         //loading
 	    $("#mapa").hide();
 	    $("#divResults").show();
 	    $("#divDetalhesItinerario").text("Please wait...");
 
-		var d2dSender = new Door2doorSender({
-		    desiredArrivalDate: _dataChegada,
-		    includePublicTransport: buildSearchRequestFlags(),
-		    oriLat: _placeOrigem.geometry.location.k,
-		    oriLng: _placeOrigem.geometry.location.A,
-		    oriType: (_placeOrigem.types != null && _placeOrigem.types.length > 0) ? _placeOrigem.types[0] : "",
-		    destLat: _placeDestino.geometry.location.k,
-		    destLng: _placeDestino.geometry.location.A,
-		    destType: (_placeDestino.types != null && _placeDestino.types.length > 0) ? _placeDestino.types[0] : "",
-		    successCallback: handleSuccessSearch,
-		    errorCallback: function (xhr, status, errorThrown) {
-		        $("#divDetalhesItinerario").text("There was an error :( See console for details.");
-		        console.log("Error: " + errorThrown);
-		        console.log("Status: " + status);
-		        console.dir(xhr);
-		    },
-		    completeCallback: function (xhr, status) {
-		        console.log("Status: " + status);
-		        console.dir(xhr);
-		    }
-		});
-		d2dSender.send();
+	    var dataServer = _dataChegada.getFullYear() + "-" + (_dataChegada.getMonth() + 1).toString().padLeft(2, '0') + "-" + _dataChegada.getDate().toString().padLeft(2, '0') + "T" + _dataChegada.getHours().toString().padLeft(2, '0') + ":" + _dataChegada.getMinutes().toString().padLeft(2, '0') + ":00";
+
+	    var d2dSender = new Door2doorSender({
+	        desiredArrivalDate: dataServer,
+	        includePublicTransport: buildSearchRequestFlags(),
+	        oriLat: _placeOrigem.geometry.location.k,
+	        oriLng: _placeOrigem.geometry.location.A,
+	        oriType: (_placeOrigem.types != null && _placeOrigem.types.length > 0) ? _placeOrigem.types[0] : "",
+	        destLat: _placeDestino.geometry.location.k,
+	        destLng: _placeDestino.geometry.location.A,
+	        destType: (_placeDestino.types != null && _placeDestino.types.length > 0) ? _placeDestino.types[0] : "",
+	        chosenRoute: _chosenRoute,
+	        successCallback: handleSuccessSearch,
+	        errorCallback: function (xhr, status, errorThrown) {
+	            $("#divDetalhesItinerario").text("There was an error :( See console for details.");
+	            console.log("Error: " + errorThrown);
+	            console.log("Status: " + status);
+	            console.dir(xhr);
+	        },
+	        completeCallback: function (xhr, status) {
+	            console.log("Status: " + status);
+	            console.dir(xhr);
+	        }
+	    });
+		d2dSender.getd2d();
 	}
 	else {
 	    $("#divDetalhesItinerario").text("Please choose origin and destination...");
@@ -47,7 +50,7 @@ function buscar() {
 //
 function handleSuccessSearch(d2d) {
     if (d2d != null)
-        _d2d= d2d;
+        _resp= d2d;
 
 	renderResult();
 	renderResultOnMap();
@@ -61,7 +64,7 @@ function renderResultOnMap() {
         center: new google.maps.LatLng(
             _placeDestino.geometry.location.k,
             _placeDestino.geometry.location.A),
-        zoom: 13
+            zoom: 13
     };
     //var map = new google.maps.Map(document.getElementById('map-results'), mapOptions);
 
@@ -74,9 +77,9 @@ function renderResult() {
     $("#divDetalhesItinerario").text("");
     htmlResult = "";
     htmlResult = "";
-	for (var i = 0; i < _d2d.res.routes.length; i++) {
-	    var route = _d2d.res.routes[i];
-	    var price = route.indicativePrice && route.indicativePrice.price != null && !isNaN(route.indicativePrice.price) ? " - R$ " + route.indicativePrice.price + ",00" : '';
+	for (var i = 0; i < _resp.routes.length; i++) {
+	    var route = _resp.routes[i];
+	    var price = route.indicativePrice && route.indicativePrice.price != null && route.indicativePrice.price != 0 && !isNaN(route.indicativePrice.price) ? " - R$ " + route.indicativePrice.price + ",00" : '';
 
 		htmlResult += "<h3 id='route" + i + "'>Opção " + (i + 1) + " - " + route.name + price + "</h3><div>";
 
@@ -87,8 +90,8 @@ function renderResult() {
 	$("#divDetalhesItinerario").html(htmlResult);
 	$("#divDetalhesItinerario").accordion("refresh");
 
-	if (_d2d.getChosenItin() != null) {
-	    $("#divDetalhesItinerario").accordion("option", "active", parseInt(_d2d.getChosenItin()[2]));
+	if (_chosenRoute != null) {
+	    $("#divDetalhesItinerario").accordion("option", "active", _chosenRoute[2]);
 	};
 };
 
@@ -97,7 +100,7 @@ function renderResult() {
 //
 function renderStops(routeIndex) {
     var htmlResult = "";
-    var route = _d2d.res.routes[routeIndex];
+    var route = _resp.routes[routeIndex];
 	for (var i = 0; i < route.segments.length; i++) {
 		var segment = route.segments[i];
 		var sName = segment.kind == 'flight' ? segment.sCode : (segment.sName == "Origin" ? _placeOrigem.adr_address.split(',')[0] : segment.sName);
@@ -147,12 +150,12 @@ function renderPrice(segment) {
     var harPrice = false;
     var price = "";
     if (segment.kind == 'flight') {
-        harPrice = segment.itineraries[segment.itinerarioEscolhido] != null;
+        harPrice = segment.itineraries[segment.chosenItinerary] != null && segment.itineraries[segment.chosenItinerary].legs[0].indicativePrice.price != 0;
         if (harPrice) {
-            price = "R$ " + segment.itineraries[segment.itinerarioEscolhido].legs[0].indicativePrice.price + ",00";
+            price = "R$ " + segment.itineraries[segment.chosenItinerary].legs[0].indicativePrice.price + ",00";
         };
     } else {
-        hasPrice = segment.indicativePrice != null && segment.indicativePrice.price != null;
+        hasPrice = segment.indicativePrice != null && segment.indicativePrice.price != null && segment.indicativePrice.price != 0;
         if (hasPrice)
             price = "R$ " + segment.indicativePrice.price + ",00";
     };
@@ -210,12 +213,19 @@ function renderFrequency(segment) {
 	var frequencia = "";
 	var horas = "";
 	var minutos = "";
-	var horasTotal = _d2d.getSegmentFrequency(segment);
+	var ok = false;
+
+	var frequency = { hours: 0, minutes: 0 };
+	if (segment.frequency != null) {
+	    frequency.hours = segment.frequency.split(':')[0];
+	    frequency.hours = segment.frequency.split(':')[1];
+	    ok = true;
+	}
+
 	var htmlResult = "";
 
-	if (horasTotal > 0) {
+	if (ok > 0) {
 
-	    var frequency = Door2door.calcFrequency(horasTotal);
 		if (frequency.minutes == 1) {
 		    minutos = frequency.hours > 0 ? " e 1 minuto" : "A cada 1 minuto";
 		} else if (frequency.minutes > 1) {
@@ -240,29 +250,8 @@ function renderFrequency(segment) {
 };
 
 //
-//SearchRequestFlags
-//Value			Description
-//0x00000000	Include all kinds of segments (Default)
-//0x000FFFFF	Exclude all kinds of segments (See example below)
-//0x00000001	Exclude flight segments
-//0x00000002	Exclude flight itineraries
-//0x00000010	Exclude train segments
-//0x00000020	Exclude train itineraries
-//0x00000100	Exclude bus segments
-//0x00000200	Exclude bus itineraries
-//0x00001000	Exclude ferry segments
-//0x00002000	Exclude ferry itineraries
-//0x00010000	Exclude car segments
-//0x00100000	Exclude commuter hops (commuter = local bus, train, trams, subways, etc.)
-//0x00200000	Exclude special hops (special = funiculars, steam trains, tours, etc.)
-//0x00400000	Exclude minor start segments
-//0x00800000	Exclude minor end segments
-//0x01000000	Exclude paths (saves bandwidth)
-//0x04000000	Exclude indicative prices (saves bandwidth)
-//0x10000000	Disable scoring and pruning (debug only)
-//Flights only: 0x000FFFF0 (0x000FFFFF - 0x0000000F)
-//Not via road: 0x00010100 (0x00000100 + 0x00010000)
-//NOTE: You can pass these flags either as a hexadecimal value (&flags=0x00010100) or simply as a decimal (&flags=65792).
+//
+//
 function buildSearchRequestFlags() {
     return $('#chkIncludePublicTransport').is(':checked');
 };
@@ -271,7 +260,7 @@ function buildSearchRequestFlags() {
 // abre modal para alteracao de opcao de voo para determiado segmento(segmentIndex), de determinada rota(routeIndex)
 //
 function showFlightOptionsAlternatives(segmentIndex, routeIndex) {
-    var route = _d2d.res.routes[routeIndex];
+    var route = _resp.routes[routeIndex];
     var htmlResult = "";
     var pMessage = "";
     for (var i = 0; i < route.segments[segmentIndex].itineraries.length; i++) {
@@ -296,8 +285,8 @@ function showFlightOptionsAlternatives(segmentIndex, routeIndex) {
 
         // deixa selecionado segmento escolhido automaticamente
         var checked = "";
-        if (route.segments[segmentIndex].itinerarioEscolhido != null) {
-            if (route.segments[segmentIndex].itinerarioEscolhido == i) {
+        if (route.segments[segmentIndex].chosenItinerary != null) {
+            if (route.segments[segmentIndex].chosenItinerary == i) {
                 checked = "checked";
             }
         }
@@ -306,7 +295,7 @@ function showFlightOptionsAlternatives(segmentIndex, routeIndex) {
         var radioOptions = "";
         
         //segmentos inva;lidos marcados em vermelho e indisponiveis para escolha
-        if (!itinerary.validoParaHorario) {
+        if (!itinerary.validForSchedule) {
             trOptions = "style='color:red'";
             radioOptions = 'disabled';
             pMessage = "<p style='color:red'>Opções em vermelho não se encaixam no horário informado.</p>"
@@ -341,7 +330,7 @@ function showFlightOptionsAlternatives(segmentIndex, routeIndex) {
                 $(this).dialog("close");
             },
             Cancel: function () {
-                _d2d.setChosenItin(null); // caso ele tenha clicado em algum radio button mas nao tenha aplicado a alteracao
+                _chosenRoute = null;
                 $(this).dialog("close");
             }
         },
@@ -353,7 +342,9 @@ function showFlightOptionsAlternatives(segmentIndex, routeIndex) {
         }
     });
 
-    $("#divFlightOptionsAlternatives").dialog("option", "title", "Voos partindo dia " + route.segments[segmentIndex].departureDateTime.toLocaleDateString());
+    //date.js
+    var date = Date.parse(route.segments[segmentIndex].departureDateTime);
+    $("#divFlightOptionsAlternatives").dialog("option", "title", "Voos partindo dia " + date.toLocaleDateString());
     $("#divFlightOptionsAlternatives").dialog("open");
     $(".rdEscolha").click(function (eventData) {
         handleRdClick(eventData);
@@ -366,8 +357,7 @@ function showFlightOptionsAlternatives(segmentIndex, routeIndex) {
 //
 function handleRdClick(eventData) {
     // itineraryIndex|SegmentIndex|routeIndex
-    var vooEscolhido = eventData.target.value.split("|");
-    _d2d.setChosenItin(vooEscolhido[0], vooEscolhido[1], vooEscolhido[2]);
+    _chosenRoute = eventData.target.value.split("|");
 };
 
 
@@ -375,61 +365,9 @@ function handleRdClick(eventData) {
 // efetua a troca de opcao de voo
 //
 function changeFlightOption() {
-    if (_d2d.getChosenItin() != null) {
-        _d2d.buildCompleteItinerarySchedule();
-        handleSuccessSearch();
+    if (_chosenRoute != null) {
+        buscar();
     };
 
 };
 
-//
-//
-//
-function dateToString(dateTime) {
-    var sDate = '';
-    var pad = "00"
-    var day = "" + dateTime.getDate();
-    var month = 1 + dateTime.getMonth();
-    var hours = "" + dateTime.getHours();
-    var minutes = "" + dateTime.getMinutes();
-
-    sDate = pad.substring(0, pad.length - day.length) + day + "/" +
-			pad.substring(0, pad.length - month.length) + month + "/" +
-			dateTime.getFullYear() + " " +
-			pad.substring(0, pad.length - hours.length) + hours + ":" +
-			pad.substring(0, pad.length - minutes.length) + minutes;
-
-    return sDate;
-};
-
-//
-// retorna diferenca em dias, minutos e segundos.
-//
-function getTimeDiff(initialDate, finalDate) {
-    var date = { days: 0, hours: 0, minutes: 0, seconds: 0 };
-
-    if (finalDate < initialDate) {
-        finalDate.setDate(finalDate.getDate() + 1);
-    }
-    var msec = finalDate - initialDate;//milliseconds
-
-    var hh = Math.floor(msec / 1000 / 60 / 60);
-    if (hh >= 24) { // cacula dias.
-        var dd = Math.floor(hh / 24);
-        date.days = dd;
-        hh = hh - (dd * 24);
-    }
-    date.hours = hh;
-
-    msec -= hh * 1000 * 60 * 60;
-    var mm = Math.floor(msec / 1000 / 60);
-    date.minutes = mm;
-
-    msec -= mm * 1000 * 60;
-    var ss = Math.floor(msec / 1000);
-
-    msec -= ss * 1000;
-    date.seconds = ss;
-
-    return date;
-};
