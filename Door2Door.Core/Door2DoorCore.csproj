@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CB0F0D5F-574A-43CF-B1BB-76AAD66BA80A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{D38A87E3-3797-4CE1-BFE2-23F69B124AC6}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleApplication1</RootNamespace>
-    <AssemblyName>ConsoleApplication1</AssemblyName>
+    <RootNamespace>Door2DoorCore</RootNamespace>
+    <AssemblyName>Door2DoorCore</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,17 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Door2Door.cs" />
+    <Compile Include="Exceptions\D2DResponseException.cs" />
+    <Compile Include="Exceptions\D2DRequestException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rome2RioComm.cs" />
+    <Compile Include="Types\Door2DoorRequest\D2DRequestLocation.cs" />
+    <Compile Include="Types\Door2DoorRequest\D2DRequestFlags.cs" />
+    <Compile Include="Types\Door2DoorRequest\D2DRequest.cs" />
+    <Compile Include="Types\Door2DoorRequest\D2DRequestType.cs" />
+    <Compile Include="Types\Rome2RioResponse\ItineraryDates.cs" />
+    <Compile Include="Types\Rome2RioResponse\Rome2RioResponse.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Door2Door.Core\Door2DoorCore.csproj">
-      <Project>{d38a87e3-3797-4ce1-bfe2-23f69b124ac6}</Project>
-      <Name>Door2DoorCore</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
+    <None Include="Types\Rome2RioResponse\Rome2RioResponse.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
