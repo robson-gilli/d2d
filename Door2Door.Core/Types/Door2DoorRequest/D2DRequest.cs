@@ -21,6 +21,7 @@ namespace Door2DoorCore.Types.Door2DoorRequest
         public string type = "GET";
         public string dataTye = "json";
 
+        public int maxDriveKm { get; set; }
         public DateTime desiredArrivalDate { get; set; }
         public D2DRequestFlags flags { get; set; }
         public D2DRequestLocation oriLocation { get; set; }

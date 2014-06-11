@@ -9,6 +9,7 @@ var _panorama;
 var _resp;
 var _chosenRoute;
 var _reqObj;//handles request policies
+
 //
 // document ready
 //
@@ -19,7 +20,7 @@ $(document).ready(function(){
 	_resp = null;
 	_chosenRoute = null;
 
-	buildRequestObject();
+	getRequestObject();
 
 	if (_reqObj && !_reqObj.incPublicTransp) {
 	    $('#chkIncludePublicTransport').attr('checked', false);
@@ -55,7 +56,7 @@ $(document).ready(function(){
 //
 //
 //
-function buildRequestObject() {
+function getRequestObject() {
     var jsonString = $('#divJSONRqParams').text();
     if (jsonString != null && jsonString != '') {
         _reqObj = jQuery.parseJSON(jsonString);
@@ -132,7 +133,6 @@ function handleTimePicker(time, inst) {
 	if (_timeSelected) {
 		_dataChegada = new Date(_dataChegada.getFullYear(), _dataChegada.getMonth(), _dataChegada.getDate(), inst.hours, inst.minutes);
 	};
-
 	_timeSelected = false;
 };
 
