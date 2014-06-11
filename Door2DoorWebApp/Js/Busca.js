@@ -1,18 +1,21 @@
 ﻿//
 //
 //
-function buscar() {
+function buscar(originalRoute) {
 
     //
 	//tem que escolher origem e destino
     if (_placeOrigem && _placeDestino && _placeOrigem.geometry && _placeDestino.geometry) {
-
         _resp = null;
-
+        if (originalRoute) {
+            _chosenRoute = null;
+        };
         //loading
 	    $("#mapa").hide();
 	    $("#divResults").show();
 	    $("#divDetalhesItinerario").text("Please wait...");
+	    $("#divDetalhesItinerario").accordion("option", "active", false);
+	    $("#divDetalhesItinerario").accordion("refresh");
 
 	    var dataServer = _dataChegada.getFullYear() + "-" + (_dataChegada.getMonth() + 1).toString().padLeft(2, '0') + "-" + _dataChegada.getDate().toString().padLeft(2, '0') + "T" + _dataChegada.getHours().toString().padLeft(2, '0') + ":" + _dataChegada.getMinutes().toString().padLeft(2, '0') + ":00";
 
@@ -91,7 +94,7 @@ function renderResult() {
 	$("#divDetalhesItinerario").accordion("refresh");
 
 	if (_chosenRoute != null) {
-	    $("#divDetalhesItinerario").accordion("option", "active", _chosenRoute[2]);
+	    $("#divDetalhesItinerario").accordion("option", "active", parseInt(_chosenRoute[2]));
 	};
 };
 
@@ -366,7 +369,7 @@ function handleRdClick(eventData) {
 //
 function changeFlightOption() {
     if (_chosenRoute != null) {
-        buscar();
+        buscar(false);
     };
 
 };

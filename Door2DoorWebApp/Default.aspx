@@ -30,7 +30,7 @@
         <div style="background-color: gray; padding-bottom: 1px;" id="divSearchBox">
             <input id="txtOrigem" class="controleOrigem" type="text" placeholder="De onde você pretende sair?" />
             <input id="txtDestino" class="controleOrigem" type="text" placeholder="Para onde você vai?" />
-            <input id="btnBuscar" type="button" onclick="buscar();" value="Buscar" style="height: 32px;" />
+            <input id="btnBuscar" type="button" onclick="buscar(true);" value="Buscar" style="height: 32px;" />
             <p>
                 <input type="text" id="datePicker" placeholder="Que dia você tem que estar lá?" class="dataChegada">
                 <input type="text" id="timePicker" placeholder="E que horas?" class="horaChegada">
