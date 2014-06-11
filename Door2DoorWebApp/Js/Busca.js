@@ -2,7 +2,6 @@
 //
 //
 function buscar(originalRoute) {
-
     //
 	//tem que escolher origem e destino
     if (_placeOrigem && _placeDestino && _placeOrigem.geometry && _placeDestino.geometry) {

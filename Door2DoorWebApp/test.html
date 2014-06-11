@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    
+</head>
+<body>
+    
+    <div>
+        MinDate<input type="text" id="minDepDate" value="2014-10-10"/>
+        <br />
+        MaxDate
+        <input type="text" id="maxDepDate" value="2014-12-23" />
+        <br />
+        <input type="checkbox" id="incPublicTransp"/><label for="incPublicTransp">incPublicTransp</label>
+        <br />
+        <input type="checkbox" id="allowInter"  /><label for="allowInter">allowInter</label>
+        <br />
+        maxDriveKm<input type="text" id="maxDriveKm"  value="300" />
+        <br />
+        <br />
+        <input type="button" id="Button1" />
+    </div>
+
+    <form id="form1" action="Default.aspx" method="post">
+        <input type="hidden" name="minDepDate"      id="hidminDepDate" />
+        <input type="hidden" name="maxDepDate"      id="hidmaxDepDate" />
+        <input type="hidden" name="incPublicTransp" id="hidincPublicTransp" />
+        <input type="hidden" name="allowInter"      id="hidallowInter" />
+        <input type="hidden" name="maxDriveKm"      id="hidmaxDriveKm" />
+    </form>
+
+    
+    <script>
+        $('#Button1').on('click', function (e) {
+            e.preventDefault();
+            var rq = {
+                minDepDate: $('#minDepDate').val(),
+                maxDepDate: $('#maxDepDate').val(),
+                maxDriveKm: $('#maxDriveKm').val(),
+                incPublicTransp: $('#incPublicTransp').is(':checked'),
+                allowInter: $('#allowInter').is(':checked')
+            };
+
+            $('#hidminDepDate').val(rq.minDepDate);
+            $('#hidmaxDepDate').val(rq.maxDepDate);
+            $('#hidincPublicTransp').val(rq.incPublicTransp);
+            $('#hidallowInter').val(rq.allowInter);
+            $('#hidmaxDriveKm').val(rq.maxDriveKm);
+            
+            $('#form1').submit();
+
+        });
+    </script>
+
+
+</body>
+</html>

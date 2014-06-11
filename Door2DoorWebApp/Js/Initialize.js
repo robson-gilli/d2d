@@ -8,7 +8,7 @@ var _timeSelected;
 var _panorama;
 var _resp;
 var _chosenRoute;
-
+var _reqObj;//handles request policies
 //
 // document ready
 //
@@ -19,16 +19,25 @@ $(document).ready(function(){
 	_resp = null;
 	_chosenRoute = null;
 
-	google.maps.event.addDomListener(window, 'load', initialize);
+	buildRequestObject();
+
+	if (_reqObj && !_reqObj.incPublicTransp) {
+	    $('#chkIncludePublicTransport').attr('checked', false);
+	    $('#chkIncludePublicTransport').attr('disabled', true);
+	}
+
+	google.maps.event.addDomListener(window, 'load', initializeGoogle);
 
 	//configura calendario
 	$("#datePicker").datepicker({
-		dateFormat: 'dd/mm/yy',
-		inline: true,
-		minDate: new Date(),
-		maxDate: new Date(2015, 12, 31),
-		useSelect: true,
-		onSelect: handleDatePicker
+	    dateFormat: 'dd/mm/yy',
+	    inline: true,
+	    minDate: new Date(),
+	    maxDate: new Date(2015, 12, 31),
+	    useSelect: true,
+	    onSelect: handleDatePicker,
+	    minDate: _reqObj ? _reqObj.minDepDate : 0,
+	    maxDate: _reqObj ? _reqObj.maxDepDate : "+1y"
 	});
 
 	//configura campo de hora
@@ -44,11 +53,32 @@ $(document).ready(function(){
 });
 
 //
+//
+//
+function buildRequestObject() {
+    var jsonString = $('#divJSONRqParams').text();
+    if (jsonString != null && jsonString != '') {
+        _reqObj = jQuery.parseJSON(jsonString);
+        _reqObj.minDepDate = new Date(_reqObj.minDepDate.substring(0, 4), parseInt(_reqObj.minDepDate.substring(5, 7)) - 1, _reqObj.minDepDate.substring(8, 10));
+        _reqObj.maxDepDate = new Date(_reqObj.maxDepDate.substring(0, 4), parseInt(_reqObj.maxDepDate.substring(5, 7)) - 1, _reqObj.maxDepDate.substring(8, 10));
+    };
+};
+
+//
 // initialize jquery and other components
 //
-function initialize(){
-    var autocompleteOrigem = new google.maps.places.Autocomplete(document.getElementById('txtOrigem'));
-    var autocompleteDestino = new google.maps.places.Autocomplete(document.getElementById('txtDestino'));
+function initializeGoogle() {
+
+    var componentRestrictions = {};
+    if (_reqObj != null && _reqObj.allowInter == false) {
+        componentRestrictions = {
+            componentRestrictions: {
+                country: 'br'
+            }
+        };
+    }
+    var autocompleteOrigem = new google.maps.places.Autocomplete(document.getElementById('txtOrigem'), componentRestrictions);
+    var autocompleteDestino = new google.maps.places.Autocomplete(document.getElementById('txtDestino'), componentRestrictions);
 
     //listener do autocomplete de origem
     google.maps.event.addListener(autocompleteOrigem, 'place_changed', function () {

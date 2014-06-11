@@ -282,7 +282,7 @@ namespace Door2DoorCore
                 { // mais do que um a cada hora
                     minutes = int.Parse(Math.Floor((decimal)(60 / (weeklyFrequency / HORAS_NA_SEMAMA))).ToString());
                 }
-                else if ((weeklyFrequency / DIAS_NA_SEMAMA < 24))
+                else if (weeklyFrequency / DIAS_NA_SEMAMA < 24)
                 { // menos do que um a cada hora
                     decimal porDia = weeklyFrequency / DIAS_NA_SEMAMA;
                     decimal aCadaXHoras = Math.Floor((decimal)(24 / porDia));
@@ -294,13 +294,13 @@ namespace Door2DoorCore
                         decimal aCadaXMinutos = (24 / porDia) - aCadaXHoras;
                         decimal min = Math.Round(aCadaXMinutos * 60);
                         minutes = (int)min;
-                    };
+                    }
                 }
                 else
                 { //==1
                     hours = 1;
-                };
-            };
+                }
+            }
             return new TimeSpan(0, hours, minutes, 0, 0);
         }
 
@@ -352,18 +352,19 @@ namespace Door2DoorCore
                     {
                         for (var i = 0; i < segment.Itineraries[0].Legs[0].Hops.Length; i++)
                         {
-                            if (segment.Itineraries[0].Legs[0].Hops[i].Frequency != null)
-                            {
-                                weeklyFrequency += segment.Itineraries[0].Legs[0].Hops[i].Frequency;
-                            };
-                        };
-                    };
-                };
-            };
+                            weeklyFrequency += segment.Itineraries[0].Legs[0].Hops[i].Frequency;
+                        }
+                    }
+                }
+            }
             return weeklyFrequency;
-
         }
-
+    
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="segment"></param>
+        /// <returns></returns>
         private Leg FindLatestItinerary(ref Segment segment)
         {
             Leg latestItinerary = null;

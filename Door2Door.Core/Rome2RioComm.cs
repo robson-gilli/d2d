@@ -25,11 +25,19 @@ namespace Door2DoorCore
         public delegate void MessageReceivedEventHandler(Rome2RioResponse resp);
         public event MessageReceivedEventHandler OnMessageReceived;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="req"></param>
         public Rome2RioComm(D2DRequest req)
         {
             _req = req;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public Rome2RioResponse Download()
         {
             using (WebClient client = new WebClient())
@@ -102,7 +110,6 @@ namespace Door2DoorCore
             {
                 collection.Add("dKind", Uri.EscapeDataString(_req.destLocation.type));
             }
-
             return collection;
         }
 
@@ -112,17 +119,16 @@ namespace Door2DoorCore
         /// <returns></returns>
         private int BuildSearchRequestFlags()
         {
-            //0x10000000 => Exclude path information ( saves bandwidth)
-            int flagsIncludeAll = Convert.ToInt32("0x10000000", 16);
-            if (!_req.flags.includePublicTransp)
+            //0x01000000 => Exclude path information (saves bandwidth)
+            int flagsIncludeAll = Convert.ToInt32("0x01000000", 16);
+            if (_req.flags.includePublicTransp)
             {
-
                 flagsIncludeAll +=
-                    //+ parseInt("0x00000020", 16) // train
-                    +Convert.ToInt32("0x00000300", 16) // bus
-                    //+ parseInt("0x00002000", 16) // ferry
+                    //+ parseInt("0x00000010", 16) // train
+                    +Convert.ToInt32("0x00000100", 16) // bus
+                    //+ parseInt("0x00001000", 16) // ferry
                     + Convert.ToInt32("0x00100000", 16); // commutes
-            };
+            }
             return flagsIncludeAll;
         }
 

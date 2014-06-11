@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Door2DoorWebApp.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Door2DoorWebApp.Default"  %>
 
 <!DOCTYPE html>
 <html>
@@ -16,12 +16,6 @@
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
-    <script src="Js/TimePicker/jquery.ui.timepicker.js"></script>
-    <script src="Js/Date/date.js"></script>
-    <script src="Js/Initialize.js"></script>
-    <script src="Js/Door2Door.js"></script>
-    <script src="Js/Auxiliar.js"></script>
-    <script src="Js/Busca.js"></script>
 
 
 </head>
@@ -72,5 +66,13 @@
         </div>
 
     </div>
+    <div id='divJSONRqParams'><asp:Literal ID='litJsonRq' runat='server'/></div>
+
+    <script src="Js/TimePicker/jquery.ui.timepicker.js"></script>
+    <script src="Js/Date/date.js"></script>
+    <script src="Js/Initialize.js"></script>
+    <script src="Js/Door2Door.js"></script>
+    <script src="Js/Auxiliar.js"></script>
+    <script src="Js/Busca.js"></script>
 </body>
 </html>
