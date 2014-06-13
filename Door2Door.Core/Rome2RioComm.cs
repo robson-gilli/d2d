@@ -15,15 +15,14 @@ namespace Door2DoorCore
     internal class Rome2RioComm : IDisposable
     {
         private D2DRequest _req;
+        public delegate void MessageReceivedEventHandler(Rome2RioResponse resp);
+        public event MessageReceivedEventHandler OnMessageReceived;
 
         private Rome2RioResponse _resp;
         public Rome2RioResponse Resp
         {
             get { return _resp; }
         }
-
-        public delegate void MessageReceivedEventHandler(Rome2RioResponse resp);
-        public event MessageReceivedEventHandler OnMessageReceived;
 
         /// <summary>
         /// 

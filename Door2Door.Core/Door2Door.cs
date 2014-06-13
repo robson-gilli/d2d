@@ -144,8 +144,8 @@ namespace Door2DoorCore
                         ItineraryDates itineraryDates = new ItineraryDates();
                         route.Segments[i].ChosenItinerary = null; //escolhido automaticamente
 
-                        if (vooEscolhido != null)
-                        { // é uma alteração de itinerario, um voo foi alterado
+                        if (vooEscolhido != null) // é uma alteração de itinerario, um voo foi alterado
+                        { 
                             if (vooEscolhido[1] == i)
                             {
                                 achouVoo = true;
@@ -187,15 +187,15 @@ namespace Door2DoorCore
                                         if (currentItineraryDates.arrivalDateTime > itineraryDates.arrivalDateTime)
                                         {
                                             itineraryDates = currentItineraryDates;
-                                            route.Segments[i].ChosenItinerary = j;//indice do itinerario escolhido automatico
+                                            route.Segments[i].ChosenItinerary = j; //indice do itinerario escolhido automatico
                                         }
                                     }
                                 }
                             }
                         }
 
-                        if (!achouVoo)
-                        { // Nao tinha nenhum voo que chegaria no horario naquele dia, pegar o voo com maior horario de chegada e determinar que é no dia anterior
+                        if (!achouVoo)// Nao tinha nenhum voo que chegaria no horario naquele dia, pegar o voo com maior horario de chegada e determinar que é no dia anterior
+                        { 
                             // acha o itinerario que tem a hora de chegada maior
                             Leg latestItinerary = FindLatestItinerary(ref route.Segments[i]);
 
@@ -205,7 +205,6 @@ namespace Door2DoorCore
                         route.Segments[i].DepartureDateTime = itineraryDates.departureDateTime;
                         route.Segments[i].ArrivalDateTime = itineraryDates.arrivalDateTime;
 
-
                         // calcula o preco do segmento
                         if (route.Segments[i].IndicativePrice != null)
                         {
@@ -214,11 +213,9 @@ namespace Door2DoorCore
                                 routePrice += route.Segments[i].Itineraries[route.Segments[i].ChosenItinerary.Value].Legs[0].IndicativePrice.Price;
                             }
                         }
-
                     }
-                    else
-                    { // qualquer tipo de transporte que nao seja voo
-
+                    else// qualquer tipo de transporte que nao seja voo
+                    { 
                         //faz o calculo do preco
                         if (route.Segments[i].IndicativePrice != null)
                         {
@@ -272,26 +269,26 @@ namespace Door2DoorCore
                 const int HORAS_NA_SEMAMA = 168;
                 decimal absHourFrequency = Math.Floor((decimal)(weeklyFrequency / HORAS_NA_SEMAMA));
 
-                if (weeklyFrequency / DIAS_NA_SEMAMA > 24)
-                { // mais do que um a cada hora
+                if (weeklyFrequency / DIAS_NA_SEMAMA > 24)// mais do que um a cada hora
+                { 
                     minutes = int.Parse(Math.Floor((decimal)(60 / (weeklyFrequency / HORAS_NA_SEMAMA))).ToString());
                 }
-                else if (weeklyFrequency / DIAS_NA_SEMAMA < 24)
-                { // menos do que um a cada hora
+                else if (weeklyFrequency / DIAS_NA_SEMAMA < 24)// menos do que um a cada hora
+                { 
                     decimal porDia = (decimal)weeklyFrequency / (decimal)DIAS_NA_SEMAMA;
                     decimal aCadaXHoras = Math.Floor((decimal)24 / (decimal)porDia);
 
                     hours = (int)aCadaXHoras;
 
-                    if (aCadaXHoras != (24 / porDia))
-                    { // nao é hora redonda
+                    if (aCadaXHoras != (24 / porDia))// nao é hora redonda
+                    { 
                         decimal aCadaXMinutos = ((decimal)24 / (decimal)porDia) - aCadaXHoras;
                         decimal min = Math.Round(aCadaXMinutos * 60);
                         minutes = (int)min;
                     }
                 }
-                else
-                { //==1
+                else//==1
+                { 
                     hours = 1;
                 }
             }
@@ -372,8 +369,8 @@ namespace Door2DoorCore
                 // horario do itinerario atual
                 TimeSpan itineraryDate = new TimeSpan(int.Parse(tTime[0]), int.Parse(tTime[1]), 0);
 
-                if (latestItinerary == null)
-                { // é o primeiro
+                if (latestItinerary == null)// é o primeiro
+                { 
                     latestItinerary = itinerary;
                     segment.ChosenItinerary = i;
                 }
@@ -382,8 +379,8 @@ namespace Door2DoorCore
                     string[] latestItineraryTime = latestItinerary.Hops[latestItinerary.Hops.Length - 1].TTime.Split(':');
                     TimeSpan latestItineraryDate = new TimeSpan(int.Parse(latestItineraryTime[0]), int.Parse(latestItineraryTime[1]), 0);
 
-                    if (latestItineraryDate < itineraryDate)
-                    {// achou uma opcao mais tarde
+                    if (latestItineraryDate < itineraryDate)// achou uma opcao mais tarde
+                    {
                         latestItinerary = itinerary;
                         segment.ChosenItinerary = i;
                     }
@@ -447,8 +444,8 @@ namespace Door2DoorCore
 
             int arrDayChange = 0;
             DateTime tempArrivalDate = new DateTime(arrivalDateNextStop.Year, arrivalDateNextStop.Month, arrivalDateNextStop.Day, int.Parse(tTime[0]), int.Parse(tTime[1]), 0);
-            if (tempArrivalDate >= arrivalDateNextStop)
-            {//tem que ser no dia anterior
+            if (tempArrivalDate >= arrivalDateNextStop)//tem que ser no dia anterior
+            {
                 arrDayChange = 1;
             }
 
