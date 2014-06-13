@@ -15,9 +15,6 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-
-
 </head>
 <body>
     <div style="width: 100%; height: 100%;">
@@ -26,8 +23,8 @@
             <input id="txtDestino" class="controleOrigem" type="text" placeholder="Para onde você vai?" />
             <input id="btnBuscar" type="button" onclick="buscar(true);" value="Buscar" style="height: 32px;" />
             <p>
-                <input type="text" id="datePicker" placeholder="Que dia você tem que estar lá?" class="dataChegada">
-                <input type="text" id="timePicker" placeholder="E que horas?" class="horaChegada">
+                <input type="text" id="datePicker" placeholder="Que dia você tem que estar lá?" class="dataChegada" readonly='readonly'/>
+                <input type="text" id="timePicker" placeholder="E que horas?" class="horaChegada" readonly="readonly"/>
                 <label>
                     <input type="checkbox" id="chkIncludePublicTransport" />Incluir ônibus intermunicipal e transporte público</label>
             </p>

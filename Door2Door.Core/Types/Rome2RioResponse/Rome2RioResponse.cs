@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Door2DoorCore.Types;
 
-namespace Door2DoorCore.Types
+namespace Door2DoorCore.Types.Rome2RioResponse
 {
 
     public class Airport

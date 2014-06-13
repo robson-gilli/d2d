@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 
 namespace Door2DoorCore
 {
-    public class Rome2RioComm : IDisposable
+    internal class Rome2RioComm : IDisposable
     {
         private D2DRequest _req;
 
@@ -121,7 +121,7 @@ namespace Door2DoorCore
         {
             //0x01000000 => Exclude path information (saves bandwidth)
             int flagsIncludeAll = Convert.ToInt32("0x01000000", 16);
-            if (_req.flags.includePublicTransp)
+            if (!_req.flags.includePublicTransp)
             {
                 flagsIncludeAll +=
                     //+ parseInt("0x00000010", 16) // train

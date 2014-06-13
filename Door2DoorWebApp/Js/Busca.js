@@ -216,15 +216,14 @@ function renderFrequency(segment) {
 	var horas = "";
 	var minutos = "";
 	var ok = false;
+	var htmlResult = "";
 
 	var frequency = { hours: 0, minutes: 0 };
 	if (segment.frequency != null) {
-	    frequency.hours = segment.frequency.split(':')[0];
-	    frequency.hours = segment.frequency.split(':')[1];
-	    ok = true;
+	    frequency.hours = parseInt(segment.frequency.split(':')[0]);
+	    frequency.minutes = parseInt(segment.frequency.split(':')[1]);
+	    ok = frequency.hours > 0 || frequency.minutes > 0;
 	}
-
-	var htmlResult = "";
 
 	if (ok > 0) {
 
@@ -305,13 +304,13 @@ function showFlightOptionsAlternatives(segmentIndex, routeIndex) {
 
         htmlResult += " <tr " + trOptions + ">";
         htmlResult += "     <td><input type='radio' name='rdEscolha' class='rdEscolha' value='" + i + "|" + segmentIndex + "|" + routeIndex + "' " + checked + " " + radioOptions + "/></td>"; // itineraryIndex|SegmentIndex|routeIndex
-        htmlResult += "     <td>" + voos + "</td>";
-        htmlResult += "     <td>" + cias + "</td>";
-        htmlResult += "     <td>" + origens + "</td>";
-        htmlResult += "     <td>" + horariosPartida + "</td>";
-        htmlResult += "     <td>" + destinos + "</td>";
-        htmlResult += "     <td>" + horariosChegadas + "</td>";
-        htmlResult += "     <td>" + preco + "</td>";
+        htmlResult += "     <td>" + voos +              "</td>";
+        htmlResult += "     <td>" + cias +              "</td>";
+        htmlResult += "     <td>" + origens +           "</td>";
+        htmlResult += "     <td>" + horariosPartida +   "</td>";
+        htmlResult += "     <td>" + destinos +          "</td>";
+        htmlResult += "     <td>" + horariosChegadas +  "</td>";
+        htmlResult += "     <td>" + preco +             "</td>";
         htmlResult += " </tr>";
     };
 
@@ -320,7 +319,7 @@ function showFlightOptionsAlternatives(segmentIndex, routeIndex) {
     $("#tdOpcoesVoo tbody").append(htmlResult);
     $("#divFlightOptionsAlternatives").dialog({
         autoOpen: false,
-        width: 666,
+        width: 666, //hell yeah
         modal: true,
         closeOnEscape: false,
         open: function(event, ui) { $(".ui-dialog-titlebar-close").hide(); },

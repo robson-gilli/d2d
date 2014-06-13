@@ -95,7 +95,7 @@ namespace Door2DoorCore
         {
             for (int i = 0; i < _resp.Routes.Count(); i++)
             {
-                Types.Route route = _resp.Routes[i];
+                Route route = _resp.Routes[i];
 
                 List<int> vooEscolhido = null;
                 if (_chosenItin != null)
@@ -158,16 +158,13 @@ namespace Door2DoorCore
                                 itineraryDates = CalcItineraryDates(itinerary, arrivalDateNextStop);
 
                                 // tem que fazer isto só para marcar voos como validos ou nao
-                                for (var j = 0; j < route.Segments[i].Itineraries.Length; j++)
-                                {
-                                    route.Segments[i].Itineraries[j].ValidForSchedule = true;
-                                }
+                                route.Segments[i].Itineraries.ToList().ForEach(x => x.ValidForSchedule = true);
                             }
                         }
                         else
                         {
                             // para cada opcao de voo
-                            for (var j = 0; j < route.Segments[i].Itineraries.Length; j++)
+                            for (int  j = 0; j < route.Segments[i].Itineraries.Length; j++)
                             {
                                 route.Segments[i].Itineraries[j].ValidForSchedule = false; // valido para horario de chegada informado?
 
@@ -256,9 +253,7 @@ namespace Door2DoorCore
                     }
                 }
             }
-
             route.IndicativePrice.Price = routePrice;
-
         }
 
         /// <summary>
@@ -268,7 +263,6 @@ namespace Door2DoorCore
         /// <returns></returns>
         private TimeSpan CalcFrequency(int weeklyFrequency)
         {
-
             int minutes = 0;
             int hours = 0;
 
@@ -284,14 +278,14 @@ namespace Door2DoorCore
                 }
                 else if (weeklyFrequency / DIAS_NA_SEMAMA < 24)
                 { // menos do que um a cada hora
-                    decimal porDia = weeklyFrequency / DIAS_NA_SEMAMA;
-                    decimal aCadaXHoras = Math.Floor((decimal)(24 / porDia));
+                    decimal porDia = (decimal)weeklyFrequency / (decimal)DIAS_NA_SEMAMA;
+                    decimal aCadaXHoras = Math.Floor((decimal)24 / (decimal)porDia);
 
                     hours = (int)aCadaXHoras;
 
                     if (aCadaXHoras != (24 / porDia))
                     { // nao é hora redonda
-                        decimal aCadaXMinutos = (24 / porDia) - aCadaXHoras;
+                        decimal aCadaXMinutos = ((decimal)24 / (decimal)porDia) - aCadaXHoras;
                         decimal min = Math.Round(aCadaXMinutos * 60);
                         minutes = (int)min;
                     }
@@ -304,24 +298,26 @@ namespace Door2DoorCore
             return new TimeSpan(0, hours, minutes, 0, 0);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="segment"></param>
+        /// <returns></returns>
         private TimeSpan? GetSegmentFrequency(Segment segment)
         {
             TimeSpan? freq = null;
             int horasTotal = 0;
             if (segment != null && segment.Itineraries != null && segment.Kind != "flight")
             {
-                for (var i = 0; i < segment.Itineraries.Length; i++)
+                for (int i = 0; i < segment.Itineraries.Length; i++)
                 {
                     if (segment.Itineraries[i].Legs != null)
                     {
-                        for (var j = 0; j < segment.Itineraries[i].Legs.Length; j++)
+                        for (int  j = 0; j < segment.Itineraries[i].Legs.Length; j++)
                         {
                             if (segment.Itineraries[i].Legs[j].Hops != null)
                             {
-                                for (var k = 0; k < segment.Itineraries[i].Legs[j].Hops.Length; k++)
-                                {
-                                    horasTotal += segment.Itineraries[i].Legs[j].Hops[k].Frequency;
-                                }
+                                horasTotal = segment.Itineraries[i].Legs[j].Hops.Sum(e => e.Frequency);
                             }
                         }
                     }
@@ -343,17 +339,14 @@ namespace Door2DoorCore
         /// <returns></returns>
         private int GetWeeklyFrequency(Segment segment)
         {
-            var weeklyFrequency = 0;
+            int weeklyFrequency = 0;
             if (segment.Itineraries != null && segment.Kind != "flight")
             {
                 if (segment.Itineraries[0].Legs != null && segment.Itineraries[0].Legs.Length > 0)
                 {
                     if (segment.Itineraries[0].Legs[0].Hops != null)
                     {
-                        for (var i = 0; i < segment.Itineraries[0].Legs[0].Hops.Length; i++)
-                        {
-                            weeklyFrequency += segment.Itineraries[0].Legs[0].Hops[i].Frequency;
-                        }
+                        weeklyFrequency = segment.Itineraries[0].Legs[0].Hops.Sum(e => e.Frequency);
                     }
                 }
             }
@@ -374,7 +367,7 @@ namespace Door2DoorCore
                 segment.Itineraries[i].ValidForSchedule = true;
 
                 //hora de chegada do ultimo voo da opcao atual
-                var tTime = itinerary.Hops[itinerary.Hops.Length - 1].TTime.Split(':');
+                string[] tTime = itinerary.Hops[itinerary.Hops.Length - 1].TTime.Split(':');
 
                 // horario do itinerario atual
                 TimeSpan itineraryDate = new TimeSpan(int.Parse(tTime[0]), int.Parse(tTime[1]), 0);
@@ -386,7 +379,7 @@ namespace Door2DoorCore
                 }
                 else
                 {
-                    var latestItineraryTime = latestItinerary.Hops[latestItinerary.Hops.Length - 1].TTime.Split(':');
+                    string[] latestItineraryTime = latestItinerary.Hops[latestItinerary.Hops.Length - 1].TTime.Split(':');
                     TimeSpan latestItineraryDate = new TimeSpan(int.Parse(latestItineraryTime[0]), int.Parse(latestItineraryTime[1]), 0);
 
                     if (latestItineraryDate < itineraryDate)
@@ -410,19 +403,18 @@ namespace Door2DoorCore
             ItineraryDates flightOption = new ItineraryDates();
 
             // hora de partida do primeiro voo da opcao atual
-            var sTime = itinerary.Hops[0].STime.Split(':');
+            string[] sTime = itinerary.Hops[0].STime.Split(':');
             //hora de chegada do ultimo voo da opcao atual
-            var tTime = itinerary.Hops[itinerary.Hops.Length - 1].TTime.Split(':');
+            string[] tTime = itinerary.Hops[itinerary.Hops.Length - 1].TTime.Split(':');
 
             DateTime tempArrivalDate = new DateTime(arrivalDateNextStop.Year, arrivalDateNextStop.Month, arrivalDateNextStop.Day, int.Parse(tTime[0]), int.Parse(tTime[1]), 0);
-
 
             if (tempArrivalDate <= arrivalDateNextStop)
             {
                 //Achou um voo que chega antes do proximo segmento da viagem
 
                 int dayChange = 0;
-                for (var i = 0; i < itinerary.Hops.Length; i++)
+                for (int i = 0; i < itinerary.Hops.Length; i++)
                 {
                     if (itinerary.Hops[i].DayChange.HasValue)
                     {
@@ -449,12 +441,12 @@ namespace Door2DoorCore
         {
             ItineraryDates itinerarySchedule = new ItineraryDates();
             // hora de partida do primeiro voo da opcao atual
-            var sTime = itinerary.Hops[0].STime.Split(':');
+            string[] sTime = itinerary.Hops[0].STime.Split(':');
             //hora de chegada do ultimo voo da opcao atual
-            var tTime = itinerary.Hops[itinerary.Hops.Length - 1].TTime.Split(':');
+            string[] tTime = itinerary.Hops[itinerary.Hops.Length - 1].TTime.Split(':');
 
             int arrDayChange = 0;
-            var tempArrivalDate = new DateTime(arrivalDateNextStop.Year, arrivalDateNextStop.Month, arrivalDateNextStop.Day, int.Parse(tTime[0]), int.Parse(tTime[1]), 0);
+            DateTime tempArrivalDate = new DateTime(arrivalDateNextStop.Year, arrivalDateNextStop.Month, arrivalDateNextStop.Day, int.Parse(tTime[0]), int.Parse(tTime[1]), 0);
             if (tempArrivalDate >= arrivalDateNextStop)
             {//tem que ser no dia anterior
                 arrDayChange = 1;
@@ -473,7 +465,6 @@ namespace Door2DoorCore
 
             itinerarySchedule.arrivalDateTime = tempArrivalDate;
             itinerarySchedule.departureDateTime = new DateTime(arrivalDateNextStop.Year, arrivalDateNextStop.Month, arrivalDateNextStop.Day, int.Parse(sTime[0]), int.Parse(sTime[1]), 0).AddDays(-depDayChange);
-
 
             return itinerarySchedule;
         }
