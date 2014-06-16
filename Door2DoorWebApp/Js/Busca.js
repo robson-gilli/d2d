@@ -106,7 +106,9 @@ function renderStops(routeIndex) {
 	for (var i = 0; i < route.segments.length; i++) {
 		var segment = route.segments[i];
 		var sName = segment.kind == 'flight' ? segment.sCode : (segment.sName == "Origin" ? _placeOrigem.adr_address.split(',')[0] : segment.sName);
-		var tName = segment.kind == 'flight' ? segment.tCode + "&nbsp;<a href='javascript:void(0);' style='color:blue' onclick='javascript:showFlightOptionsAlternatives(" + i + ", " + routeIndex + ")'>Alterar</a>" : (segment.tName == "Destination" ? _placeDestino.adr_address.split(',')[0] : segment.tName);
+
+		var confirmar = _reqObj == null ? "" : "&nbsp;/&nbsp;<a href='javascript:void(0);' style='color:blue' onclick='javascript:confirmFlightOption(" + i + ", " + routeIndex + ")'>Confirmar</a>";
+		var tName = segment.kind == 'flight' ? segment.tCode + "&nbsp;<a href='javascript:void(0);' style='color:blue' onclick='javascript:showFlightOptionsAlternatives(" + i + ", " + routeIndex + ")'>Alterar</a>" + confirmar : (segment.tName == "Destination" ? _placeDestino.adr_address.split(',')[0] : segment.tName);
 		var kind = segment.kind == 'car' ? segment.vehicle : segment.kind;
 
 		htmlResult += "<br><strong>Transporte tipo:</strong> " +
@@ -255,6 +257,20 @@ function renderFrequency(segment) {
 //
 function buildSearchRequestFlags() {
     return $('#chkIncludePublicTransport').is(':checked');
+};
+
+//
+// Posta resultado do voo escolhido para a proxima pagina, definida via POST
+//
+function confirmFlightOption(segmentIndex, routeIndex) {
+    var route = _resp.routes[routeIndex];
+    var segment = route.segments[segmentIndex].itineraries[route.segments[segmentIndex].chosenItinerary];
+
+    // post selected itinerary
+    var postContent = JSON.stringify(segment);
+    $('#hidchosenItin').val(postContent);
+    $('#form1').attr('action', _reqObj.outputUrl);
+    $('#form1').submit();
 };
 
 //

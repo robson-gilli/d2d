@@ -6,7 +6,6 @@
     
 </head>
 <body>
-    
     <div>
         MinDate<input type="text" id="minDepDate" value="2014-10-10"/>
         <br />
@@ -19,8 +18,10 @@
         <br />
         maxDriveKm<input type="text" id="maxDriveKm"  value="300" />
         <br />
+        outputUrl<input type="text" id="outputUrl" value="http://localhost:55105/OutputPage.aspx" />
         <br />
-        <input type="button" id="Button1" />
+        <br />
+        <input type="button" id="Button1" value="Submit"/>
     </div>
 
     <form id="form1" action="Default.aspx" method="post">
@@ -29,9 +30,9 @@
         <input type="hidden" name="incPublicTransp" id="hidincPublicTransp" />
         <input type="hidden" name="allowInter"      id="hidallowInter" />
         <input type="hidden" name="maxDriveKm"      id="hidmaxDriveKm" />
+        <input type="hidden" name="outputUrl"       id="hidoutputUrl" />
     </form>
 
-    
     <script>
         $('#Button1').on('click', function (e) {
             e.preventDefault();
@@ -40,7 +41,8 @@
                 maxDepDate: $('#maxDepDate').val(),
                 maxDriveKm: $('#maxDriveKm').val(),
                 incPublicTransp: $('#incPublicTransp').is(':checked'),
-                allowInter: $('#allowInter').is(':checked')
+                allowInter: $('#allowInter').is(':checked'),
+                outputUrl: $('#outputUrl').val()
             };
 
             $('#hidminDepDate').val(rq.minDepDate);
@@ -48,12 +50,10 @@
             $('#hidincPublicTransp').val(rq.incPublicTransp);
             $('#hidallowInter').val(rq.allowInter);
             $('#hidmaxDriveKm').val(rq.maxDriveKm);
+            $('#hidoutputUrl').val(rq.outputUrl);
             
             $('#form1').submit();
-
         });
     </script>
-
-
 </body>
 </html>

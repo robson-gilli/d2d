@@ -19,6 +19,7 @@ namespace Door2DoorWebApp
             public int maxDriveKm;
             public bool incPublicTransp;
             public bool allowInter;
+            public string outputUrl;
         }
 
         /// <summary>
@@ -29,17 +30,10 @@ namespace Door2DoorWebApp
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack && IsPostOk())
+            if (!IsPostBack )
             {
-                //populate json objet with post data so javascript can know what's going on
-                PostData p = new PostData();
-                p.allowInter = bool.Parse(Request.Form["allowInter"]);
-                p.incPublicTransp = bool.Parse(Request.Form["incPublicTransp"]);
-                p.maxDepDate = Request.Form["maxDepDate"];
-                p.maxDriveKm = int.Parse(Request.Form["maxDriveKm"]);
-                p.minDepDate = Request.Form["minDepDate"];
-                string json = JsonConvert.SerializeObject(p);
-                litJsonRq.Text = json;
+                PopulatePage();
+
             }
         }
 
@@ -47,39 +41,59 @@ namespace Door2DoorWebApp
         /// 
         /// </summary>
         /// <returns></returns>
-        private bool IsPostOk()
+        private void PopulatePage()
         {
-            bool r = false;
-
-            if( Request.Form["minDepDate"]      != null &&
-                Request.Form["maxDepDate"]      != null &&
-                Request.Form["incPublicTransp"] != null &&
-                Request.Form["maxDriveKm"]      != null &&
-                Request.Form["allowInter"]      != null)
+            bool isOk = Request.Form["minDepDate"] != null &&
+                        Request.Form["maxDepDate"] != null &&
+                        Request.Form["incPublicTransp"] != null &&
+                        Request.Form["maxDriveKm"] != null &&
+                        Request.Form["allowInter"] != null &&
+                        Request.Form["outputUrl"] != null;
+            //incPublicTransp
+            if (isOk)
             {
                 bool incPublicTransp;
-                if (bool.TryParse(Request.Form["incPublicTransp"], out incPublicTransp))
-                {
-                    int maxDriveKm;
-                    if (int.TryParse(Request.Form["maxDriveKm"], out maxDriveKm))
-                    {
-                        bool allowInter;
-                        if (bool.TryParse(Request.Form["allowInter"], out allowInter))
-                        {
-                            DateTime minDepDate;
-                            if (DateTime.TryParseExact(Request.Form["minDepDate"], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out minDepDate))
-                            {
-                                DateTime maxDepDate;
-                                if (DateTime.TryParseExact(Request.Form["maxDepDate"], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out maxDepDate))
-                                {
-                                    r = true;
-                                }
-                            }
-                        }
-                    }
-                }
+                isOk = bool.TryParse(Request.Form["incPublicTransp"], out incPublicTransp);
             }
-            return r;
+            //maxDriveKm
+            if (isOk)
+            {
+                int maxDriveKm;
+                isOk = int.TryParse(Request.Form["maxDriveKm"], out maxDriveKm);
+            }
+            //allowInter
+            if (isOk)
+            {
+                bool allowInter;
+                isOk = bool.TryParse(Request.Form["allowInter"], out allowInter);
+            }
+            //minDepDate
+            if (isOk)
+            {
+                DateTime minDepDate;
+                isOk = DateTime.TryParseExact(Request.Form["minDepDate"], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out minDepDate);
+            }
+            //maxDepDate
+            if (isOk)
+            {
+                DateTime maxDepDate;
+                isOk = DateTime.TryParseExact(Request.Form["maxDepDate"], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out maxDepDate);
+            }
+            
+            // if everything is ok with the request, 
+            // populate json objet with post data so javascript can know what's going on
+            if (isOk)
+            {
+                PostData p = new PostData();
+                p.allowInter = bool.Parse(Request.Form["allowInter"]);
+                p.incPublicTransp = bool.Parse(Request.Form["incPublicTransp"]);
+                p.maxDepDate = Request.Form["maxDepDate"];
+                p.maxDriveKm = int.Parse(Request.Form["maxDriveKm"]);
+                p.minDepDate = Request.Form["minDepDate"];
+                p.outputUrl = Request.Form["outputUrl"];
+                string json = JsonConvert.SerializeObject(p);
+                litJsonRq.Text = json;
+            }
         }
 
 

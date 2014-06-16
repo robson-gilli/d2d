@@ -76,6 +76,7 @@
     <Content Include="Js\Auxiliar.js" />
     <Content Include="Js\Date\date.js" />
     <Content Include="Js\Door2Door.js" />
+    <Content Include="OutputPage.aspx" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\FTP_TO_DOOR2DOOR_TST.pubxml" />
     <None Include="Web.Debug.config">
@@ -124,6 +125,13 @@
     <Compile Include="Controllers\Door2DoorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="OutputPage.aspx.cs">
+      <DependentUpon>OutputPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OutputPage.aspx.designer.cs">
+      <DependentUpon>OutputPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

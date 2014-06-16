@@ -9,12 +9,6 @@
 
     <link href="Css/Style.css" rel="Stylesheet" type="text/css" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 </head>
 <body>
     <div style="width: 100%; height: 100%;">
@@ -61,9 +55,19 @@
                 </tbody>
             </table>
         </div>
-
     </div>
-    <div id='divJSONRqParams'><asp:Literal ID='litJsonRq' runat='server'/></div>
+    <%-- This div stores json with the POST submited to the current page --%>
+    <div id='divJSONRqParams' style="display:none"><asp:Literal ID='litJsonRq' runat='server'/></div>
+    <%-- This form will be populated to post results to the net page --%>
+    <form id="form1" method="post" style="display:none">
+        <input type="hidden" name="chosenItin" id="hidchosenItin" />
+    </form>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
     <script src="Js/TimePicker/jquery.ui.timepicker.js"></script>
     <script src="Js/Date/date.js"></script>

@@ -10,12 +10,14 @@ var _resp;
 var _chosenRoute;
 var _reqObj;//handles request policies
 
+jQuery("#divSearchBox").find("input, select, button, textarea").attr("disabled", true);
+
 //
 // document ready
 //
 $(document).ready(function(){
 
-	_dataChegada = new Date();
+    _dataChegada = new Date();
 	_timeSelected = false;
 	_resp = null;
 	_chosenRoute = null;
@@ -51,6 +53,8 @@ $(document).ready(function(){
 
 	//ajusta o tamanho da div do streetview
 	applyMapContainerHeight();
+	$("#divSearchBox").find("input, select, button, textarea").attr("disabled", false);
+
 });
 
 //
