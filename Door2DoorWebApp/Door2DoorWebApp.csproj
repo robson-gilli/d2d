@@ -76,7 +76,7 @@
     <Content Include="Js\Auxiliar.js" />
     <Content Include="Js\Date\date.js" />
     <Content Include="Js\Door2Door.js" />
-    <Content Include="OutputPage.aspx" />
+    <Content Include="TestPages\OutputPage.aspx" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\FTP_TO_DOOR2DOOR_TST.pubxml" />
     <None Include="Web.Debug.config">
@@ -109,8 +109,8 @@
     <Content Include="Js\TimePicker\index.html" />
     <Content Include="Js\TimePicker\jquery.ui.timepicker.css" />
     <Content Include="Js\TimePicker\jquery.ui.timepicker.js" />
-    <Content Include="PanoCanvas.html" />
-    <Content Include="test.html" />
+    <Content Include="TestPages\PanoCanvas.html" />
+    <Content Include="TestPages\test.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -126,11 +126,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="OutputPage.aspx.cs">
+    <Compile Include="TestPages\OutputPage.aspx.cs">
       <DependentUpon>OutputPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="OutputPage.aspx.designer.cs">
+    <Compile Include="TestPages\OutputPage.aspx.designer.cs">
       <DependentUpon>OutputPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

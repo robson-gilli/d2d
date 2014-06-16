@@ -10,18 +10,22 @@ var _resp;
 var _chosenRoute;
 var _reqObj;//handles request policies
 
+//disable all clickable elements untill page is loaded
 jQuery("#divSearchBox").find("input, select, button, textarea").attr("disabled", true);
 
 //
 // document ready
 //
 $(document).ready(function(){
-
     _dataChegada = new Date();
 	_timeSelected = false;
 	_resp = null;
 	_chosenRoute = null;
 
+    // releasing controls.
+	$("#divSearchBox").find("input, select, button, textarea").attr("disabled", false);
+
+    // policies informed via POST from the previous page
 	getRequestObject();
 
 	if (_reqObj && !_reqObj.incPublicTransp) {
@@ -53,8 +57,6 @@ $(document).ready(function(){
 
 	//ajusta o tamanho da div do streetview
 	applyMapContainerHeight();
-	$("#divSearchBox").find("input, select, button, textarea").attr("disabled", false);
-
 });
 
 //
@@ -115,7 +117,7 @@ function initializeGoogle() {
         setPanorama(_placeDestino.geometry.location.k, _placeDestino.geometry.location.A);
     });
 
-    //monta o mapa inicial
+    //monta o mapa inicial com o 
     setPanorama(-23.5732882, -46.6416702);
 };
 

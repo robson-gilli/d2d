@@ -280,15 +280,28 @@ function showFlightOptionsAlternatives(segmentIndex, routeIndex) {
     var route = _resp.routes[routeIndex];
     var htmlResult = "";
     var pMessage = "";
+    var trOptions;
+    var radioOptions ;
+    var itinerary;
+    var voos ;
+    var cias ;
+    var origens ;
+    var horariosPartida ;
+    var destinos ;
+    var horariosChegadas ;
+    var preco;
+    var isLast = false;
+    var checked;
+
     for (var i = 0; i < route.segments[segmentIndex].itineraries.length; i++) {
-        var itinerary = route.segments[segmentIndex].itineraries[i];
-        var voos = "";
-        var cias = "";
-        var origens = "";
-        var horariosPartida = "";
-        var destinos = "";
-        var horariosChegadas = "";
-        var preco = "R$ " + itinerary.legs[0].indicativePrice.price + ",00";
+        itinerary = route.segments[segmentIndex].itineraries[i];
+        voos = "";
+        cias = "";
+        origens = "";
+        horariosPartida = "";
+        destinos = "";
+        horariosChegadas = "";
+        preco = "R$ " + itinerary.legs[0].indicativePrice.price + ",00";
 
         for (var j = 0; j < itinerary.legs[0].hops.length; j++) {
             var isLast = j == itinerary.legs[0].hops.length - 1;
@@ -300,16 +313,18 @@ function showFlightOptionsAlternatives(segmentIndex, routeIndex) {
             horariosChegadas += isLast ? itinerary.legs[0].hops[j].tTime    : itinerary.legs[0].hops[j].tTime + "<br/>";
         };
 
+        trOptions = ""
+        radioOptions = "";
+
+
         // deixa selecionado segmento escolhido automaticamente
-        var checked = "";
+        checked = "";
         if (route.segments[segmentIndex].chosenItinerary != null) {
             if (route.segments[segmentIndex].chosenItinerary == i) {
                 checked = "checked";
             }
         }
 
-        var trOptions = ""
-        var radioOptions = "";
         
         //segmentos inva;lidos marcados em vermelho e indisponiveis para escolha
         if (!itinerary.validForSchedule) {
