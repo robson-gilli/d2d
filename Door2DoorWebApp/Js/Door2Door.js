@@ -96,7 +96,6 @@ function Door2doorSender(requestOptions) {
         else {
             _reqAtt.error(null, "request_error", "Something wrong with the request");
         };
-
     };
 };
 /********************************************************************************************************

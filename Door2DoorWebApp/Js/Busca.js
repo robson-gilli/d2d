@@ -69,7 +69,6 @@ function renderResultOnMap() {
             zoom: 13
     };
     //var map = new google.maps.Map(document.getElementById('map-results'), mapOptions);
-
 };
 
 //
@@ -348,6 +347,9 @@ function showFlightOptionsAlternatives(segmentIndex, routeIndex) {
     $("#divInvalidFlightOptions").html(pMessage);
     $("#tdOpcoesVoo tbody").text("");
     $("#tdOpcoesVoo tbody").append(htmlResult);
+    //$("#divFlightOptionsAlternatives").html("");
+    //$("#divFlightOptionsAlternatives").html("<iframe src='/TestPages/iframetest.html' style='width:100%; height:100%'></iframe>");
+
     $("#divFlightOptionsAlternatives").dialog({
         autoOpen: false,
         width: 666, //hell yeah

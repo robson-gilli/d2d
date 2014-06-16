@@ -76,6 +76,7 @@
     <Content Include="Js\Auxiliar.js" />
     <Content Include="Js\Date\date.js" />
     <Content Include="Js\Door2Door.js" />
+    <Content Include="TestPages\iFrameTest.html" />
     <Content Include="TestPages\OutputPage.aspx" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\FTP_TO_DOOR2DOOR_TST.pubxml" />
