@@ -20,6 +20,7 @@ namespace Door2DoorWebApp
             public bool incPublicTransp;
             public bool allowInter;
             public string outputUrl;
+            public string iframeInputUrl;
         }
 
         /// <summary>
@@ -48,7 +49,10 @@ namespace Door2DoorWebApp
                         Request.Form["incPublicTransp"] != null &&
                         Request.Form["maxDriveKm"] != null &&
                         Request.Form["allowInter"] != null &&
-                        Request.Form["outputUrl"] != null;
+                        Request.Form["outputUrl"] != null &&
+                        Request.Form["iframeInputUrl"] != null;
+
+            
             //incPublicTransp
             if (isOk)
             {
@@ -91,6 +95,7 @@ namespace Door2DoorWebApp
                 p.maxDriveKm = int.Parse(Request.Form["maxDriveKm"]);
                 p.minDepDate = Request.Form["minDepDate"];
                 p.outputUrl = Request.Form["outputUrl"];
+                p.iframeInputUrl = Request.Form["iframeInputUrl"];
                 string json = JsonConvert.SerializeObject(p);
                 litJsonRq.Text = json;
             }

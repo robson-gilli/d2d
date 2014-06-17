@@ -20,6 +20,8 @@
         <br />
         outputUrl<input type="text" id="outputUrl" value="http://localhost:55105/TestPages/OutputPage.aspx" />
         <br />
+        iframeInputUrl<input type="text" id="iframeInputUrl" value="/TestPages/ItineraryInputPage.aspx" />
+        <br />
         <br />
         <input type="button" id="Button1" value="Submit"/>
     </div>
@@ -31,6 +33,8 @@
         <input type="hidden" name="allowInter"      id="hidallowInter" />
         <input type="hidden" name="maxDriveKm"      id="hidmaxDriveKm" />
         <input type="hidden" name="outputUrl"       id="hidoutputUrl" />
+        <input type="hidden" name="iframeInputUrl"  id="hidiframeInputUrl" />
+
     </form>
 
     <script>
@@ -42,7 +46,8 @@
                 maxDriveKm: $('#maxDriveKm').val(),
                 incPublicTransp: $('#incPublicTransp').is(':checked'),
                 allowInter: $('#allowInter').is(':checked'),
-                outputUrl: $('#outputUrl').val()
+                outputUrl: $('#outputUrl').val(),
+                iframeInputUrl: $('#iframeInputUrl').val()
             };
 
             $('#hidminDepDate').val(rq.minDepDate);
@@ -51,6 +56,7 @@
             $('#hidallowInter').val(rq.allowInter);
             $('#hidmaxDriveKm').val(rq.maxDriveKm);
             $('#hidoutputUrl').val(rq.outputUrl);
+            $('#hidiframeInputUrl').val(rq.iframeInputUrl);
             
             $('#form1').submit();
         });

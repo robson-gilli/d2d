@@ -8,7 +8,7 @@
     <meta charset="utf-8">
 
     <link href="Css/Style.css" rel="Stylesheet" type="text/css" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
 </head>
 <body>
     <div style="width: 100%; height: 100%;">
@@ -36,8 +36,16 @@
             </div>
             <%--<div id="map-results" style="width: 0%; height:640px; float:left"></div>--%>
         </div>
+        <form id="frmChangeItin" name="frmChangeItin" method="post" style="display:none" target="iFrameChangeItin">
+            <input type="hidden" name="r2r_resp" id="hidr2r_resp" />
+            <input type="hidden" name="arrdate" id="hidarrdate" />
+            <input type="hidden" name="segmentIndex" id="hisegmentIndex" />
+            <input type="hidden" name="routeIndex" id="hidrouteIndex" />
+        </form>
+        
+
         <div style="display: none" id="divFlightOptionsAlternatives" title="">
-            <div id="divInvalidFlightOptions"></div>
+<%--            <div id="divInvalidFlightOptions"></div>
             <table id="tdOpcoesVoo" class="ui-widget ui-widget-content">
                 <thead>
                     <tr class="ui-widget-header ">
@@ -54,7 +62,7 @@
                 <tbody>
                 </tbody>
             </table>
-        </div>
+        </div>--%>
     </div>
     <%-- This div stores json with the POST submited to the current page --%>
     <div id='divJSONRqParams' style="display:none"><asp:Literal ID='litJsonRq' runat='server'/></div>
@@ -75,5 +83,6 @@
     <script src="Js/Door2Door.js"></script>
     <script src="Js/Auxiliar.js"></script>
     <script src="Js/Busca.js"></script>
+    <script src="Js/Messaging.js"></script>
 </body>
 </html>

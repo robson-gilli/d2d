@@ -76,7 +76,9 @@
     <Content Include="Js\Auxiliar.js" />
     <Content Include="Js\Date\date.js" />
     <Content Include="Js\Door2Door.js" />
+    <Content Include="Js\Messaging.js" />
     <Content Include="TestPages\iFrameTest.html" />
+    <Content Include="TestPages\ItineraryInputPage.aspx" />
     <Content Include="TestPages\OutputPage.aspx" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\FTP_TO_DOOR2DOOR_TST.pubxml" />
@@ -112,6 +114,7 @@
     <Content Include="Js\TimePicker\jquery.ui.timepicker.js" />
     <Content Include="TestPages\PanoCanvas.html" />
     <Content Include="TestPages\test.html" />
+    <Content Include="TestPages\TestJs\main.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +129,13 @@
     <Compile Include="Controllers\Door2DoorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="TestPages\ItineraryInputPage.aspx.cs">
+      <DependentUpon>ItineraryInputPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestPages\ItineraryInputPage.aspx.designer.cs">
+      <DependentUpon>ItineraryInputPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestPages\OutputPage.aspx.cs">
       <DependentUpon>OutputPage.aspx</DependentUpon>

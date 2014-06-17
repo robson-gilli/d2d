@@ -2,7 +2,7 @@
 - Door2DoorSender:  Communicates with server to get a list of possible routes.
     - requestOptions: General request data
 ********************************************************************************************************/
-function Door2doorSender(requestOptions) {
+function Door2DoorSender(requestOptions) {
 
     // atributos a serem passados para a api do rome2rio
     var _reqAtt = {
