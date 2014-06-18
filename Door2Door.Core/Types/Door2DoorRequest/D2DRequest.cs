@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption;
 
 namespace Door2DoorCore.Types.Door2DoorRequest
 {
@@ -26,6 +27,6 @@ namespace Door2DoorCore.Types.Door2DoorRequest
         public D2DRequestFlags flags { get; set; }
         public D2DRequestLocation oriLocation { get; set; }
         public D2DRequestLocation destLocation { get; set; }
-        public D2DRequestChosenRoute chosenRoute { get; set; }
+        public OuterFlightOption.OuterFlightOption chosenRoute { get; set; }
     }
 }

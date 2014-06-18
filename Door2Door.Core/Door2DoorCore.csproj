@@ -52,6 +52,9 @@
     <Compile Include="Types\Door2DoorRequest\D2DRequestFlags.cs" />
     <Compile Include="Types\Door2DoorRequest\D2DRequest.cs" />
     <Compile Include="Types\Door2DoorRequest\D2DRequestType.cs" />
+    <Compile Include="Types\Door2DoorRequest\OuterFlightOption\OuterFlightLeg.cs" />
+    <Compile Include="Types\Door2DoorRequest\OuterFlightOption\OuterFlightOption.cs" />
+    <Compile Include="Types\Door2DoorRequest\OuterFlightOption\OuterFlightSegment.cs" />
     <Compile Include="Types\Rome2RioResponse\ItineraryDates.cs" />
     <Compile Include="Types\Rome2RioResponse\Rome2RioResponse.cs" />
   </ItemGroup>

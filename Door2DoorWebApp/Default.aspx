@@ -34,7 +34,6 @@
             <div id="accordion-resizer" class="ui-widget-content">
                 <div id="divDetalhesItinerario" style="width: 100%; height: 498px; float: left;"></div>
             </div>
-            <%--<div id="map-results" style="width: 0%; height:640px; float:left"></div>--%>
         </div>
         <form id="frmChangeItin" name="frmChangeItin" method="post" style="display:none" target="iFrameChangeItin">
             <input type="hidden" name="r2r_resp" id="hidr2r_resp" />
@@ -42,27 +41,8 @@
             <input type="hidden" name="segmentIndex" id="hisegmentIndex" />
             <input type="hidden" name="routeIndex" id="hidrouteIndex" />
         </form>
-        
 
         <div style="display: none" id="divFlightOptionsAlternatives" title="">
-<%--            <div id="divInvalidFlightOptions"></div>
-            <table id="tdOpcoesVoo" class="ui-widget ui-widget-content">
-                <thead>
-                    <tr class="ui-widget-header ">
-                        <th>Escolha</th>
-                        <th>Numero</th>
-                        <th>Cia</th>
-                        <th>Origem</th>
-                        <th>Partida</th>
-                        <th>Destino</th>
-                        <th>Chegada</th>
-                        <th>Preço</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>--%>
     </div>
     <%-- This div stores json with the POST submited to the current page --%>
     <div id='divJSONRqParams' style="display:none"><asp:Literal ID='litJsonRq' runat='server'/></div>

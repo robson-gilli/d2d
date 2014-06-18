@@ -92,7 +92,7 @@ function renderResult() {
 	$("#divDetalhesItinerario").accordion("refresh");
 
 	if (_chosenRoute != null) {
-	    $("#divDetalhesItinerario").accordion("option", "active", parseInt(_chosenRoute[2]));
+	    $("#divDetalhesItinerario").accordion("option", "active", parseInt(_chosenRoute.routeIndex));
 	};
 };
 
@@ -277,112 +277,6 @@ function confirmFlightOption(segmentIndex, routeIndex) {
 //
 function showFlightOptionsAlternatives(segmentIndex, routeIndex) {
     var route = _resp.routes[routeIndex];
-    /*************************************************************** ANTIGO ***************************************************************/
-    //var htmlResult = "";
-    //var pMessage = "";
-    //var trOptions;
-    //var radioOptions ;
-    //var itinerary;
-    //var voos ;
-    //var cias ;
-    //var origens ;
-    //var horariosPartida ;
-    //var destinos ;
-    //var horariosChegadas ;
-    //var preco;
-    //var isLast = false;
-    //var checked;
-
-    //for (var i = 0; i < route.segments[segmentIndex].itineraries.length; i++) {
-    //    itinerary = route.segments[segmentIndex].itineraries[i];
-    //    voos = "";
-    //    cias = "";
-    //    origens = "";
-    //    horariosPartida = "";
-    //    destinos = "";
-    //    horariosChegadas = "";
-    //    preco = "R$ " + itinerary.legs[0].indicativePrice.price + ",00";
-
-    //    for (var j = 0; j < itinerary.legs[0].hops.length; j++) {
-    //        var isLast = j == itinerary.legs[0].hops.length - 1;
-    //        voos +=             isLast ? itinerary.legs[0].hops[j].flight   : itinerary.legs[0].hops[j].flight + "<br/>";
-    //        cias +=             isLast ? itinerary.legs[0].hops[j].airline  : itinerary.legs[0].hops[j].airline + "<br/>";
-    //        origens +=          isLast ? itinerary.legs[0].hops[j].sCode    : itinerary.legs[0].hops[j].sCode + "<br/>";
-    //        horariosPartida +=  isLast ? itinerary.legs[0].hops[j].sTime    : itinerary.legs[0].hops[j].sTime + "<br/>";
-    //        destinos +=         isLast ? itinerary.legs[0].hops[j].tCode    : itinerary.legs[0].hops[j].tCode + "<br/>";
-    //        horariosChegadas += isLast ? itinerary.legs[0].hops[j].tTime    : itinerary.legs[0].hops[j].tTime + "<br/>";
-    //    };
-
-    //    trOptions = ""
-    //    radioOptions = "";
-
-
-    //    // deixa selecionado segmento escolhido automaticamente
-    //    checked = "";
-    //    if (route.segments[segmentIndex].chosenItinerary != null) {
-    //        if (route.segments[segmentIndex].chosenItinerary == i) {
-    //            checked = "checked";
-    //        }
-    //    }
-
-        
-    //    //segmentos inva;lidos marcados em vermelho e indisponiveis para escolha
-    //    if (!itinerary.validForSchedule) {
-    //        trOptions = "style='color:red'";
-    //        radioOptions = 'disabled';
-    //        pMessage = "<p style='color:red'>Opções em vermelho não se encaixam no horário informado.</p>"
-    //    }
-
-    //    htmlResult += " <tr " + trOptions + ">";
-    //    htmlResult += "     <td><input type='radio' name='rdEscolha' class='rdEscolha' value='" + i + "|" + segmentIndex + "|" + routeIndex + "' " + checked + " " + radioOptions + "/></td>"; // itineraryIndex|SegmentIndex|routeIndex
-    //    htmlResult += "     <td>" + voos +              "</td>";
-    //    htmlResult += "     <td>" + cias +              "</td>";
-    //    htmlResult += "     <td>" + origens +           "</td>";
-    //    htmlResult += "     <td>" + horariosPartida +   "</td>";
-    //    htmlResult += "     <td>" + destinos +          "</td>";
-    //    htmlResult += "     <td>" + horariosChegadas +  "</td>";
-    //    htmlResult += "     <td>" + preco +             "</td>";
-    //    htmlResult += " </tr>";
-    //};
-
-    //$("#divInvalidFlightOptions").html(pMessage);
-    //$("#tdOpcoesVoo tbody").text("");
-    //$("#tdOpcoesVoo tbody").append(htmlResult);
-
-    //$("#divFlightOptionsAlternatives").dialog({
-    //    autoOpen: false,
-    //    width: 666, //hell yeah
-    //    modal: true,
-    //    closeOnEscape: false,
-    //    open: function(event, ui) { $(".ui-dialog-titlebar-close").hide(); },
-    //    buttons: {
-    //        "Confirmar escolha": function () {
-    //            // troca a opção de voo
-    //            changeFlightOption();
-
-    //            $(this).dialog("close");
-    //        },
-    //        Cancel: function () {
-    //            _chosenRoute = null;
-    //            $(this).dialog("close");
-    //        }
-    //    },
-    //    close: function () {
-    //        //
-    //    },
-    //    beforeClose: function (event, ui) {
-    //        //
-    //    }
-    //});
-
-    ////date.js
-    //var date = Date.parse(route.segments[segmentIndex].departureDateTime);
-    //$("#divFlightOptionsAlternatives").dialog("option", "title", "Voos partindo dia " + date.toLocaleDateString());
-    //$("#divFlightOptionsAlternatives").dialog("open");
-    //$(".rdEscolha").click(function (eventData) {
-    //    handleRdClick(eventData);
-    //});
-    /*************************************************************** /ANTIGO ***************************************************************/
 
 
     /*********** GAMBIARRA PARA DEMO SOMENTE, TROCAR ISTO POR CHAMADA REAL DE VOO ***********/
@@ -412,26 +306,6 @@ function showFlightOptionsAlternatives(segmentIndex, routeIndex) {
     $('#frmChangeItin').submit();
     $("#divFlightOptionsAlternatives").dialog("open");
     /*********** /GAMBIARRA PARA DEMO SOMENTE, TROCAR ISTO POR CHAMADA REAL DE VOO ***********/
-
-};
-
-
-//
-//
-//
-function handleRdClick(eventData) {
-    // itineraryIndex|SegmentIndex|routeIndex
-    _chosenRoute = eventData.target.value.split("|");
-};
-
-
-//
-// efetua a troca de opcao de voo
-//
-function changeFlightOption() {
-    if (_chosenRoute != null) {
-        buscar(false);
-    };
 
 };
 

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Door2DoorCore.Types;
 using Door2DoorCore.Types.Rome2RioResponse;
 using Door2DoorCore.Types.Door2DoorRequest;
+using Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption;
 using Door2DoorCore.Exceptions;
 
 namespace Door2DoorCore
@@ -16,7 +17,7 @@ namespace Door2DoorCore
     /// </summary>
     public class Door2Door : IDisposable
     {
-        private D2DRequest _d2dReq;
+        private D2DRequest _req;
 
         private Rome2RioResponse _resp;
         public Rome2RioResponse Resp
@@ -24,37 +25,17 @@ namespace Door2DoorCore
             get { return _resp; }
         }
 
-        private List<int> _chosenItin = null;
-        public List<int> ChosenItin
-        {
-            get { return _chosenItin; }
-            set
-            {
-                if (value != null && value.Count() == 3)
-                    _chosenItin = value;
-            }
-        }
-
-
         /// <summary>
         /// 
         /// </summary>
         /// <param name="d2dReq"></param>
         public Door2Door(D2DRequest d2dReq)
         {
+
             if (RequestIsOK(d2dReq))
             {
-                _d2dReq = d2dReq;
-                if (_d2dReq.chosenRoute != null)
-                {
-                    if (_d2dReq.chosenRoute.itineraryIndex.HasValue && _d2dReq.chosenRoute.segmentIndex.HasValue && _d2dReq.chosenRoute.routeIndex.HasValue )
-                    {
-                        _chosenItin = new List<int>(3);
-                        _chosenItin.Add(_d2dReq.chosenRoute.itineraryIndex.Value);
-                        _chosenItin.Add(_d2dReq.chosenRoute.segmentIndex.Value);
-                        _chosenItin.Add(_d2dReq.chosenRoute.routeIndex.Value);
-                    }
-                }
+                _req = d2dReq;
+
             }
             else
             {
@@ -80,7 +61,7 @@ namespace Door2DoorCore
         /// </summary>
         public Rome2RioResponse GetResponse()
         {
-            using (Rome2RioComm comm = new Rome2RioComm(_d2dReq))
+            using (Rome2RioComm comm = new Rome2RioComm(_req))
             {
                 _resp = comm.Download();
             }
@@ -96,18 +77,18 @@ namespace Door2DoorCore
             for (int i = 0; i < _resp.Routes.Count(); i++)
             {
                 Route route = _resp.Routes[i];
+                bool flightChosen = false;
 
-                List<int> vooEscolhido = null;
-                if (_chosenItin != null)
+                if (_req.chosenRoute!= null && _req.chosenRoute.outboundSegment != null)
                 {
-                    if (_chosenItin[2] == i)
+                    if (_req.chosenRoute.routeIndex == i)
                     {
-                        vooEscolhido = _chosenItin;
+                        flightChosen = true;
                     }
                 }
 
                 // adiciona informacoes de horario aos segmentos da rota atual
-                BuildItinerarySchedule(ref route, _d2dReq.desiredArrivalDate, vooEscolhido);
+                BuildItinerarySchedule(ref route, _req.desiredArrivalDate, flightChosen);
             }
         }
 
@@ -117,7 +98,7 @@ namespace Door2DoorCore
         /// <param name="route"></param>
         /// <param name="dateTime"></param>
         /// <param name="vooEscolhido"></param>
-        private void BuildItinerarySchedule(ref Route route, DateTime arrivalDateTime, List<int> vooEscolhido)
+        private void BuildItinerarySchedule(ref Route route, DateTime arrivalDateTime, bool vooEscolhido)
         {
             // diferenca entre a data da viagem e agora
             // irá ajudar no calculo do tempo para sair da origem
@@ -144,21 +125,30 @@ namespace Door2DoorCore
                         ItineraryDates itineraryDates = new ItineraryDates();
                         route.Segments[i].ChosenItinerary = null; //escolhido automaticamente
 
-                        if (vooEscolhido != null) // é uma alteração de itinerario, um voo foi alterado
-                        { 
-                            if (vooEscolhido[1] == i)
+                        if (vooEscolhido) // é uma alteração de itinerario, um voo foi alterado
+                        {
+                            if (_req.chosenRoute.segmentIndex == i)
                             {
-                                achouVoo = true;
+                                // a opcao de voo escolhida tem que bater com o horario do schedule
+                                if (_req.chosenRoute.outboundSegment.flightLegs[_req.chosenRoute.outboundSegment.flightLegs.Length - 1].arrivalDate <= arrivalDateNextStop)
+                                {
+                                    achouVoo = true;
+                                    
+                                    BuildINewtinFromChosenRoute(ref route.Segments[i]);
+                                    
+                                    itineraryDates.departureDateTime = _req.chosenRoute.outboundSegment.flightLegs[0].departureDate;
+                                    itineraryDates.arrivalDateTime = _req.chosenRoute.outboundSegment.flightLegs[_req.chosenRoute.outboundSegment.flightLegs.Length - 1].arrivalDate;
 
-                                FindLatestItinerary(ref route.Segments[i]);
+                                    TimeSpan nextArrivalTime = new TimeSpan(arrivalDateNextStop.Hour, arrivalDateNextStop.Minute, 0);
+                                    for (int j = 0; j < route.Segments[i].Itineraries.Length - 1; j++)
+                                    {
+                                        int hour = int.Parse(route.Segments[i].Itineraries[j].Legs[0].Hops[route.Segments[i].Itineraries[j].Legs[0].Hops.Length - 1].TTime.Substring(0, 2));
+                                        int min = int.Parse(route.Segments[i].Itineraries[j].Legs[0].Hops[route.Segments[i].Itineraries[j].Legs[0].Hops.Length - 1].TTime.Substring(3, 2));
 
-                                route.Segments[i].ChosenItinerary = vooEscolhido[0];
-                                Leg itinerary = route.Segments[i].Itineraries[vooEscolhido[0]].Legs[0];
-                                //verifica se itinerario atual bate com o horario do proximo segmento
-                                itineraryDates = CalcItineraryDates(itinerary, arrivalDateNextStop);
-
-                                // tem que fazer isto só para marcar voos como validos ou nao
-                                route.Segments[i].Itineraries.ToList().ForEach(x => x.ValidForSchedule = true);
+                                        TimeSpan hopArrivalTime = new TimeSpan(hour, min, 0);
+                                        route.Segments[i].Itineraries[j].ValidForSchedule = hopArrivalTime <= nextArrivalTime;
+                                    }
+                                }
                             }
                         }
                         else
@@ -251,6 +241,52 @@ namespace Door2DoorCore
                 }
             }
             route.IndicativePrice.Price = routePrice;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private void BuildINewtinFromChosenRoute(ref Segment segment)
+        {
+            Itinerary it = new Itinerary();
+            it.Legs = new Leg[1];
+            it.OuterItinerary = true;
+            it.ValidForSchedule = true;
+            it.Legs[0] = new Leg();
+            it.Legs[0].Hops = new Hop[_req.chosenRoute.outboundSegment.flightLegs.Length];
+
+            it.Legs[0].IndicativePrice = new IndicativePrice4();
+            it.Legs[0].IndicativePrice.Price = _req.chosenRoute.price;
+            it.Legs[0].IndicativePrice.Currency = _req.chosenRoute.currency;
+
+            int duration = 0;
+            for (int i = 0; i < _req.chosenRoute.outboundSegment.flightLegs.Length; i++)
+            {
+                Hop hop = new Hop();
+                hop.SCode = _req.chosenRoute.outboundSegment.flightLegs[i].origin;
+                hop.TCode = _req.chosenRoute.outboundSegment.flightLegs[i].destination;
+
+                hop.STime = _req.chosenRoute.outboundSegment.flightLegs[i].departureDate.ToString("HH:mm");
+                hop.TTime = _req.chosenRoute.outboundSegment.flightLegs[i].arrivalDate.ToString("HH:mm");
+
+                hop.Flight = _req.chosenRoute.outboundSegment.flightLegs[i].number;
+                hop.Airline = _req.chosenRoute.outboundSegment.flightLegs[i].marketingAirline;
+                hop.Duration = _req.chosenRoute.outboundSegment.flightLegs[i].duration;
+
+                hop.DayChange = (_req.chosenRoute.outboundSegment.flightLegs[i].arrivalDate - _req.chosenRoute.outboundSegment.flightLegs[i].departureDate).Days;
+
+                duration += _req.chosenRoute.outboundSegment.flightLegs[i].duration;
+
+                it.Legs[0].Hops[i] = hop;
+            }
+            segment.Duration = duration;
+
+            Itinerary[] its = segment.Itineraries;
+            Array.Resize(ref its, segment.Itineraries.Length + 1);
+            segment.Itineraries = its;
+            segment.Itineraries[segment.Itineraries.Length - 1] = it;
+            segment.ChosenItinerary = segment.Itineraries.Length - 1;
         }
 
         /// <summary>
@@ -471,9 +507,8 @@ namespace Door2DoorCore
         /// </summary>
         public void Dispose()
         {
-            _d2dReq = null;
+            _req = null;
             _resp = null;
-            _chosenItin = null;
         }
     }
 }

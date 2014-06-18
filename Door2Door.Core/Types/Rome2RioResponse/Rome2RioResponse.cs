@@ -276,9 +276,11 @@ namespace Door2DoorCore.Types.Rome2RioResponse
         [JsonProperty("isHidden")]
         public int? IsHidden { get; set; }
 
-         [JsonProperty("validForSchedule")]
+        [JsonProperty("validForSchedule")]
         public bool ValidForSchedule { get; set; }
 
+        [JsonProperty("outerItinerary")]
+        public bool OuterItinerary { get; set; }
     }
 
     public class Segment

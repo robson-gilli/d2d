@@ -117,9 +117,96 @@ $(document).ready(function () {
 //
 function confirmFlightOption() {
     if (_chosenIt != null) {
-        window.parent.postMessage(_chosenIt + "|" + _postData.segmentIndex + "|" + _postData.routeIndex, "*");
+        var chosenItin = _postData.segment.itineraries[_chosenIt];
+
+        var chosenRoute = buildEmptyOuterFlightOption();
+        chosenRoute.outboundSegment.flightLegs.length = _postData.segment.itineraries[_chosenIt].legs[0].hops.length;
+        chosenRoute.segmentIndex = _postData.segmentIndex;
+        chosenRoute.routeIndex = _postData.routeIndex;
+        chosenRoute.price = _postData.segment.itineraries[_chosenIt].legs[0].indicativePrice.price;
+        chosenRoute.currency = 'BRL';
+
+        var nextArrivalDate = Date.parse(_postData.segment.arrivalDateTime);
+
+        for (var i = 0; i < _postData.segment.itineraries[_chosenIt].legs[0].hops.length; i++) {
+            var hop = _postData.segment.itineraries[_chosenIt].legs[0].hops[i];
+            var fLeg = buildEmptyOuterFlightLeg();
+            
+            var tempDate = Date.parse(nextArrivalDate.toString('yyyy-MM-ddTHH:mm:ss'));
+            tempDate.setHours(hop.tTime.substring(0, 2));
+            tempDate.setMinutes(hop.tTime.substring(3, 5));
+            if (tempDate > nextArrivalDate) {
+                nextArrivalDate.add({ days: -1 });
+            }
+            nextArrivalDate.setHours(hop.tTime.substring(0, 2));
+            nextArrivalDate.setMinutes(hop.tTime.substring(3, 5));
+
+            fLeg.origin = hop.sCode;
+            fLeg.destination = hop.tCode;
+            fLeg.marketingAirline= hop.airline;
+            fLeg.number = hop.flight;
+            fLeg.arrivalDate = nextArrivalDate.toString('yyyy-MM-ddTHH:mm:ss');
+            fLeg.duration = hop.duration;
+
+            var depDate = calcNextDepDate(nextArrivalDate, hop);
+            fLeg.departureDate = depDate.toString('yyyy-MM-ddTHH:mm:ss');
+            nextArrivalDate = Date.parse(depDate.toString('yyyy-MM-ddTHH:mm:ss'));
+
+            chosenRoute.outboundSegment.flightLegs[i] = fLeg;
+        };
+
+        window.parent.postMessage(chosenRoute, "*");
+        //window.parent.postMessage(_chosenIt + "|" + _postData.segmentIndex + "|" + _postData.routeIndex, "*");
     };
 };
+
+//
+//
+//
+function calcNextDepDate(nextDate, hop) {
+    var date = Date.parse(nextDate.toString('yyyy-MM-ddTHH:mm:ss'));
+    date.add({ days: -hop.dayChange });
+    date.setHours(hop.sTime.substring(0, 2));
+    date.setMinutes(hop.sTime.substring(3, 5));
+    return date;
+};
+
+//
+//
+//
+function buildEmptyOuterFlightOption() {
+    var outerFlightSegment = {
+        flightLegs: new Array()
+    };
+    var outerFlightOption = {
+        outboundSegment: outerFlightSegment,
+        inboundSegment: null,
+        segmentIndex: 0,
+        routeIndex: 0
+    };
+    return outerFlightOption;
+};
+
+//
+//
+//
+function buildEmptyOuterFlightLeg() {
+    var outerFlightLeg = {
+        origin: '',
+        destination: '',
+        number: '',
+        marketingAirline: '',
+        operatingAirline: '',
+        departureDate: null,
+        arrivalDate: null,
+        fareClass: '',
+        fareBasis: '',
+        duration: 0,
+        distance: 0
+    };
+    return outerFlightLeg;
+};
+
 
 //
 //

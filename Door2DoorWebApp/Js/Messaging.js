@@ -12,12 +12,12 @@ var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
 
 // Listen to message from child IFrame window
 eventer(messageEvent, function (e) {
-    if (e.origin == 'http://localhost:55105') { // for security
+//    if (e.origin == 'http://localhost:55105') { // for security
         $("#divFlightOptionsAlternatives").dialog("close");
         if (e.data != 'cancel') {
-            _chosenRoute = e.data.split("|");
+            _chosenRoute = e.data;
             buscar(false);
         }
-    }
+//    }
 
 }, false);

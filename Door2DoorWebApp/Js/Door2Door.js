@@ -22,11 +22,7 @@ function Door2DoorSender(requestOptions) {
                 lng: requestOptions.destLng,
                 type: requestOptions.destType
             },
-            chosenRoute: {
-                itineraryIndex: requestOptions.chosenRoute == null ? null : requestOptions.chosenRoute[0],
-                segmentIndex: requestOptions.chosenRoute == null ? null : requestOptions.chosenRoute[1],
-                routeIndex: requestOptions.chosenRoute == null ? null : requestOptions.chosenRoute[2]
-            }
+            chosenRoute: requestOptions.chosenRoute
         },
         // code to run if the request succeeds;
         // the response is passed to the function
