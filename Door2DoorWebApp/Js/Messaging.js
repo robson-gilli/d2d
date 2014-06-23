@@ -15,7 +15,7 @@ eventer(messageEvent, function (e) {
 //    if (e.origin == 'http://localhost:55105') { // for security
         $("#divFlightOptionsAlternatives").dialog("close");
         if (e.data != 'cancel') {
-            _chosenRoute = e.data;
+            _chosenRoute[_chosenLeg] = e.data;
             buscar(false);
         }
 //    }

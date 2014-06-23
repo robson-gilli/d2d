@@ -3,24 +3,23 @@
 <head>
     <title></title>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    
 </head>
 <body>
     <div>
-        MinDate<input type="text" id="minDepDate" value="2014-10-10"/>
+        Min Departure Date&nbsp;<input type="text" id="minDepDate" value="2014-10-10"/>
         <br />
-        MaxDate
+        Max Departure Date&nbsp;
         <input type="text" id="maxDepDate" value="2014-12-23" />
         <br />
-        <input type="checkbox" id="incPublicTransp"/><label for="incPublicTransp">incPublicTransp</label>
+        <input type="checkbox" id="incPublicTransp"/><label for="incPublicTransp">Include Public Transportation</label>
         <br />
-        <input type="checkbox" id="allowInter"  /><label for="allowInter">allowInter</label>
+        <input type="checkbox" id="allowInter"  /><label for="allowInter">Allow International search</label>
         <br />
-        <div style="display:none">maxDriveKm<input type="text" id="maxDriveKm" value="300" /></div>
+        <div style="display:none">maxDriveKm&nbsp;<input type="text" id="maxDriveKm" value="300" /></div>
         <br />
-        outputUrl<input type="text" id="outputUrl" value="/TestPages/OutputPage.aspx" />
+        Output Url&nbsp;<input type="text" id="outputUrl" value="/TestPages/OutputPage.aspx" />
         <br />
-        iframeInputUrl<input type="text" id="iframeInputUrl" value="/TestPages/ItineraryInputPage.aspx" />
+        Url for Flights Input&nbsp;<input type="text" id="iframeInputUrl" value="/TestPages/ItineraryInputPage.aspx" />
         <br />
         <br />
         <input type="button" id="Button1" value="Submit"/>
@@ -34,7 +33,6 @@
         <input type="hidden" name="maxDriveKm"      id="hidmaxDriveKm" />
         <input type="hidden" name="outputUrl"       id="hidoutputUrl" />
         <input type="hidden" name="iframeInputUrl"  id="hidiframeInputUrl" />
-
     </form>
 
     <script>
@@ -57,7 +55,7 @@
             $('#hidmaxDriveKm').val(rq.maxDriveKm);
             $('#hidoutputUrl').val(rq.outputUrl);
             $('#hidiframeInputUrl').val(rq.iframeInputUrl);
-            
+
             $('#form1').submit();
         });
     </script>

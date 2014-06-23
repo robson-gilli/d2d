@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Door2DoorCore.Types.Rome2RioResponse
+namespace Door2DoorCore.Types.Door2DoorResponse
 {
     public class ItineraryDates
     {

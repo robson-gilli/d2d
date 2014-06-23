@@ -2,12 +2,12 @@
 //
 //
 function buscar(originalRoute) {
-    //
 	//tem que escolher origem e destino
     if (_placeOrigem && _placeDestino && _placeOrigem.geometry && _placeDestino.geometry) {
         _resp = null;
         if (originalRoute) {
-            _chosenRoute = null;
+            _chosenRoute = new Array(2);
+            _chosenLeg = null;
         };
         //loading
 	    $("#mapa").hide();
@@ -15,11 +15,16 @@ function buscar(originalRoute) {
 	    $("#divDetalhesItinerario").text("Please wait...");
 	    $("#divDetalhesItinerario").accordion("option", "active", false);
 	    $("#divDetalhesItinerario").accordion("refresh");
+	    $("#divDetalhesItinerarioVolta").accordion("option", "active", false);
+	    $("#divDetalhesItinerarioVolta").accordion("refresh");
 
-	    var dataServer = _dataChegada.getFullYear() + "-" + (_dataChegada.getMonth() + 1).toString().padLeft(2, '0') + "-" + _dataChegada.getDate().toString().padLeft(2, '0') + "T" + _dataChegada.getHours().toString().padLeft(2, '0') + ":" + _dataChegada.getMinutes().toString().padLeft(2, '0') + ":00";
+
+	    var arrivalDateServer = _dataChegada.getFullYear() + "-" + (_dataChegada.getMonth() + 1).toString().padLeft(2, '0') + "-" + _dataChegada.getDate().toString().padLeft(2, '0') + "T" + _dataChegada.getHours().toString().padLeft(2, '0') + ":" + _dataChegada.getMinutes().toString().padLeft(2, '0') + ":00";
+	    var returnDateServer = $('#rdIdaeVolta').is(':checked') ? _dataRetorno.getFullYear() + "-" + (_dataRetorno.getMonth() + 1).toString().padLeft(2, '0') + "-" + _dataRetorno.getDate().toString().padLeft(2, '0') + "T" + _dataRetorno.getHours().toString().padLeft(2, '0') + ":" + _dataRetorno.getMinutes().toString().padLeft(2, '0') + ":00" : null;
 
 	    var d2dSender = new Door2DoorSender({
-	        desiredArrivalDate: dataServer,
+	        desiredReturnDate: returnDateServer,
+	        desiredArrivalDate: arrivalDateServer,
 	        includePublicTransport: buildSearchRequestFlags(),
 	        oriLat: _placeOrigem.geometry.location.k,
 	        oriLng: _placeOrigem.geometry.location.A,
@@ -51,24 +56,10 @@ function buscar(originalRoute) {
 //handles event triggered when successfull ajax call is returned from supplier
 //
 function handleSuccessSearch(d2d) {
-    if (d2d != null)
-        _resp= d2d;
-
-	renderResult();
-	renderResultOnMap();
-};
-
-//
-//
-//
-function renderResultOnMap() {
-    var mapOptions = {
-        center: new google.maps.LatLng(
-            _placeDestino.geometry.location.k,
-            _placeDestino.geometry.location.A),
-            zoom: 13
+    if (d2d != null) {
+        _resp = d2d;
+        renderResult();
     };
-    //var map = new google.maps.Map(document.getElementById('map-results'), mapOptions);
 };
 
 //
@@ -76,39 +67,81 @@ function renderResultOnMap() {
 //
 function renderResult() {
     $("#divDetalhesItinerario").text("");
+    $("#divDetalhesItinerarioVolta").text("");
+
     htmlResult = "";
-    htmlResult = "";
-	for (var i = 0; i < _resp.routes.length; i++) {
-	    var route = _resp.routes[i];
+	for (var i = 0; i < _resp[0].routes.length; i++) {
+	    var route = _resp[0].routes[i];
 	    var price = route.indicativePrice && route.indicativePrice.price != null && route.indicativePrice.price != 0 && !isNaN(route.indicativePrice.price) ? " - R$ " + route.indicativePrice.price + ",00" : '';
 
 		htmlResult += "<h3 id='route" + i + "'>Opção " + (i + 1) + " - " + route.name + price + "</h3><div>";
 
-		htmlResult += renderStops(i);
+		htmlResult += renderStops(i, 0);
 
 		htmlResult += "</div>";
 	};
 	$("#divDetalhesItinerario").html(htmlResult);
 	$("#divDetalhesItinerario").accordion("refresh");
 
-	if (_chosenRoute != null) {
-	    $("#divDetalhesItinerario").accordion("option", "active", parseInt(_chosenRoute.routeIndex));
+	if (_chosenRoute[0] != null) {
+	    $("#divDetalhesItinerario").accordion("option", "active", parseInt(_chosenRoute[0].routeIndex));
 	};
+
+    /////////////////////////////////////////VOTA
+	htmlResult = "";
+	if (_resp.length > 1) {
+	    for (var i = 0; i < _resp[1].routes.length; i++) {
+	        var route = _resp[1].routes[i];
+	        var price = route.indicativePrice && route.indicativePrice.price != null && route.indicativePrice.price != 0 && !isNaN(route.indicativePrice.price) ? " - R$ " + route.indicativePrice.price + ",00" : '';
+
+	        htmlResult += "<h3 id='route" + i + "'>Opção " + (i + 1) + " - " + route.name + price + "</h3><div>";
+
+	        htmlResult += renderStops(i, 1);
+
+	        htmlResult += "</div>";
+	    };
+	    $("#divDetalhesItinerarioVolta").html(htmlResult);
+	    $("#divDetalhesItinerarioVolta").accordion("refresh");
+
+	    if (_chosenRoute[1] != null) {
+	        $("#divDetalhesItinerarioVolta").accordion("option", "active", parseInt(_chosenRoute[1].routeIndex));
+	    };
+
+	}
+
+
+	$("#divTabs").tabs("option", "heightStyle", "auto");
+	$("#divTabs").tabs("refresh");
 };
 
 //
 //
 //
-function renderStops(routeIndex) {
+function renderStops(routeIndex, legIndex) {
     var htmlResult = "";
-    var route = _resp.routes[routeIndex];
+    var route = _resp[legIndex].routes[routeIndex];
 	for (var i = 0; i < route.segments.length; i++) {
 		var segment = route.segments[i];
-		var sName = segment.kind == 'flight' ? segment.sCode : (segment.sName == "Origin" ? _placeOrigem.adr_address.split(',')[0] : segment.sName);
 
-		var confirmar = _reqObj == null ? "" : "&nbsp;/&nbsp;<a href='javascript:void(0);' style='color:blue' onclick='javascript:confirmFlightOption(" + i + ", " + routeIndex + ")'>Confirmar</a>";
-		var tName = segment.kind == 'flight' ? segment.tCode + "&nbsp;<a href='javascript:void(0);' style='color:blue' onclick='javascript:showFlightOptionsAlternatives(" + i + ", " + routeIndex + ")'>Alterar</a>" + confirmar : (segment.tName == "Destination" ? _placeDestino.adr_address.split(',')[0] : segment.tName);
+		var sName = ''; //segment.kind == 'flight' ? segment.sCode : (segment.sName == "Origin" ? _placeOrigem.adr_address.split(',')[0] : segment.sName);
+		var tName = ''; //segment.kind == 'flight' ? segment.tCode + "&nbsp;<a href='javascript:void(0);' style='color:blue' onclick='javascript:showFlightOptionsAlternatives(" + i + ", " + routeIndex + ")'>Alterar</a>" + confirmar : (segment.tName == "Destination" ? _placeDestino.adr_address.split(',')[0] : segment.tName);
+		var confirmar = _reqObj == null ? "" : "&nbsp;/&nbsp;<a href='javascript:void(0);' style='color:blue' onclick='javascript:confirmFlightOption(" + i + ", " + routeIndex + "," + legIndex + ")'>Confirmar</a>";
 		var kind = segment.kind == 'car' ? segment.vehicle : segment.kind;
+
+		if (segment.kind == 'flight') {
+		    sName = segment.sCode;
+		    tName = segment.tCode + "&nbsp;<a href='javascript:void(0);' style='color:blue' onclick='javascript:showFlightOptionsAlternatives(" + i + ", " + routeIndex + "," + legIndex + ")'>Alterar</a>" + confirmar;
+		} else {
+		    if (legIndex == 1) {//ida e volta
+		        sName = (segment.sName == "Origin" ? _placeDestino.adr_address.split(',')[0] : segment.sName);
+		        tName = (segment.tName == "Destination" ? _placeOrigem.adr_address.split(',')[0] : segment.tName);
+		    } else {
+		        sName = (segment.sName == "Origin" ? _placeOrigem.adr_address.split(',')[0] : segment.sName);
+		        tName = (segment.tName == "Destination" ? _placeDestino.adr_address.split(',')[0] : segment.tName);
+		    }
+		}
+
+
 
 		htmlResult += "<br><strong>Transporte tipo:</strong> " +
             kind +
@@ -261,9 +294,10 @@ function buildSearchRequestFlags() {
 //
 // Posta resultado do voo escolhido para a proxima pagina, definida via POST
 //
-function confirmFlightOption(segmentIndex, routeIndex) {
-    var route = _resp.routes[routeIndex];
+function confirmFlightOption(segmentIndex, routeIndex, legIndex) {
+    var route = _resp[legIndex].routes[routeIndex];
     var segment = route.segments[segmentIndex].itineraries[route.segments[segmentIndex].chosenItinerary];
+    _chosenLeg = legIndex;
 
     // post selected itinerary
     var postContent = JSON.stringify(segment);
@@ -275,11 +309,11 @@ function confirmFlightOption(segmentIndex, routeIndex) {
 //
 // abre modal para alteracao de opcao de voo para determiado segmento(segmentIndex), de determinada rota(routeIndex)
 //
-function showFlightOptionsAlternatives(segmentIndex, routeIndex) {
-    var route = _resp.routes[routeIndex];
+function showFlightOptionsAlternatives(segmentIndex, routeIndex, legIndex) {
+    var route = _resp[legIndex].routes[routeIndex];
+    _chosenLeg = legIndex;
 
-
-    /*********** GAMBIARRA PARA DEMO SOMENTE, TROCAR ISTO POR CHAMADA REAL DE VOO ***********/
+    /*********** <GAMBIARRA PARA DEMO SOMENTE, TROCAR ISTO POR CHAMADA REAL DE VOO> ***********/
     $("#divFlightOptionsAlternatives").html("");
     $("#divFlightOptionsAlternatives").append("<iframe id='iFrameChangeItin' name='iFrameChangeItin' style='width:100%; height:100%'></iframe>");
     $("#divFlightOptionsAlternatives").dialog({
@@ -301,11 +335,11 @@ function showFlightOptionsAlternatives(segmentIndex, routeIndex) {
     $('#hidarrdate').val(arrDate);
     $('#hisegmentIndex').val(segmentIndex);
     $('#hidrouteIndex').val(routeIndex);
+    $('#hidlegIndex').val(legIndex);
 
     $('#frmChangeItin').attr('action', _reqObj.iframeInputUrl);
     $('#frmChangeItin').submit();
     $("#divFlightOptionsAlternatives").dialog("open");
-    /*********** /GAMBIARRA PARA DEMO SOMENTE, TROCAR ISTO POR CHAMADA REAL DE VOO ***********/
+    /*********** </GAMBIARRA PARA DEMO SOMENTE, TROCAR ISTO POR CHAMADA REAL DE VOO> ***********/
 
 };
-

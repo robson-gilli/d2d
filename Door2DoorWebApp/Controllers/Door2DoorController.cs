@@ -1,6 +1,6 @@
 ﻿using Door2DoorCore;
 using Door2DoorCore.Types.Door2DoorRequest;
-using Door2DoorCore.Types.Rome2RioResponse;
+using Door2DoorCore.Types.Door2DoorResponse;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -20,9 +20,9 @@ namespace Door2DoorWebApp.Controllers
         /// <returns></returns>
         [Route("api/getd2d")]
         [HttpPost]
-        public Rome2RioResponse Getd2d(D2DRequest req)
+        public List<Door2DoorResponse> Getd2d(D2DRequest req)
         {
-            Rome2RioResponse resp;
+            List<Door2DoorResponse> resp;
 
             using (Door2Door d2d = new Door2Door(req))
             {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Door2DoorCore.Types;
-using Door2DoorCore.Types.Rome2RioResponse;
+using Door2DoorCore.Types.Door2DoorResponse;
 using Door2DoorCore.Types.Door2DoorRequest;
 using Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption;
 using Door2DoorCore.Exceptions;
@@ -19,8 +19,8 @@ namespace Door2DoorCore
     {
         private D2DRequest _req;
 
-        private Rome2RioResponse _resp;
-        public Rome2RioResponse Resp
+        private List<Door2DoorResponse> _resp;
+        public List<Door2DoorResponse> Resp
         {
             get { return _resp; }
         }
@@ -31,11 +31,9 @@ namespace Door2DoorCore
         /// <param name="d2dReq"></param>
         public Door2Door(D2DRequest d2dReq)
         {
-
             if (RequestIsOK(d2dReq))
             {
                 _req = d2dReq;
-
             }
             else
             {
@@ -59,7 +57,7 @@ namespace Door2DoorCore
         /// <summary>
         /// 
         /// </summary>
-        public Rome2RioResponse GetResponse()
+        public List<Door2DoorResponse> GetResponse()
         {
             using (Rome2RioComm comm = new Rome2RioComm(_req))
             {
@@ -70,25 +68,45 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        /// 
+        /// Builds a itinerary with schedules for each stop, based on the desired arrival date at the destination
         /// </summary>
         private void BuildCompleteItinerarySchedule()
         {
-            for (int i = 0; i < _resp.Routes.Count(); i++)
+            for (int i = 0; i < _resp[0].Routes.Count(); i++)
             {
-                Route route = _resp.Routes[i];
+                Route route = _resp[0].Routes[i];
                 bool flightChosen = false;
 
-                if (_req.chosenRoute!= null && _req.chosenRoute.outboundSegment != null)
+                if (_req.chosenRoute != null && _req.chosenRoute[0].flightSegment != null)
                 {
-                    if (_req.chosenRoute.routeIndex == i)
+                    if (_req.chosenRoute[0].routeIndex == i)
                     {
                         flightChosen = true;
                     }
                 }
 
                 // adiciona informacoes de horario aos segmentos da rota atual
-                BuildItinerarySchedule(ref route, _req.desiredArrivalDate, flightChosen);
+                BuildItinerarySchedule(ref route, _req.desiredArrivalDate, flightChosen, 0);
+            }
+
+            if (_req.desiredReturnDate.HasValue) //ida e volta
+            {
+                for (int i = 0; i < _resp[1].Routes.Count(); i++)
+                {
+                    Route route = _resp[1].Routes[i];
+                    bool flightChosen = false;
+
+                    if (_req.chosenRoute != null && _req.chosenRoute.Length > 1 && _req.chosenRoute[1].flightSegment != null)
+                    {
+                        if (_req.chosenRoute[1].routeIndex == i)
+                        {
+                            flightChosen = true;
+                        }
+                    }
+
+                    // adiciona informacoes de horario aos segmentos da rota atual
+                    BuildItinerarySchedule(ref route, _req.desiredReturnDate.Value, flightChosen, 1);
+                }
             }
         }
 
@@ -98,7 +116,7 @@ namespace Door2DoorCore
         /// <param name="route"></param>
         /// <param name="dateTime"></param>
         /// <param name="vooEscolhido"></param>
-        private void BuildItinerarySchedule(ref Route route, DateTime arrivalDateTime, bool vooEscolhido)
+        private void BuildItinerarySchedule(ref Route route, DateTime arrivalDateTime, bool vooEscolhido, int legIndex)
         {
             // diferenca entre a data da viagem e agora
             // irá ajudar no calculo do tempo para sair da origem
@@ -127,17 +145,17 @@ namespace Door2DoorCore
 
                         if (vooEscolhido) // é uma alteração de itinerario, um voo foi alterado
                         {
-                            if (_req.chosenRoute.segmentIndex == i)
+                            if (_req.chosenRoute[legIndex].segmentIndex == i)
                             {
                                 // a opcao de voo escolhida tem que bater com o horario do schedule
-                                if (_req.chosenRoute.outboundSegment.flightLegs[_req.chosenRoute.outboundSegment.flightLegs.Length - 1].arrivalDate <= arrivalDateNextStop)
+                                if (_req.chosenRoute[legIndex].flightSegment.flightLegs[_req.chosenRoute[legIndex].flightSegment.flightLegs.Length - 1].arrivalDate <= arrivalDateNextStop)
                                 {
                                     achouVoo = true;
-                                    
-                                    BuildINewtinFromChosenRoute(ref route.Segments[i]);
-                                    
-                                    itineraryDates.departureDateTime = _req.chosenRoute.outboundSegment.flightLegs[0].departureDate;
-                                    itineraryDates.arrivalDateTime = _req.chosenRoute.outboundSegment.flightLegs[_req.chosenRoute.outboundSegment.flightLegs.Length - 1].arrivalDate;
+
+                                    BuildINewtinFromChosenRoute(ref route.Segments[i], legIndex);
+
+                                    itineraryDates.departureDateTime = _req.chosenRoute[legIndex].flightSegment.flightLegs[0].departureDate;
+                                    itineraryDates.arrivalDateTime = _req.chosenRoute[legIndex].flightSegment.flightLegs[_req.chosenRoute[legIndex].flightSegment.flightLegs.Length - 1].arrivalDate;
 
                                     TimeSpan nextArrivalTime = new TimeSpan(arrivalDateNextStop.Hour, arrivalDateNextStop.Minute, 0);
                                     for (int j = 0; j < route.Segments[i].Itineraries.Length - 1; j++)
@@ -247,36 +265,36 @@ namespace Door2DoorCore
         /// 
         /// </summary>
         /// <returns></returns>
-        private void BuildINewtinFromChosenRoute(ref Segment segment)
+        private void BuildINewtinFromChosenRoute(ref Segment segment, int legIndex)
         {
             Itinerary it = new Itinerary();
             it.Legs = new Leg[1];
             it.OuterItinerary = true;
             it.ValidForSchedule = true;
             it.Legs[0] = new Leg();
-            it.Legs[0].Hops = new Hop[_req.chosenRoute.outboundSegment.flightLegs.Length];
+            it.Legs[0].Hops = new Hop[_req.chosenRoute[legIndex].flightSegment.flightLegs.Length];
 
             it.Legs[0].IndicativePrice = new IndicativePrice4();
-            it.Legs[0].IndicativePrice.Price = _req.chosenRoute.price;
-            it.Legs[0].IndicativePrice.Currency = _req.chosenRoute.currency;
+            it.Legs[0].IndicativePrice.Price = _req.chosenRoute[legIndex].price;
+            it.Legs[0].IndicativePrice.Currency = _req.chosenRoute[legIndex].currency;
 
             int duration = 0;
-            for (int i = 0; i < _req.chosenRoute.outboundSegment.flightLegs.Length; i++)
+            for (int i = 0; i < _req.chosenRoute[legIndex].flightSegment.flightLegs.Length; i++)
             {
                 Hop hop = new Hop();
-                hop.SCode = _req.chosenRoute.outboundSegment.flightLegs[i].origin;
-                hop.TCode = _req.chosenRoute.outboundSegment.flightLegs[i].destination;
+                hop.SCode = _req.chosenRoute[legIndex].flightSegment.flightLegs[i].origin;
+                hop.TCode = _req.chosenRoute[legIndex].flightSegment.flightLegs[i].destination;
 
-                hop.STime = _req.chosenRoute.outboundSegment.flightLegs[i].departureDate.ToString("HH:mm");
-                hop.TTime = _req.chosenRoute.outboundSegment.flightLegs[i].arrivalDate.ToString("HH:mm");
+                hop.STime = _req.chosenRoute[legIndex].flightSegment.flightLegs[i].departureDate.ToString("HH:mm");
+                hop.TTime = _req.chosenRoute[legIndex].flightSegment.flightLegs[i].arrivalDate.ToString("HH:mm");
 
-                hop.Flight = _req.chosenRoute.outboundSegment.flightLegs[i].number;
-                hop.Airline = _req.chosenRoute.outboundSegment.flightLegs[i].marketingAirline;
-                hop.Duration = _req.chosenRoute.outboundSegment.flightLegs[i].duration;
+                hop.Flight = _req.chosenRoute[legIndex].flightSegment.flightLegs[i].number;
+                hop.Airline = _req.chosenRoute[legIndex].flightSegment.flightLegs[i].marketingAirline;
+                hop.Duration = _req.chosenRoute[legIndex].flightSegment.flightLegs[i].duration;
 
-                hop.DayChange = (_req.chosenRoute.outboundSegment.flightLegs[i].arrivalDate - _req.chosenRoute.outboundSegment.flightLegs[i].departureDate).Days;
+                hop.DayChange = (_req.chosenRoute[legIndex].flightSegment.flightLegs[i].arrivalDate - _req.chosenRoute[legIndex].flightSegment.flightLegs[i].departureDate).Days;
 
-                duration += _req.chosenRoute.outboundSegment.flightLegs[i].duration;
+                duration += _req.chosenRoute[legIndex].flightSegment.flightLegs[i].duration;
 
                 it.Legs[0].Hops[i] = hop;
             }

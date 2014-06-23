@@ -8,10 +8,8 @@ namespace Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption
 {
     public class OuterFlightOption
     {
-        public OuterFlightSegment outboundSegment { get; set; }
+        public OuterFlightSegment flightSegment { get; set; }
 
-        public OuterFlightSegment inboundSegment { get; set; }
-        
         public int segmentIndex { get; set; }
 
         public int routeIndex { get; set; }

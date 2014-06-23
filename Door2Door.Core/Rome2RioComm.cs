@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Door2DoorCore.Types;
-using Door2DoorCore.Types.Rome2RioResponse;
+using Door2DoorCore.Types.Door2DoorResponse;
 using Door2DoorCore.Types.Door2DoorRequest;
 using Door2DoorCore.Exceptions;
 using System.Net;
@@ -15,38 +15,47 @@ namespace Door2DoorCore
     internal class Rome2RioComm : IDisposable
     {
         private D2DRequest _req;
-        public delegate void MessageReceivedEventHandler(Rome2RioResponse resp);
+        public delegate void MessageReceivedEventHandler(Door2DoorResponse resp);
         public event MessageReceivedEventHandler OnMessageReceived;
 
-        private Rome2RioResponse _resp;
-        public Rome2RioResponse Resp
+        private List<Door2DoorResponse> _resp;
+        public List<Door2DoorResponse> Resp
         {
             get { return _resp; }
         }
 
         /// <summary>
-        /// 
+        /// Handles the communication between client and Rome2rio api
         /// </summary>
         /// <param name="req"></param>
         public Rome2RioComm(D2DRequest req)
         {
             _req = req;
+            _resp = new List<Door2DoorResponse>();
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public Rome2RioResponse Download()
+        public List<Door2DoorResponse> Download()
         {
             using (WebClient client = new WebClient())
             {
                 try
                 {
-                    client.QueryString = BuildQueryString();
+                    client.QueryString = BuildQueryString(false);
                     string url = _req.url;
                     string r = client.DownloadString(url);
-                    _resp = JsonConvert.DeserializeObject<Rome2RioResponse>(r);
+                    _resp.Add(JsonConvert.DeserializeObject<Door2DoorResponse>(r));
+
+                    if (_req.desiredReturnDate.HasValue) //ida e volta
+                    {
+                        client.QueryString = BuildQueryString(true);
+                        r = client.DownloadString(url);
+                        _resp.Add(JsonConvert.DeserializeObject<Door2DoorResponse>(r));
+                    }
+
                     return _resp;
                 }
                 catch (Exception e)
@@ -56,58 +65,74 @@ namespace Door2DoorCore
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public void DownloadAsync()
-        {
-            using (WebClient client = new WebClient())
-            {
-                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(OnDownloadStringCompleted);
-                client.QueryString = BuildQueryString();
-                string url = _req.url;
-                client.DownloadStringAsync(new Uri(url));
-            }
-        }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //public void DownloadAsync()
+        //{
+        //    using (WebClient client = new WebClient())
+        //    {
+        //        client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(OnDownloadStringCompleted);
+        //        client.QueryString = BuildQueryString();
+        //        string url = _req.url;
+        //        client.DownloadStringAsync(new Uri(url));
+        //    }
+        //}
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void OnDownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
-        {
-            if (e.Error == null)
-            {
-                _resp = JsonConvert.DeserializeObject<Rome2RioResponse>(e.Result);
-                OnMessageReceived(_resp);
-            }
-            else
-            {
-                throw new D2DResponseException(e.Error);
-            }
-        }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //public void OnDownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        //{
+        //    if (e.Error == null)
+        //    {
+        //        _resp = JsonConvert.DeserializeObject<Door2DoorResponse>(e.Result);
+        //        OnMessageReceived(_resp);
+        //    }
+        //    else
+        //    {
+        //        throw new D2DResponseException(e.Error);
+        //    }
+        //}
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        private System.Collections.Specialized.NameValueCollection BuildQueryString()
+        private System.Collections.Specialized.NameValueCollection BuildQueryString(bool isReturnRoute)
         {
             System.Collections.Specialized.NameValueCollection collection = new System.Collections.Specialized.NameValueCollection();
 
             collection.Add("key", _req.key);
             collection.Add("currency", _req.currency);
             collection.Add("flags", BuildSearchRequestFlags().ToString());
-            collection.Add("oPos", Uri.EscapeDataString(_req.oriLocation.lat + "," + _req.oriLocation.lng));
-            collection.Add("dPos", Uri.EscapeDataString(_req.destLocation.lat + "," + _req.destLocation.lng));
-            if (!_req.oriLocation.type.Equals(string.Empty))
+            if (isReturnRoute)
             {
-                collection.Add("oKind", Uri.EscapeDataString(_req.oriLocation.type));
+                collection.Add("dPos", Uri.EscapeDataString(_req.oriLocation.lat + "," + _req.oriLocation.lng));
+                collection.Add("oPos", Uri.EscapeDataString(_req.destLocation.lat + "," + _req.destLocation.lng));
+                if (!_req.oriLocation.type.Equals(string.Empty))
+                {
+                    collection.Add("dKind", Uri.EscapeDataString(_req.oriLocation.type));
+                }
+                if (!_req.destLocation.type.Equals(string.Empty))
+                {
+                    collection.Add("oKind", Uri.EscapeDataString(_req.destLocation.type));
+                }
             }
-            if (!_req.destLocation.type.Equals(string.Empty))
+            else
             {
-                collection.Add("dKind", Uri.EscapeDataString(_req.destLocation.type));
+                collection.Add("oPos", Uri.EscapeDataString(_req.oriLocation.lat + "," + _req.oriLocation.lng));
+                collection.Add("dPos", Uri.EscapeDataString(_req.destLocation.lat + "," + _req.destLocation.lng));
+                if (!_req.oriLocation.type.Equals(string.Empty))
+                {
+                    collection.Add("oKind", Uri.EscapeDataString(_req.oriLocation.type));
+                }
+                if (!_req.destLocation.type.Equals(string.Empty))
+                {
+                    collection.Add("dKind", Uri.EscapeDataString(_req.destLocation.type));
+                }
             }
             return collection;
         }

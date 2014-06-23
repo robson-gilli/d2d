@@ -34,6 +34,7 @@
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -55,12 +56,11 @@
     <Compile Include="Types\Door2DoorRequest\OuterFlightOption\OuterFlightLeg.cs" />
     <Compile Include="Types\Door2DoorRequest\OuterFlightOption\OuterFlightOption.cs" />
     <Compile Include="Types\Door2DoorRequest\OuterFlightOption\OuterFlightSegment.cs" />
-    <Compile Include="Types\Rome2RioResponse\ItineraryDates.cs" />
-    <Compile Include="Types\Rome2RioResponse\Rome2RioResponse.cs" />
+    <Compile Include="Types\Door2DoorResponse\ItineraryDates.cs" />
+    <Compile Include="Types\Door2DoorResponse\Door2DoorResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Types\Rome2RioResponse\Rome2RioResponse.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

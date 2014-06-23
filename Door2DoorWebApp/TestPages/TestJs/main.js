@@ -103,7 +103,7 @@ $(document).ready(function () {
         }
     });
 
-    //date.js
+    //datejs
     var date = Date.parse(_postData.segment.departureDateTime);
     $("#divAlternatives").dialog("option", "title", "Voos partindo dia " + date.toLocaleDateString());
     $("#divAlternatives").dialog("open");
@@ -120,7 +120,7 @@ function confirmFlightOption() {
         var chosenItin = _postData.segment.itineraries[_chosenIt];
 
         var chosenRoute = buildEmptyOuterFlightOption();
-        chosenRoute.outboundSegment.flightLegs.length = _postData.segment.itineraries[_chosenIt].legs[0].hops.length;
+        chosenRoute.flightSegment.flightLegs.length = _postData.segment.itineraries[_chosenIt].legs[0].hops.length;
         chosenRoute.segmentIndex = _postData.segmentIndex;
         chosenRoute.routeIndex = _postData.routeIndex;
         chosenRoute.price = _postData.segment.itineraries[_chosenIt].legs[0].indicativePrice.price;
@@ -152,7 +152,7 @@ function confirmFlightOption() {
             fLeg.departureDate = depDate.toString('yyyy-MM-ddTHH:mm:ss');
             nextArrivalDate = Date.parse(depDate.toString('yyyy-MM-ddTHH:mm:ss'));
 
-            chosenRoute.outboundSegment.flightLegs[i] = fLeg;
+            chosenRoute.flightSegment.flightLegs[i] = fLeg;
         };
 
         window.parent.postMessage(chosenRoute, "*");
@@ -179,8 +179,7 @@ function buildEmptyOuterFlightOption() {
         flightLegs: new Array()
     };
     var outerFlightOption = {
-        outboundSegment: outerFlightSegment,
-        inboundSegment: null,
+        flightSegment: outerFlightSegment,
         segmentIndex: 0,
         routeIndex: 0
     };
@@ -227,7 +226,7 @@ function onRdClick(eventData) {
 //
 function getPostData() {
     var jsonString = $('#divJSONRqParams').text();
-    var reqObj = { segment: null, nextArrDate: null, segmentIndex: null, routeIndex: null };
+    var reqObj = { segment: null, nextArrDate: null, segmentIndex: null, routeIndex: null, legIndex: null };
     if (jsonString != null && jsonString != '') {
         reqObj = jQuery.parseJSON(jsonString);
         reqObj.nextArrDate = new Date(

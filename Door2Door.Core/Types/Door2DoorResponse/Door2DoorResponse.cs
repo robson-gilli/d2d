@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Door2DoorCore.Types;
 
-namespace Door2DoorCore.Types.Rome2RioResponse
+namespace Door2DoorCore.Types.Door2DoorResponse
 {
 
     public class Airport
@@ -369,10 +369,10 @@ namespace Door2DoorCore.Types.Rome2RioResponse
 
 }
 
-namespace Door2DoorCore.Types.Rome2RioResponse
+namespace Door2DoorCore.Types.Door2DoorResponse
 {
 
-    public class Rome2RioResponse
+    public class Door2DoorResponse
     {
 
         [JsonProperty("serveTime")]

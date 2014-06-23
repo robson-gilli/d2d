@@ -1,6 +1,6 @@
 ﻿//
 // Para cada rota, adiciona informacoes sobre horarios de partida ao JSON.
-// Recebe o JSON route do rome2rio e o horario de chegada ao destino
+// Recebe o JSON route e o horario de chegada ao destino
 //      arrivalDateTime => DateTime da chegada desejada
 //      vooEscolhido => Caso algum voo ja tenha sido escolhido pela tela de alteracao de voo, utiliza-o
 function buildItinerarySchedule(route, arrivalDateTime, vooEscolhido) {

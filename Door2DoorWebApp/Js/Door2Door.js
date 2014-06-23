@@ -4,11 +4,11 @@
 ********************************************************************************************************/
 function Door2DoorSender(requestOptions) {
 
-    // atributos a serem passados para a api do rome2rio
     var _reqAtt = {
         url: '/api/getd2d',
         data: {
             desiredArrivalDate: requestOptions.desiredArrivalDate,
+            desiredReturnDate: requestOptions.desiredReturnDate,
             flags: {
                 includePublicTransp: buildSearchRequestFlags(requestOptions)
             },

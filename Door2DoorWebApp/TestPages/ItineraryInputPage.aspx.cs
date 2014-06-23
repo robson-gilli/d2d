@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Door2DoorCore.Types;
-using Door2DoorCore.Types.Rome2RioResponse;
+using Door2DoorCore.Types.Door2DoorResponse;
 using Newtonsoft.Json;
 using System.Globalization;
 
@@ -19,7 +19,7 @@ namespace Door2DoorWebApp.TestPages
             public string nextArrDate;
             public int segmentIndex;
             public int routeIndex;
-
+            public int legIndex;
         }
 
         /// <summary>
@@ -32,9 +32,6 @@ namespace Door2DoorWebApp.TestPages
             if (!IsPostBack)
             {
                 VerifyRequest();
-
-
-
             }
         }
 
@@ -45,7 +42,7 @@ namespace Door2DoorWebApp.TestPages
         {
             Segment segment = new Segment();
             DateTime arrivalDT = new DateTime();
-            int routeIndex = 0, segmentIndex = 0;
+            int routeIndex = 0, segmentIndex = 0, legIndex = 0;
             if (Request.Form["r2r_resp"] != null)
             {
                 segment = JsonConvert.DeserializeObject<Segment>(Request.Form["r2r_resp"]);//JsonConvert.DeserializeObject<Segment>(GetMockJson());
@@ -64,11 +61,17 @@ namespace Door2DoorWebApp.TestPages
                 routeIndex = int.Parse(Request.Form["routeIndex"]);
             }
 
+            if (Request.Form["legIndex"] != null)
+            {
+                legIndex = int.Parse(Request.Form["legIndex"]);
+            }
+
             RequestData rd = new RequestData();
             rd.nextArrDate = arrivalDT.ToString("yyyy-MM-dd HH:mm");
             rd.segment = segment;
             rd.segmentIndex = segmentIndex;
             rd.routeIndex = routeIndex;
+            rd.legIndex = legIndex;
 
             litJsonRq.Text = JsonConvert.SerializeObject(rd);
         }

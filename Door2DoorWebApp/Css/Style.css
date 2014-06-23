@@ -57,7 +57,7 @@
 #datePicker {
 	background-color: #fff;
 	padding: 0 11px 0 13px;
-	width: 400px;
+	width: 250px;
 	font-family: Roboto;
 	font-size: 15px;
 	font-weight: 300;
@@ -67,8 +67,24 @@
 		border-color: #4d90fe;
 		margin-left: -1px;
 		padding-left: 14px; /* Regular padding-left + 1. */
-		width: 401px;
+		width: 250px;
 	}
+#datePickerVolta {
+	background-color: #fff;
+	padding: 0 11px 0 13px;
+	width: 250px;
+	font-family: Roboto;
+	font-size: 15px;
+	font-weight: 300;
+	text-overflow: ellipsis;
+}
+	#datePickerVolta:focus {
+		border-color: #4d90fe;
+		margin-left: -1px;
+		padding-left: 14px; /* Regular padding-left + 1. */
+		width: 250px;
+	}
+
 .horaChegada {
 	margin-top: 0px;
 	border: 1px solid transparent;
@@ -82,7 +98,7 @@
 #timePicker {
 	background-color: #fff;
 	padding: 0 11px 0 13px;
-	width: 400px;
+	width: 147px;
 	font-family: Roboto;
 	font-size: 15px;
 	font-weight: 300;
@@ -92,5 +108,20 @@
 		border-color: #4d90fe;
 		margin-left: -1px;
 		padding-left: 14px; /* Regular padding-left + 1. */
-		width: 401px;
+		width: 147px;
+	}
+#timePickerVolta {
+	background-color: #fff;
+	padding: 0 11px 0 13px;
+	width: 147px;
+	font-family: Roboto;
+	font-size: 15px;
+	font-weight: 300;
+	text-overflow: ellipsis;
+}
+	#timePickerVolta:focus {
+		border-color: #4d90fe;
+		margin-left: -1px;
+		padding-left: 14px; /* Regular padding-left + 1. */
+		width: 147px;
 	}

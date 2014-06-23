@@ -4,11 +4,17 @@
 var _placeOrigem;
 var _placeDestino;
 var _dataChegada;
+var _dataRetorno;
+
 var _timeSelected;
+var _timeReturnSelected;
+
 var _panorama;
 var _resp;
 var _chosenRoute;
 var _reqObj;//handles request policies
+
+var _chosenLeg;
 
 //disable all clickable elements untill page is loaded
 jQuery("#divSearchBox").find("input, select, button, textarea").attr("disabled", true);
@@ -18,9 +24,12 @@ jQuery("#divSearchBox").find("input, select, button, textarea").attr("disabled",
 //
 $(document).ready(function(){
     _dataChegada = new Date();
-	_timeSelected = false;
+    _dataRetorno = new Date();
+    _timeSelected = false;
+    _timeReturnSelected = false;
 	_resp = null;
-	_chosenRoute = null;
+	_chosenRoute = new Array(2);
+	_chosenLeg = null;
 
     // releasing controls.
 	$("#divSearchBox").find("input, select, button, textarea").attr("disabled", false);
@@ -46,6 +55,18 @@ $(document).ready(function(){
 	    minDate: _reqObj ? _reqObj.minDepDate : 0,
 	    maxDate: _reqObj ? _reqObj.maxDepDate : "+1y"
 	});
+    //configura calendario
+	$("#datePickerVolta").datepicker({
+	    dateFormat: 'dd/mm/yy',
+	    inline: true,
+	    minDate: new Date(),
+	    maxDate: new Date(2015, 12, 31),
+	    useSelect: true,
+	    onSelect: handleDatePickerVolta,
+	    minDate: _reqObj ? _reqObj.minDepDate : 0,
+	    maxDate: _reqObj ? _reqObj.maxDepDate : "+1y"
+	});
+
 
 	//configura campo de hora
 	$('#timePicker').timepicker({
@@ -54,6 +75,24 @@ $(document).ready(function(){
 		},
 		onClose: handleTimePicker
 	});
+    //configura campo de hora
+	$('#timePickerVolta').timepicker({
+	    onSelect: function (time, inst) {
+	        _timeSelected = true;
+	    },
+	    onClose: handleTimePickerVolta
+	});
+
+	$('#rdSomenteIda').click(function(){
+	    $('#datePickerVolta').css('visibility', 'hidden');
+	    $('#timePickerVolta').css('visibility', 'hidden');
+	});
+
+	$('#rdIdaeVolta').click(function () {
+	    $('#datePickerVolta').css('visibility', 'visible');
+	    $('#timePickerVolta').css('visibility', 'visible');
+	});
+
 
 	//ajusta o tamanho da div do streetview
 	applyMapContainerHeight();
@@ -95,8 +134,6 @@ function initializeGoogle() {
         };
         
         $("#divResults").hide();
-        //$("#divDetalhesItinerario").hide();
-        //$("#map-results").hide();
         $("#mapa").show();
         setPanorama(_placeOrigem.geometry.location.k, _placeOrigem.geometry.location.A);
     });
@@ -108,11 +145,11 @@ function initializeGoogle() {
             return;
         };
 
-
+        $("#divTabs").tabs();
         $("#divDetalhesItinerario").accordion({ heightStyle: "content", collapsible: true, active: false });
+        $("#divDetalhesItinerarioVolta").accordion({ heightStyle: "content", collapsible: true, active: false });
+
         $("#divResults").hide();
-        //$("#divDetalhesItinerario").hide();
-        //$("#map-results").hide();
         $("#mapa").show();
         setPanorama(_placeDestino.geometry.location.k, _placeDestino.geometry.location.A);
     });
@@ -133,6 +170,17 @@ function handleDatePicker(){
 };
 
 //
+//handles event triggered when a date is selected
+//
+function handleDatePickerVolta() {
+    var day = $("#datePickerVolta").datepicker('getDate').getDate();
+    var month = $("#datePickerVolta").datepicker('getDate').getMonth();
+    var year = $("#datePickerVolta").datepicker('getDate').getFullYear();
+
+    _dataRetorno = new Date(year, month, day, _dataRetorno.getHours(), _dataRetorno.getMinutes());
+};
+
+//
 //handles event triggered when time is selected
 //
 function handleTimePicker(time, inst) {
@@ -141,6 +189,17 @@ function handleTimePicker(time, inst) {
 	};
 	_timeSelected = false;
 };
+
+//
+//handles event triggered when time is selected
+//
+function handleTimePickerVolta(time, inst) {
+    if (_timeReturnSelected) {
+        _dataRetorno = new Date(_dataRetorno.getFullYear(), _dataRetorno.getMonth(), _dataRetorno.getDate(), inst.hours, inst.minutes);
+    };
+    _timeReturnSelected = false;
+};
+
 
 //
 //

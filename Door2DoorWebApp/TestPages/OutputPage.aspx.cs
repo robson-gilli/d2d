@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Door2DoorCore.Types.Rome2RioResponse;
+using Door2DoorCore.Types.Door2DoorResponse;
 using Newtonsoft.Json;
 
 namespace Door2DoorWebApp
@@ -24,13 +24,13 @@ namespace Door2DoorWebApp
                     }
                     catch 
                     {
-                        litJsonRq.Text = "The posted content is not a valid 'Door2DoorCore.Types.Rome2RioResponse.Itinerary' object.";
+                        litJsonRq.Text = "The posted content is not a valid 'Door2DoorCore.Types.Door2DoorResponse.Itinerary' object.";
 
                     }
                 }
                 else
                 {
-                    litJsonRq.Text = "Nothing was posted or the posted content is not a valid 'Door2DoorCore.Types.Rome2RioResponse.Itinerary' object.";
+                    litJsonRq.Text = "Nothing was posted or the posted content is not a valid 'Door2DoorCore.Types.Door2DoorResponse.Itinerary' object.";
 
                 }
             }
