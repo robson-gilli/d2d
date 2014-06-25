@@ -365,6 +365,10 @@ namespace Door2DoorCore.Types.Door2DoorResponse
 
         [JsonProperty("segments")]
         public Segment[] Segments { get; set; }
+
+        [JsonProperty("routeTotals")]
+        public RouteTotals RouteTotals { get; set; }
+
     }
 
 }
@@ -372,26 +376,39 @@ namespace Door2DoorCore.Types.Door2DoorResponse
 namespace Door2DoorCore.Types.Door2DoorResponse
 {
 
-    public class Door2DoorResponse
+    public class Door2DoorLegResponse
     {
 
         [JsonProperty("serveTime")]
         public int ServeTime { get; set; }
 
-        [JsonProperty("airports")]
-        public Airport[] Airports { get; set; }
+        /********Desabilitado pois nao esta sendo usado***********/
 
-        [JsonProperty("airlines")]
-        public Airline[] Airlines { get; set; }
+        //[JsonProperty("airports")]
+        //public Airport[] Airports { get; set; }
 
-        [JsonProperty("aircrafts")]
-        public Aircraft[] Aircrafts { get; set; }
+        //[JsonProperty("airlines")]
+        //public Airline[] Airlines { get; set; }
 
-        [JsonProperty("agencies")]
-        public Agency[] Agencies { get; set; }
+        //[JsonProperty("aircrafts")]
+        //public Aircraft[] Aircrafts { get; set; }
+
+        //[JsonProperty("agencies")]
+        //public Agency[] Agencies { get; set; }
+
+        /*********************************************************/
 
         [JsonProperty("routes")]
         public Route[] Routes { get; set; }
+    }
+
+    public class Door2DoorResponse
+    {
+        [JsonProperty("legResponse")]
+        public List<Door2DoorLegResponse> LegResponse { get; set; }
+
+        //[JsonProperty("tripTotals")]
+        //public TripTotals tripTotals { get; set; }
     }
 
 }

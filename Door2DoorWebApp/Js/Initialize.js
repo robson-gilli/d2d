@@ -29,6 +29,8 @@ $(document).ready(function(){
     _timeReturnSelected = false;
 	_resp = null;
 	_chosenRoute = new Array(2);
+	_chosenRoute[0] = null;
+	_chosenRoute[1] = null;
 	_chosenLeg = null;
 
     // releasing controls.
@@ -67,7 +69,6 @@ $(document).ready(function(){
 	    maxDate: _reqObj ? _reqObj.maxDepDate : "+1y"
 	});
 
-
 	//configura campo de hora
 	$('#timePicker').timepicker({
 		onSelect: function(time, inst){
@@ -78,10 +79,13 @@ $(document).ready(function(){
     //configura campo de hora
 	$('#timePickerVolta').timepicker({
 	    onSelect: function (time, inst) {
-	        _timeSelected = true;
+	        _timeReturnSelected = true;
 	    },
 	    onClose: handleTimePickerVolta
 	});
+
+	$('#datePickerVolta').css('visibility', 'hidden');
+	$('#timePickerVolta').css('visibility', 'hidden');
 
 	$('#rdSomenteIda').click(function(){
 	    $('#datePickerVolta').css('visibility', 'hidden');
@@ -92,7 +96,6 @@ $(document).ready(function(){
 	    $('#datePickerVolta').css('visibility', 'visible');
 	    $('#timePickerVolta').css('visibility', 'visible');
 	});
-
 
 	//ajusta o tamanho da div do streetview
 	applyMapContainerHeight();
@@ -167,6 +170,9 @@ function handleDatePicker(){
 	var year = $("#datePicker").datepicker('getDate').getFullYear();
 
 	_dataChegada = new Date(year, month, day, _dataChegada.getHours(), _dataChegada.getMinutes());
+
+	$("#datePickerVolta").datepicker('option', 'minDate', _dataChegada);
+	$("#datePickerVolta").datepicker('option', 'setDate', _dataChegada);
 };
 
 //
@@ -256,4 +262,3 @@ function applyMapContainerHeight() {
     var height = $(window).height() - $("#divSearchBox").height() - 2;
     $("#mapa").height(height);
 };
-

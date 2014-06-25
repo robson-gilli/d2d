@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Door2DoorWebApp.Controllers
@@ -20,9 +21,9 @@ namespace Door2DoorWebApp.Controllers
         /// <returns></returns>
         [Route("api/getd2d")]
         [HttpPost]
-        public List<Door2DoorResponse> Getd2d(D2DRequest req)
+        public Door2DoorResponse Getd2d(D2DRequest req)
         {
-            List<Door2DoorResponse> resp;
+            Door2DoorResponse resp;
 
             using (Door2Door d2d = new Door2Door(req))
             {

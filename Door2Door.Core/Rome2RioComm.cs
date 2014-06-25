@@ -16,10 +16,12 @@ namespace Door2DoorCore
     {
         private D2DRequest _req;
         public delegate void MessageReceivedEventHandler(Door2DoorResponse resp);
-        public event MessageReceivedEventHandler OnMessageReceived;
+//        public event MessageReceivedEventHandler OnMessageReceived;
 
-        private List<Door2DoorResponse> _resp;
-        public List<Door2DoorResponse> Resp
+        private Door2DoorLegResponse  _respIda;
+        private Door2DoorLegResponse _respVolta;
+        private Door2DoorResponse _resp;
+        public Door2DoorResponse Resp
         {
             get { return _resp; }
         }
@@ -31,38 +33,67 @@ namespace Door2DoorCore
         public Rome2RioComm(D2DRequest req)
         {
             _req = req;
-            _resp = new List<Door2DoorResponse>();
+            _resp = new Door2DoorResponse();
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Door2DoorResponse> Download()
+        public Door2DoorResponse Download()
         {
+            List<Task> taskList = new List<Task>();
+            string url = _req.url;
+            //ida
             using (WebClient client = new WebClient())
             {
                 try
                 {
                     client.QueryString = BuildQueryString(false);
-                    string url = _req.url;
-                    string r = client.DownloadString(url);
-                    _resp.Add(JsonConvert.DeserializeObject<Door2DoorResponse>(r));
-
-                    if (_req.desiredReturnDate.HasValue) //ida e volta
+                    taskList.Add(Task.Factory.StartNew(() =>
                     {
-                        client.QueryString = BuildQueryString(true);
-                        r = client.DownloadString(url);
-                        _resp.Add(JsonConvert.DeserializeObject<Door2DoorResponse>(r));
-                    }
-
-                    return _resp;
+                        string r = client.DownloadString(url);
+                        _respIda = JsonConvert.DeserializeObject<Door2DoorLegResponse>(r);
+                    }));
                 }
                 catch (Exception e)
                 {
                     throw new D2DResponseException(e);
                 }
             }
+            
+            // volta, se tiver
+            if (_req.desiredReturnDate.HasValue) 
+            {
+                using (WebClient clientVolta = new WebClient())
+                {
+                    try
+                    {
+                        taskList.Add(Task.Factory.StartNew(() =>
+                        {
+                            clientVolta.QueryString = BuildQueryString(true);
+                            string r = clientVolta.DownloadString(url);
+                            _respVolta = JsonConvert.DeserializeObject<Door2DoorLegResponse>(r);
+                        }));
+                    }
+                    catch (Exception e)
+                    {
+                        throw new D2DResponseException(e);
+                    }
+                }
+            }
+
+            Task.WaitAll(taskList.ToArray());
+
+            // tem que existir uma resposta para ida e outra para volta pois a ordem em que elas estao na lista '_resp' importa
+            // tem que adicionar primeiro a resposta da ida, depois a da volta, se tiver
+            _resp.LegResponse = new List<Door2DoorLegResponse>();
+            _resp.LegResponse.Add(_respIda);
+            if (_respVolta != null)
+            {
+                _resp.LegResponse.Add(_respVolta);
+            }
+            return _resp;
         }
 
         ///// <summary>

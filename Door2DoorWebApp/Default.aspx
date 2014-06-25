@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Door2DoorWebApp.Default"  %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Door2DoorWebApp.Default"  Async="true"%>
 
 <!DOCTYPE html>
 <html>
@@ -13,19 +13,19 @@
 <body>
     <div style="width: 100%; height: 100%;">
         <div style="background-color: gray; padding-bottom: 1px;" id="divSearchBox">
-            <input id="txtOrigem" class="controleOrigem" type="text" placeholder="De onde você pretende sair?" />
-            <input id="txtDestino" class="controleOrigem" type="text" placeholder="Para onde você vai?" />
+            <input id="txtOrigem" class="controleOrigem" type="text" placeholder="Saindo de:" />
+            <input id="txtDestino" class="controleOrigem" type="text" placeholder="Para:" />
             <input id="btnBuscar" type="button" onclick="buscar(true);" value="Buscar" style="height: 32px;" />
             <input type="radio" name="rdIdaVolta" id="rdSomenteIda" value="SomenteIda"  checked/>Somente Ida
             <input type="radio" name="rdIdaVolta" id="rdIdaeVolta" value="IdaeVolta"  />Ida e Volta
 
             <p>
-                <input type="text" id="datePicker" placeholder="Quando você tem que chegar?" class="dataChegada" readonly='readonly'/>
-                <input type="text" id="timePicker" placeholder="E que horas?" class="horaChegada" readonly="readonly"/>
+                <input type="text" id="datePicker" placeholder="Chegando dia:" class="dataChegada" readonly='readonly'/>
+                <input type="text" id="timePicker" placeholder="Hora:" class="horaChegada" readonly="readonly"/>
 
-                <input type="text" id="datePickerVolta" placeholder="Quando voce quer voltar?" class="dataChegada" readonly='readonly' style="visibility:hidden"/>
-                <input type="text" id="timePickerVolta" placeholder="E que horas?" class="horaChegada" readonly="readonly" style="visibility:hidden"/>
-                <label><input type="checkbox" id="chkIncludePublicTransport" />Incluir ônibus intermunicipal e transporte público</label>
+                <input type="text" id="datePickerVolta" placeholder="Voltando dia:" class="dataChegada" readonly='readonly' style="visibility:hidden"/>
+                <input type="text" id="timePickerVolta" placeholder="Hora:" class="horaChegada" readonly="readonly" style="visibility:hidden"/>
+                <label><input type="checkbox" id="chkIncludePublicTransport" />Incluir transporte público</label>
             </p>
             <p />
         </div>
@@ -40,9 +40,11 @@
                 <ul>
                     <li><a href="#divDetalhesItinerario">Ida</a></li>
                     <li><a href="#divDetalhesItinerarioVolta">Volta</a></li>
+                    <li><a href="#divTotais">Totais</a></li>
                  </ul>
-                <div id="divDetalhesItinerario" style="width: 95%; height: 498px; float: left;"></div>
-                <div id="divDetalhesItinerarioVolta" style="width: 95%; height: 498px; float: left;"><p>Coming soooooon.</p></div>
+                <div id="divDetalhesItinerario" style="width: 95%; height: 498px; float: left;">Please chose your itinerary above.</div>
+                <div id="divDetalhesItinerarioVolta" style="width: 95%; height: 498px; float: left;">Please chose your itinerary above.</div>
+                <div id="divTotais" style="width: 95%; height: 498px; float: left;">Please chose your itinerary above.</div>
             </div>
         </div>
 

@@ -58,6 +58,8 @@
     <Compile Include="Types\Door2DoorRequest\OuterFlightOption\OuterFlightSegment.cs" />
     <Compile Include="Types\Door2DoorResponse\ItineraryDates.cs" />
     <Compile Include="Types\Door2DoorResponse\Door2DoorResponse.cs" />
+    <Compile Include="Types\Door2DoorResponse\RouteTotals.cs" />
+    <Compile Include="Types\Door2DoorResponse\TripTotals.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

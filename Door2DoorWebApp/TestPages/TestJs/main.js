@@ -181,7 +181,9 @@ function buildEmptyOuterFlightOption() {
     var outerFlightOption = {
         flightSegment: outerFlightSegment,
         segmentIndex: 0,
-        routeIndex: 0
+        routeIndex: 0,
+        price: 0,
+        currency: ''
     };
     return outerFlightOption;
 };

@@ -19,8 +19,8 @@ namespace Door2DoorCore
     {
         private D2DRequest _req;
 
-        private List<Door2DoorResponse> _resp;
-        public List<Door2DoorResponse> Resp
+        private Door2DoorResponse _resp;
+        public Door2DoorResponse Resp
         {
             get { return _resp; }
         }
@@ -57,11 +57,12 @@ namespace Door2DoorCore
         /// <summary>
         /// 
         /// </summary>
-        public List<Door2DoorResponse> GetResponse()
+        public Door2DoorResponse GetResponse()
         {
             using (Rome2RioComm comm = new Rome2RioComm(_req))
             {
                 _resp = comm.Download();
+                //_resp = comm.Download();
             }
             BuildCompleteItinerarySchedule();
             return _resp;
@@ -72,9 +73,9 @@ namespace Door2DoorCore
         /// </summary>
         private void BuildCompleteItinerarySchedule()
         {
-            for (int i = 0; i < _resp[0].Routes.Count(); i++)
+            for (int i = 0; i < _resp.LegResponse[0].Routes.Count(); i++)
             {
-                Route route = _resp[0].Routes[i];
+                Route route = _resp.LegResponse[0].Routes[i];
                 bool flightChosen = false;
 
                 if (_req.chosenRoute != null && _req.chosenRoute[0].flightSegment != null)
@@ -91,9 +92,9 @@ namespace Door2DoorCore
 
             if (_req.desiredReturnDate.HasValue) //ida e volta
             {
-                for (int i = 0; i < _resp[1].Routes.Count(); i++)
+                for (int i = 0; i < _resp.LegResponse[1].Routes.Count(); i++)
                 {
-                    Route route = _resp[1].Routes[i];
+                    Route route = _resp.LegResponse[1].Routes[i];
                     bool flightChosen = false;
 
                     if (_req.chosenRoute != null && _req.chosenRoute.Length > 1 && _req.chosenRoute[1].flightSegment != null)
@@ -118,13 +119,17 @@ namespace Door2DoorCore
         /// <param name="vooEscolhido"></param>
         private void BuildItinerarySchedule(ref Route route, DateTime arrivalDateTime, bool vooEscolhido, int legIndex)
         {
-            // diferenca entre a data da viagem e agora
-            // irá ajudar no calculo do tempo para sair da origem
-            int weeklyFrequency = 0;
-            TimeSpan frequency = new TimeSpan(0, 0, 0);
-            decimal routePrice = 0;
             if (route.Segments != null && route.Segments.Length > 0)
             {
+                // resumo com totais de tempo e precos da rota atual
+                route.RouteTotals = new RouteTotals();
+
+                // diferenca entre a data da viagem e agora
+                // irá ajudar no calculo do tempo para sair da origem
+                int weeklyFrequency = 0;
+                TimeSpan frequency = new TimeSpan(0, 0, 0);
+                decimal routePrice = 0;
+
                 //adiciona data de chegada ao destino final
                 route.Segments[route.Segments.Length - 1].ArrivalDateTime = null;
                 route.Segments[route.Segments.Length - 1].DepartureDateTime = null;
@@ -137,7 +142,7 @@ namespace Door2DoorCore
 
                     // Se for voo procura um voo que possibilite chegada no horário
                     // no futuro devera pegar de uma fonte externa
-                    if (route.Segments[i].Kind == "flight")
+/*voo*/             if (route.Segments[i].Kind == "flight")
                     {
                         bool achouVoo = false;
                         ItineraryDates itineraryDates = new ItineraryDates();
@@ -200,16 +205,17 @@ namespace Door2DoorCore
                                     }
                                 }
                             }
+
+                            if (!achouVoo)// Nao tinha nenhum voo que chegaria no horario naquele dia, pegar o voo com maior horario de chegada e determinar que é no dia anterior
+                            {
+                                // acha o itinerario que tem a hora de chegada maior
+                                Leg latestItinerary = FindLatestItinerary(ref route.Segments[i]);
+
+                                itineraryDates = CalcItineraryDates(latestItinerary, arrivalDateNextStop);
+                            }
                         }
 
-                        if (!achouVoo)// Nao tinha nenhum voo que chegaria no horario naquele dia, pegar o voo com maior horario de chegada e determinar que é no dia anterior
-                        { 
-                            // acha o itinerario que tem a hora de chegada maior
-                            Leg latestItinerary = FindLatestItinerary(ref route.Segments[i]);
-
-                            itineraryDates = CalcItineraryDates(latestItinerary, arrivalDateNextStop);
-                        }
-
+                        // seta segmento com datas de chegada e partida
                         route.Segments[i].DepartureDateTime = itineraryDates.departureDateTime;
                         route.Segments[i].ArrivalDateTime = itineraryDates.arrivalDateTime;
 
@@ -222,7 +228,7 @@ namespace Door2DoorCore
                             }
                         }
                     }
-                    else// qualquer tipo de transporte que nao seja voo
+/*nao voo*/         else 
                     { 
                         //faz o calculo do preco
                         if (route.Segments[i].IndicativePrice != null)
@@ -256,9 +262,75 @@ namespace Door2DoorCore
                         route.Segments[i].DepartureDateTime = departureDate;
                         route.Segments[i].ArrivalDateTime = arrivalDate;
                     }
+
+                    // calcula o resumo da rota atual
+                    CalcRouteTotals(ref route, i);
+                }
+                route.IndicativePrice.Price = routePrice;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="route"></param>
+        /// <param name="i"></param>
+        private void CalcRouteTotals(ref Route route, int segmentIndex)
+        {
+            Segment segment = route.Segments[segmentIndex];
+            
+            route.RouteTotals.TotalDistance += segment.Distance;
+
+            if (segmentIndex < route.Segments.Length - 1) // não for o ultimo segmento
+            {
+                if (route.Segments[segmentIndex + 1].DepartureDateTime.HasValue && segment.ArrivalDateTime.HasValue)
+                {
+                    route.RouteTotals.TotalTimeWaiting = route.RouteTotals.TotalTimeWaiting.Add(route.Segments[segmentIndex + 1].DepartureDateTime.Value - segment.ArrivalDateTime.Value);
                 }
             }
-            route.IndicativePrice.Price = routePrice;
+
+            switch (segment.Kind.ToLower())
+            {
+                case "flight":
+                    if (segment.ChosenItinerary.HasValue)
+                    {
+                        route.RouteTotals.TotalPriceOfFlight += segment.Itineraries[segment.ChosenItinerary.Value].Legs[0].IndicativePrice.Price;
+                        int totalDuration = segment.Itineraries[segment.ChosenItinerary.Value].Legs[0].Hops.Sum(e => e.Duration);
+                        route.RouteTotals.TotalTimeOnFlight = route.RouteTotals.TotalTimeOnFlight.Add(new TimeSpan(0, totalDuration, 0));
+                    }
+
+                    break;
+                case "bus":
+                    if (segment.IndicativePrice != null)
+                    {
+                        route.RouteTotals.TotalPriceOfBus += segment.IndicativePrice.Price;
+                    }
+                    route.RouteTotals.TotalTimeOnBus = route.RouteTotals.TotalTimeOnBus.Add(new TimeSpan(0, segment.Duration, 0));
+
+                    break;
+                case "walk":
+                    route.RouteTotals.TotalTimeOnWalk = route.RouteTotals.TotalTimeOnWalk.Add(new TimeSpan(0, segment.Duration, 0));
+
+                    break;
+                case "car":
+                    if (segment.IndicativePrice != null)
+                    {
+                        route.RouteTotals.TotalPriceOfCar += segment.IndicativePrice.Price;
+                    }
+                    route.RouteTotals.TotalTimeOnCar = route.RouteTotals.TotalTimeOnCar.Add(new TimeSpan(0, segment.Duration, 0));
+
+                    break;
+                case "train":
+                    if (segment.IndicativePrice != null)
+                    {
+                        route.RouteTotals.TotalPriceOfTrain += segment.IndicativePrice.Price;
+                    }
+                    route.RouteTotals.TotalTimeOnTrain = route.RouteTotals.TotalTimeOnTrain.Add(new TimeSpan(0, segment.Duration, 0));
+
+                    break;
+                default:
+                    break;
+            }
         }
 
         /// <summary>

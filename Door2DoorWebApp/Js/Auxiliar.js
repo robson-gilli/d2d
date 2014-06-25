@@ -42,25 +42,46 @@ function getTimeDiff(initialDate, finalDate) {
     if (finalDate < initialDate) {
         finalDate.setDate(finalDate.getDate() + 1);
     }
-    var msec = finalDate - initialDate;//milliseconds
+    var leftMsec = finalDate - initialDate;//milliseconds
+    var spentMsec = 0;
 
-    var hh = Math.floor(msec / 1000 / 60 / 60);
-    if (hh >= 24) { // cacula dias.
-        var dd = Math.floor(hh / 24);
-        date.days = dd;
-        hh = hh - (dd * 24);
-    }
+    var dd = Math.floor(leftMsec / 24 / 60 / 60 / 1000);// total de dias
+    date.days = dd;
+
+    spentMsec += dd * 24 * 60 * 60 * 1000;
+    leftMsec -= spentMsec;
+
+    var hh = Math.floor(leftMsec / 60 / 60 / 1000);//restante em horas
     date.hours = hh;
+    spentMsec += hh * 60 * 60 * 1000;
+    leftMsec -= hh * 60 * 60 * 1000;
 
-    msec -= hh * 1000 * 60 * 60;
-    var mm = Math.floor(msec / 1000 / 60);
+    var mm = Math.floor(leftMsec / 60 / 1000);//restante em horas
     date.minutes = mm;
+    spentMsec += mm * 60 * 1000;
+    leftMsec -= mm * 60 * 1000;
 
-    msec -= mm * 1000 * 60;
-    var ss = Math.floor(msec / 1000);
-
-    msec -= ss * 1000;
+    var ss = Math.floor(leftMsec / 1000);//restante em horas
     date.seconds = ss;
+    //var hh = Math.floor(msec / 1000 / 60 / 60);
+    //if (hh >= 24) { // cacula dias.
+    //    var dd = Math.floor(hh / 24);
+    //    spentMsec += dd * 24 * 60 * 60 * 1000;
+    //    date.days = dd;
+    //    hh = hh - (dd * 24);
+    //    spentMsec += hh * 60 * 60 / 1000;
+    //}
+    //date.hours = hh;
+
+    //msec -= spentMsec;//hh * 1000 * 60 * 60;
+    //var mm = Math.floor(msec / 1000 / 60);
+    //date.minutes = mm;
+
+    //msec -= mm * 1000 * 60;
+    //var ss = Math.floor(msec / 1000);
+
+    //msec -= ss * 1000;
+    //date.seconds = ss;
 
     return date;
 };
