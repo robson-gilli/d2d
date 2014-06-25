@@ -174,7 +174,6 @@ function renderTotals() {
     htmlResult += '</table><br/><br/>';
 
     if (_resp.legResponse.length > 1) {
-
         var dataSaida = Date.parse(routeIda.segments[0].departureDateTime);
         var dataChegada = Date.parse(routeVolta.segments[routeVolta.segments.length - 1].arrivalDateTime);
         var duracaoTotalViagem = getTimeDiff(dataSaida, dataChegada);
@@ -182,7 +181,6 @@ function renderTotals() {
         var dataChegadaDestino = Date.parse(routeIda.segments[routeIda.segments.length - 1].arrivalDateTime);
         var dataSaidaDestino = Date.parse(routeVolta.segments[0].departureDateTime);
         var duracaoDestino = getTimeDiff(dataChegadaDestino, dataSaidaDestino);
-
 
         htmlResult += '<table>';
         htmlResult += '     <tr class="ui-widget-header ">'
@@ -193,9 +191,9 @@ function renderTotals() {
         htmlResult += '         <td>' + duracaoTotalViagem.days + '.' + duracaoTotalViagem.hours.toString().padLeft(2, '0') + ':' + duracaoTotalViagem.minutes.toString().padLeft(2, '0') + ':' + duracaoTotalViagem.seconds.toString().padLeft(2, '0') + '</td>';
         htmlResult += '         <td>' + duracaoDestino.days + '.' + duracaoDestino.hours.toString().padLeft(2, '0') + ':' + duracaoDestino.minutes.toString().padLeft(2, '0') + ':' + duracaoDestino.seconds.toString().padLeft(2, '0') + '</td>';
         htmlResult += '     </tr>';
-
-
+        htmlResult += '</table>';
     }
+
     $("#divTotais").html(htmlResult);
     $('input[name=rdRouteVolta]').change(onRouteChoiceChanged);
     $('input[name=rdRouteIda]').change(onRouteChoiceChanged);
@@ -253,6 +251,10 @@ function renderResult() {
 	    if (_chosenRoute[1] != null) {
 	        $("#divDetalhesItinerarioVolta").accordion("option", "active", parseInt(_chosenRoute[1].routeIndex));
 	    };
+	    $('#divTabs').tabs('enable', 1);
+	}
+	else {
+	    $('#divTabs').tabs('disable', 1);
 	}
 
 	$("#divTabs").tabs("option", "heightStyle", "auto");
@@ -289,8 +291,6 @@ function renderStops(routeIndex, legIndex) {
 		    }
 		}
 
-
-
 		htmlResult += "<br><strong>Transporte tipo:</strong> " +
             kind +
             " -  " +
@@ -299,11 +299,8 @@ function renderStops(routeIndex, legIndex) {
             tName;
 
 		htmlResult += renderFrequency(segment);
-
 		htmlResult += renderDuration(segment);
-
 		htmlResult += renderPrice(segment);
-
 		htmlResult += renderSchedule(segment);
 	};
 	return htmlResult;
