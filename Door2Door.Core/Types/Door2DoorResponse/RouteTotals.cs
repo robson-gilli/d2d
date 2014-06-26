@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Door2DoorCore.Types.Door2DoorResponse
 {
+    /// <summary>
+    ///     Summary of one route. Including total durations and costs
+    /// </summary>
     public class RouteTotals
     {
         public RouteTotals()

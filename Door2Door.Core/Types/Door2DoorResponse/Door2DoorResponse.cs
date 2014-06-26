@@ -9,80 +9,74 @@ using Door2DoorCore.Types;
 
 namespace Door2DoorCore.Types.Door2DoorResponse
 {
+    //public class Airport
+    //{
+    //    [JsonProperty("code")]
+    //    public string Code { get; set; }
 
-    public class Airport
-    {
+    //    [JsonProperty("name")]
+    //    public string Name { get; set; }
 
-        [JsonProperty("code")]
-        public string Code { get; set; }
+    //    [JsonProperty("pos")]
+    //    public string Pos { get; set; }
+    //}
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
+    //public class Airline
+    //{
+    //    [JsonProperty("code")]
+    //    public string Code { get; set; }
 
-        [JsonProperty("pos")]
-        public string Pos { get; set; }
-    }
+    //    [JsonProperty("name")]
+    //    public string Name { get; set; }
 
-    public class Airline
-    {
+    //    [JsonProperty("url")]
+    //    public string Url { get; set; }
 
-        [JsonProperty("code")]
-        public string Code { get; set; }
+    //    [JsonProperty("iconPath")]
+    //    public string IconPath { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
+    //    [JsonProperty("iconSize")]
+    //    public string IconSize { get; set; }
 
-        [JsonProperty("url")]
-        public string Url { get; set; }
+    //    [JsonProperty("iconOffset")]
+    //    public string IconOffset { get; set; }
+    //}
 
-        [JsonProperty("iconPath")]
-        public string IconPath { get; set; }
+    //public class Aircraft
+    //{
+    //    [JsonProperty("code")]
+    //    public string Code { get; set; }
 
-        [JsonProperty("iconSize")]
-        public string IconSize { get; set; }
+    //    [JsonProperty("manufacturer")]
+    //    public string Manufacturer { get; set; }
 
-        [JsonProperty("iconOffset")]
-        public string IconOffset { get; set; }
-    }
+    //    [JsonProperty("model")]
+    //    public string Model { get; set; }
+    //}
 
-    public class Aircraft
-    {
+    //public class Agency
+    //{
+    //    [JsonProperty("code")]
+    //    public string Code { get; set; }
 
-        [JsonProperty("code")]
-        public string Code { get; set; }
+    //    [JsonProperty("name")]
+    //    public string Name { get; set; }
 
-        [JsonProperty("manufacturer")]
-        public string Manufacturer { get; set; }
+    //    [JsonProperty("url")]
+    //    public string Url { get; set; }
 
-        [JsonProperty("model")]
-        public string Model { get; set; }
-    }
+    //    [JsonProperty("iconPath")]
+    //    public string IconPath { get; set; }
 
-    public class Agency
-    {
+    //    [JsonProperty("iconSize")]
+    //    public string IconSize { get; set; }
 
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("iconPath")]
-        public string IconPath { get; set; }
-
-        [JsonProperty("iconSize")]
-        public string IconSize { get; set; }
-
-        [JsonProperty("iconOffset")]
-        public string IconOffset { get; set; }
-    }
+    //    [JsonProperty("iconOffset")]
+    //    public string IconOffset { get; set; }
+    //}
 
     public class IndicativePrice
     {
-
         [JsonProperty("price")]
         public decimal Price { get; set; }
 
@@ -95,7 +89,6 @@ namespace Door2DoorCore.Types.Door2DoorResponse
 
     public class Stop
     {
-
         [JsonProperty("name")]
         public string Name { get; set; }
 
@@ -111,7 +104,6 @@ namespace Door2DoorCore.Types.Door2DoorResponse
 
     public class IndicativePrice2
     {
-
         [JsonProperty("price")]
         public decimal Price { get; set; }
 
@@ -130,7 +122,6 @@ namespace Door2DoorCore.Types.Door2DoorResponse
 
     public class IndicativePrice3
     {
-
         [JsonProperty("price")]
         public decimal Price { get; set; }
 
@@ -149,7 +140,6 @@ namespace Door2DoorCore.Types.Door2DoorResponse
 
     public class Line
     {
-
         [JsonProperty("name")]
         public string Name { get; set; }
 
@@ -171,14 +161,12 @@ namespace Door2DoorCore.Types.Door2DoorResponse
 
     public class Codeshare
     {
-
         [JsonProperty("airline")]
         public string Airline { get; set; }
     }
 
     public class Hop
     {
-
         [JsonProperty("sName")]
         public string SName { get; set; }
 
@@ -237,7 +225,6 @@ namespace Door2DoorCore.Types.Door2DoorResponse
 
     public class IndicativePrice4
     {
-
         [JsonProperty("price")]
         public decimal Price { get; set; }
 
@@ -250,7 +237,6 @@ namespace Door2DoorCore.Types.Door2DoorResponse
 
     public class Leg
     {
-
         [JsonProperty("url")]
         public string Url { get; set; }
 
@@ -269,7 +255,6 @@ namespace Door2DoorCore.Types.Door2DoorResponse
 
     public class Itinerary
     {
-
         [JsonProperty("legs")]
         public Leg[] Legs { get; set; }
 
@@ -369,6 +354,8 @@ namespace Door2DoorCore.Types.Door2DoorResponse
         [JsonProperty("routeTotals")]
         public RouteTotals RouteTotals { get; set; }
 
+        [JsonProperty("validForSchedule")]
+        public bool ValidForSchedule { get; set; }
     }
 
 }
@@ -398,17 +385,20 @@ namespace Door2DoorCore.Types.Door2DoorResponse
 
         /*********************************************************/
 
+        /// <summary>
+        ///     The Route object indicates one possile way of getting from orgin to destination.
+        ///     It may include several stops (Segments), to complete the route
+        /// </summary>
         [JsonProperty("routes")]
         public Route[] Routes { get; set; }
     }
 
     public class Door2DoorResponse
     {
+        /// <summary>
+        ///     One response for the outbound and another for the inbound option if applicable
+        /// </summary>
         [JsonProperty("legResponse")]
         public List<Door2DoorLegResponse> LegResponse { get; set; }
-
-        //[JsonProperty("tripTotals")]
-        //public TripTotals tripTotals { get; set; }
     }
-
 }

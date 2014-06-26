@@ -48,7 +48,6 @@
     <Compile Include="Exceptions\D2DRequestException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rome2RioComm.cs" />
-    <Compile Include="Types\Door2DoorRequest\D2DRequestChosenRoute.cs" />
     <Compile Include="Types\Door2DoorRequest\D2DRequestLocation.cs" />
     <Compile Include="Types\Door2DoorRequest\D2DRequestFlags.cs" />
     <Compile Include="Types\Door2DoorRequest\D2DRequest.cs" />
@@ -59,7 +58,6 @@
     <Compile Include="Types\Door2DoorResponse\ItineraryDates.cs" />
     <Compile Include="Types\Door2DoorResponse\Door2DoorResponse.cs" />
     <Compile Include="Types\Door2DoorResponse\RouteTotals.cs" />
-    <Compile Include="Types\Door2DoorResponse\TripTotals.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

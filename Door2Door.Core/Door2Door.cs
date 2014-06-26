@@ -13,22 +13,30 @@ using Door2DoorCore.Exceptions;
 namespace Door2DoorCore
 {
     /// <summary>
-    /// 
+    ///     Class for door to door routes, itineraries and schedules
     /// </summary>
     public class Door2Door : IDisposable
     {
+        /// <summary>
+        ///     Request
+        /// </summary>
         private D2DRequest _req;
 
         private Door2DoorResponse _resp;
+        /// <summary>
+        ///     Response of the itineraries
+        /// </summary>
         public Door2DoorResponse Resp
         {
             get { return _resp; }
         }
-
+        
         /// <summary>
-        /// 
+        ///     Class for door to door routes, itineraries and schedules
         /// </summary>
-        /// <param name="d2dReq"></param>
+        /// <param name="d2dReq">
+        ///     Parameters for the request
+        /// </param>
         public Door2Door(D2DRequest d2dReq)
         {
             if (RequestIsOK(d2dReq))
@@ -42,10 +50,14 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        /// 
+        ///     Verifies if all necessary data from the request are correctly informed
         /// </summary>
-        /// <param name="d2dReq"></param>
-        /// <returns></returns>
+        /// <param name="d2dReq">
+        ///     Route request
+        /// </param>
+        /// <returns>
+        ///     Whether the request is ok or not
+        /// </returns>
         private bool RequestIsOK(D2DRequest d2dReq)
         {
             return d2dReq.flags != null &&
@@ -55,27 +67,30 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        /// 
+        ///     Calculates the possible routes, tinieraries and schedules using the given request informed on the constructor 
         /// </summary>
+        /// <returns>
+        ///     Complete itinerary with indicative pricing and schedule
+        /// </returns>
         public Door2DoorResponse GetResponse()
         {
             using (Rome2RioComm comm = new Rome2RioComm(_req))
             {
                 _resp = comm.Download();
-                //_resp = comm.Download();
             }
             BuildCompleteItinerarySchedule();
             return _resp;
         }
 
         /// <summary>
-        /// Builds a itinerary with schedules for each stop, based on the desired arrival date at the destination
+        ///     Builds an itinerary with schedules for each stop, based on the desired arrival date at the destination
         /// </summary>
         private void BuildCompleteItinerarySchedule()
         {
-            for (int i = 0; i < _resp.LegResponse[0].Routes.Count(); i++)
+            for (int i = 0; i < _resp.LegResponse[0].Routes.Count(); i++) //ida
             {
                 Route route = _resp.LegResponse[0].Routes[i];
+                route.ValidForSchedule = true;
                 bool flightChosen = false;
 
                 if (_req.chosenRoute != null && _req.chosenRoute[0].flightSegment != null)
@@ -90,7 +105,7 @@ namespace Door2DoorCore
                 BuildItinerarySchedule(ref route, _req.desiredArrivalDate, flightChosen, 0);
             }
 
-            if (_req.desiredReturnDate.HasValue) //ida e volta
+            if (_req.desiredReturnDate.HasValue) //volta
             {
                 for (int i = 0; i < _resp.LegResponse[1].Routes.Count(); i++)
                 {
@@ -107,17 +122,34 @@ namespace Door2DoorCore
 
                     // adiciona informacoes de horario aos segmentos da rota atual
                     BuildItinerarySchedule(ref route, _req.desiredReturnDate.Value, flightChosen, 1);
+
+                    // Pode acontecer de determinada rota de retorno não ser válida por inicar antes da chegada ao destino,
+                    // nestes casos a rota é devolvida normalmente, mas é marcada como invalida.
+                    if (route.Segments[0].DepartureDateTime > _req.desiredArrivalDate)
+                    {
+                        route.ValidForSchedule = true;
+                    }
                 }
             }
         }
 
         /// <summary>
-        /// 
+        ///     Completes the response with  schedule information.
+        ///     This method also takes into account any external flight option that might have been informed in the request.
         /// </summary>
-        /// <param name="route"></param>
-        /// <param name="dateTime"></param>
-        /// <param name="vooEscolhido"></param>
-        private void BuildItinerarySchedule(ref Route route, DateTime arrivalDateTime, bool vooEscolhido, int legIndex)
+        /// <param name="route">
+        ///     Route: <see cref="Door2DoorCore.Types.Door2DoorResponse.Route"/>
+        /// </param>
+        /// <param name="arrivalDateTime">
+        ///     Desired arrival date at destination
+        /// </param>
+        /// <param name="flightChosen">
+        ///     If an external flight was informed for this route. <see cref="Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption"/>
+        /// </param>
+        /// <param name="legIndex">
+        ///     Whether this is the inbound(0) or outbound(1) leg of the trip
+        /// </param>
+        private void BuildItinerarySchedule(ref Route route, DateTime arrivalDateTime, bool flightChosen, int legIndex)
         {
             if (route.Segments != null && route.Segments.Length > 0)
             {
@@ -148,7 +180,7 @@ namespace Door2DoorCore
                         ItineraryDates itineraryDates = new ItineraryDates();
                         route.Segments[i].ChosenItinerary = null; //escolhido automaticamente
 
-                        if (vooEscolhido) // é uma alteração de itinerario, um voo foi alterado
+                        if (flightChosen) // é uma alteração de itinerario, um voo foi alterado
                         {
                             if (_req.chosenRoute[legIndex].segmentIndex == i)
                             {
@@ -271,10 +303,14 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        /// 
+        ///     Total times and costs fo the informed segment
         /// </summary>
-        /// <param name="route"></param>
-        /// <param name="i"></param>
+        /// <param name="route">
+        ///      <see cref="Door2DoorCore.Types.Door2DoorResponse.Route"/>
+        /// </param>
+        /// <param name="segmentIndex">
+        ///     Which segment of the informed route.
+        /// </param>
         private void CalcRouteTotals(ref Route route, int segmentIndex)
         {
             Segment segment = route.Segments[segmentIndex];
@@ -334,9 +370,14 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        /// 
+        ///     Builds a Itinerary <see cref="Door2DoorCore.Types.Door2DoorResponse.Itinerary"/> based on the D2DRequestChosenRoute on the request.
         /// </summary>
-        /// <returns></returns>
+        /// <param name="segment">
+        ///     Which segment the itinerary will be included
+        /// </param>
+        /// <param name="legIndex">
+        ///     Whether this is the inbound(0) or outbound(1) leg of the trip
+        /// </param>
         private void BuildINewtinFromChosenRoute(ref Segment segment, int legIndex)
         {
             Itinerary it = new Itinerary();
@@ -380,10 +421,14 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        /// 
+        ///     Calculetes a TimeSpan indicating a weekly frequency of a type of transportation.
         /// </summary>
-        /// <param name="weeklyFrequency"></param>
-        /// <returns></returns>
+        /// <param name="weeklyFrequency">
+        ///     Estimated feequency per week. (How many times per week) 
+        /// </param>
+        /// <returns>
+        ///     TimeSpan indicating the frequency. (How long untill the next transport to arrive)
+        /// </returns>
         private TimeSpan CalcFrequency(int weeklyFrequency)
         {
             int minutes = 0;
@@ -391,8 +436,8 @@ namespace Door2DoorCore
 
             if (weeklyFrequency > 0)
             {
-                const int DIAS_NA_SEMAMA = 7;
-                const int HORAS_NA_SEMAMA = 168;
+                const int DIAS_NA_SEMAMA = 7; // 7 dias por semana
+                const int HORAS_NA_SEMAMA = 168; //168 horas na semana
                 decimal absHourFrequency = Math.Floor((decimal)(weeklyFrequency / HORAS_NA_SEMAMA));
 
                 if (weeklyFrequency / DIAS_NA_SEMAMA > 24)// mais do que um a cada hora
@@ -422,44 +467,40 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        /// 
+        ///     Gets the total frequency (in minutes) of the segment
         /// </summary>
-        /// <param name="segment"></param>
-        /// <returns></returns>
+        /// <param name="segment">
+        ///     Door2DoorCore.Types.Door2DoorResponse.Segment.
+        /// </param>
+        /// <returns>
+        ///     Nullable TimeSpan indicating the total frequency. ('null' if the segment does not have a frequency attribute)
+        /// </returns>
         private TimeSpan? GetSegmentFrequency(Segment segment)
         {
             TimeSpan? freq = null;
             int horasTotal = 0;
             if (segment != null && segment.Itineraries != null && segment.Kind != "flight")
-            {
                 for (int i = 0; i < segment.Itineraries.Length; i++)
-                {
                     if (segment.Itineraries[i].Legs != null)
-                    {
                         for (int  j = 0; j < segment.Itineraries[i].Legs.Length; j++)
-                        {
                             if (segment.Itineraries[i].Legs[j].Hops != null)
-                            {
                                 horasTotal = segment.Itineraries[i].Legs[j].Hops.Sum(e => e.Frequency);
-                            }
-                        }
-                    }
-                }
-            }
 
             if (horasTotal > 0)
-            {
                 freq = CalcFrequency(horasTotal);
-            }
 
             return freq;
         }
 
         /// <summary>
-        /// 
+        ///     Gets the weekly frequency (in minutes) of the segment. <see cref="CalcFrequency"/>
         /// </summary>
-        /// <param name="segment"></param>
-        /// <returns></returns>
+        /// <param name="segment">
+        ///     Door2DoorCore.Types.Door2DoorResponse.Segment.
+        /// </param>
+        /// <returns>
+        ///     int WeeklyFrequency
+        /// </returns>
         private int GetWeeklyFrequency(Segment segment)
         {
             int weeklyFrequency = 0;
@@ -477,10 +518,14 @@ namespace Door2DoorCore
         }
     
         /// <summary>
-        /// 
+        ///     Finds the Itinerary that arrives at the latest time.
         /// </summary>
-        /// <param name="segment"></param>
-        /// <returns></returns>
+        /// <param name="segment">
+        ///     
+        /// </param>
+        /// <returns>
+        ///     Leg (Itinerary)
+        /// </returns>
         private Leg FindLatestItinerary(ref Segment segment)
         {
             Leg latestItinerary = null;
@@ -516,11 +561,18 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        /// 
+        ///     Tries to Match the given Itinerary to the desired Arrival Date at the destination.
+        ///     Return an empty object if the itinerary does not match.
         /// </summary>
-        /// <param name="itinerary"></param>
-        /// <param name="arrivalDateNextStop"></param>
-        /// <returns></returns>
+        /// <param name="itinerary">
+        ///     Itinerary desired to be matched
+        /// </param>
+        /// <param name="arrivalDateNextStop">
+        ///     DateTime to match
+        /// </param>
+        /// <returns>
+        ///     <see cref="Door2DoorCore.Types.Door2DoorResponse"/> indicatin Arrival and Departure dates. Both 'null' if not valid.
+        /// </returns>
         private ItineraryDates MatchflightToSchedule(Leg itinerary, DateTime arrivalDateNextStop)
         {
             ItineraryDates flightOption = new ItineraryDates();
@@ -551,15 +603,20 @@ namespace Door2DoorCore
                 flightOption.arrivalDateTime = tempArrivalDate;
             }
             return flightOption;
-
         }
 
         /// <summary>
-        /// 
+        ///     Calculate departure and arrival dates of a valid itinerary
         /// </summary>
-        /// <param name="itinerary"></param>
-        /// <param name="arrivalDateNextStop"></param>
-        /// <returns></returns>
+        /// <param name="itinerary">
+        ///     Itinerary
+        /// </param>
+        /// <param name="arrivalDateNextStop">
+        ///     Arrival date for the next itinerary
+        /// </param>
+        /// <returns>
+        ///     Arrival and Departure dates
+        /// </returns>
         private ItineraryDates CalcItineraryDates(Leg itinerary, DateTime arrivalDateNextStop)
         {
             ItineraryDates itinerarySchedule = new ItineraryDates();

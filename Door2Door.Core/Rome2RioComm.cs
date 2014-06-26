@@ -12,14 +12,26 @@ using Newtonsoft.Json;
 
 namespace Door2DoorCore
 {
+    /// <summary>
+    ///     Responsible for communicating with Rome2rio REST API
+    /// </summary>
     internal class Rome2RioComm : IDisposable
     {
         private D2DRequest _req;
         public delegate void MessageReceivedEventHandler(Door2DoorResponse resp);
 //        public event MessageReceivedEventHandler OnMessageReceived;
 
+        /// <summary>
+        ///     Outbound Response.
+        /// </summary>
         private Door2DoorLegResponse  _respIda;
+        /// <summary>
+        ///     Inbound Response.
+        /// </summary>
         private Door2DoorLegResponse _respVolta;
+        /// <summary>
+        ///     Complete Response.
+        /// </summary>
         private Door2DoorResponse _resp;
         public Door2DoorResponse Resp
         {
@@ -27,7 +39,7 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        /// Handles the communication between client and Rome2rio api
+        ///     Handles the communication between client and Rome2rio api
         /// </summary>
         /// <param name="req"></param>
         public Rome2RioComm(D2DRequest req)
@@ -37,9 +49,11 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        /// 
+        ///     Get the response.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        ///     Complete raw Rome2rio response.
+        /// </returns>
         public Door2DoorResponse Download()
         {
             List<Task> taskList = new List<Task>();
@@ -129,9 +143,14 @@ namespace Door2DoorCore
         //}
 
         /// <summary>
-        /// 
+        ///     Builds parameters for the API request
         /// </summary>
-        /// <returns></returns>
+        /// <param name="isReturnRoute">
+        ///     Whether this is a inbound leg
+        /// </param>
+        /// <returns>
+        ///     NameValueCollection with the querystring
+        /// </returns>
         private System.Collections.Specialized.NameValueCollection BuildQueryString(bool isReturnRoute)
         {
             System.Collections.Specialized.NameValueCollection collection = new System.Collections.Specialized.NameValueCollection();
@@ -169,7 +188,27 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        /// 
+        ///     0x00000000	Include all kinds of segments (Default)
+        ///     0x000FFFFF	Exclude all kinds of segments (See example below)
+        ///     0x00000001	Exclude flight segments
+        ///     0x00000002	Exclude flight itineraries
+        ///     0x00000010	Exclude train segments
+        ///     0x00000020	Exclude train itineraries
+        ///     0x00000100	Exclude bus segments
+        ///     0x00000200	Exclude bus itineraries
+        ///     0x00001000	Exclude ferry segments
+        ///     0x00002000	Exclude ferry itineraries
+        ///     0x00010000	Exclude car segments
+        ///     0x00100000	Exclude commuter hops (commuter = local bus, train, trams, subways, etc.)
+        ///     0x00200000	Exclude special hops (special = funiculars, steam trains, tours, etc.)
+        ///     0x00400000	Exclude minor start segments
+        ///     0x00800000	Exclude minor end segments
+        ///     0x01000000	Exclude paths (saves bandwidth)
+        ///     0x04000000	Exclude indicative prices (saves bandwidth)
+        ///     0x10000000	Disable scoring and pruning (debug only)
+        ///     Flights only: 0x000FFFF0 (0x000FFFFF - 0x0000000F)
+        ///     Not via road: 0x00010100 (0x00000100 + 0x00010000)
+        ///     NOTE: You can pass these flags either as a hexadecimal value (&flags=0x00010100) or simply as a decimal (&flags=65792). 
         /// </summary>
         /// <returns></returns>
         private int BuildSearchRequestFlags()

@@ -14,13 +14,13 @@ namespace Door2DoorWebApp
     {
         private struct PostData
         {
-            public string minDepDate;
-            public string maxDepDate;
-            public int maxDriveKm;
-            public bool incPublicTransp;
-            public bool allowInter;
-            public string outputUrl;
-            public string iframeInputUrl;
+            public string   minDepDate;
+            public string   maxDepDate;
+            public int      maxDriveKm;
+            public bool     incPublicTransp;
+            public bool     allowInter;
+            public string   outputUrl;
+            public string   iframeInputUrl;
         }
 
         /// <summary>
@@ -44,15 +44,14 @@ namespace Door2DoorWebApp
         /// <returns></returns>
         private void PopulatePage()
         {
-            bool isOk = Request.Form["minDepDate"] != null &&
-                        Request.Form["maxDepDate"] != null &&
+            bool isOk = Request.Form["minDepDate"]      != null &&
+                        Request.Form["maxDepDate"]      != null &&
                         Request.Form["incPublicTransp"] != null &&
-                        Request.Form["maxDriveKm"] != null &&
-                        Request.Form["allowInter"] != null &&
-                        Request.Form["outputUrl"] != null &&
-                        Request.Form["iframeInputUrl"] != null;
+                        Request.Form["maxDriveKm"]      != null &&
+                        Request.Form["allowInter"]      != null &&
+                        Request.Form["outputUrl"]       != null &&
+                        Request.Form["iframeInputUrl"]  != null;
 
-            
             //incPublicTransp
             if (isOk)
             {
@@ -100,11 +99,5 @@ namespace Door2DoorWebApp
                 litJsonRq.Text = json;
             }
         }
-
-
-
-
-
-
     }
 }

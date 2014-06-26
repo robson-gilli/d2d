@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Door2DoorCore.Types.Door2DoorResponse
 {
+    /// <summary>
+    ///     Aux to the itinerary calculation.
+    /// </summary>
     public class ItineraryDates
     {
         public DateTime? arrivalDateTime;

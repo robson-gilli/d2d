@@ -58,13 +58,16 @@ function buscar(originalRoute) {
 };
 
 //
-//handles event triggered when successfull ajax call is returned from supplier
+// Handles event triggered when successfull ajax call is returned from supplier
 //
 function handleSuccessSearch(d2d) {
     if (d2d != null) {
         _resp = d2d;
         renderResult();
         renderTotals();
+
+        $('input[name=rdRouteVolta]').change(onRouteChoiceChanged);
+        $('input[name=rdRouteIda]').change(onRouteChoiceChanged);
     };
 };
 
@@ -79,6 +82,7 @@ function renderTotals() {
     var indiceRouteVolta;
     var routeVolta;
     var custoTotalCarro = 0, custoTotalOnibus = 0, custoTotalTrem = 0, custoTotalVoo = 0, custoTotal = 0;
+    var isAnyReturnValid = (_resp.legResponse.length > 1) && $('input[name=rdRouteVolta]:checked').val(); // tem volta e alguma rota valida
 
     custoTotalCarro = routeIda.routeTotals.totalPriceOfCar;
     custoTotalOnibus = routeIda.routeTotals.totalPriceOfBus;
@@ -86,7 +90,7 @@ function renderTotals() {
     custoTotalVoo = routeIda.routeTotals.totalPriceOfFlight;
     custoTotal = routeIda.routeTotals.totalPriceOfTrain + routeIda.routeTotals.totalPriceOfCar + routeIda.routeTotals.totalPriceOfBus + routeIda.routeTotals.totalPriceOfFlight;
 
-    if (_resp.legResponse.length > 1) {
+    if (isAnyReturnValid) {
         indiceRouteVolta = $('input[name=rdRouteVolta]:checked').val();
         routeVolta = _resp.legResponse[1].routes[indiceRouteVolta];
 
@@ -120,7 +124,7 @@ function renderTotals() {
     htmlResult += '         <td align="right">' + routeIda.routeTotals.totalTimeOnWalk + '</td>';
     htmlResult += '         <td align="right">' + routeIda.routeTotals.totalTimeWaiting + '</td>';
     htmlResult += '     </tr>';
-    if (_resp.legResponse.length > 1) {
+    if (isAnyReturnValid) {
         htmlResult += '     <tr>';
         htmlResult += '         <td><strong>Volta</strong></th>';
         htmlResult += '         <td align="right">' + routeVolta.routeTotals.totalDistance.toFixed(2) + '</td>';
@@ -153,7 +157,7 @@ function renderTotals() {
     htmlResult += '         <td align="right">R$ ' + routeIda.routeTotals.totalPriceOfFlight.toFixed(2) + '</td>';
     htmlResult += '         <td align="right">R$ ' + (routeIda.routeTotals.totalPriceOfTrain + routeIda.routeTotals.totalPriceOfCar + routeIda.routeTotals.totalPriceOfBus + routeIda.routeTotals.totalPriceOfFlight).toFixed(2) + '</td>';
     htmlResult += '     </tr>';
-    if (_resp.legResponse.length > 1) {
+    if (isAnyReturnValid) {
         htmlResult += '     <tr>';
         htmlResult += '         <td><strong>Volta</strong></th>';
         htmlResult += '         <td align="right">R$ ' + routeVolta.routeTotals.totalPriceOfTrain.toFixed(2) + '</td>';
@@ -172,8 +176,7 @@ function renderTotals() {
     htmlResult += '         <td align="right"><strong>R$ ' + custoTotal.toFixed(2) + '</strong></td>';
     htmlResult += '     </tr>';
     htmlResult += '</table><br/><br/>';
-
-    if (_resp.legResponse.length > 1) {
+    if (isAnyReturnValid) {
         var dataSaida = Date.parse(routeIda.segments[0].departureDateTime);
         var dataChegada = Date.parse(routeVolta.segments[routeVolta.segments.length - 1].arrivalDateTime);
         var duracaoTotalViagem = getTimeDiff(dataSaida, dataChegada);
@@ -185,7 +188,7 @@ function renderTotals() {
         htmlResult += '<table>';
         htmlResult += '     <tr class="ui-widget-header ">'
         htmlResult += '         <th>Tempo total da viagem</th>';
-        htmlResult += '         <th>Tempo total no destino</th>';
+        htmlResult += '         <th>Permanência no destino</th>';
         htmlResult += '     </tr>';
         htmlResult += '     <tr>'
         htmlResult += '         <td>' + duracaoTotalViagem.days + '.' + duracaoTotalViagem.hours.toString().padLeft(2, '0') + ':' + duracaoTotalViagem.minutes.toString().padLeft(2, '0') + ':' + duracaoTotalViagem.seconds.toString().padLeft(2, '0') + '</td>';
@@ -193,10 +196,7 @@ function renderTotals() {
         htmlResult += '     </tr>';
         htmlResult += '</table>';
     }
-
     $("#divTotais").html(htmlResult);
-    $('input[name=rdRouteVolta]').change(onRouteChoiceChanged);
-    $('input[name=rdRouteIda]').change(onRouteChoiceChanged);
 }
 
 //
@@ -233,16 +233,25 @@ function renderResult() {
 
     /////////////////////////////////////////VOTA
 	htmlResult = "";
+	var radioAlreadyChecked = false;
 	if (_resp.legResponse.length > 1) {
 	    for (var i = 0; i < _resp.legResponse[1].routes.length; i++) {
 	        var route = _resp.legResponse[1].routes[i];
 	        var price = route.indicativePrice && route.indicativePrice.price != null && route.indicativePrice.price != 0 && !isNaN(route.indicativePrice.price) ? " - R$ " + route.indicativePrice.price + ",00" : '';
-	        var checked = i == 0 ? 'checked' : '';
+	        var disabled = '';
+	        var checked = '';
 
-	        htmlResult += "<h3 id='route" + i + "'><input type='radio' name='rdRouteVolta' " + checked + " value='" + i + "'/>Opção " + (i + 1) + " - " + route.name + price + "</h3><div>";
+	        if (!route.validForSchedule) {
+	            disabled = 'disabled';
+	        } else {
+	            if (!radioAlreadyChecked) {
+	                checked = 'checked';
+	                radioAlreadyChecked = true;
+	            }
+	        }
 
+	        htmlResult += "<h3 id='route" + i + "'><input type='radio' name='rdRouteVolta' " + checked + " value='" + i + "' " + disabled + "/>Opção " + (i + 1) + " - " + route.name + price + "</h3><div>";
 	        htmlResult += renderStops(i, 1);
-
 	        htmlResult += "</div>";
 	    };
 	    $("#divDetalhesItinerarioVolta").html(htmlResult);
@@ -251,6 +260,7 @@ function renderResult() {
 	    if (_chosenRoute[1] != null) {
 	        $("#divDetalhesItinerarioVolta").accordion("option", "active", parseInt(_chosenRoute[1].routeIndex));
 	    };
+
 	    $('#divTabs').tabs('enable', 1);
 	}
 	else {
@@ -260,7 +270,7 @@ function renderResult() {
 	$("#divTabs").tabs("option", "heightStyle", "auto");
 	$("#divTabs").tabs("refresh");
 
-    // para poder colocar o radio button no header do accordion
+    // para poder colocar o radio button no header do accordion evitando o comportamento padrao do acrodion de expansao.
 	$('input[type=radio]').on('click', function (e) { e.stopPropagation(); });
 };
 
@@ -273,8 +283,8 @@ function renderStops(routeIndex, legIndex) {
 	for (var i = 0; i < route.segments.length; i++) {
 		var segment = route.segments[i];
 
-		var sName = ''; //segment.kind == 'flight' ? segment.sCode : (segment.sName == "Origin" ? _placeOrigem.adr_address.split(',')[0] : segment.sName);
-		var tName = ''; //segment.kind == 'flight' ? segment.tCode + "&nbsp;<a href='javascript:void(0);' style='color:blue' onclick='javascript:showFlightOptionsAlternatives(" + i + ", " + routeIndex + ")'>Alterar</a>" + confirmar : (segment.tName == "Destination" ? _placeDestino.adr_address.split(',')[0] : segment.tName);
+		var sName = ''; 
+		var tName = ''; 
 		var confirmar = _reqObj == null ? "" : "&nbsp;/&nbsp;<a href='javascript:void(0);' style='color:blue' onclick='javascript:confirmFlightOption(" + i + ", " + routeIndex + "," + legIndex + ")'>Confirmar</a>";
 		var kind = segment.kind == 'car' ? segment.vehicle : segment.kind;
 
@@ -364,8 +374,7 @@ function renderDuration(segment) {
 			horas = Math.floor(segment.duration / 60);
 			if (horas > 1) {
 				sHoras = horas + " horas ";
-			}
-			else {
+			} else {
 				horas = 1;
 				sHoras = "1 hora ";
 			};
@@ -376,8 +385,7 @@ function renderDuration(segment) {
 			};
 
 			duracao = sHoras + sMinutos;
-		}
-		else {
+		} else {
 			duracao = segment.duration + " minutos";
 		};
 		
@@ -415,8 +423,7 @@ function renderFrequency(segment) {
 
 		if (frequency.hours == 1 && frequency.minutes == 0) {
 			horas = "A cada 1 hora";
-		}
-		else {
+		} else {
 			if (frequency.hours > 0)
 				horas = "A cada " + frequency.hours + (frequency.hours == 1 ? " hora" : " horas");
 		};
@@ -476,6 +483,7 @@ function showFlightOptionsAlternatives(segmentIndex, routeIndex, legIndex) {
     if (segmentIndex < route.segments.length - 1) { // não é o ultimo
         arrDate = route.segments[segmentIndex + 1].departureDateTime;
     }
+
     $('#hidr2r_resp').val(postContent);
     $('#hidarrdate').val(arrDate);
     $('#hisegmentIndex').val(segmentIndex);
@@ -486,5 +494,4 @@ function showFlightOptionsAlternatives(segmentIndex, routeIndex, legIndex) {
     $('#frmChangeItin').submit();
     $("#divFlightOptionsAlternatives").dialog("open");
     /*********** </GAMBIARRA PARA DEMO SOMENTE, TROCAR ISTO POR CHAMADA REAL DE VOO> ***********/
-
 };

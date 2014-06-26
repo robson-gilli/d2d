@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Door2DoorCore.Types.Door2DoorRequest
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class D2DRequestChosenRoute
     {
         public int? itineraryIndex { get; set; }

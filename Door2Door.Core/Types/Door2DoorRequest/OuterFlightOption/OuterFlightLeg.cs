@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption
 {
+    /// <summary>
+    ///     A leg(flight) from an external source
+    /// </summary>
     public class OuterFlightLeg
     {
         public string origin { get; set; }
@@ -25,10 +28,15 @@ namespace Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption
         public char fareClass { get; set; }
 
         public string fareBasis { get; set; }
-
+        
+        /// <summary>
+        ///     In minutes
+        /// </summary>
         public int duration { get; set; }
 
+        /// <summary>
+        ///     In Km
+        /// </summary>
         public int distance { get; set; }
-
     }
 }
