@@ -11,18 +11,25 @@ namespace Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption
     /// </summary>
     public class OuterFlightOption
     {
+        /// <summary>
+        /// <see cref="Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightSegment"/>. External flight segment.
+        /// </summary>
         public OuterFlightSegment flightSegment { get; set; }
         /// <summary>
-        ///  I which segment should this option be inserted
+        ///     In which segment should this option be inserted
         /// </summary>
         public int segmentIndex { get; set; }
         /// <summary>
-        ///  I which route should this option be inserted
+        ///     In which route should this option be inserted
         /// </summary>
         public int routeIndex { get; set; }
-
+        /// <summary>
+        /// Price for the option
+        /// </summary>
         public decimal price { get; set; }
-
+        /// <summary>
+        /// Cuurency for the option
+        /// </summary>
         public string currency { get; set; }
     }
 }

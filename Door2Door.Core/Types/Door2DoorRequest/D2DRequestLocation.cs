@@ -12,7 +12,13 @@ namespace Door2DoorCore.Types.Door2DoorRequest
     /// </summary>
     public class D2DRequestLocation
     {
+        /// <summary>
+        /// Location latitude.
+        /// </summary>
         public string lat { get; set; }
+        /// <summary>
+        /// Location longitude.
+        /// </summary>
         public string lng { get; set; }
         /// <summary>
         ///     Supported values include Rome2rio Place kinds, Google Geocoding result types and Yahoo WOEID place types.

@@ -490,7 +490,10 @@ function showFlightOptionsAlternatives(segmentIndex, routeIndex, legIndex) {
     $('#hidrouteIndex').val(routeIndex);
     $('#hidlegIndex').val(legIndex);
 
-    $('#frmChangeItin').attr('action', _reqObj.iframeInputUrl);
+    //mais uma gambizinha de leve
+    var url = _reqObj && _reqObj.iframeInputUrl ? _reqObj.iframeInputUrl : '/TestPages/ItineraryInputPage.aspx';
+
+    $('#frmChangeItin').attr('action', url);
     $('#frmChangeItin').submit();
     $("#divFlightOptionsAlternatives").dialog("open");
     /*********** </GAMBIARRA PARA DEMO SOMENTE, TROCAR ISTO POR CHAMADA REAL DE VOO> ***********/

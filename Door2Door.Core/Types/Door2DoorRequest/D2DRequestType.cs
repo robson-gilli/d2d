@@ -11,7 +11,13 @@ namespace Door2DoorCore.Types.Door2DoorRequest
     /// </summary>
     public enum D2DRequestType
     {
+        /// <summary>
+        /// Rome2Rio
+        /// </summary>
         r2r,
+        /// <summary>
+        /// Not used
+        /// </summary>
         other
     }
 }

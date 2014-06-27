@@ -13,12 +13,12 @@ using Newtonsoft.Json;
 namespace Door2DoorCore
 {
     /// <summary>
-    ///     Responsible for communicating with Rome2rio REST API
+    ///     Responsible for communicating with Rome2rio REST API.
     /// </summary>
     internal class Rome2RioComm : IDisposable
     {
         private D2DRequest _req;
-        public delegate void MessageReceivedEventHandler(Door2DoorResponse resp);
+//        public delegate void MessageReceivedEventHandler(Door2DoorResponse resp);
 //        public event MessageReceivedEventHandler OnMessageReceived;
 
         /// <summary>
@@ -29,19 +29,22 @@ namespace Door2DoorCore
         ///     Inbound Response.
         /// </summary>
         private Door2DoorLegResponse _respVolta;
-        /// <summary>
-        ///     Complete Response.
-        /// </summary>
         private Door2DoorResponse _resp;
+        /// <summary>
+        ///     Raw response, before schedules and totals addition.
+        /// </summary>
         public Door2DoorResponse Resp
         {
             get { return _resp; }
         }
 
         /// <summary>
-        ///     Handles the communication between client and Rome2rio api
+        ///     Handles the communication between client and Rome2rio api.
         /// </summary>
-        /// <param name="req"></param>
+        /// <param name="req">
+        ///     Parameters for the request include coordinates of origin and destination,
+        ///     arrival and return dates, external flight options and filters.
+        /// </param>
         public Rome2RioComm(D2DRequest req)
         {
             _req = req;
@@ -49,10 +52,10 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        ///     Get the response.
+        ///     Downloads the response from the API, according to the request informed.
         /// </summary>
         /// <returns>
-        ///     Complete raw Rome2rio response.
+        ///     Raw response, before schedules and totals addition.
         /// </returns>
         public Door2DoorResponse Download()
         {

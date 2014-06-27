@@ -10,21 +10,38 @@ using Door2DoorCore.Types.Door2DoorRequest;
 using Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption;
 using Door2DoorCore.Exceptions;
 
+/// <summary>
+///     Provides Door2Door routes
+/// </summary>
 namespace Door2DoorCore
 {
     /// <summary>
-    ///     Class for door to door routes, itineraries and schedules
+    ///     <para>
+    ///     The Door2Door Class Library searches for itineraries from and to any location.
+    ///     </para>
+    ///     <para>
+    ///     Just inform the coordinates for the origin and destination, the desired arrival date at the destination and a list of routes will be returned.
+    ///     </para>
+    ///     <para>
+    ///     The routes may include several means of transportation, including walking, flights, taxis, cars, buses, trains, ferrys trams and more.
+    ///     </para>
+    ///     <para>
+    ///     A desired return date can also be specified. In this case two sets of routes will be returned, one for the outbound and another for the inbound segment.
+    ///     </para>
+    ///     <para>
+    ///     You can also filter wheter you want or not include public transportation on the response.
+    ///     </para>
+    ///     <para>
+    ///     NOTE: All schedules and pricing are estimatives, It's impossible to predict with perfect accuracy the correct time walking or the price of the taxi, for instance.
+    ///     </para>
     /// </summary>
     public class Door2Door : IDisposable
     {
-        /// <summary>
-        ///     Request
-        /// </summary>
         private D2DRequest _req;
 
         private Door2DoorResponse _resp;
         /// <summary>
-        ///     Response of the itineraries
+        ///     Routes and schedules for the desired itinerary request. <see cref="Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>
         /// </summary>
         public Door2DoorResponse Resp
         {
@@ -32,10 +49,12 @@ namespace Door2DoorCore
         }
         
         /// <summary>
-        ///     Class for door to door routes, itineraries and schedules
+        ///     Constructor of the class. <see cref="Door2DoorCore.Door2Door"/>
         /// </summary>
         /// <param name="d2dReq">
-        ///     Parameters for the request
+        ///     <para><see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/></para>
+        ///     Parameters for the request include coordinates of origin and destination,
+        ///     arrival and return dates, external flight options and filters.
         /// </param>
         public Door2Door(D2DRequest d2dReq)
         {
@@ -53,7 +72,7 @@ namespace Door2DoorCore
         ///     Verifies if all necessary data from the request are correctly informed
         /// </summary>
         /// <param name="d2dReq">
-        ///     Route request
+        ///     Route request. <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>
         /// </param>
         /// <returns>
         ///     Whether the request is ok or not
@@ -67,10 +86,11 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        ///     Calculates the possible routes, tinieraries and schedules using the given request informed on the constructor 
+        ///     <para>After instantiating the <see cref="Door2DoorCore.Door2Door"/> class, you should invoke this method.</para>
+        ///     <para>It calculates all possible routes, itineraries and schedules for the given request.</para>
         /// </summary>
         /// <returns>
-        ///     Complete itinerary with indicative pricing and schedule
+        ///     <see cref="Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>. Complete itinerary with indicative pricing and schedules.
         /// </returns>
         public Door2DoorResponse GetResponse()
         {

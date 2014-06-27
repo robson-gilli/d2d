@@ -131,26 +131,28 @@ function confirmFlightOption() {
         for (var i = 0; i < _postData.segment.itineraries[_chosenIt].legs[0].hops.length; i++) {
             var hop = _postData.segment.itineraries[_chosenIt].legs[0].hops[i];
             var fLeg = buildEmptyOuterFlightLeg();
-            
-            var tempDate = Date.parse(nextArrivalDate.toString('yyyy-MM-ddTHH:mm:ss'));
+
+            var tempDate;
+            if (i == 0) {
+                tempDate = Date.parse(_postData.segment.departureDateTime.toString('yyyy-MM-ddTHH:mm:ss'));
+            }
+
+            tempDate.setHours(hop.sTime.substring(0, 2));
+            tempDate.setMinutes(hop.sTime.substring(3, 5));
+            fLeg.departureDate = tempDate.toString('yyyy-MM-ddTHH:mm:ss');
+
+            if (hop.dayChange) {
+                tempDate = tempDate.addDays(hop.dayChange);
+            }
             tempDate.setHours(hop.tTime.substring(0, 2));
             tempDate.setMinutes(hop.tTime.substring(3, 5));
-            if (tempDate > nextArrivalDate) {
-                nextArrivalDate.add({ days: -1 });
-            }
-            nextArrivalDate.setHours(hop.tTime.substring(0, 2));
-            nextArrivalDate.setMinutes(hop.tTime.substring(3, 5));
+            fLeg.arrivalDate = tempDate.toString('yyyy-MM-ddTHH:mm:ss');
 
             fLeg.origin = hop.sCode;
             fLeg.destination = hop.tCode;
-            fLeg.marketingAirline= hop.airline;
+            fLeg.marketingAirline = hop.airline;
             fLeg.number = hop.flight;
-            fLeg.arrivalDate = nextArrivalDate.toString('yyyy-MM-ddTHH:mm:ss');
             fLeg.duration = hop.duration;
-
-            var depDate = calcNextDepDate(nextArrivalDate, hop);
-            fLeg.departureDate = depDate.toString('yyyy-MM-ddTHH:mm:ss');
-            nextArrivalDate = Date.parse(depDate.toString('yyyy-MM-ddTHH:mm:ss'));
 
             chosenRoute.flightSegment.flightLegs[i] = fLeg;
         };
