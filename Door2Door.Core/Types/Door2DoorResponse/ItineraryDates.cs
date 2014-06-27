@@ -11,9 +11,17 @@ namespace Door2DoorCore.Types.Door2DoorResponse
     /// </summary>
     public class ItineraryDates
     {
+        /// <summary>
+        /// Itinerary Arrival
+        /// </summary>
         public DateTime? arrivalDateTime;
+        /// <summary>
+        /// Itinerary Departure
+        /// </summary>
         public DateTime? departureDateTime;
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public ItineraryDates() { }
 
     }

@@ -75,297 +75,607 @@ namespace Door2DoorCore.Types.Door2DoorResponse
     //    public string IconOffset { get; set; }
     //}
 
+    /// <summary>
+    /// Price of the segment.
+    /// </summary>
     public class IndicativePrice
     {
+        /// <summary>
+        /// Indicative price (optional)
+        /// </summary>
         [JsonProperty("price")]
         public decimal Price { get; set; }
-
+        /// <summary>
+        /// Currency code (ISO 4217) (optional)
+        /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
-
+        /// <summary>
+        /// Is this price zero due to a transfer? (optional)
+        /// </summary>
         [JsonProperty("isFreeTransfer")]
         public int IsFreeTransfer { get; set; }
     }
-
+    /// <summary>
+    ///     Assigns one stop inside a <see cref="Door2DoorCore.Types.Door2DoorResponse.Route"/>
+    /// </summary>
     public class Stop
     {
+        /// <summary>
+        /// Stop display name
+        /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
-
+        /// <summary>
+        /// Stop latitude/longitude
+        /// </summary>
         [JsonProperty("pos")]
         public string Pos { get; set; }
-
+        /// <summary>
+        /// <para>Stop kind:</para>
+        /// <para>
+        /// Currently, the following kinds are supported: 
+        /// unknown, continent, country, admin3, admin2, admin1, island, village, town, city, capital, landmark, place, road, 
+        /// accomodation, station, airport, seaport, sea, lake and river. 
+        /// </para>
+        /// </summary>
         [JsonProperty("kind")]
         public string Kind { get; set; }
-
+        /// <summary>
+        /// Stop code (eg: airport or station code) (optional)
+        /// </summary>
         [JsonProperty("code")]
         public string Code { get; set; }
     }
 
+    /// <summary>
+    /// Price of the segment.
+    /// </summary>
     public class IndicativePrice2
     {
+        /// <summary>
+        /// Indicative price (optional)
+        /// </summary>
         [JsonProperty("price")]
         public decimal Price { get; set; }
-
+        /// <summary>
+        /// Currency code (ISO 4217) (optional)
+        /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
-
+        /// <summary>
+        /// Is this price zero due to a transfer? (optional)
+        /// </summary>
         [JsonProperty("isFreeTransfer")]
         public int IsFreeTransfer { get; set; }
-
+        /// <summary>
+        /// Indicative price in native currency (optional)
+        /// </summary>
         [JsonProperty("nativePrice")]
         public decimal NativePrice { get; set; }
-
+        /// <summary>
+        /// Native currency code (ISO 4217) (optional)
+        /// </summary>
         [JsonProperty("nativeCurrency")]
         public string NativeCurrency { get; set; }
     }
 
+    /// <summary>
+    /// Price of the segment.
+    /// </summary>
     public class IndicativePrice3
     {
+        /// <summary>
+        /// Indicative price (optional)
+        /// </summary>
         [JsonProperty("price")]
         public decimal Price { get; set; }
-
+        /// <summary>
+        /// Currency code (ISO 4217) (optional)
+        /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
-
+        /// <summary>
+        /// Indicative price in native currency (optional)
+        /// </summary>
         [JsonProperty("isFreeTransfer")]
         public int IsFreeTransfer { get; set; }
-
+        /// <summary>
+        /// Indicative price in native currency (optional)
+        /// </summary>
         [JsonProperty("nativePrice")]
         public decimal NativePrice { get; set; }
-
+        /// <summary>
+        /// Native currency code (ISO 4217) (optional)
+        /// </summary>
         [JsonProperty("nativeCurrency")]
         public string NativeCurrency { get; set; }
     }
-
+    /// <summary>
+    /// Line information for transportation.
+    /// </summary>
     public class Line
     {
+        /// <summary>
+        /// Line display name.
+        /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
-
+        /// <summary>
+        /// Vehicle display name.
+        /// </summary>
         [JsonProperty("vehicle")]
         public string Vehicle { get; set; }
-
+        /// <summary>
+        /// Agency code (optional).
+        /// </summary>
         [JsonProperty("agency")]
         public string Agency { get; set; }
-
+        /// <summary>
+        /// Estimated feequency (per week).
+        /// </summary>
         [JsonProperty("frequency")]
         public int Frequency { get; set; }
-
+        /// <summary>
+        /// Estimated duration (in minutes)
+        /// </summary>
         [JsonProperty("duration")]
         public int Duration { get; set; }
-
+        /// <summary>
+        ///     <para>Days of operation bitmask:</para>
+        ///     <list type="bullet">
+        ///         <item>
+        ///             <description>0x01	Sunday</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>0x02	Monday</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>0x04	Tuesday</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>0x08	Wednesday</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>0x10	Thursday</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>0x20	Friday</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>0x40	Saturday</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>Weekdays: 0x3E (0x02 + 0x04 + 0x08 + 0x10 + 0x20)</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>Weekends: 0x41 (0x01 + 0x40)</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>Every day: 0x7F</description>
+        ///         </item>
+        /// </list>
+        /// </summary>
         [JsonProperty("days")]
         public int Days { get; set; }
     }
-
+    /// <summary>
+    /// A code share between airlines.
+    /// </summary>
     public class Codeshare
     {
+        /// <summary>
+        /// Airline code (IATA).
+        /// </summary>
         [JsonProperty("airline")]
         public string Airline { get; set; }
     }
-
+    /// <summary>
+    /// A Hop is a step of an <see cref="Door2DoorCore.Types.Door2DoorResponse.Leg"/>, usually indicating one single flight.
+    /// </summary>
     public class Hop
     {
+        /// <summary>
+        /// Source airport code (IATA)
+        /// </summary>
         [JsonProperty("sName")]
         public string SName { get; set; }
-
+        /// <summary>
+        /// Source latitude/longitude
+        /// </summary>
         [JsonProperty("sPos")]
         public string SPos { get; set; }
-
+        /// <summary>
+        /// Target display name
+        /// </summary>
         [JsonProperty("tName")]
         public string TName { get; set; }
-
+        /// <summary>
+        /// Target latitude/longitude
+        /// </summary>
         [JsonProperty("tPos")]
         public string TPos { get; set; }
-
+        /// <summary>
+        /// Estimated feequency (per week)
+        /// </summary>
         [JsonProperty("frequency")]
         public int Frequency { get; set; }
-
+        /// <summary>
+        /// Estimated duration (in minutes)
+        /// </summary>
         [JsonProperty("duration")]
         public int Duration { get; set; }
-
+        /// <summary>
+        /// An <see cref="Door2DoorCore.Types.Door2DoorResponse.IndicativePrice3"/>. Indicative price.
+        /// </summary>
         [JsonProperty("indicativePrice")]
         public IndicativePrice3 IndicativePrice { get; set; }
-
+        /// <summary>
+        /// <see cref="Door2DoorCore.Types.Door2DoorResponse.Line"/>. Array of transit lines.
+        /// </summary>
         [JsonProperty("lines")]
         public Line[] Lines { get; set; }
-
+        /// <summary>
+        /// Source airport code (IATA)
+        /// </summary>
         [JsonProperty("sCode")]
         public string SCode { get; set; }
-
+        /// <summary>
+        /// Target airport code (IATA)
+        /// </summary>
         [JsonProperty("tCode")]
         public string TCode { get; set; }
-
+        /// <summary>
+        /// Departure time (24-hour local time - hh:mm)
+        /// </summary>
         [JsonProperty("sTime")]
         public string STime { get; set; }
-
+        /// <summary>
+        /// Arrival time (24-hour local time - hh:mm)
+        /// </summary>
         [JsonProperty("tTime")]
         public string TTime { get; set; }
-
+        /// <summary>
+        /// Flight number
+        /// </summary>
         [JsonProperty("flight")]
         public string Flight { get; set; }
-
+        /// <summary>
+        /// Airline code (IATA)
+        /// </summary>
         [JsonProperty("airline")]
         public string Airline { get; set; }
-
+        /// <summary>
+        /// Aircraft code (IATA) (optional)
+        /// </summary>
         [JsonProperty("aircraft")]
         public string Aircraft { get; set; }
-
+        /// <summary>
+        /// Source airport terminal (optional)
+        /// </summary>
         [JsonProperty("sTerminal")]
         public string STerminal { get; set; }
-
+        /// <summary>
+        /// A list of <see cref="Door2DoorCore.Types.Door2DoorResponse.Codeshare"/>
+        /// </summary>
         [JsonProperty("codeshares")]
         public Codeshare[] Codeshares { get; set; }
-
+        /// <summary>
+        /// Num day changes during flight (optional)
+        /// </summary>
         [JsonProperty("dayChange")]
         public int? DayChange { get; set; }
-
     }
-
+    /// <summary>
+    /// Price of the Leg.
+    /// </summary>
     public class IndicativePrice4
     {
+        /// <summary>
+        /// Indicative price (optional)
+        /// </summary>
         [JsonProperty("price")]
         public decimal Price { get; set; }
-
+        /// <summary>
+        /// Currency code (ISO 4217) (optional)
+        /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
-
+        /// <summary>
+        /// Is this price zero due to a transfer? (optional)
+        /// </summary>
         [JsonProperty("isFreeTransfer")]
         public int IsFreeTransfer { get; set; }
     }
-
+    /// <summary>
+    /// A Leg is a set of flights with prices.
+    /// </summary>
     public class Leg
     {
+        /// <summary>
+        /// Schedule URL (optional)
+        /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; }
-
+        /// <summary>
+        /// Host
+        /// </summary>
         [JsonProperty("host")]
         public string Host { get; set; }
-
+        /// <summary>
+        /// A list of <see cref="Door2DoorCore.Types.Door2DoorResponse.Hop"/>.
+        /// </summary>
         [JsonProperty("hops")]
         public Hop[] Hops { get; set; }
-
+        /// <summary>
+        ///     <para>Days of operation bitmask:</para>
+        ///     <list type="bullet">
+        ///         <item>
+        ///             <description>0x01	Sunday</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>0x02	Monday</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>0x04	Tuesday</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>0x08	Wednesday</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>0x10	Thursday</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>0x20	Friday</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>0x40	Saturday</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>Weekdays: 0x3E (0x02 + 0x04 + 0x08 + 0x10 + 0x20)</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>Weekends: 0x41 (0x01 + 0x40)</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>Every day: 0x7F</description>
+        ///         </item>
+        /// </list>
+        /// </summary>
         [JsonProperty("days")]
         public int? Days { get; set; }
-
+        /// <summary>
+        /// An <see cref="Door2DoorCore.Types.Door2DoorResponse.IndicativePrice4"/>.
+        /// </summary>
         [JsonProperty("indicativePrice")]
         public IndicativePrice4 IndicativePrice { get; set; }
     }
-
+    /// <summary>
+    /// One of the possibles options inside a <see cref="Door2DoorCore.Types.Door2DoorResponse.Segment"/>
+    /// </summary>
     public class Itinerary
     {
+        /// <summary>
+        /// Array of <see cref="Door2DoorCore.Types.Door2DoorResponse.Leg"/>
+        /// </summary>
         [JsonProperty("legs")]
         public Leg[] Legs { get; set; }
-
+        /// <summary>
+        /// isHidden?
+        /// </summary>
         [JsonProperty("isHidden")]
         public int? IsHidden { get; set; }
-
+        /// <summary>
+        /// PostAdded: Indicates if this particular Itinerary is valid for the schedule informed by the custumer. See <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredArrivalDate"/> and <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredReturnDate"/>
+        /// </summary>
         [JsonProperty("validForSchedule")]
         public bool ValidForSchedule { get; set; }
-
+        /// <summary>
+        /// PostAdded: Indicates if this Itinerary came from an external source. See <see cref="Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightOption"/>
+        /// </summary>
         [JsonProperty("outerItinerary")]
         public bool OuterItinerary { get; set; }
     }
-
+    /// <summary>
+    ///  A part of a Door2Door route. It may be one of serveral means of transportation.
+    /// </summary>
     public class Segment
     {
-
+        /// <summary>
+        /// <para>Kind of the segment:</para>
+        ///     <list type="bullet">
+        ///         <item>
+        ///             <description>walk</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>car</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>train</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>bus</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>ferry</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>carferry</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>cablecar</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>helicopter</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>flight</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>unknown</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>etc</description>
+        ///         </item>
+        /// </list>
+        /// </summary>
         [JsonProperty("kind")]
         public string Kind { get; set; }
-
+        /// <summary>
+        /// Is this a dominant segment in the route?
+        /// </summary>
         [JsonProperty("isMajor")]
         public int IsMajor { get; set; }
-
+        /// <summary>
+        /// Is this segment in a location where imperial unit are used (eg: miles)?
+        /// </summary>
         [JsonProperty("isImperial")]
         public int IsImperial { get; set; }
-
+        /// <summary>
+        /// Estimated distance (in km)
+        /// </summary>
         [JsonProperty("distance")]
         public double Distance { get; set; }
-
+        /// <summary>
+        /// Estimated duration (in minutes)
+        /// </summary>
         [JsonProperty("duration")]
         public int Duration { get; set; }
-
+        /// <summary>
+        /// Source display name
+        /// </summary>
         [JsonProperty("sName")]
         public string SName { get; set; }
-
+        /// <summary>
+        /// Source latitude/longitude
+        /// </summary>
         [JsonProperty("sPos")]
         public string SPos { get; set; }
-
+        /// <summary>
+        /// Target display name
+        /// </summary>
         [JsonProperty("tName")]
         public string TName { get; set; }
-
+        /// <summary>
+        /// Target latitude/longitude
+        /// </summary>
         [JsonProperty("tPos")]
         public string TPos { get; set; }
-
+        /// <summary>
+        /// Vehicle display name
+        /// </summary>
         [JsonProperty("vehicle")]
         public string Vehicle { get; set; }
-
+        /// <summary>
+        /// Path followed by vehicle
+        /// </summary>
         [JsonProperty("path")]
         public string Path { get; set; }
-
+        /// <summary>
+        /// An <see cref="Door2DoorCore.Types.Door2DoorResponse.IndicativePrice2"/>
+        /// </summary>
         [JsonProperty("indicativePrice")]
         public IndicativePrice2 IndicativePrice { get; set; }
-
+        /// <summary>
+        /// More specific for new transit types, eg. "train", "bus", "ferry", "carferry", "cablecar", "helicopter"
+        /// </summary>
         [JsonProperty("subkind")]
         public string Subkind { get; set; }
-
+        /// <summary>
+        /// Source airport code (IATA)
+        /// </summary>
         [JsonProperty("sCode")]
         public string SCode { get; set; }
-
+        /// <summary>
+        /// Target airport code (IATA)
+        /// </summary>
         [JsonProperty("tCode")]
         public string TCode { get; set; }
-
+        /// <summary>
+        /// Array of <see cref="Door2DoorCore.Types.Door2DoorResponse.Itinerary"/>
+        /// </summary>
         [JsonProperty("itineraries")]
         public Itinerary[] Itineraries { get; set; }
-
         //manually inserted
+        /// <summary>
+        /// PostAdded: Segment calculated arrival date time
+        /// </summary>
         [JsonProperty("arrivalDateTime")]
         public DateTime? ArrivalDateTime { get; set; }
+        /// <summary>
+        /// PostAdded: Segment calculated departure date time
+        /// </summary>
         [JsonProperty("departureDateTime")]
         public DateTime? DepartureDateTime { get; set; }
+        /// <summary>
+        /// PostAdded: Index of the chosen <see cref="Door2DoorCore.Types.Door2DoorResponse.Itinerary"/>
+        /// </summary>
         [JsonProperty("chosenItinerary")]
         public int? ChosenItinerary { get; set; }
+        /// <summary>
+        /// Segment frequency
+        /// </summary>
         [JsonProperty("frequency")]
         public TimeSpan? Frequency { get; set; }
     }
-
+    /// <summary>
+    /// One possible Door2Door Route to get from Origin to Destination.
+    /// </summary>
     public class Route
     {
-
+        /// <summary>
+        /// Route display name
+        /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
-
+        /// <summary>
+        /// Estimated total distance (in km)
+        /// </summary>
         [JsonProperty("distance")]
         public double Distance { get; set; }
-
+        /// <summary>
+        /// Estimated total duration (in minutes)
+        /// </summary>
         [JsonProperty("duration")]
         public int Duration { get; set; }
-
+        /// <summary>
+        /// An <see cref="Door2DoorCore.Types.Door2DoorResponse.IndicativePrice"/>
+        /// </summary>
         [JsonProperty("indicativePrice")]
         public IndicativePrice IndicativePrice { get; set; }
-
+        /// <summary>
+        /// Array of <see cref="Door2DoorCore.Types.Door2DoorResponse.Stop"/>
+        /// </summary>
         [JsonProperty("stops")]
         public Stop[] Stops { get; set; }
-
+        /// <summary>
+        /// Array of <see cref="Door2DoorCore.Types.Door2DoorResponse.Segment"/>
+        /// </summary>
         [JsonProperty("segments")]
         public Segment[] Segments { get; set; }
-
+        /// <summary>
+        /// PostAdded: A <see cref="Door2DoorCore.Types.Door2DoorResponse.RouteTotals"/>. A Summary with pricing and total times.
+        /// </summary>
         [JsonProperty("routeTotals")]
         public RouteTotals RouteTotals { get; set; }
-
+        /// <summary>
+        /// Is this route valid for the desired schedule? See <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredArrivalDate"/> and <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredReturnDate"/>
+        /// </summary>
         [JsonProperty("validForSchedule")]
         public bool ValidForSchedule { get; set; }
     }
-
 }
 
 namespace Door2DoorCore.Types.Door2DoorResponse
 {
-
+    /// <summary>
+    /// One response from Rome2Rio. It may be the Outbound or Inbound Route.
+    /// </summary>
     public class Door2DoorLegResponse
     {
-
+        /// <summary>
+        /// Time taken in milliseconds
+        /// </summary>
         [JsonProperty("serveTime")]
         public int ServeTime { get; set; }
 
@@ -386,13 +696,15 @@ namespace Door2DoorCore.Types.Door2DoorResponse
         /*********************************************************/
 
         /// <summary>
-        ///     The Route object indicates one possile way of getting from orgin to destination.
-        ///     It may include several stops (Segments), to complete the route
+        ///     PostAdded: The Route object indicates one possile way of getting from orgin to destination.
+        ///     It may include several stops (Segments), to complete the route.
         /// </summary>
         [JsonProperty("routes")]
         public Route[] Routes { get; set; }
     }
-
+    /// <summary>
+    /// Complete Response
+    /// </summary>
     public class Door2DoorResponse
     {
         /// <summary>

@@ -165,17 +165,6 @@ function confirmFlightOption() {
 //
 //
 //
-function calcNextDepDate(nextDate, hop) {
-    var date = Date.parse(nextDate.toString('yyyy-MM-ddTHH:mm:ss'));
-    date.add({ days: -hop.dayChange });
-    date.setHours(hop.sTime.substring(0, 2));
-    date.setMinutes(hop.sTime.substring(3, 5));
-    return date;
-};
-
-//
-//
-//
 function buildEmptyOuterFlightOption() {
     var outerFlightSegment = {
         flightLegs: new Array()
@@ -209,7 +198,6 @@ function buildEmptyOuterFlightLeg() {
     };
     return outerFlightLeg;
 };
-
 
 //
 //
