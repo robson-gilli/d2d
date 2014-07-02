@@ -70,18 +70,19 @@ namespace Door2DoorCore
 
                     if (_req.inboundDateKind == D2dRequestTripDateKind.arriveAt)
                     {
-                        // adiciona informacoes de horario aos segmentos da rota atual
                         BuildItineraryScheduleArrivingAt(ref route, _req.desiredInboundDate.Value, flightChosen, 1);
-                        // Pode acontecer de determinada rota de retorno não ser válida por inicar antes da chegada ao destino,
-                        // nestes casos a rota é devolvida normalmente, mas é marcada como invalida.
-                        if (route.Segments[0].DepartureDateTime > _req.desiredOutboundDate)
-                        {
-                            route.ValidForSchedule = true;
-                        }
                     }
                     else
                     {
                         BuildItineraryScheduleDepartingAt(ref route, _req.desiredInboundDate.Value, flightChosen, 1);
+                    }
+                    // Pode acontecer de determinada rota de retorno não ser válida por inicar antes da chegada ao destino,
+                    // nestes casos a rota é devolvida normalmente, mas é marcada como invalida.
+                    // Se o tipo de data informada na ida for a data de partida, a volta pode ou nao ser valida, dependendo da ida escolhida,
+                    // nestes casos todas as voltas sao possivelmente validas
+                    if ((_req.outboundDateKind == D2dRequestTripDateKind.departureAt) ||
+                        (_req.outboundDateKind == D2dRequestTripDateKind.arriveAt && route.Segments[0].DepartureDateTime > _req.desiredOutboundDate))
+                    {
                         route.ValidForSchedule = true;
                     }
                 }
@@ -248,6 +249,14 @@ namespace Door2DoorCore
                     }
                     else
                     {
+                        //  A API tem um bug, as vezes manda caminhar, 50 minutos, as vezes mais de uma hora
+                        //  Eles ficaram de resolver, mas até lá, eu desconstruí a conta de taxi e caminhada deles.
+                        //  Se for caminhada e tiver mais que x minutos, eu transformo em Taxi ;)
+                        if (seg.Kind == "walk" && seg.Duration > 10 && route.Segments.Length > 1)
+                        {
+                            WalkIntoTaxiTransformation(ref seg);
+                        }
+
                         //faz o calculo do preco
                         if (seg.IndicativePrice != null)
                         {
@@ -408,6 +417,15 @@ namespace Door2DoorCore
                     }
 /*nao voo*/         else
                     {
+                        
+                        //  A API tem um bug, as vezes manda caminhar, 50 minutos, as vezes mais de uma hora
+                        //  Eles ficaram de resolver, mas até lá, eu desconstruí a conta de taxi e caminhada deles.
+                        //  Se for caminhada e tiver mais que x minutos, eu transformo em Taxi ;)
+                        if (route.Segments[i].Kind == "walk" && route.Segments[i].Duration > 10 && route.Segments.Length > 1)
+                        {
+                            WalkIntoTaxiTransformation(ref route.Segments[i]);
+                        }
+                        
                         //faz o calculo do preco
                         if (route.Segments[i].IndicativePrice != null)
                         {
@@ -446,6 +464,23 @@ namespace Door2DoorCore
                 }
                 route.IndicativePrice.Price = routePrice;
             }
+        }
+
+        private void WalkIntoTaxiTransformation(ref Segment segment)
+        {
+            segment.Kind = "car";
+            segment.Vehicle = "taxi";
+
+            if (segment.IndicativePrice == null)
+            {
+                segment.IndicativePrice = new IndicativePrice2();
+            }
+
+            segment.IndicativePrice.Currency = "BRL";
+            // cada minuto andando corresponde à R$0,371428571428 de taxi(abstraia, abstraia)
+            segment.IndicativePrice.Price = Math.Round(segment.Duration * 0.371428571428M, 0);
+            // cada minuto andando equivale(abstraia, veja bem) à 0.142857142857 minutos em um taxi
+            segment.Duration =  Convert.ToInt32(Math.Ceiling(decimal.Parse(segment.Duration.ToString()) * 0.142857142857M));
         }
 
         /// <summary>

@@ -20,7 +20,7 @@ var _chosenLeg;
 jQuery("#divSearchBox").find("input, select, button, textarea").attr("disabled", true);
 
 //
-// document ready
+// dom ready
 //
 $(document).ready(function(){
     _dataChegada = new Date();
