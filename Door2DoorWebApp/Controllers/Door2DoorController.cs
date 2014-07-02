@@ -25,10 +25,8 @@ namespace Door2DoorWebApp.Controllers
         {
             Door2DoorResponse resp;
 
-            using (Door2Door d2d = new Door2Door(req))
-            {
-                resp = d2d.GetResponse();
-            }
+            Door2Door d2d = new Door2Door(req);
+            resp = d2d.GetResponse();
             string json = JsonConvert.SerializeObject(resp);
 
             return resp;

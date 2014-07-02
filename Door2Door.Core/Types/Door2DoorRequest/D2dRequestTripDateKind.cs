@@ -9,15 +9,10 @@ namespace Door2DoorCore.Types.Door2DoorRequest
     /// <summary>
     ///     For now only Rome2rio, r2r will be accepted
     /// </summary>
-    public enum D2DRequestType
+    public enum D2dRequestTripDateKind
     {
-        /// <summary>
-        /// Rome2Rio
-        /// </summary>
-        r2r = 0,
-        /// <summary>
-        /// Not used
-        /// </summary>
-        other = 1
+        departureAt = 0,
+
+        arriveAt = 1
     }
 }

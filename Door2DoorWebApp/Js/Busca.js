@@ -28,14 +28,16 @@ function buscar(originalRoute) {
 	    var returnDateServer = $('#rdIdaeVolta').is(':checked') ? _dataRetorno.getFullYear() + "-" + (_dataRetorno.getMonth() + 1).toString().padLeft(2, '0') + "-" + _dataRetorno.getDate().toString().padLeft(2, '0') + "T" + _dataRetorno.getHours().toString().padLeft(2, '0') + ":" + _dataRetorno.getMinutes().toString().padLeft(2, '0') + ":00" : null;
 
 	    var d2dSender = new Door2DoorSender({
-	        desiredReturnDate: returnDateServer,
-	        desiredArrivalDate: arrivalDateServer,
+	        desiredInboundDate: returnDateServer,
+	        inboundDateKind: $('input[name=rdVoltaDateKind]:checked').val(),
+	        desiredOutboundDate: arrivalDateServer,
+	        outboundDateKind: $('input[name=rdIdaDateKind]:checked').val(),
 	        includePublicTransport: buildSearchRequestFlags(),
-	        oriLat: _placeOrigem.geometry.location.k,
-	        oriLng: _placeOrigem.geometry.location.A,
+	        oriLat: _placeOrigem.geometry.location.lat(),
+	        oriLng: _placeOrigem.geometry.location.lng(),
 	        oriType: (_placeOrigem.types != null && _placeOrigem.types.length > 0) ? _placeOrigem.types[0] : "",
-	        destLat: _placeDestino.geometry.location.k,
-	        destLng: _placeDestino.geometry.location.A,
+	        destLat: _placeDestino.geometry.location.lat(),
+	        destLng: _placeDestino.geometry.location.lng(),
 	        destType: (_placeDestino.types != null && _placeDestino.types.length > 0) ? _placeDestino.types[0] : "",
 	        chosenRoute: _chosenRoute,
 	        successCallback: handleSuccessSearch,
@@ -104,7 +106,7 @@ function renderTotals() {
     // TEMPOS
     //
     htmlResult = '<table>';
-    htmlResult += '     <tr class="ui-widget-header ">'
+    htmlResult += '     <tr class="ui-widget-header">'
     htmlResult += '         <th>             </th>';
     htmlResult += '         <th>Distancia Total</th>';
     htmlResult += '         <th>Tempo em trens</th>';
@@ -412,8 +414,7 @@ function renderFrequency(segment) {
 	    ok = frequency.hours > 0 || frequency.minutes > 0;
 	}
 
-	if (ok > 0) {
-
+	if (ok) {
 		if (frequency.minutes == 1) {
 		    minutos = frequency.hours > 0 ? " e 1 minuto" : "A cada 1 minuto";
 		} else if (frequency.minutes > 1) {
@@ -465,7 +466,7 @@ function showFlightOptionsAlternatives(segmentIndex, routeIndex, legIndex) {
     var route = _resp.legResponse[legIndex].routes[routeIndex];
     _chosenLeg = legIndex;
 
-    /*********** <GAMBIARRA PARA DEMO SOMENTE, TROCAR ISTO POR CHAMADA REAL DE VOO> ***********/
+    /*********** <POG PARA DEMO SOMENTE, TROCAR ISTO POR CHAMADA REAL DE VOO> ***********/
     $("#divFlightOptionsAlternatives").html("");
     $("#divFlightOptionsAlternatives").append("<iframe id='iFrameChangeItin' name='iFrameChangeItin' style='width:100%; height:100%'></iframe>");
     $("#divFlightOptionsAlternatives").dialog({
@@ -496,5 +497,5 @@ function showFlightOptionsAlternatives(segmentIndex, routeIndex, legIndex) {
     $('#frmChangeItin').attr('action', url);
     $('#frmChangeItin').submit();
     $("#divFlightOptionsAlternatives").dialog("open");
-    /*********** </GAMBIARRA PARA DEMO SOMENTE, TROCAR ISTO POR CHAMADA REAL DE VOO> ***********/
+    /*********** </POG PARA DEMO SOMENTE, TROCAR ISTO POR CHAMADA REAL DE VOO> ***********/
 };

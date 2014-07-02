@@ -466,7 +466,7 @@ namespace Door2DoorCore.Types.Door2DoorResponse
         [JsonProperty("isHidden")]
         public int? IsHidden { get; set; }
         /// <summary>
-        /// PostAdded: Indicates if this particular Itinerary is valid for the schedule informed by the custumer. See <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredArrivalDate"/> and <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredReturnDate"/>
+        /// PostAdded: Indicates if this particular Itinerary is valid for the schedule informed by the custumer. See <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredOutboundDate"/> and <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredInboundDate"/>
         /// </summary>
         [JsonProperty("validForSchedule")]
         public bool ValidForSchedule { get; set; }
@@ -659,7 +659,7 @@ namespace Door2DoorCore.Types.Door2DoorResponse
         [JsonProperty("routeTotals")]
         public RouteTotals RouteTotals { get; set; }
         /// <summary>
-        /// Is this route valid for the desired schedule? See <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredArrivalDate"/> and <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredReturnDate"/>
+        /// Is this route valid for the desired schedule? See <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredOutboundDate"/> and <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredInboundDate"/>
         /// </summary>
         [JsonProperty("validForSchedule")]
         public bool ValidForSchedule { get; set; }

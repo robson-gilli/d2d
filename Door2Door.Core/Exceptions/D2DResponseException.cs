@@ -11,7 +11,6 @@ namespace Door2DoorCore.Exceptions
     /// </summary>
     public class D2DResponseException : Exception
     {
-        private Exception exception;
         /// <summary>
         ///     Exception thrown when some error occurred during the response processing
         /// </summary>
@@ -23,14 +22,15 @@ namespace Door2DoorCore.Exceptions
         /// <summary>
         ///     Exception thrown when some error occurred during the response processing
         /// </summary>
+        /// <param name="message">Exception message</param>
         public D2DResponseException(string message)
             : base(message)
         {
         }
-
         /// <summary>
         ///     Exception thrown when some error occurred during the response processing
         /// </summary>
+        /// <param name="exception">Exception to be thrown</param>
         public D2DResponseException(Exception exception)
             :base("Response Error", exception)
         {

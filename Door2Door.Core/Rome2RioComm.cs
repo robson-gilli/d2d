@@ -17,6 +17,9 @@ namespace Door2DoorCore
     /// </summary>
     internal class Rome2RioComm : IDisposable
     {
+        /// <summary>
+        /// A <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>. Holds the request of the itinerary.
+        /// </summary>
         private D2DRequest _req;
 //        public delegate void MessageReceivedEventHandler(Door2DoorResponse resp);
 //        public event MessageReceivedEventHandler OnMessageReceived;
@@ -29,9 +32,12 @@ namespace Door2DoorCore
         ///     Inbound Response.
         /// </summary>
         private Door2DoorLegResponse _respVolta;
+        /// <summary>
+        /// Raw <see cref="Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>, before schedules and totals addition.
+        /// </summary>
         private Door2DoorResponse _resp;
         /// <summary>
-        ///     Raw response, before schedules and totals addition.
+        ///     Raw <see cref="Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>, before schedules and totals addition.
         /// </summary>
         public Door2DoorResponse Resp
         {
@@ -80,7 +86,7 @@ namespace Door2DoorCore
             }
             
             // volta, se tiver
-            if (_req.desiredReturnDate.HasValue) 
+            if (_req.desiredInboundDate.HasValue) 
             {
                 using (WebClient clientVolta = new WebClient())
                 {
@@ -191,29 +197,33 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        ///     0x00000000	Include all kinds of segments (Default)
-        ///     0x000FFFFF	Exclude all kinds of segments (See example below)
-        ///     0x00000001	Exclude flight segments
-        ///     0x00000002	Exclude flight itineraries
-        ///     0x00000010	Exclude train segments
-        ///     0x00000020	Exclude train itineraries
-        ///     0x00000100	Exclude bus segments
-        ///     0x00000200	Exclude bus itineraries
-        ///     0x00001000	Exclude ferry segments
-        ///     0x00002000	Exclude ferry itineraries
-        ///     0x00010000	Exclude car segments
-        ///     0x00100000	Exclude commuter hops (commuter = local bus, train, trams, subways, etc.)
-        ///     0x00200000	Exclude special hops (special = funiculars, steam trains, tours, etc.)
-        ///     0x00400000	Exclude minor start segments
-        ///     0x00800000	Exclude minor end segments
-        ///     0x01000000	Exclude paths (saves bandwidth)
-        ///     0x04000000	Exclude indicative prices (saves bandwidth)
-        ///     0x10000000	Disable scoring and pruning (debug only)
-        ///     Flights only: 0x000FFFF0 (0x000FFFFF - 0x0000000F)
-        ///     Not via road: 0x00010100 (0x00000100 + 0x00010000)
-        ///     NOTE: You can pass these flags either as a hexadecimal value (&flags=0x00010100) or simply as a decimal (&flags=65792). 
+        ///     <list type="bullet">
+        ///         <item><description>0x00000000	Include all kinds of segments (Default)</description></item>
+        ///         <item><description>0x000FFFFF	Exclude all kinds of segments (See example below)</description></item>
+        ///         <item><description>0x00000001	Exclude flight segments</description></item>
+        ///         <item><description>0x00000002	Exclude flight itineraries</description></item>
+        ///         <item><description>0x00000010	Exclude train segments</description></item>
+        ///         <item><description>0x00000020	Exclude train itineraries</description></item>
+        ///         <item><description>0x00000100	Exclude bus segments</description></item>
+        ///         <item><description>0x00000200	Exclude bus itineraries</description></item>
+        ///         <item><description>0x00001000	Exclude ferry segments</description></item>
+        ///         <item><description>0x00002000	Exclude ferry itineraries</description></item>
+        ///         <item><description>0x00010000	Exclude car segments</description></item>
+        ///         <item><description>0x00100000	Exclude commuter hops (commuter = local bus, train, trams, subways, etc.)</description></item>
+        ///         <item><description>0x00200000	Exclude special hops (special = funiculars, steam trains, tours, etc.)</description></item>
+        ///         <item><description>0x00400000	Exclude minor start segments</description></item>
+        ///         <item><description>0x00800000	Exclude minor end segments</description></item>
+        ///         <item><description>0x01000000	Exclude paths (saves bandwidth)</description></item>
+        ///         <item><description>0x04000000	Exclude indicative prices (saves bandwidth)</description></item>
+        ///         <item><description>0x10000000	Disable scoring and pruning (debug only)</description></item>
+        ///         <item><description>Flights only: 0x000FFFF0 (0x000FFFFF - 0x0000000F)</description></item>
+        ///         <item><description>Not via road: 0x00010100 (0x00000100 + 0x00010000)</description></item>
+        ///     </list>
+        ///     <para>NOTE: You can pass these flags either as a hexadecimal value (&flags=0x00010100) or simply as a decimal (&flags=65792).</para> 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        ///     Integer flag
+        /// </returns>
         private int BuildSearchRequestFlags()
         {
             //0x01000000 => Exclude path information (saves bandwidth)
@@ -221,9 +231,9 @@ namespace Door2DoorCore
             if (!_req.flags.includePublicTransp)
             {
                 flagsIncludeAll +=
-                    //+ parseInt("0x00000010", 16) // train
+                    +Convert.ToInt32("0x00000010", 16) // train
                     +Convert.ToInt32("0x00000100", 16) // bus
-                    //+ parseInt("0x00001000", 16) // ferry
+                    + Convert.ToInt32("0x00001000", 16) // ferry
                     + Convert.ToInt32("0x00100000", 16); // commutes
             }
             return flagsIncludeAll;

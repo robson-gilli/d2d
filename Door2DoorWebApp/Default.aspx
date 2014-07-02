@@ -27,7 +27,12 @@
                 <input type="text" id="timePickerVolta" placeholder="Hora:" class="horaChegada" readonly="readonly" style="visibility:hidden"/>
                 <label><input type="checkbox" id="chkIncludePublicTransport" />Incluir transporte público</label>
             </p>
-            <p />
+            <p>
+                <label id="lblIdaDateKindDepartureAt"><input type="radio" id="rdIdaDateKindDepartureAt" name="rdIdaDateKind" value="0"  />Horário de saída da origem</label>
+                <label id="lblIdaDateKindArriveAt"><input type="radio" id="rdIdaDateKindArriveAt" name="rdIdaDateKind" value="1"  checked/>Horário de chegada ao destino</label>
+                <label id="lblVoltaDateKindDepartureAt" style="visibility:hidden"><input type="radio" id="rdVoltaDateKindDepartureAt"name="rdVoltaDateKind" value="0"  checked style="visibility:hidden"/>Horário de saída do destino</label>
+                <label id="lblVoltaDateKindArrivalAt" style="visibility:hidden"><input type="radio" id="rdVoltaDateKindArrivalAt"name="rdVoltaDateKind" value="1"  style="visibility:hidden"/>Horário de chegada à origem</label>
+            </p>
         </div>
 
         <div id="mapa" style="width: 100%;">
@@ -65,7 +70,7 @@
     <form id="form1" method="post" style="display:none">
         <input type="hidden" name="chosenItin" id="hidchosenItin" />
     </form>
-    
+
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>

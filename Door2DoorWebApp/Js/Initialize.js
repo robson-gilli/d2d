@@ -86,15 +86,28 @@ $(document).ready(function(){
 
 	$('#datePickerVolta').css('visibility', 'hidden');
 	$('#timePickerVolta').css('visibility', 'hidden');
+	$('#rdVoltaDateKindDepartureAt').css('visibility', 'hidden');
+	$('#rdVoltaDateKindArrivalAt').css('visibility', 'hidden');
+	$('#lblVoltaDateKindDepartureAt').css('visibility', 'hidden');
+	$('#lblVoltaDateKindArrivalAt').css('visibility', 'hidden');
+
 
 	$('#rdSomenteIda').click(function(){
 	    $('#datePickerVolta').css('visibility', 'hidden');
 	    $('#timePickerVolta').css('visibility', 'hidden');
+	    $('#rdVoltaDateKindDepartureAt').css('visibility', 'hidden');
+	    $('#rdVoltaDateKindArrivalAt').css('visibility', 'hidden');
+	    $('#lblVoltaDateKindDepartureAt').css('visibility', 'hidden');
+	    $('#lblVoltaDateKindArrivalAt').css('visibility', 'hidden');
 	});
 
 	$('#rdIdaeVolta').click(function () {
 	    $('#datePickerVolta').css('visibility', 'visible');
 	    $('#timePickerVolta').css('visibility', 'visible');
+	    $('#rdVoltaDateKindDepartureAt').css('visibility', 'visible');
+	    $('#rdVoltaDateKindArrivalAt').css('visibility', 'visible');
+	    $('#lblVoltaDateKindDepartureAt').css('visibility', 'visible');
+	    $('#lblVoltaDateKindArrivalAt').css('visibility', 'visible');
 	});
 
 	//ajusta o tamanho da div do streetview
@@ -138,7 +151,7 @@ function initializeGoogle() {
         
         $("#divResults").hide();
         $("#mapa").show();
-        setPanorama(_placeOrigem.geometry.location.k, _placeOrigem.geometry.location.A);
+        setPanorama(_placeOrigem.geometry.location.lat(), _placeOrigem.geometry.location.lng());
     });
 
     //listener do autocomplete de destino
@@ -154,7 +167,7 @@ function initializeGoogle() {
 
         $("#divResults").hide();
         $("#mapa").show();
-        setPanorama(_placeDestino.geometry.location.k, _placeDestino.geometry.location.A);
+        setPanorama(_placeDestino.geometry.location.lat(), _placeDestino.geometry.location.lng());
     });
 
     //monta o mapa inicial com o 

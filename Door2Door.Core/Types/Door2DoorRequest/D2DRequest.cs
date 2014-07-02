@@ -9,12 +9,14 @@ using Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption;
 namespace Door2DoorCore.Types.Door2DoorRequest
 {
     /// <summary>
-    /// 
+    /// Information about the desired itinerary.
     /// </summary>
     public class D2DRequest
     {
+        /// <summary>
+        /// Information about the desired itinerary.
+        /// </summary>
         public D2DRequest() { }
-
         /// <summary>
         ///     For now only accepting Rome2rio (r2r).
         /// </summary>
@@ -42,11 +44,18 @@ namespace Door2DoorCore.Types.Door2DoorRequest
         /// <summary>
         ///     DateTime indicating when the user wants to be at the destination
         /// </summary>
-        public DateTime desiredArrivalDate { get; set; }
+        public DateTime desiredOutboundDate { get; set; }
+
+        public D2dRequestTripDateKind outboundDateKind { get; set; }
+
         /// <summary>
         ///     Nullable - If RoundTrip, indicates when the user wants to be back at the origin
         /// </summary>
-        public DateTime? desiredReturnDate { get; set; }
+        public DateTime? desiredInboundDate { get; set; }
+
+        public D2dRequestTripDateKind inboundDateKind { get; set; }
+
+
         /// <summary>
         ///     SearchRequestFlags iindicating to include or exclude forms of transportation
         /// </summary>

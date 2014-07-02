@@ -7,8 +7,10 @@ function Door2DoorSender(requestOptions) {
     var _reqAtt = {
         url: '/api/getd2d',
         data: {
-            desiredArrivalDate: requestOptions.desiredArrivalDate,
-            desiredReturnDate: requestOptions.desiredReturnDate,
+            desiredOutboundDate: requestOptions.desiredOutboundDate,
+            outboundDateKind: requestOptions.outboundDateKind,
+            desiredInboundDate: requestOptions.desiredInboundDate,
+            inboundDateKind: requestOptions.inboundDateKind,
             flags: {
                 includePublicTransp: buildSearchRequestFlags(requestOptions)
             },
