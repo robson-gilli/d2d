@@ -18,8 +18,6 @@ namespace Door2DoorCore
         protected int _flightAntecipation = 120;
         protected int _minutesAfterFlight = 30;
 
-        //static protected string _path;
-
         /// <summary>
         /// A <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>. Holds the request of the itinerary.
         /// </summary>
@@ -66,35 +64,6 @@ namespace Door2DoorCore
                 throw new D2DRequestException("Please check your request.");
             }
         }
-
-        //private void LoadConfigs()
-        //{
-        //    if (!_configLoaded)
-        //    {
-        //        try
-        //        {
-        //            string path = Path.GetDirectoryName(GetType().Assembly.Location);
-        //            string file = (new System.Uri(Assembly.GetExecutingAssembly().CodeBase)).AbsolutePath;
-        //            FileInfo fi = new FileInfo(file);
-        //            string configPath = Path.Combine(fi.DirectoryName, "Configs", "Config.xml");
-        //            _path = configPath;
-
-        //            XmlDocument config = new XmlDocument();
-        //            config.Load(configPath);
-
-        //            _maxWalkingMinutes = int.Parse(config.SelectNodes("Door2DoorConfig//MaxWalkingMinutes")[0].InnerText);
-
-        //            //_configLoaded = true;
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            _path = e.Message + " - " + e.StackTrace;
-        //            //throw new Exception("Invalid Door2Door config file.", e);
-        //        }
-
-        //    }
-
-        //}
 
         /// <summary>
         ///     Verifies if all necessary data from the request are correctly informed
