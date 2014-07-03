@@ -38,6 +38,7 @@ namespace Door2DoorCore
     public class Door2Door
     {
         private Door2DoorRome2Rio r2r;
+        private bool newRequest;
 
         /// <summary>
         ///     Routes and schedules for the desired itinerary request. <see cref="Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>
@@ -46,6 +47,16 @@ namespace Door2DoorCore
         {
             get { return r2r.Resp; }
         }
+        public D2DRequest _Req
+        {
+            get { return r2r.Req; }
+            set 
+            { 
+                r2r.Req = value;
+                newRequest = true;
+            }
+        }
+
 
         /// <summary>
         ///     Constructor of the class. <see cref="Door2DoorCore.Door2Door"/>
@@ -65,6 +76,19 @@ namespace Door2DoorCore
             {
                 throw new D2DRequestException("Only D2DRequestType.r2r is supported so far.");
             }
+
+        }
+
+        public Door2Door(D2DRequest d2dReq, int maxWalkingMinutes, int flightAntecipation, int minutesAfterFlight)
+        {
+            if (d2dReq.requestType == D2DRequestType.r2r)
+            {
+                r2r = new Door2DoorRome2Rio(d2dReq, maxWalkingMinutes, flightAntecipation, minutesAfterFlight);
+            }
+            else
+            {
+                throw new D2DRequestException("Only D2DRequestType.r2r is supported so far.");
+            }
         }
 
         /// <summary>
@@ -76,7 +100,7 @@ namespace Door2DoorCore
         /// </returns>
         public Door2DoorResponse GetResponse()
         {
-            return r2r.GetResponse();
+            return r2r.GetResponse(newRequest);
         }
     }
 }

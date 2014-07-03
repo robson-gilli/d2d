@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Door2DoorWebApp", "Door2DoorWebApp\Door2DoorWebApp.csproj", "{FA7EFA97-8F55-46B3-AD35-7C5893337402}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Door2Door.Prototype", "Door2Door.Prototype\Door2Door.Prototype.csproj", "{A03E9916-5608-4706-A7A1-E781A94E191F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Door2DoorCore", "Door2Door.Core\Door2DoorCore.csproj", "{D38A87E3-3797-4CE1-BFE2-23F69B124AC6}"
 EndProject
 Global
@@ -19,9 +17,6 @@ Global
 		{FA7EFA97-8F55-46B3-AD35-7C5893337402}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA7EFA97-8F55-46B3-AD35-7C5893337402}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA7EFA97-8F55-46B3-AD35-7C5893337402}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A03E9916-5608-4706-A7A1-E781A94E191F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A03E9916-5608-4706-A7A1-E781A94E191F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A03E9916-5608-4706-A7A1-E781A94E191F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D38A87E3-3797-4CE1-BFE2-23F69B124AC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D38A87E3-3797-4CE1-BFE2-23F69B124AC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D38A87E3-3797-4CE1-BFE2-23F69B124AC6}.Release|Any CPU.ActiveCfg = Release|Any CPU

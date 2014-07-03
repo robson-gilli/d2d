@@ -9,16 +9,35 @@ using System.Threading.Tasks;
 
 namespace Door2DoorCore
 {
-    class Door2DoorRome2Rio : Door2DoorBase, IDoor2DoorProvider
+    internal class Door2DoorRome2Rio : Door2DoorBase, IDoor2DoorProvider
     {
         public Door2DoorRome2Rio(D2DRequest d2d)
             : base(d2d){}
+        public Door2DoorRome2Rio(D2DRequest d2d, int maxWalkingMinutes, int flightAntecipation, int minutesAfterFlight)
+            : base(d2d,maxWalkingMinutes, flightAntecipation, minutesAfterFlight) { }
+
+
+        public Door2DoorResponse GetResponse(bool getNewResponse)
+        {
+            if (getNewResponse || _resp == null)
+            {
+                using (Rome2RioComm comm = new Rome2RioComm(_req))
+                {
+                    _resp = comm.Download();
+                }
+            }
+            BuildCompleteItinerarySchedule();
+            return _resp;
+        }
 
         public Door2DoorResponse GetResponse()
         {
-            using (Rome2RioComm comm = new Rome2RioComm(_req))
+            if (_resp == null)
             {
-                _resp = comm.Download();
+                using (Rome2RioComm comm = new Rome2RioComm(_req))
+                {
+                    _resp = comm.Download();
+                }
             }
             BuildCompleteItinerarySchedule();
             return _resp;
@@ -135,14 +154,14 @@ namespace Door2DoorCore
                                         TimeSpan hopArrivalTime = new TimeSpan(hour, min, 0);
                                         route.Segments[i].Itineraries[j].ValidForSchedule = hopArrivalTime >= nextDepTime;
                                     }
-                                    departureDateCurrent = seg.ArrivalDateTime.Value.AddMinutes(30);
+                                    departureDateCurrent = seg.ArrivalDateTime.Value.AddMinutes(_minutesAfterFlight);
                                 }
                             }
                         }
                         else
                         {
-                            DateTime originalDepDate = departureDateCurrent.AddHours(2);//duas horas de antecedencia no aeroporto -> melhorar
-                            DateTime lastDepDate = departureDateCurrent.AddHours(2);//duas horas de antecedencia no aeroporto -> melhorar
+                            DateTime originalDepDate = departureDateCurrent.AddMinutes(_flightAntecipation);//duas horas de antecedencia no aeroporto -> melhorar
+                            DateTime lastDepDate = departureDateCurrent.AddMinutes(_flightAntecipation);//duas horas de antecedencia no aeroporto -> melhorar
                             for (int j = 0; j < seg.Itineraries.Length; j++)
                             {
                                 Itinerary itinerary = seg.Itineraries[j];
@@ -181,7 +200,7 @@ namespace Door2DoorCore
                                         }
                                         tempArrDate = tempArrDate.AddDays(dayChange);
                                         seg.ArrivalDateTime = tempArrDate;
-                                        departureDateCurrent = tempArrDate.AddMinutes(30); // tempo para sair do aeroporto;
+                                        departureDateCurrent = tempArrDate.AddMinutes(_minutesAfterFlight); // tempo para sair do aeroporto;
                                     }
                                 }
                             }
@@ -189,7 +208,7 @@ namespace Door2DoorCore
 
                         if (!achouVoo)
                         {
-                            DateTime originalDepDate = departureDateCurrent.AddHours(2);
+                            DateTime originalDepDate = departureDateCurrent.AddMinutes(_flightAntecipation);
                             if (originalDepDate.Day == departureDateCurrent.Day)
                             {
                                 originalDepDate = new DateTime(departureDateCurrent.Year, departureDateCurrent.Month, departureDateCurrent.Day + 1, 0, 0, 0);
@@ -233,7 +252,7 @@ namespace Door2DoorCore
                                     }
                                     tempArrDate = tempArrDate.AddDays(dayChange);
                                     seg.ArrivalDateTime = tempArrDate;
-                                    departureDateCurrent = tempArrDate.AddMinutes(30); // tempo para sair do aeroporto
+                                    departureDateCurrent = tempArrDate.AddMinutes(_minutesAfterFlight); // tempo para sair do aeroporto
                                 }
                             }
                         }
@@ -252,7 +271,7 @@ namespace Door2DoorCore
                         //  A API tem um bug, as vezes manda caminhar, 50 minutos, as vezes mais de uma hora
                         //  Eles ficaram de resolver, mas até lá, eu desconstruí a conta de taxi e caminhada deles.
                         //  Se for caminhada e tiver mais que x minutos, eu transformo em Taxi ;)
-                        if (seg.Kind == "walk" && seg.Duration > 10 && route.Segments.Length > 1)
+                        if (seg.Kind == "walk" && seg.Duration > _maxWalkingMinutes && route.Segments.Length > 1)
                         {
                             WalkIntoTaxiTransformation(ref seg);
                         }
@@ -326,6 +345,8 @@ namespace Door2DoorCore
                     //pega data do prox ponto (i + 1) ou do ponto de chegada
                     DateTime arrivalDateNextStop = new DateTime();
                     arrivalDateNextStop = i == route.Segments.Length - 1 ? arrivalDateTime : route.Segments[i + 1].DepartureDateTime.Value;
+
+                    //route.Segments[i].Subkind = _path;
 
                     // Se for voo procura um voo que possibilite chegada no horário
                     // no futuro devera pegar de uma fonte externa
@@ -417,11 +438,10 @@ namespace Door2DoorCore
                     }
 /*nao voo*/         else
                     {
-                        
-                        //  A API tem um bug, as vezes manda caminhar, 50 minutos, as vezes mais de uma hora
+                        //  A API tem um bug, as vezes manda caminhar, 50 minutos, as vezes mais de uma hora.
                         //  Eles ficaram de resolver, mas até lá, eu desconstruí a conta de taxi e caminhada deles.
                         //  Se for caminhada e tiver mais que x minutos, eu transformo em Taxi ;)
-                        if (route.Segments[i].Kind == "walk" && route.Segments[i].Duration > 10 && route.Segments.Length > 1)
+                        if (route.Segments[i].Kind == "walk" && route.Segments[i].Duration > _maxWalkingMinutes && route.Segments.Length > 1)
                         {
                             WalkIntoTaxiTransformation(ref route.Segments[i]);
                         }
@@ -446,7 +466,7 @@ namespace Door2DoorCore
                         // se o proximo segmento é voo, calcular chegada com antecipacao
                         if (i < route.Segments.Length - 1 && route.Segments[i + 1].Kind == "flight")
                         {
-                            anticipation = 120;
+                            anticipation = _flightAntecipation;
                         }
 
                         //pega data do prox ponto (i + 1) ou do ponto de chegada

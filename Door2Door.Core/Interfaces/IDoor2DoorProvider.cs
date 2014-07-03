@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace Door2DoorCore.Interfaces
 {
-    interface IDoor2DoorProvider
+    internal interface IDoor2DoorProvider
     {
         Door2DoorResponse GetResponse();
+        Door2DoorResponse GetResponse(bool getNewResponse);
     }
 }

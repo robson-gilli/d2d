@@ -21,8 +21,10 @@ namespace Door2DoorCore
         /// A <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>. Holds the request of the itinerary.
         /// </summary>
         private D2DRequest _req;
-//        public delegate void MessageReceivedEventHandler(Door2DoorResponse resp);
-//        public event MessageReceivedEventHandler OnMessageReceived;
+
+        public delegate void MessageReceivedEventHandler(Door2DoorResponse resp);
+        public event MessageReceivedEventHandler OnMessageReceived;
+        private static object mutex;
 
         /// <summary>
         ///     Outbound Response.
@@ -119,37 +121,102 @@ namespace Door2DoorCore
             return _resp;
         }
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        //public void DownloadAsync()
-        //{
-        //    using (WebClient client = new WebClient())
-        //    {
-        //        client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(OnDownloadStringCompleted);
-        //        client.QueryString = BuildQueryString();
-        //        string url = _req.url;
-        //        client.DownloadStringAsync(new Uri(url));
-        //    }
-        //}
+        /// <summary>
+        /// 
+        /// </summary>
+        public void DownloadAsync()
+        {
+            List<Task> taskList = new List<Task>();
+            string url = _req.url;
+            //ida
+            using (WebClient client = new WebClient())
+            {
+                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(OnOutboundDownloadStringCompleted);
+                client.QueryString = BuildQueryString(false);
+                client.DownloadStringAsync(new Uri(url));
+            }
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //public void OnDownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
-        //{
-        //    if (e.Error == null)
-        //    {
-        //        _resp = JsonConvert.DeserializeObject<Door2DoorResponse>(e.Result);
-        //        OnMessageReceived(_resp);
-        //    }
-        //    else
-        //    {
-        //        throw new D2DResponseException(e.Error);
-        //    }
-        //}
+            // volta, se tiver
+            if (_req.desiredInboundDate.HasValue)
+            {
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(OnInboundDownloadStringCompleted);
+                    client.QueryString = BuildQueryString(false);
+                    client.DownloadStringAsync(new Uri(url));
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void OnInboundDownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            if (e.Error == null)
+            {
+                // O lock me garante que :
+                // 1 -  Nao vai ter duas tasks escrevendo e/ou instanciando o mesmo objeto
+                // 2 - Eu saiba quando chega a ultima mensabem para chamar o evento 'OnMessageReceived'
+                lock (mutex)
+                {
+                    _respVolta = JsonConvert.DeserializeObject<Door2DoorLegResponse>(e.Result);
+
+                    // se é nulo é porque é a primeira mensagem que chega
+                    if (_resp.LegResponse == null)
+                    {
+                        _resp.LegResponse = new List<Door2DoorLegResponse>(2);
+                        _resp.LegResponse[1] = _respVolta;
+                    }
+                    else // senao ja chegou a outra, pode chamar o evento
+                    {
+                        _resp.LegResponse[1] = _respVolta;
+                        OnMessageReceived(_resp);
+                    }
+                }
+            }
+            else
+            {
+                throw new D2DResponseException(e.Error);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void OnOutboundDownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            if (e.Error == null)
+            {
+                // O lock me garante que :
+                // 1 -  Nao vai ter duas tasks escrevendo e/ou instanciando o mesmo objeto
+                // 2 - Eu saiba quando chega a ultima mensabem para chamar o evento 'OnMessageReceived'
+                lock (mutex)
+                {
+                    _respIda = JsonConvert.DeserializeObject<Door2DoorLegResponse>(e.Result);
+
+                    // se é nulo é porque é a primeira mensagem que chega
+                    if (_resp.LegResponse == null)
+                    {
+                        _resp.LegResponse = new List<Door2DoorLegResponse>(2);
+                        _resp.LegResponse[0] = _respIda;
+                    }
+                    else // senao ja chegou a outra, pode chamar o evento
+                    {
+                        _resp.LegResponse[0] = _respIda;
+                        OnMessageReceived(_resp);
+                    }
+                }
+            }
+            else
+            {
+                throw new D2DResponseException(e.Error);
+            }
+        }
 
         /// <summary>
         ///     Builds parameters for the API request
