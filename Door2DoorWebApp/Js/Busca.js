@@ -115,6 +115,7 @@ function renderTotals() {
     htmlResult += '         <th>Tempo em onibus</th>';
     htmlResult += '         <th>Tempo a pé</th>';
     htmlResult += '         <th>Tempo esperando</th>';
+    htmlResult += '         <th>Tempo total</th>';
     htmlResult += '     </tr>';
     htmlResult += '     <tr>';
     htmlResult += '         <td><strong>Ida</strong></th>';
@@ -125,18 +126,33 @@ function renderTotals() {
     htmlResult += '         <td align="right">' + routeIda.routeTotals.totalTimeOnBus + '</td>';
     htmlResult += '         <td align="right">' + routeIda.routeTotals.totalTimeOnWalk + '</td>';
     htmlResult += '         <td align="right">' + routeIda.routeTotals.totalTimeWaiting + '</td>';
+    htmlResult += '         <td align="right">' + sumTimeSpan([routeIda.routeTotals.totalTimeOnTrain, routeIda.routeTotals.totalTimeOnCar, routeIda.routeTotals.totalTimeOnFlight, routeIda.routeTotals.totalTimeOnBus, routeIda.routeTotals.totalTimeOnWalk, routeIda.routeTotals.totalTimeWaiting]) + '</td>';
     htmlResult += '     </tr>';
     if (isAnyReturnValid) {
-        htmlResult += '     <tr>';
-        htmlResult += '         <td><strong>Volta</strong></th>';
-        htmlResult += '         <td align="right">' + routeVolta.routeTotals.totalDistance.toFixed(2) + '</td>';
-        htmlResult += '         <td align="right">' + routeVolta.routeTotals.totalTimeOnTrain + '</td>';
-        htmlResult += '         <td align="right">' + routeVolta.routeTotals.totalTimeOnCar + '</td>';
-        htmlResult += '         <td align="right">' + routeVolta.routeTotals.totalTimeOnFlight + '</td>';
-        htmlResult += '         <td align="right">' + routeVolta.routeTotals.totalTimeOnBus + '</td>';
-        htmlResult += '         <td align="right">' + routeVolta.routeTotals.totalTimeOnWalk + '</td>';
-        htmlResult += '         <td align="right">' + routeVolta.routeTotals.totalTimeWaiting + '</td>';
-        htmlResult += '     </tr>';
+        htmlResult += ' <tr>';
+        htmlResult += '     <td><strong>Volta</strong></th>';
+        htmlResult += '     <td align="right">' + routeVolta.routeTotals.totalDistance.toFixed(2) + '</td>';
+        htmlResult += '     <td align="right">' + routeVolta.routeTotals.totalTimeOnTrain + '</td>';
+        htmlResult += '     <td align="right">' + routeVolta.routeTotals.totalTimeOnCar + '</td>';
+        htmlResult += '     <td align="right">' + routeVolta.routeTotals.totalTimeOnFlight + '</td>';
+        htmlResult += '     <td align="right">' + routeVolta.routeTotals.totalTimeOnBus + '</td>';
+        htmlResult += '     <td align="right">' + routeVolta.routeTotals.totalTimeOnWalk + '</td>';
+        htmlResult += '     <td align="right">' + routeVolta.routeTotals.totalTimeWaiting + '</td>';
+        htmlResult += '         <td align="right">' + sumTimeSpan([routeVolta.routeTotals.totalTimeOnTrain, routeVolta.routeTotals.totalTimeOnCar, routeVolta.routeTotals.totalTimeOnFlight, routeVolta.routeTotals.totalTimeOnBus, routeVolta.routeTotals.totalTimeOnWalk, routeVolta.routeTotals.totalTimeWaiting]) + '</td>';
+        htmlResult += '  </tr>';
+
+        htmlResult += ' <tr>';
+        htmlResult += '     <td><strong>Total</strong></th>';
+        htmlResult += '     <td align="right"><strong>' + (routeIda.routeTotals.totalDistance + routeVolta.routeTotals.totalDistance).toFixed(2) + '</strong></td>';
+        htmlResult += '     <td align="right"><strong>' + sumTimeSpan([routeVolta.routeTotals.totalTimeOnTrain, routeIda.routeTotals.totalTimeOnTrain]) + '</strong></td>';
+        htmlResult += '     <td align="right"><strong>' + sumTimeSpan([routeVolta.routeTotals.totalTimeOnCar, routeIda.routeTotals.totalTimeOnCar]) + '</strong></td>';
+        htmlResult += '     <td align="right"><strong>' + sumTimeSpan([routeVolta.routeTotals.totalTimeOnFlight, routeIda.routeTotals.totalTimeOnFlight]) + '</strong></td>';
+        htmlResult += '     <td align="right"><strong>' + sumTimeSpan([routeVolta.routeTotals.totalTimeOnBus, routeIda.routeTotals.totalTimeOnBus]) + '</strong></td>';
+        htmlResult += '     <td align="right"><strong>' + sumTimeSpan([routeVolta.routeTotals.totalTimeOnWalk, routeIda.routeTotals.totalTimeOnWalk]) + '</strong></td>';
+        htmlResult += '     <td align="right"><strong>' + sumTimeSpan([routeVolta.routeTotals.totalTimeWaiting, routeIda.routeTotals.totalTimeWaiting]) + '</strong></td>';
+        htmlResult += '     <td align="right"><strong>' + sumTimeSpan([routeVolta.routeTotals.totalTimeOnTrain, routeVolta.routeTotals.totalTimeOnCar, routeVolta.routeTotals.totalTimeOnFlight, routeVolta.routeTotals.totalTimeOnBus, routeVolta.routeTotals.totalTimeOnWalk, routeVolta.routeTotals.totalTimeWaiting, routeIda.routeTotals.totalTimeOnTrain, routeIda.routeTotals.totalTimeOnCar, routeIda.routeTotals.totalTimeOnFlight, routeIda.routeTotals.totalTimeOnBus, routeIda.routeTotals.totalTimeOnWalk, routeIda.routeTotals.totalTimeWaiting]) + '</strong></td>';
+        htmlResult += '  </tr>';
+
     }
     htmlResult += '</table><br/><br/>';
     //
@@ -160,14 +176,14 @@ function renderTotals() {
     htmlResult += '         <td align="right">R$ ' + (routeIda.routeTotals.totalPriceOfTrain + routeIda.routeTotals.totalPriceOfCar + routeIda.routeTotals.totalPriceOfBus + routeIda.routeTotals.totalPriceOfFlight).toFixed(2) + '</td>';
     htmlResult += '     </tr>';
     if (isAnyReturnValid) {
-        htmlResult += '     <tr>';
-        htmlResult += '         <td><strong>Volta</strong></th>';
-        htmlResult += '         <td align="right">R$ ' + routeVolta.routeTotals.totalPriceOfTrain.toFixed(2) + '</td>';
-        htmlResult += '         <td align="right">R$ ' + routeVolta.routeTotals.totalPriceOfCar.toFixed(2) + '</td>';
-        htmlResult += '         <td align="right">R$ ' + routeVolta.routeTotals.totalPriceOfBus.toFixed(2) + '</td>';
-        htmlResult += '         <td align="right">R$ ' + routeVolta.routeTotals.totalPriceOfFlight.toFixed(2) + '</td>';
-        htmlResult += '         <td align="right">R$ ' + (routeVolta.routeTotals.totalPriceOfTrain + routeVolta.routeTotals.totalPriceOfCar + routeVolta.routeTotals.totalPriceOfBus + routeVolta.routeTotals.totalPriceOfFlight).toFixed(2) + '</td>';
-        htmlResult += '     </tr>';
+        htmlResult += ' <tr>';
+        htmlResult += '     <td><strong>Volta</strong></th>';
+        htmlResult += '     <td align="right">R$ ' + routeVolta.routeTotals.totalPriceOfTrain.toFixed(2) + '</td>';
+        htmlResult += '     <td align="right">R$ ' + routeVolta.routeTotals.totalPriceOfCar.toFixed(2) + '</td>';
+        htmlResult += '     <td align="right">R$ ' + routeVolta.routeTotals.totalPriceOfBus.toFixed(2) + '</td>';
+        htmlResult += '     <td align="right">R$ ' + routeVolta.routeTotals.totalPriceOfFlight.toFixed(2) + '</td>';
+        htmlResult += '     <td align="right">R$ ' + (routeVolta.routeTotals.totalPriceOfTrain + routeVolta.routeTotals.totalPriceOfCar + routeVolta.routeTotals.totalPriceOfBus + routeVolta.routeTotals.totalPriceOfFlight).toFixed(2) + '</td>';
+        htmlResult += ' </tr>';
     }
     htmlResult += '     <tr>';
     htmlResult += '         <td><strong>Total</strong></th>';
@@ -204,7 +220,7 @@ function renderTotals() {
 //
 //
 //
-function onRouteChoiceChanged() {
+function onRouteChoiceChanged(e) {
     renderTotals();
 }
 

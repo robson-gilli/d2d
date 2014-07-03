@@ -55,3 +55,69 @@ function getTimeDiff(initialDate, finalDate) {
  
     return date;
 };
+
+//
+// soma C# timespans que tenha formato d.HH:mm:ss e devolve no mesmo formato
+//
+function sumTimeSpan(times) {
+    var days = 0;
+    var hours = 0;
+    var minutes = 0;
+    var seconds = 0;
+
+    for (var i = 0; i < times.length; i++) {
+        var pointIndex = times[i].indexOf('.') == -1 ? 0 : times[i].indexOf('.') + 1;
+
+        var h = parseInt(times[i].substring(pointIndex, pointIndex + 2));
+        var m = parseInt(times[i].substring(pointIndex + 3, pointIndex + 5));
+        var s = parseInt(times[i].substring(pointIndex + 6, pointIndex + 8));
+        var d = pointIndex == 0 ? 0 : parseInt(times[i].substring(0, pointIndex - 1));
+
+        var rest = 0;
+        var sumM = 0;
+        var sumH = 0;
+        var sumD = 0;
+        var sumS = seconds + s;
+        if (sumS >= 60) {
+            rest = sumS;
+            while (rest >= 60) {
+                sumM += 1;
+                sumS -= 60;
+                if ((sumS - 60) < 60)
+                    break;
+                rest = sumS - 60;
+            }
+        }
+        seconds = sumS;
+
+        sumM += minutes + m;
+        if (sumM >= 60) {
+            rest = sumM;
+            while (rest >= 60) {
+                sumH += 1;
+                sumM -= 60;
+                if ((sumM - 60) < 60)
+                    break;
+                rest = sumM - 60;
+            }
+        }
+        minutes = sumM;
+
+        sumH += hours + h;
+        if (sumH >= 24) {
+            rest = sumH;
+            while (rest >= 24) {
+                sumD += 1;
+                sumH -= 24;
+                if ((sumH - 24) < 24)
+                    break;
+                rest = sumH - 24;
+            }
+        }
+        hours = sumH;
+        days += sumD + d;
+    }
+    
+    return (days == 0 ? '' : days + '.') + hours.toString().padLeft(2, '0') + ':' + minutes.toString().padLeft(2, '0') + ':' + seconds.toString().padLeft(2, '0');
+
+}

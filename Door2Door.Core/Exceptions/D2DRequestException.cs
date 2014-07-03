@@ -9,6 +9,7 @@ namespace Door2DoorCore.Exceptions
     /// <summary>
     ///     Exception thrown when there is wrong or missing information on the <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>.
     /// </summary>
+    [Serializable]
     public class D2DRequestException : Exception
     {
         /// <summary>

@@ -211,7 +211,8 @@ namespace Door2DoorCore
                             DateTime originalDepDate = departureDateCurrent.AddMinutes(_flightAntecipation);
                             if (originalDepDate.Day == departureDateCurrent.Day)
                             {
-                                originalDepDate = new DateTime(departureDateCurrent.Year, departureDateCurrent.Month, departureDateCurrent.Day + 1, 0, 0, 0);
+                                originalDepDate = new DateTime(departureDateCurrent.Year, departureDateCurrent.Month, departureDateCurrent.Day, 0, 0, 0);
+                                originalDepDate = originalDepDate.AddDays(1);
                                 //originalDepDate = departureDateCurrent.Date;
                             }
                             DateTime lastDepDate = originalDepDate.Date;

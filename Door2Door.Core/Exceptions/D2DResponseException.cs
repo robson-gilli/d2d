@@ -9,6 +9,7 @@ namespace Door2DoorCore.Exceptions
     /// <summary>
     ///     Exception thrown when some error occurred during the response processing
     /// </summary>
+    [Serializable]
     public class D2DResponseException : Exception
     {
         /// <summary>
