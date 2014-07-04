@@ -11,12 +11,41 @@ namespace Door2DoorCore
 {
     internal class Door2DoorRome2Rio : Door2DoorBase, IDoor2DoorProvider
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="d2d">
+        /// The request. A <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>
+        /// </param>
         public Door2DoorRome2Rio(D2DRequest d2d)
             : base(d2d){}
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="d2d">
+        /// The request. A <see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>
+        /// </param>
+        /// <param name="maxWalkingMinutes">
+        /// Max walking minutes. Controls how much time is acceptable for a walk <see cref="Door2DoorCore.Types.Door2DoorResponse.Segment"/>. If not informed, the default is 10 min.
+        /// </param>
+        /// <param name="flightAntecipation">
+        /// How many minutes should be considered as antecipation to get to the airport. If not informed, the default is 120 (two hours).
+        /// </param>
+        /// <param name="minutesAfterFlight">
+        /// How many minutes should be considered after the Arriving time of a flight. If not informed, the default is 30.
+        /// </param>
         public Door2DoorRome2Rio(D2DRequest d2d, int maxWalkingMinutes, int flightAntecipation, int minutesAfterFlight)
             : base(d2d,maxWalkingMinutes, flightAntecipation, minutesAfterFlight) { }
 
-
+        /// <summary>
+        /// <para>If 'getNewResponse' is true, it you communicate to the providers even if it is an existing instance.</para>
+        /// </summary>
+        /// <param name="getNewResponse">
+        /// Bool. It's possible to force the communication to the providers.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>.
+        /// </returns>
         public Door2DoorResponse GetResponse(bool getNewResponse)
         {
             if (getNewResponse || _resp == null)
@@ -30,6 +59,13 @@ namespace Door2DoorCore
             return _resp;
         }
 
+        /// <summary>
+        /// <para>If it's a new instance, it you communicate to the providers an calculate the routes. </para>
+        /// <para>If it's the second call to an existing istance, it will only recalculate, but not communicate to the providers </para>
+        /// </summary>
+        /// <returns>
+        /// A <see cref="Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>.
+        /// </returns>
         public Door2DoorResponse GetResponse()
         {
             if (_resp == null)
@@ -43,7 +79,9 @@ namespace Door2DoorCore
             return _resp;
         }
 
-
+        /// <summary>
+        /// Builds the <see cref="Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/> based on the response obtained from rome2rio api.
+        /// </summary>
         protected override void BuildCompleteItinerarySchedule()
         {
             for (int i = 0; i < _resp.LegResponse[0].Routes.Count(); i++) //ida
@@ -108,6 +146,22 @@ namespace Door2DoorCore
             }
         }
 
+        /// <summary>
+        ///     <para>Completes the response with schedule information, considering that the client informed the <see cref="Door2DoorCore.Types.Door2DoorRequest.D2dRequestTripDateKind"/> attributes as the departing dates.</para>
+        ///     <para>This method also takes into account any external flight option that might have been informed in the request.</para>
+        /// </summary>
+        /// <param name="route">
+        ///     Route: <see cref="Door2DoorCore.Types.Door2DoorResponse.Route"/>.
+        /// </param>
+        /// <param name="departureDateTime">
+        ///     Desired departure date.
+        /// </param>
+        /// <param name="flightChosen">
+        ///     If an external flight was informed for this route. <see cref="Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption"/>
+        /// </param>
+        /// <param name="legIndex">
+        ///     Whether this is the inbound(0) or outbound(1) leg of the trip
+        /// </param>
         private void BuildItineraryScheduleDepartingAt(ref Route route, DateTime departureDateTime, bool flightChosen, int legIndex)
         {
             if (route.Segments != null && route.Segments.Length > 0)
@@ -173,7 +227,7 @@ namespace Door2DoorCore
                                 string[] tTime = leg.Hops[leg.Hops.Length - 1].TTime.Split(':');
                                 DateTime tempDepDate = new DateTime(originalDepDate.Year, originalDepDate.Month, originalDepDate.Day, int.Parse(sTime[0]), int.Parse(sTime[1]), 0);
                                 itinerary.ValidForSchedule = tempDepDate >= originalDepDate; // valido para horario de chegada informado?
-                                
+
                                 if ((!achouVoo && tempDepDate >= originalDepDate) || (achouVoo && tempDepDate < lastDepDate && tempDepDate >= originalDepDate))
                                 {
                                     achouVoo = true; // sei q pelo menos um voo é valido
@@ -309,8 +363,8 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        ///     Completes the response with  schedule information.
-        ///     This method also takes into account any external flight option that might have been informed in the request.
+        ///     <para>Completes the response with schedule information, considering that the client informed the <see cref="Door2DoorCore.Types.Door2DoorRequest.D2dRequestTripDateKind"/> attributes as the arrival dates.</para>
+        ///     <para>This method also takes into account any external flight option that might have been informed in the request.</para>
         /// </summary>
         /// <param name="route">
         ///     Route: <see cref="Door2DoorCore.Types.Door2DoorResponse.Route"/>
@@ -487,6 +541,13 @@ namespace Door2DoorCore
             }
         }
 
+        /// <summary>
+        ///     <para>Sometimes Rome2Rio API calculates lonk walking segments.</para>
+        ///     <para>When a situation like this is identified, the 'walk' segment is transformed into a 'taxi' segment.</para>
+        ///     <para>This is intended to be transitory, as they stated that this behavior will be fixed, but we never know.</para>
+        ///     <para><seealso cref="Door2DoorCore.Door2DoorBase._maxWalkingMinutes"/></para>
+        /// </summary>
+        /// <param name="segment"></param>
         private void WalkIntoTaxiTransformation(ref Segment segment)
         {
             segment.Kind = "car";
@@ -512,6 +573,9 @@ namespace Door2DoorCore
         /// </param>
         /// <param name="segmentIndex">
         ///     Which segment of the informed route.
+        /// </param>
+        /// <param name="departingAt">
+        ///     Is this a <see cref="Door2DoorCore.Types.Door2DoorRequest.D2dRequestTripDateKind"/> indicating a departure date or not?
         /// </param>
         private void CalcRouteTotals(ref Route route, int segmentIndex, bool departingAt)
         {

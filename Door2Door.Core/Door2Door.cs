@@ -37,9 +37,14 @@ namespace Door2DoorCore
     /// </summary>
     public class Door2Door
     {
+        /// <summary>
+        /// Rome2Rio component instance
+        /// </summary>
         private Door2DoorRome2Rio r2r;
+        /// <summary>
+        /// Indicates if a new request was informed to the same instance of this class, in order to control if it should or not get a new response from the provider.
+        /// </summary>
         private bool newRequest;
-
         /// <summary>
         ///     Routes and schedules for the desired itinerary request. <see cref="Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>
         /// </summary>
@@ -47,6 +52,9 @@ namespace Door2DoorCore
         {
             get { return r2r.Resp; }
         }
+        /// <summary>
+        ///     Routes and schedules for the desired itinerary request. <see cref="Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>
+        /// </summary>
         public D2DRequest _Req
         {
             get { return r2r.Req; }
@@ -56,7 +64,6 @@ namespace Door2DoorCore
                 newRequest = true;
             }
         }
-
 
         /// <summary>
         ///     Constructor of the class. <see cref="Door2DoorCore.Door2Door"/>
@@ -79,6 +86,23 @@ namespace Door2DoorCore
 
         }
 
+        /// <summary>
+        /// Constructor of the class. <see cref="Door2DoorCore.Door2Door"/>
+        /// </summary>
+        /// <param name="d2dReq">
+        ///     <para><see cref="Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/></para>
+        ///     Parameters for the request include coordinates of origin and destination,
+        ///     arrival and return dates, external flight options and filters.
+        /// </param>
+        /// <param name="maxWalkingMinutes">
+        ///     Max walking minutes. Controls how much time is acceptable for a walk <see cref="Door2DoorCore.Types.Door2DoorResponse.Segment"/>. If not informed, the default is 10 min.
+        /// </param>
+        /// <param name="flightAntecipation">
+        ///     How many minutes should be considered as antecipation to get to the airport. If not informed, the default is 120 (two hours).
+        /// </param>
+        /// <param name="minutesAfterFlight">
+        ///     How many minutes should be considered after the Arriving time of a flight. If not informed, the default is 30.
+        /// </param>
         public Door2Door(D2DRequest d2dReq, int maxWalkingMinutes, int flightAntecipation, int minutesAfterFlight)
         {
             if (d2dReq.requestType == D2DRequestType.r2r)

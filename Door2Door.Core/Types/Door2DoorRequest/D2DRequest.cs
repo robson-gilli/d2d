@@ -45,17 +45,18 @@ namespace Door2DoorCore.Types.Door2DoorRequest
         ///     DateTime indicating when the user wants to be at the destination
         /// </summary>
         public DateTime desiredOutboundDate { get; set; }
-
+        /// <summary>
+        ///     How to interpret the outbound date.
+        /// </summary>
         public D2dRequestTripDateKind outboundDateKind { get; set; }
-
         /// <summary>
         ///     Nullable - If RoundTrip, indicates when the user wants to be back at the origin
         /// </summary>
         public DateTime? desiredInboundDate { get; set; }
-
+        /// <summary>
+        ///     How to interpret the inbound date.
+        /// </summary>
         public D2dRequestTripDateKind inboundDateKind { get; set; }
-
-
         /// <summary>
         ///     SearchRequestFlags iindicating to include or exclude forms of transportation
         /// </summary>
@@ -74,5 +75,10 @@ namespace Door2DoorCore.Types.Door2DoorRequest
         ///     instead of the Rome2rio flight results.
         /// </summary>
         public OuterFlightOption.OuterFlightOption[] chosenRoute { get; set; }
+        /// <summary>
+        /// Estimated amout spent in meals per day.
+        /// </summary>
+        public decimal dailyAlimentationBudget { get; set; }
+
     }
 }

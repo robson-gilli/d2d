@@ -60,6 +60,7 @@
     <Compile Include="Types\Door2DoorRequest\OuterFlightOption\OuterFlightOption.cs" />
     <Compile Include="Types\Door2DoorRequest\OuterFlightOption\OuterFlightSegment.cs" />
     <Compile Include="Types\Door2DoorRequest\D2dRequestTripDateKind.cs" />
+    <Compile Include="Types\Door2DoorRequest\OuterHotelOption\OuterHotelOption.cs" />
     <Compile Include="Types\Door2DoorResponse\ItineraryDates.cs" />
     <Compile Include="Types\Door2DoorResponse\Door2DoorResponse.cs" />
     <Compile Include="Types\Door2DoorResponse\RouteTotals.cs" />
