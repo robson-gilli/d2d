@@ -88,6 +88,10 @@ namespace Door2DoorCore
             VerifyRequest(d2dReq);
         }
 
+        /// <summary>
+        /// Verify if the minimum information was specified in the request
+        /// </summary>
+        /// <param name="d2dReq">The request</param>
         private void VerifyRequest(D2DRequest d2dReq)
         {
             _req = d2dReq;

@@ -79,6 +79,11 @@ namespace Door2DoorCore.Types.Door2DoorRequest
         /// Estimated amout spent in meals per day.
         /// </summary>
         public decimal dailyAlimentationBudget { get; set; }
+        /// <summary>
+        /// <para>It's possible to inform an hotel data in the request.</para>
+        /// <para>The system will try to calculate Taxi fares for the amount of days that the trip takes and sum it in the response.</para>
+        /// </summary>
+        public OuterHotelOption.OuterHotelOption chosenStay { get; set; }
 
     }
 }

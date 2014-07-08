@@ -1,6 +1,7 @@
 ﻿using Door2DoorCore.Interfaces;
 using Door2DoorCore.Types.Door2DoorRequest;
 using Door2DoorCore.Types.Door2DoorResponse;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace Door2DoorCore
 {
+    /// <summary>
+    /// Class responsible for creating the itineraries for rome2rio api
+    /// </summary>
     internal class Door2DoorRome2Rio : Door2DoorBase, IDoor2DoorProvider
     {
         /// <summary>
@@ -48,14 +52,7 @@ namespace Door2DoorCore
         /// </returns>
         public Door2DoorResponse GetResponse(bool getNewResponse)
         {
-            if (getNewResponse || _resp == null)
-            {
-                using (Rome2RioComm comm = new Rome2RioComm(_req))
-                {
-                    _resp = comm.Download();
-                }
-            }
-            BuildCompleteItinerarySchedule();
+            GetRome2RioResponse(getNewResponse);
             return _resp;
         }
 
@@ -68,15 +65,84 @@ namespace Door2DoorCore
         /// </returns>
         public Door2DoorResponse GetResponse()
         {
-            if (_resp == null)
+            GetRome2RioResponse(false);
+            return _resp;
+        }
+
+        /// <summary>
+        /// Returns the response from rome2rio
+        /// </summary>
+        /// <param name="getNewResponse">
+        ///     If it should get the response from rome2rio or used the stored one, if available
+        /// </param>
+        private void GetRome2RioResponse(bool getNewResponse)
+        {
+            if (getNewResponse || _resp == null)
             {
-                using (Rome2RioComm comm = new Rome2RioComm(_req))
+                using (Rome2RioComm comm = new Rome2RioComm(_req, BuildSearchRequestFlags(false)))
                 {
                     _resp = comm.Download();
                 }
             }
             BuildCompleteItinerarySchedule();
-            return _resp;
+
+            if (_req.desiredInboundDate.HasValue) //tem volta
+            {
+                if (_req.chosenStay != null)
+                {
+                    // se nao é a estadia completa, as datas de checkin e checkout devem que ser validas
+                    if (_req.chosenStay.completeStay || 
+                        (!_req.chosenStay.completeStay && _req.chosenStay.checkinDate > _req.desiredOutboundDate && _req.chosenStay.checkoutDate < _req.desiredInboundDate))
+                    {
+                        BuildItineraryStay();
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// If it is roundtrip and a <see cref="Door2DoorCore.Types.Door2DoorRequest.OuterHotelOption.OuterHotelOption"/> is informed, calculates the taxis amount.
+        /// </summary>
+        private void BuildItineraryStay()
+        {
+            int daysTotals = 0;
+            if (_req.chosenStay.completeStay)
+                daysTotals = Math.Abs((_resp.LegResponse[0].Routes[0].Segments[_resp.LegResponse[0].Routes[0].Segments.Length - 1].ArrivalDateTime.Value - _resp.LegResponse[1].Routes[0].Segments[0].DepartureDateTime.Value).Days);
+            else
+                daysTotals = Math.Abs((_req.chosenStay.checkoutDate - _req.chosenStay.checkinDate).Days);
+            if (daysTotals > 0)
+            {
+                Door2DoorResponse stayResp = new Door2DoorResponse();
+                using (Rome2RioComm comm = new Rome2RioComm(_req, BuildSearchRequestFlags(true)))
+                {
+                    stayResp = comm.Download(true);
+                }
+
+                decimal valorTaxiIda = 0M;
+                foreach (Route route in stayResp.LegResponse[0].Routes)
+                {
+                    if (route.Name.ToLower().Equals("taxi"))
+                    {
+                        valorTaxiIda = route.IndicativePrice.Price;
+                        break;
+                    }
+                }
+                decimal valorTaxiVolta = 0M;
+                foreach (Route route in stayResp.LegResponse[1].Routes)
+                {
+                    if (route.Name.ToLower().Equals("taxi"))
+                    {
+                        valorTaxiVolta = route.IndicativePrice.Price;
+                        break;
+                    }
+                }
+
+                int nrTaxisIda = valorTaxiIda > 0 ? daysTotals : 0;
+                int nrTaxisVolta = valorTaxiVolta > 0 ? daysTotals : 0;
+                _resp.NumberOfTaxisOnStay = nrTaxisIda + nrTaxisVolta;
+                _resp.TotalPriceOfLocalTaxi = valorTaxiIda * daysTotals + valorTaxiVolta * daysTotals;
+                _resp.TotalPriceOfHotel = _req.chosenStay.totalPrice;
+            }
         }
 
         /// <summary>
@@ -112,6 +178,12 @@ namespace Door2DoorCore
 
             if (_req.desiredInboundDate.HasValue) //volta
             {
+                if (_req.chosenStay != null)
+                {
+                    int daysTotals = Math.Abs((_req.chosenStay.checkoutDate - _req.chosenStay.checkinDate).Days);
+                    _resp.totalPriceOfAlimentation = _req.dailyAlimentationBudget * decimal.Parse(daysTotals.ToString());
+                }
+
                 for (int i = 0; i < _resp.LegResponse[1].Routes.Count(); i++)
                 {
                     Route route = _resp.LegResponse[1].Routes[i];
@@ -547,7 +619,9 @@ namespace Door2DoorCore
         ///     <para>This is intended to be transitory, as they stated that this behavior will be fixed, but we never know.</para>
         ///     <para><seealso cref="Door2DoorCore.Door2DoorBase._maxWalkingMinutes"/></para>
         /// </summary>
-        /// <param name="segment"></param>
+        /// <param name="segment">
+        /// Segment to be transformed
+        /// </param>
         private void WalkIntoTaxiTransformation(ref Segment segment)
         {
             segment.Kind = "car";
@@ -850,7 +924,7 @@ namespace Door2DoorCore
         ///     DateTime to match
         /// </param>
         /// <returns>
-        ///     <see cref="Door2DoorCore.Types.Door2DoorResponse"/> indicatin Arrival and Departure dates. Both 'null' if not valid.
+        ///     <see cref="Door2DoorCore.Types.Door2DoorResponse"/> indicating Arrival and Departure dates. Both 'null' if not valid.
         /// </returns>
         private ItineraryDates MatchflightToSchedule(Leg itinerary, DateTime arrivalDateNextStop)
         {
@@ -926,6 +1000,60 @@ namespace Door2DoorCore
             itinerarySchedule.departureDateTime = new DateTime(arrivalDateNextStop.Year, arrivalDateNextStop.Month, arrivalDateNextStop.Day, int.Parse(sTime[0]), int.Parse(sTime[1]), 0).AddDays(-depDayChange);
 
             return itinerarySchedule;
+        }
+
+        /// <summary>
+        ///     <list type="bullet">
+        ///         <item><description>0x00000000	Include all kinds of segments (Default)</description></item>
+        ///         <item><description>0x000FFFFF	Exclude all kinds of segments (See example below)</description></item>
+        ///         <item><description>0x00000001	Exclude flight segments</description></item>
+        ///         <item><description>0x00000002	Exclude flight itineraries</description></item>
+        ///         <item><description>0x00000010	Exclude train segments</description></item>
+        ///         <item><description>0x00000020	Exclude train itineraries</description></item>
+        ///         <item><description>0x00000100	Exclude bus segments</description></item>
+        ///         <item><description>0x00000200	Exclude bus itineraries</description></item>
+        ///         <item><description>0x00001000	Exclude ferry segments</description></item>
+        ///         <item><description>0x00002000	Exclude ferry itineraries</description></item>
+        ///         <item><description>0x00010000	Exclude car segments</description></item>
+        ///         <item><description>0x00100000	Exclude commuter hops (commuter = local bus, train, trams, subways, etc.)</description></item>
+        ///         <item><description>0x00200000	Exclude special hops (special = funiculars, steam trains, tours, etc.)</description></item>
+        ///         <item><description>0x00400000	Exclude minor start segments</description></item>
+        ///         <item><description>0x00800000	Exclude minor end segments</description></item>
+        ///         <item><description>0x01000000	Exclude paths (saves bandwidth)</description></item>
+        ///         <item><description>0x04000000	Exclude indicative prices (saves bandwidth)</description></item>
+        ///         <item><description>0x10000000	Disable scoring and pruning (debug only)</description></item>
+        ///         <item><description>Flights only: 0x000FFFF0 (0x000FFFFF - 0x0000000F)</description></item>
+        ///         <item><description>Not via road: 0x00010100 (0x00000100 + 0x00010000)</description></item>
+        ///     </list>
+        ///     <para>NOTE: You can pass these flags either as a hexadecimal value (&flags=0x00010100) or simply as a decimal (&flags=65792).</para> 
+        /// </summary>
+        /// <param name="carOnly">
+        ///     If car only, eliminates all other options
+        /// </param>
+        /// <returns>
+        ///     Integer flag
+        /// </returns>
+        private int BuildSearchRequestFlags(bool carOnly)
+        {
+            //0x01000000 => Exclude path information (saves bandwidth)
+            int flagsIncludeAll = Convert.ToInt32("0x01000000", 16);
+            if (!carOnly)
+            {
+                if (!_req.flags.includePublicTransp)
+                {
+                    flagsIncludeAll +=
+                        +Convert.ToInt32("0x00000010", 16) // exclude train
+                        + Convert.ToInt32("0x00000100", 16) // exclude bus
+                        + Convert.ToInt32("0x00001000", 16) // exclude ferry
+                        + Convert.ToInt32("0x00100000", 16); // exclude commutes
+                }
+            }
+            else
+            {
+                //car only
+                flagsIncludeAll += Convert.ToInt32("0x0000FFFF", 16);
+            }
+            return flagsIncludeAll;
         }
     }
 }

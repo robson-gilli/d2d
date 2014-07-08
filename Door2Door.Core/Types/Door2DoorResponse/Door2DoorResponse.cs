@@ -712,5 +712,27 @@ namespace Door2DoorCore.Types.Door2DoorResponse
         /// </summary>
         [JsonProperty("legResponse")]
         public List<Door2DoorLegResponse> LegResponse { get; set; }
+        /// <summary>
+        /// Estimated total amout spent in meals.
+        /// </summary>
+        [JsonProperty("TotalPriceOfAlimentation")]
+        public decimal totalPriceOfAlimentation { get; set; }
+        /// <summary>
+        /// Hotel total amount.
+        /// </summary>
+        [JsonProperty("totalPriceOfHotel")]
+        public decimal TotalPriceOfHotel { get; set; }
+        /// <summary>
+        /// According to the stay period information in <see cref="Door2DoorCore.Types.Door2DoorRequest.OuterHotelOption.OuterHotelOption"/>, 
+        /// calculates the total amount spent on taxis between hotel and office, if applicable. 
+        /// </summary>
+        [JsonProperty("totalPriceOfLocalTaxi")]
+        public decimal TotalPriceOfLocalTaxi { get; set; }
+        /// <summary>
+        /// The quantity of taxis taken upon the stay period.
+        /// </summary>
+        [JsonProperty("numberOfTaxisOnStay")]
+        public int NumberOfTaxisOnStay { get; set; }
+
     }
 }

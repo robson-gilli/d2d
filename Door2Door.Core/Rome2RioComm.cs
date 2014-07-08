@@ -22,18 +22,34 @@ namespace Door2DoorCore
         /// </summary>
         private D2DRequest _req;
 
-        public delegate void MessageReceivedEventHandler(Door2DoorResponse resp);
-        public event MessageReceivedEventHandler OnMessageReceived;
+        /// <summary>
+        /// Delegate for asynchronous use
+        /// </summary>
+        /// <param name="resp">
+        /// <see cref="Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>
+        /// </param>
+        internal delegate void MessageReceivedEventHandler(Door2DoorResponse resp);
+        
+        /// <summary>
+        /// Event raised when the response arrives if it was requested asynchronously
+        /// </summary>
+        internal event MessageReceivedEventHandler OnMessageReceived;
+
+        /// <summary>
+        /// Preventing critical region
+        /// </summary>
         private static object mutex;
 
         /// <summary>
         ///     Outbound Response.
         /// </summary>
         private Door2DoorLegResponse  _respIda;
+
         /// <summary>
         ///     Inbound Response.
         /// </summary>
         private Door2DoorLegResponse _respVolta;
+
         /// <summary>
         /// Raw <see cref="Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>, before schedules and totals addition.
         /// </summary>
@@ -41,10 +57,15 @@ namespace Door2DoorCore
         /// <summary>
         ///     Raw <see cref="Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>, before schedules and totals addition.
         /// </summary>
-        public Door2DoorResponse Resp
+        internal Door2DoorResponse Resp
         {
             get { return _resp; }
         }
+
+        /// <summary>
+        /// Request flags informed on the request
+        /// </summary>
+        private int _requestFlags;
 
         /// <summary>
         ///     Handles the communication between client and Rome2rio api.
@@ -53,10 +74,31 @@ namespace Door2DoorCore
         ///     Parameters for the request include coordinates of origin and destination,
         ///     arrival and return dates, external flight options and filters.
         /// </param>
-        public Rome2RioComm(D2DRequest req)
+        /// <param name="requestFlags">
+        ///     Filters the response segment types.
+        /// </param>
+        internal Rome2RioComm(D2DRequest req, int requestFlags)
         {
+            _requestFlags = requestFlags;
             _req = req;
             _resp = new Door2DoorResponse();
+        }
+
+        /// <summary>
+        /// Downloads the response from the API, according to the stay informed.
+        /// </summary>
+        /// <param name="useStayAsDestination">
+        /// If it was informed a stay, it calculates de routes between the hotel and the destination
+        /// </param>
+        /// <returns>Door2Door response <see cref="Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/></returns>
+        internal Door2DoorResponse Download(bool useStayAsDestination)
+        {
+            if (useStayAsDestination)
+            {
+                _req.oriLocation = _req.destLocation;
+                _req.destLocation = _req.chosenStay.location;
+            }
+            return Download();
         }
 
         /// <summary>
@@ -65,7 +107,7 @@ namespace Door2DoorCore
         /// <returns>
         ///     Raw response, before schedules and totals addition.
         /// </returns>
-        public Door2DoorResponse Download()
+        internal Door2DoorResponse Download()
         {
             List<Task> taskList = new List<Task>();
             string url = _req.url;
@@ -122,9 +164,10 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        /// 
+        ///  Performs the operation asynchronously.
+        ///  When all reponse come, the event 'OnMessageReceived' will be raised
         /// </summary>
-        public void DownloadAsync()
+        internal void DownloadAsync()
         {
             List<Task> taskList = new List<Task>();
             string url = _req.url;
@@ -149,11 +192,11 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        /// 
+        /// Event raised when the inbound message comes asynchronously
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void OnInboundDownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        /// <param name="sender">Object sender</param>
+        /// <param name="e">DownloadStringCompletedEventArgs e </param>
+        private void OnInboundDownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
             if (e.Error == null)
             {
@@ -184,11 +227,11 @@ namespace Door2DoorCore
         }
 
         /// <summary>
-        /// 
+        /// Event raised when the outbound message comes asynchronously
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void OnOutboundDownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        /// <param name="sender">Object sender</param>
+        /// <param name="e">DownloadStringCompletedEventArgs e </param>
+        private void OnOutboundDownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
             if (e.Error == null)
             {
@@ -233,7 +276,7 @@ namespace Door2DoorCore
 
             collection.Add("key", _req.key);
             collection.Add("currency", _req.currency);
-            collection.Add("flags", BuildSearchRequestFlags().ToString());
+            collection.Add("flags", _requestFlags.ToString());
             if (isReturnRoute)
             {
                 collection.Add("dPos", Uri.EscapeDataString(_req.oriLocation.lat + "," + _req.oriLocation.lng));
@@ -263,48 +306,6 @@ namespace Door2DoorCore
             return collection;
         }
 
-        /// <summary>
-        ///     <list type="bullet">
-        ///         <item><description>0x00000000	Include all kinds of segments (Default)</description></item>
-        ///         <item><description>0x000FFFFF	Exclude all kinds of segments (See example below)</description></item>
-        ///         <item><description>0x00000001	Exclude flight segments</description></item>
-        ///         <item><description>0x00000002	Exclude flight itineraries</description></item>
-        ///         <item><description>0x00000010	Exclude train segments</description></item>
-        ///         <item><description>0x00000020	Exclude train itineraries</description></item>
-        ///         <item><description>0x00000100	Exclude bus segments</description></item>
-        ///         <item><description>0x00000200	Exclude bus itineraries</description></item>
-        ///         <item><description>0x00001000	Exclude ferry segments</description></item>
-        ///         <item><description>0x00002000	Exclude ferry itineraries</description></item>
-        ///         <item><description>0x00010000	Exclude car segments</description></item>
-        ///         <item><description>0x00100000	Exclude commuter hops (commuter = local bus, train, trams, subways, etc.)</description></item>
-        ///         <item><description>0x00200000	Exclude special hops (special = funiculars, steam trains, tours, etc.)</description></item>
-        ///         <item><description>0x00400000	Exclude minor start segments</description></item>
-        ///         <item><description>0x00800000	Exclude minor end segments</description></item>
-        ///         <item><description>0x01000000	Exclude paths (saves bandwidth)</description></item>
-        ///         <item><description>0x04000000	Exclude indicative prices (saves bandwidth)</description></item>
-        ///         <item><description>0x10000000	Disable scoring and pruning (debug only)</description></item>
-        ///         <item><description>Flights only: 0x000FFFF0 (0x000FFFFF - 0x0000000F)</description></item>
-        ///         <item><description>Not via road: 0x00010100 (0x00000100 + 0x00010000)</description></item>
-        ///     </list>
-        ///     <para>NOTE: You can pass these flags either as a hexadecimal value (&flags=0x00010100) or simply as a decimal (&flags=65792).</para> 
-        /// </summary>
-        /// <returns>
-        ///     Integer flag
-        /// </returns>
-        private int BuildSearchRequestFlags()
-        {
-            //0x01000000 => Exclude path information (saves bandwidth)
-            int flagsIncludeAll = Convert.ToInt32("0x01000000", 16);
-            if (!_req.flags.includePublicTransp)
-            {
-                flagsIncludeAll +=
-                    +Convert.ToInt32("0x00000010", 16) // train
-                    +Convert.ToInt32("0x00000100", 16) // bus
-                    + Convert.ToInt32("0x00001000", 16) // ferry
-                    + Convert.ToInt32("0x00100000", 16); // commutes
-            }
-            return flagsIncludeAll;
-        }
 
         /// <summary>
         /// 

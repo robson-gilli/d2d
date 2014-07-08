@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Door2DoorCore.Types.Door2DoorRequest
 {
     /// <summary>
-    ///     How to interpret dates informed.
+    ///     How to interpret dates in the request.
     /// </summary>
     public enum D2dRequestTripDateKind
     {
