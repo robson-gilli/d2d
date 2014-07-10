@@ -1,0 +1,64 @@
+﻿<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="../icons/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../styles/branding.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/branding-en-US.css" />
+    <script type="text/javascript" src="../scripts/branding.js"> </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Funcionalidades</title>
+    <meta name="Language" content="en-us" />
+    <meta name="System.Keywords" content="funcionalidade" />
+    <meta name="Microsoft.Help.Id" content="funcionalidades" />
+    <meta name="Description" content="O projeto Door2Door foi criado como uma Class Library em C# para ser incorporada à outros projetos." />
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    <meta name="BrandingAware" content="true" />
+    
+    
+    <link rel="stylesheet" type="text/css" href="../styles/branding-Website.css" />
+    <script type="text/javascript" src="../scripts/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../scripts/branding-Website.js"></script>
+  </head>
+  <body onload="OnLoad('cs')">
+    <input type="hidden" id="userDataCache" class="userDataStyle" />
+    <div class="pageHeader" id="PageHeader">Door2Door project Documetation<form id="SearchForm" method="get" action="#" onsubmit="javascript:TransferToSearchPage(); return false;"><input id="SearchTextBox" type="text" maxlength="200" /><button id="SearchButton" type="submit"></button></form></div>
+    <div class="pageBody">
+      <div class="leftNav" id="leftNav"><div id="tocNav"><div class="toclevel0" data-toclevel="0" data-childrenloaded="true"><a class="tocExpanded" onclick="javascript: Toggle(this);" href="#!"></a><a data-tochassubtree="true" href="visao_geral.htm" title="Door2Door project Documetation" tocid="roottoc">Door2Door project Documetation</a></div><div class="toclevel1" data-toclevel="1"><a data-tochassubtree="false" href="visao_geral.htm" title="Visão geral" tocid="visao_geral">Visão geral</a></div><div class="toclevel1" data-toclevel="1"><a data-tochassubtree="false" href="para_quem.htm" title="Para quem se destina este documento" tocid="para_quem">Para quem se destina este documento</a></div><div class="toclevel1 current" data-toclevel="1"><a data-tochassubtree="false" href="funcionalidades.htm" title="Funcionalidades" tocid="funcionalidades">Funcionalidades</a></div><div class="toclevel1" data-toclevel="1"><a class="tocCollapsed" onclick="javascript: Toggle(this);" href="#!"></a><a data-tochassubtree="true" href="exemplos.htm" title="Exemplos" tocid="exemplos">Exemplos</a></div><div class="toclevel1" data-toclevel="1"><a class="tocCollapsed" onclick="javascript: Toggle(this);" href="#!"></a><a data-tochassubtree="true" href="9d31bd54-6767-be5f-31fb-d4825b7e5eca.htm" title="Especificações técnicas" tocid="833e70b0-4a6f-4c04-a64e-142b62568810">Especificações técnicas</a></div></div></div><div id="TocResize" class="tocResize" onmousedown="OnMouseDown(event);"><img id="ResizeImageIncrease" src="../icons/TocOpen.gif" onclick="OnIncreaseToc()" alt="Click or drag to resize" title="Click or drag to resize"><img id="ResizeImageReset" src="../icons/TocClose.gif" style="display:none" onclick="OnResetToc()" alt="Click or drag to resize" title="Click or drag to resize"></div><div class="topicContent" id="TopicContent">
+        <table class="titleTable">
+          <tr>
+            <td class="titleColumn">Funcionalidades</td>
+          </tr>
+        </table>
+        <span class="introStyle"></span>
+        <div class="introduction">
+          <p>O projeto Door2Door foi criado como uma <em>Class Library </em>em C# para ser incorporada à outros projetos.</p>
+          <p>Deve-se informar à classe Door2Door os parâmetros da viagem desejada, que incluem basicamente as coordenadas de origem e destino (latitude e longitude), as datas da viagem, que pode ser somente ida ou <em>round trip. </em>Alguns parametros adicionais, que são explicados em detalhes na seção <a href="exemplos.htm">exemplos</a>, podem também ser informados.</p>
+          <p>A resposta desta consulta traz uma lista de rotas (<em>Routes</em>) possíveis para se chegar da origem ao destino informados. Cada rota pode conter um ou mais segmentos (<em>Segments</em>), que representam uma parte do trajeto e possuem um tipo de transporte específico (<em>Kind</em>), que pode indicar um trajeto a pé (<em>walk</em>), um taxi (<em>taxi</em>), um voo(<em>flight</em>), um ônibus (<em>bus</em>), trem (<em>trais</em>), entre outros. A rota pode conter também um valor estimado (<em>IndicativePrice.Price),</em> a distância (<em>Distance</em>)  e também a duração em minutos (<em>Duration</em>).</p>
+          <p>Cada segmento possuí uma data estimada de partida e de chegada (<em>DepartureDateTime </em>e <em>ArrivalDateTime</em>), um tipo (<em>Kind</em>), a distância (<em>distance</em>) e a duração (<em>duration</em>) como principais elementos. Os sementos podem conter ou não um valor(<em>IndicativePrice.Price</em>), que representa o preço estimado daquele trajeto.</p>
+          <p>Além das informações dos segmentos que compõem a viagem, é retornado também um resumo dos totais para cada rota (RouteTotals). Este resumo compila as seguintes informações:</p>
+          <ul>
+            <li>Distancia Total percorrida (<em>TotalDistance</em>);</li>
+            <li>Tempo total de viagens em trens (<em>TotalTimeOnTrain</em>);</li>
+            <li>Tempo total de viagens em carros (<em>TotalTimeOnCar</em>);</li>
+            <li>Tempo total de viagens em voos (<em>TotalTimeOnFlight</em>);</li>
+            <li>Tempo total de viagens em ônibus (<em>TotalTimeOnBus</em>);</li>
+            <li>Tempo total andando (<em>TotalTimeOnWalk</em>);</li>
+            <li>Tempo total esperando entre as conexões (<em>TotalTimeWaiting</em>);</li>
+            <li>Custo total com trens (<em>TotalPriceOfTrain</em>);</li>
+            <li>Custo total com carros (<em>TotalPriceOfCar</em>);</li>
+            <li>Custo total com voos (<em>TotalPriceOfFlight</em>);</li>
+            <li>Custo total com ônibus (<em>TotalPriceOfBus</em>);</li>
+          </ul>
+          <p>Veja em <a href="exemplos.htm">exemplos</a>, mais detalhes de como montar um request e interpretar uma resposta.</p>
+          <p> </p>
+        </div>
+      </div>
+    </div>
+    <div id="pageFooter" class="pageFooter">
+      <img src="http://www.clicholding.com.br/img/logo.png" />
+      <p>
+        <a href="http://www.clicholding.com.br" target="_blank">ClicHolding.com.br, all rights reserved.</a>
+      </p>
+    </div>
+  </body>
+</html>

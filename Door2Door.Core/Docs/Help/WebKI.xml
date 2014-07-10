@@ -1,0 +1,607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="Agency property" Url="html/57cb9cc6-414d-d633-bd79-9433cd2c7190.htm" />
+  <HelpKINode Title="Aircraft property" Url="html/f14cfe26-9c6c-2231-ffee-192482e26c41.htm" />
+  <HelpKINode Title="Airline property">
+    <HelpKINode Title="Codeshare.Airline Property " Url="html/4135c8d0-cf59-a563-1fa2-6c6511e93ec6.htm" />
+    <HelpKINode Title="Hop.Airline Property " Url="html/cc1ebfb1-15c7-576a-c40e-2f66c2c2ce96.htm" />
+  </HelpKINode>
+  <HelpKINode Title="arrivalDate property" Url="html/a4627ac1-b49e-1d15-44b2-32219ebc9027.htm" />
+  <HelpKINode Title="arrivalDateTime field" Url="html/d6ccdee3-c255-0f81-8f5b-541265895ddd.htm" />
+  <HelpKINode Title="ArrivalDateTime property" Url="html/0b6dc3b6-02af-73a0-d687-8187c41440be.htm" />
+  <HelpKINode Title="arriveAt enumeration member" Url="html/af07b1b5-e0ee-33fb-826b-c87eb28a5558.htm" />
+  <HelpKINode Title="checkinDate property" Url="html/49f17e09-d3ff-1436-044e-5a32637fd8cf.htm" />
+  <HelpKINode Title="checkoutDate property" Url="html/638946fd-b4e9-e4cc-c4fb-3ba17f43a236.htm" />
+  <HelpKINode Title="ChosenItinerary property" Url="html/ce98f56a-2582-5ad2-4a56-66e5e66f0f43.htm" />
+  <HelpKINode Title="chosenroute">
+    <HelpKINode Title="Exemplo 5 - Ida e volta com conte&#250;do do voo de ida vindo de um provedor externo" Url="html/exemplo_5.htm" />
+    <HelpKINode Title="Exemplo 6 - Ida e volta com conte&#250;do dos voos de ida e de volta vindos de um provedor externo" Url="html/exemplo_6.htm" />
+  </HelpKINode>
+  <HelpKINode Title="chosenRoute property" Url="html/9f80dfaf-3675-157a-3f68-70f2f494c71f.htm" />
+  <HelpKINode Title="chosenStay" Url="html/exemplo_7.htm" />
+  <HelpKINode Title="chosenStay property" Url="html/bc8371de-4dbf-1310-c59a-d15c7214b608.htm" />
+  <HelpKINode Title="Code property" Url="html/44b2da85-41ff-6978-013b-a8c0830116f8.htm" />
+  <HelpKINode Title="Codeshare class">
+    <HelpKINode Title="Codeshare Class" Url="html/98cd0b3e-5dd4-a6d6-32fd-f4d0621f5159.htm" />
+    <HelpKINode Title="about Codeshare class" Url="html/98cd0b3e-5dd4-a6d6-32fd-f4d0621f5159.htm" />
+    <HelpKINode Title="constructor" Url="html/00f6fbb6-e0ef-c2bd-05ba-2583b9758ff5.htm" />
+    <HelpKINode Title="properties" Url="html/6b111113-1e5a-19bb-9b63-d1e6a3dd5fe0.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Codeshare.Airline property" Url="html/4135c8d0-cf59-a563-1fa2-6c6511e93ec6.htm" />
+  <HelpKINode Title="Codeshare.Codeshare constructor" Url="html/00f6fbb6-e0ef-c2bd-05ba-2583b9758ff5.htm" />
+  <HelpKINode Title="Codeshares property" Url="html/48bc0c97-5951-ea3c-749d-cf70674abd41.htm" />
+  <HelpKINode Title="completeStay property" Url="html/c69ce7a1-6505-ec9d-98dd-3bbfda85a85a.htm" />
+  <HelpKINode Title="currency field" Url="html/2e980f6b-a00a-056e-af55-6db7a91608a4.htm" />
+  <HelpKINode Title="Currency property">
+    <HelpKINode Title="IndicativePrice.Currency Property " Url="html/e171a575-3730-3b2a-497c-e8324ffb0d0e.htm" />
+    <HelpKINode Title="IndicativePrice3.Currency Property " Url="html/efa22344-84c2-1cd6-c50a-7b42ffaa5fef.htm" />
+    <HelpKINode Title="IndicativePrice2.Currency Property " Url="html/285a3eac-7d45-37d7-d80b-b581e48a395e.htm" />
+    <HelpKINode Title="IndicativePrice4.Currency Property " Url="html/da4331e9-bad2-f5b3-0991-243d90a18912.htm" />
+  </HelpKINode>
+  <HelpKINode Title="currency property" Url="html/52b52477-8095-c1a1-da33-88e601d86b40.htm" />
+  <HelpKINode Title="D2DRequest class">
+    <HelpKINode Title="D2DRequest Class" Url="html/d7f32599-ca2c-f8d4-ab32-5840ef6fe840.htm" />
+    <HelpKINode Title="about D2DRequest class" Url="html/d7f32599-ca2c-f8d4-ab32-5840ef6fe840.htm" />
+    <HelpKINode Title="constructor" Url="html/ca0e6ac1-76bb-0e6f-3c3b-b2c4951618b0.htm" />
+    <HelpKINode Title="fields" Url="html/d442d8d6-2252-2f63-70a7-3f25585afb5f.htm" />
+    <HelpKINode Title="properties" Url="html/62f2d4cb-9c4d-0de7-d1eb-c638950eed58.htm" />
+  </HelpKINode>
+  <HelpKINode Title="D2DRequest.chosenRoute property" Url="html/9f80dfaf-3675-157a-3f68-70f2f494c71f.htm" />
+  <HelpKINode Title="D2DRequest.chosenStay property" Url="html/bc8371de-4dbf-1310-c59a-d15c7214b608.htm" />
+  <HelpKINode Title="D2DRequest.currency field" Url="html/2e980f6b-a00a-056e-af55-6db7a91608a4.htm" />
+  <HelpKINode Title="D2DRequest.D2DRequest constructor" Url="html/ca0e6ac1-76bb-0e6f-3c3b-b2c4951618b0.htm" />
+  <HelpKINode Title="D2DRequest.dailyAlimentationBudget property" Url="html/daa4aac7-15d4-f899-eaa3-717d3950a81e.htm" />
+  <HelpKINode Title="D2DRequest.dataType field" Url="html/f387418f-ae68-94fd-ed3b-381ba0521e88.htm" />
+  <HelpKINode Title="D2DRequest.desiredInboundDate property" Url="html/5a53e52f-4df6-06f6-8179-8271513a0311.htm" />
+  <HelpKINode Title="D2DRequest.desiredOutboundDate property" Url="html/696ed19a-f238-b1e1-118d-cd146b4dcaae.htm" />
+  <HelpKINode Title="D2DRequest.destLocation property" Url="html/cb3f7830-c553-c5ac-6ab2-0158f522882d.htm" />
+  <HelpKINode Title="D2DRequest.flags property" Url="html/9d2b6227-7ac5-9e0b-1e27-b3381c4d33d2.htm" />
+  <HelpKINode Title="D2DRequest.inboundDateKind property" Url="html/b353dfe6-462c-1142-edbb-72a742e89680.htm" />
+  <HelpKINode Title="D2DRequest.key field" Url="html/8acd059e-5a6a-8189-5699-250545b71392.htm" />
+  <HelpKINode Title="D2DRequest.maxDriveKm property" Url="html/f269b0d7-8a0a-9584-a0e4-62b16df0ed22.htm" />
+  <HelpKINode Title="D2DRequest.oriLocation property" Url="html/03e9640a-f5df-aad1-dc4a-a659d4a5402a.htm" />
+  <HelpKINode Title="D2DRequest.outboundDateKind property" Url="html/377cdfcf-0f31-fa74-8cf2-a4dd21a22d01.htm" />
+  <HelpKINode Title="D2DRequest.requestType field" Url="html/60a3334b-bfa0-a1da-87bb-4132769718bb.htm" />
+  <HelpKINode Title="D2DRequest.url field" Url="html/bb02b833-045b-f925-8d45-91fdadea3ea8.htm" />
+  <HelpKINode Title="D2DRequestException class">
+    <HelpKINode Title="D2DRequestException Class" Url="html/33080e99-72ee-e9e1-b684-b03cb62a9e22.htm" />
+    <HelpKINode Title="about D2DRequestException class" Url="html/33080e99-72ee-e9e1-b684-b03cb62a9e22.htm" />
+    <HelpKINode Title="constructor" Url="html/af6d3aad-54c7-1ad9-5345-b4eef0fd7fa8.htm" />
+  </HelpKINode>
+  <HelpKINode Title="D2DRequestException.D2DRequestException constructor" Url="html/af6d3aad-54c7-1ad9-5345-b4eef0fd7fa8.htm" />
+  <HelpKINode Title="D2DRequestFlags class">
+    <HelpKINode Title="D2DRequestFlags Class" Url="html/5057823f-c8f0-f1a5-595e-056fcdb7b2a0.htm" />
+    <HelpKINode Title="about D2DRequestFlags class" Url="html/5057823f-c8f0-f1a5-595e-056fcdb7b2a0.htm" />
+    <HelpKINode Title="constructor" Url="html/43e931ed-8c2f-cea0-9eb8-b9206b35f1cc.htm" />
+    <HelpKINode Title="properties" Url="html/cb058d95-4c72-0759-cdd8-27edd46cedf0.htm" />
+  </HelpKINode>
+  <HelpKINode Title="D2DRequestFlags.D2DRequestFlags constructor" Url="html/43e931ed-8c2f-cea0-9eb8-b9206b35f1cc.htm" />
+  <HelpKINode Title="D2DRequestFlags.includePublicTransp property" Url="html/35d2a300-bb22-45d5-86f1-8af651b275f0.htm" />
+  <HelpKINode Title="D2DRequestLocation class">
+    <HelpKINode Title="D2DRequestLocation Class" Url="html/53128484-85b7-45e2-26fa-bdc76fde108a.htm" />
+    <HelpKINode Title="about D2DRequestLocation class" Url="html/53128484-85b7-45e2-26fa-bdc76fde108a.htm" />
+    <HelpKINode Title="constructor" Url="html/7db3d5cb-9d01-63c9-24bd-5c8eb0edbaa5.htm" />
+    <HelpKINode Title="properties" Url="html/39fb098f-9ab7-fb0f-4d8a-9640f7ac2819.htm" />
+  </HelpKINode>
+  <HelpKINode Title="D2DRequestLocation.D2DRequestLocation constructor" Url="html/7db3d5cb-9d01-63c9-24bd-5c8eb0edbaa5.htm" />
+  <HelpKINode Title="D2DRequestLocation.lat property" Url="html/56e4495d-a615-0e8e-6438-7c060b70a49e.htm" />
+  <HelpKINode Title="D2DRequestLocation.lng property" Url="html/7f92e96e-6f23-5372-45fc-1dcebc5e48eb.htm" />
+  <HelpKINode Title="D2DRequestLocation.type property" Url="html/4ca809b4-4f2c-c0cd-49d8-204f4d31b81f.htm" />
+  <HelpKINode Title="D2dRequestTripDateKind enumeration" Url="html/af07b1b5-e0ee-33fb-826b-c87eb28a5558.htm" />
+  <HelpKINode Title="D2DRequestType enumeration" Url="html/cb1f51c9-04d5-a275-8010-358fa3567a28.htm" />
+  <HelpKINode Title="D2DResponseException class">
+    <HelpKINode Title="D2DResponseException Class" Url="html/9a046528-9e5f-2e33-3e09-bf14adb91d61.htm" />
+    <HelpKINode Title="about D2DResponseException class" Url="html/9a046528-9e5f-2e33-3e09-bf14adb91d61.htm" />
+    <HelpKINode Title="constructor" Url="html/2b0dfd43-dfad-1fa7-ac72-ff5ddfedd264.htm" />
+  </HelpKINode>
+  <HelpKINode Title="D2DResponseException.D2DResponseException constructor" Url="html/2b0dfd43-dfad-1fa7-ac72-ff5ddfedd264.htm" />
+  <HelpKINode Title="dailyAlimentationBudget property" Url="html/daa4aac7-15d4-f899-eaa3-717d3950a81e.htm" />
+  <HelpKINode Title="data chegada" Url="html/exemplo_1.htm" />
+  <HelpKINode Title="data saida" Url="html/exemplo_2.htm" />
+  <HelpKINode Title="dataType field" Url="html/f387418f-ae68-94fd-ed3b-381ba0521e88.htm" />
+  <HelpKINode Title="DayChange property" Url="html/f3fbc334-cb11-8206-f198-f22e31ad33a4.htm" />
+  <HelpKINode Title="Days property">
+    <HelpKINode Title="Leg.Days Property " Url="html/e4c28dad-22b9-65d4-f08b-9a795181fd1d.htm" />
+    <HelpKINode Title="Line.Days Property " Url="html/1add4e6b-50be-7ca4-fe57-50766c9aad5e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="departureAt enumeration member" Url="html/af07b1b5-e0ee-33fb-826b-c87eb28a5558.htm" />
+  <HelpKINode Title="departureDate property" Url="html/8402ebec-cbc1-eb22-ccf9-52e9c2963f48.htm" />
+  <HelpKINode Title="departureDateTime field" Url="html/d5c95709-a38f-65af-52f5-3839a2f7e640.htm" />
+  <HelpKINode Title="DepartureDateTime property" Url="html/8465d46a-b87d-37a1-f19d-1e496bc46837.htm" />
+  <HelpKINode Title="desiredInboundDate property" Url="html/5a53e52f-4df6-06f6-8179-8271513a0311.htm" />
+  <HelpKINode Title="desiredOutboundDate property" Url="html/696ed19a-f238-b1e1-118d-cd146b4dcaae.htm" />
+  <HelpKINode Title="destination property" Url="html/5a1668fc-3115-24e9-020f-8952d7d37314.htm" />
+  <HelpKINode Title="destLocation property" Url="html/cb3f7830-c553-c5ac-6ab2-0158f522882d.htm" />
+  <HelpKINode Title="Distance property">
+    <HelpKINode Title="Route.Distance Property " Url="html/e741ec33-145e-15de-ba66-e63a194436b7.htm" />
+    <HelpKINode Title="Segment.Distance Property " Url="html/f9d1084f-6c00-58d5-a9fc-1ebabd42a5e5.htm" />
+  </HelpKINode>
+  <HelpKINode Title="distance property" Url="html/974f0eef-7809-f3ca-95d6-7b6ae15a735e.htm" />
+  <HelpKINode Title="Door2Door class">
+    <HelpKINode Title="Door2Door Class" Url="html/79589a4f-890c-39a5-bd1d-c4b5c4078a04.htm" />
+    <HelpKINode Title="about Door2Door class" Url="html/79589a4f-890c-39a5-bd1d-c4b5c4078a04.htm" />
+    <HelpKINode Title="constructor" Url="html/46a0e07d-315e-9646-3aaa-67cc84a7c33e.htm" />
+    <HelpKINode Title="methods" Url="html/1a5a36d5-af1b-89e4-7abb-57875e01c63e.htm" />
+    <HelpKINode Title="properties" Url="html/246f9d4a-1ba1-6ff8-4e97-c745c4ffd2d3.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Door2Door.Door2Door constructor" Url="html/46a0e07d-315e-9646-3aaa-67cc84a7c33e.htm" />
+  <HelpKINode Title="Door2Door.GetResponse method" Url="html/0930f737-2c51-f8b1-e36c-bfeb84232cc1.htm" />
+  <HelpKINode Title="Door2Door.Req property" Url="html/e8c18e0e-5cbf-dce7-19f1-492fdefb28df.htm" />
+  <HelpKINode Title="Door2Door.Resp property" Url="html/17eba4f2-434f-1b4f-7fd6-f2f42c719577.htm" />
+  <HelpKINode Title="Door2DoorCore namespace" Url="html/36e2c038-4cff-7528-d224-1794f2e692f1.htm" />
+  <HelpKINode Title="Door2DoorCore.Door2Door class" Url="html/79589a4f-890c-39a5-bd1d-c4b5c4078a04.htm" />
+  <HelpKINode Title="Door2DoorCore.Exceptions namespace" Url="html/07f6a8fb-7856-c496-abb9-fb0539d3c7dd.htm" />
+  <HelpKINode Title="Door2DoorCore.Exceptions.D2DRequestException class" Url="html/33080e99-72ee-e9e1-b684-b03cb62a9e22.htm" />
+  <HelpKINode Title="Door2DoorCore.Exceptions.D2DResponseException class" Url="html/9a046528-9e5f-2e33-3e09-bf14adb91d61.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorRequest namespace" Url="html/112b736b-c7a6-45e5-817c-22a97a54f81e.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorRequest.D2DRequest class" Url="html/d7f32599-ca2c-f8d4-ab32-5840ef6fe840.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorRequest.D2DRequestFlags class" Url="html/5057823f-c8f0-f1a5-595e-056fcdb7b2a0.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorRequest.D2DRequestLocation class" Url="html/53128484-85b7-45e2-26fa-bdc76fde108a.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorRequest.D2dRequestTripDateKind enumeration" Url="html/af07b1b5-e0ee-33fb-826b-c87eb28a5558.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorRequest.D2DRequestType enumeration" Url="html/cb1f51c9-04d5-a275-8010-358fa3567a28.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption namespace" Url="html/2c7d39d3-49a4-f8c3-ac8a-8d92e9c52499.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightLeg class" Url="html/83188ca9-2a2f-7f03-7bcf-1d5deacab6a8.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightOption class" Url="html/1cc159fb-7876-baed-a11d-f5b1743b8af8.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightSegment class" Url="html/d801f847-e199-f475-34ec-9e4e210b842f.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorRequest.OuterHotelOption namespace" Url="html/4982239f-c409-4ec5-43a3-24b19a7eb927.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorRequest.OuterHotelOption.OuterHotelOption class" Url="html/6902ad4c-413e-7c34-5876-d96241d1eae3.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorResponse namespace" Url="html/b4faae15-91fc-4a99-cf15-87b700af64fb.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorResponse.Codeshare class" Url="html/98cd0b3e-5dd4-a6d6-32fd-f4d0621f5159.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorResponse.Door2DoorLegResponse class" Url="html/7ea0a1bd-e663-4248-5417-b8b3dcf08ed2.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse class" Url="html/32721075-0a75-2624-45ac-408597ed7ead.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorResponse.Hop class" Url="html/b6ed7f75-a090-1fe2-541e-bf195cd4b42a.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorResponse.IndicativePrice class" Url="html/2224e75d-b447-fdab-5a7d-d828c8502c3a.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorResponse.IndicativePrice2 class" Url="html/786a8688-2a3c-4c9f-5532-575c7bf60002.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorResponse.IndicativePrice3 class" Url="html/df4a92a5-58e9-bb12-d1e2-3f011fcbb34d.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorResponse.IndicativePrice4 class" Url="html/a2a8d951-9188-2b83-169a-b2f142adafd4.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorResponse.Itinerary class" Url="html/b3fa65bc-0745-e74b-abb2-a196edbd251b.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorResponse.ItineraryDates class" Url="html/6591d286-6cc8-ec6a-d31c-9af28c13d5f2.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorResponse.Leg class" Url="html/936d2b53-a35a-ba58-dbc7-d4a550b691c8.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorResponse.Line class" Url="html/c8607b12-f78a-eb3d-bebc-a2d187dea063.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorResponse.Route class" Url="html/a590e690-190f-d66c-cad4-627c443f76fc.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorResponse.RouteTotals class" Url="html/8ff7e5c1-6597-57dd-27cf-e1c10f2f6aaa.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorResponse.Segment class" Url="html/a74e132b-d102-dfdd-364c-c792756d34db.htm" />
+  <HelpKINode Title="Door2DoorCore.Types.Door2DoorResponse.Stop class" Url="html/036503e0-d8ce-63b2-345d-65d6fd4ee491.htm" />
+  <HelpKINode Title="Door2DoorLegResponse class">
+    <HelpKINode Title="Door2DoorLegResponse Class" Url="html/7ea0a1bd-e663-4248-5417-b8b3dcf08ed2.htm" />
+    <HelpKINode Title="about Door2DoorLegResponse class" Url="html/7ea0a1bd-e663-4248-5417-b8b3dcf08ed2.htm" />
+    <HelpKINode Title="constructor" Url="html/f61361a9-5ba1-fc98-f049-961c207e673e.htm" />
+    <HelpKINode Title="properties" Url="html/c11189e1-3feb-9504-8299-ff09ea34d06a.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Door2DoorLegResponse.Door2DoorLegResponse constructor" Url="html/f61361a9-5ba1-fc98-f049-961c207e673e.htm" />
+  <HelpKINode Title="Door2DoorLegResponse.Routes property" Url="html/83706af5-2713-de1a-3341-5f6a156ffacf.htm" />
+  <HelpKINode Title="Door2DoorLegResponse.ServeTime property" Url="html/804a6639-2ab2-fbdf-d2d6-18bedb3dedb1.htm" />
+  <HelpKINode Title="Door2DoorResponse class">
+    <HelpKINode Title="Door2DoorResponse Class" Url="html/32721075-0a75-2624-45ac-408597ed7ead.htm" />
+    <HelpKINode Title="about Door2DoorResponse class" Url="html/32721075-0a75-2624-45ac-408597ed7ead.htm" />
+    <HelpKINode Title="constructor" Url="html/36d75aca-691b-16fc-a7f9-ac0262e3a8b4.htm" />
+    <HelpKINode Title="properties" Url="html/13f3cab7-d43f-5a37-a32b-f7b5b677e070.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Door2DoorResponse.Door2DoorResponse constructor" Url="html/36d75aca-691b-16fc-a7f9-ac0262e3a8b4.htm" />
+  <HelpKINode Title="Door2DoorResponse.LegResponse property" Url="html/421fb84e-3e33-a915-ae15-8a4fcca67f5c.htm" />
+  <HelpKINode Title="Door2DoorResponse.NumberOfTaxisOnStay property" Url="html/6c9a04ef-20e5-a62d-2ba6-edc93eae91bd.htm" />
+  <HelpKINode Title="Door2DoorResponse.TotalPriceOfAlimentation property" Url="html/fc910502-16bd-86ed-3888-c63e20a3220a.htm" />
+  <HelpKINode Title="Door2DoorResponse.TotalPriceOfHotel property" Url="html/7ce756a6-e97a-eadd-f6f5-ee8da5d554f3.htm" />
+  <HelpKINode Title="Door2DoorResponse.TotalPriceOfLocalTaxi property" Url="html/c736f751-e104-16a1-a7e5-3147955ee343.htm" />
+  <HelpKINode Title="Duration property">
+    <HelpKINode Title="Line.Duration Property " Url="html/bcc2da18-23eb-736f-33ed-800ed60fd6f4.htm" />
+    <HelpKINode Title="Route.Duration Property " Url="html/1cffdd48-a96a-c284-ce0f-2e3ad6ebf150.htm" />
+    <HelpKINode Title="Hop.Duration Property " Url="html/8e6a5545-6be6-39a8-995c-4c8b46ce35bc.htm" />
+    <HelpKINode Title="Segment.Duration Property " Url="html/6fd0de5a-294e-ffb4-7a0d-8934bd9808cd.htm" />
+  </HelpKINode>
+  <HelpKINode Title="duration property" Url="html/09a3a476-1173-7a75-a8ea-fca9fb32fa43.htm" />
+  <HelpKINode Title="esterno" Url="html/exemplo_5.htm" />
+  <HelpKINode Title="exemplo" Url="html/exemplos.htm" />
+  <HelpKINode Title="exemplo 1" Url="html/exemplo_1.htm" />
+  <HelpKINode Title="exemplo 2" Url="html/exemplo_2.htm" />
+  <HelpKINode Title="exemplo 3" Url="html/exemplo_3.htm" />
+  <HelpKINode Title="exemplo 4" Url="html/exemplo_4.htm" />
+  <HelpKINode Title="exemplo 5" Url="html/exemplo_5.htm" />
+  <HelpKINode Title="exemplo 6" Url="html/exemplo_6.htm" />
+  <HelpKINode Title="exemplo 7" Url="html/exemplo_7.htm" />
+  <HelpKINode Title="exemplo 8" Url="html/exemplo_8.htm" />
+  <HelpKINode Title="exemplos" Url="html/exemplos.htm" />
+  <HelpKINode Title="fareBasis property" Url="html/8a6f1db0-ff5d-a779-d3c8-147541e0a34b.htm" />
+  <HelpKINode Title="fareClass property" Url="html/b9983d0c-23b1-cb69-c180-f0646ad7d272.htm" />
+  <HelpKINode Title="flags property" Url="html/9d2b6227-7ac5-9e0b-1e27-b3381c4d33d2.htm" />
+  <HelpKINode Title="Flight property" Url="html/c655604b-947f-1305-d070-9d77abeb0f20.htm" />
+  <HelpKINode Title="flightLegs property" Url="html/e2ae12c2-dd12-f070-8292-14f202e836fa.htm" />
+  <HelpKINode Title="flightSegment property" Url="html/a4c29f8f-2bd3-bc12-e433-ffa96c6eb3fc.htm" />
+  <HelpKINode Title="Frequency property">
+    <HelpKINode Title="Hop.Frequency Property " Url="html/7ea709ef-40e4-93d0-f7dd-f863d9da70f2.htm" />
+    <HelpKINode Title="Line.Frequency Property " Url="html/43257e90-2e03-a7ec-255d-71d1c039cdc3.htm" />
+    <HelpKINode Title="Segment.Frequency Property " Url="html/019923f5-3e20-f126-023f-36ca90b25d6b.htm" />
+  </HelpKINode>
+  <HelpKINode Title="funcionalidade" Url="html/funcionalidades.htm" />
+  <HelpKINode Title="geral" Url="html/visao_geral.htm" />
+  <HelpKINode Title="GetResponse method" Url="html/0930f737-2c51-f8b1-e36c-bfeb84232cc1.htm" />
+  <HelpKINode Title="Hop class">
+    <HelpKINode Title="Hop Class" Url="html/b6ed7f75-a090-1fe2-541e-bf195cd4b42a.htm" />
+    <HelpKINode Title="about Hop class" Url="html/b6ed7f75-a090-1fe2-541e-bf195cd4b42a.htm" />
+    <HelpKINode Title="constructor" Url="html/bbb21273-b83d-3dcf-e0f5-14668c19f02e.htm" />
+    <HelpKINode Title="properties" Url="html/c41b64ab-0bda-bf74-95d5-b499f0f61bc6.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Hop.Aircraft property" Url="html/f14cfe26-9c6c-2231-ffee-192482e26c41.htm" />
+  <HelpKINode Title="Hop.Airline property" Url="html/cc1ebfb1-15c7-576a-c40e-2f66c2c2ce96.htm" />
+  <HelpKINode Title="Hop.Codeshares property" Url="html/48bc0c97-5951-ea3c-749d-cf70674abd41.htm" />
+  <HelpKINode Title="Hop.DayChange property" Url="html/f3fbc334-cb11-8206-f198-f22e31ad33a4.htm" />
+  <HelpKINode Title="Hop.Duration property" Url="html/8e6a5545-6be6-39a8-995c-4c8b46ce35bc.htm" />
+  <HelpKINode Title="Hop.Flight property" Url="html/c655604b-947f-1305-d070-9d77abeb0f20.htm" />
+  <HelpKINode Title="Hop.Frequency property" Url="html/7ea709ef-40e4-93d0-f7dd-f863d9da70f2.htm" />
+  <HelpKINode Title="Hop.Hop constructor" Url="html/bbb21273-b83d-3dcf-e0f5-14668c19f02e.htm" />
+  <HelpKINode Title="Hop.IndicativePrice property" Url="html/999bc917-1e00-7e98-b391-93cc04ac210b.htm" />
+  <HelpKINode Title="Hop.Lines property" Url="html/d9d6758c-2a3a-2d71-f3c0-37067df18444.htm" />
+  <HelpKINode Title="Hop.SCode property" Url="html/0e04df1e-19a4-7bcb-a987-d02455fc5f3a.htm" />
+  <HelpKINode Title="Hop.SName property" Url="html/04052acc-b3a9-e514-28f1-b44f84484a59.htm" />
+  <HelpKINode Title="Hop.SPos property" Url="html/060b20da-09bc-d0aa-d933-0c7bb9544b6b.htm" />
+  <HelpKINode Title="Hop.STerminal property" Url="html/f67a1f30-fb4c-8f74-71c2-09cf7c8d5447.htm" />
+  <HelpKINode Title="Hop.STime property" Url="html/0b186803-8e81-8f7a-9ba5-54ccc823a997.htm" />
+  <HelpKINode Title="Hop.TCode property" Url="html/de2005c8-b5f5-7b76-3349-cb528446b7b6.htm" />
+  <HelpKINode Title="Hop.TName property" Url="html/3c5f43d5-c71d-feaf-7f91-eb04177c651d.htm" />
+  <HelpKINode Title="Hop.TPos property" Url="html/f820548e-c1bc-d7e6-7e43-654bef7f99d0.htm" />
+  <HelpKINode Title="Hop.TTime property" Url="html/f0387912-3e2f-2818-08e2-caa140401b99.htm" />
+  <HelpKINode Title="Hops property" Url="html/931c0860-3c73-d1b4-c96c-8d473992ff8f.htm" />
+  <HelpKINode Title="hospedagem">
+    <HelpKINode Title="Exemplo 7 - Ida e volta, especificando localiza&#231;&#227;o da hospedagem" Url="html/exemplo_7.htm" />
+    <HelpKINode Title="Exemplo 8 - Ida e volta, especificando voos e hospedagem" Url="html/exemplo_8.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Host property" Url="html/f460bb8a-5c8c-03d1-3f14-b9d37d02c787.htm" />
+  <HelpKINode Title="ida e volta">
+    <HelpKINode Title="Exemplo 4 - Ida e volta. Ida informada com data de chegada e volta informada com data de sa&#237;da" Url="html/exemplo_4.htm" />
+    <HelpKINode Title="Exemplo 5 - Ida e volta com conte&#250;do do voo de ida vindo de um provedor externo" Url="html/exemplo_5.htm" />
+    <HelpKINode Title="Exemplo 6 - Ida e volta com conte&#250;do dos voos de ida e de volta vindos de um provedor externo" Url="html/exemplo_6.htm" />
+    <HelpKINode Title="Exemplo 8 - Ida e volta, especificando voos e hospedagem" Url="html/exemplo_8.htm" />
+  </HelpKINode>
+  <HelpKINode Title="inboundDateKind property" Url="html/b353dfe6-462c-1142-edbb-72a742e89680.htm" />
+  <HelpKINode Title="includePublicTransp property" Url="html/35d2a300-bb22-45d5-86f1-8af651b275f0.htm" />
+  <HelpKINode Title="IndicativePrice class">
+    <HelpKINode Title="IndicativePrice Class" Url="html/2224e75d-b447-fdab-5a7d-d828c8502c3a.htm" />
+    <HelpKINode Title="about IndicativePrice class" Url="html/2224e75d-b447-fdab-5a7d-d828c8502c3a.htm" />
+    <HelpKINode Title="constructor" Url="html/fb66ad10-8deb-347c-ad1b-9623e069655d.htm" />
+    <HelpKINode Title="properties" Url="html/0396433d-e027-76f3-fbf5-748364f18065.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IndicativePrice property">
+    <HelpKINode Title="Hop.IndicativePrice Property " Url="html/999bc917-1e00-7e98-b391-93cc04ac210b.htm" />
+    <HelpKINode Title="Leg.IndicativePrice Property " Url="html/234a5605-2b83-c603-c2cd-284581116e0b.htm" />
+    <HelpKINode Title="Route.IndicativePrice Property " Url="html/49338167-38c2-f7bd-b2f1-2a0204f2e95b.htm" />
+    <HelpKINode Title="Segment.IndicativePrice Property " Url="html/1e3e6531-f621-0fb9-8435-a32873586194.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IndicativePrice.Currency property" Url="html/e171a575-3730-3b2a-497c-e8324ffb0d0e.htm" />
+  <HelpKINode Title="IndicativePrice.IndicativePrice constructor" Url="html/fb66ad10-8deb-347c-ad1b-9623e069655d.htm" />
+  <HelpKINode Title="IndicativePrice.IsFreeTransfer property" Url="html/ac149cb0-bf8a-36f9-9366-43cbc936390f.htm" />
+  <HelpKINode Title="IndicativePrice.Price property" Url="html/affd6a96-c456-8f47-3dcc-82cd04baad74.htm" />
+  <HelpKINode Title="IndicativePrice2 class">
+    <HelpKINode Title="IndicativePrice2 Class" Url="html/786a8688-2a3c-4c9f-5532-575c7bf60002.htm" />
+    <HelpKINode Title="about IndicativePrice2 class" Url="html/786a8688-2a3c-4c9f-5532-575c7bf60002.htm" />
+    <HelpKINode Title="constructor" Url="html/1a35aee4-2347-fa4e-34f9-9bcf8bfc5d3e.htm" />
+    <HelpKINode Title="properties" Url="html/2faf937a-3bf0-3030-7d35-1b76d639982f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IndicativePrice2.Currency property" Url="html/285a3eac-7d45-37d7-d80b-b581e48a395e.htm" />
+  <HelpKINode Title="IndicativePrice2.IndicativePrice2 constructor" Url="html/1a35aee4-2347-fa4e-34f9-9bcf8bfc5d3e.htm" />
+  <HelpKINode Title="IndicativePrice2.IsFreeTransfer property" Url="html/579edbb6-7380-d93a-7b75-fb1165bfc85f.htm" />
+  <HelpKINode Title="IndicativePrice2.NativeCurrency property" Url="html/9035350c-ea59-27f5-96ac-31b9c1027466.htm" />
+  <HelpKINode Title="IndicativePrice2.NativePrice property" Url="html/040902c1-25ff-f6a5-2d4e-9deb9acd995a.htm" />
+  <HelpKINode Title="IndicativePrice2.Price property" Url="html/3ee5458e-1b33-7d7e-8216-835da2709138.htm" />
+  <HelpKINode Title="IndicativePrice3 class">
+    <HelpKINode Title="IndicativePrice3 Class" Url="html/df4a92a5-58e9-bb12-d1e2-3f011fcbb34d.htm" />
+    <HelpKINode Title="about IndicativePrice3 class" Url="html/df4a92a5-58e9-bb12-d1e2-3f011fcbb34d.htm" />
+    <HelpKINode Title="constructor" Url="html/47ea4ad9-136a-35bb-7bb9-2b1ee7c508d7.htm" />
+    <HelpKINode Title="properties" Url="html/11f1f527-cd5b-2555-7c3d-e3bd7e9ce42e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IndicativePrice3.Currency property" Url="html/efa22344-84c2-1cd6-c50a-7b42ffaa5fef.htm" />
+  <HelpKINode Title="IndicativePrice3.IndicativePrice3 constructor" Url="html/47ea4ad9-136a-35bb-7bb9-2b1ee7c508d7.htm" />
+  <HelpKINode Title="IndicativePrice3.IsFreeTransfer property" Url="html/bb78399c-3e8b-d717-8204-86812f6004e5.htm" />
+  <HelpKINode Title="IndicativePrice3.NativeCurrency property" Url="html/5364135a-619f-a94e-7c0c-1de576a2ade2.htm" />
+  <HelpKINode Title="IndicativePrice3.NativePrice property" Url="html/3b7e7033-52f2-af1b-d8ed-103480b340e8.htm" />
+  <HelpKINode Title="IndicativePrice3.Price property" Url="html/344900f4-fb31-e88d-f2f4-fefae37d55bf.htm" />
+  <HelpKINode Title="IndicativePrice4 class">
+    <HelpKINode Title="IndicativePrice4 Class" Url="html/a2a8d951-9188-2b83-169a-b2f142adafd4.htm" />
+    <HelpKINode Title="about IndicativePrice4 class" Url="html/a2a8d951-9188-2b83-169a-b2f142adafd4.htm" />
+    <HelpKINode Title="constructor" Url="html/33e6d885-d530-69c5-ce30-aa6bf7a14602.htm" />
+    <HelpKINode Title="properties" Url="html/e469b1c6-711f-5b23-0a61-b1db692a0b62.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IndicativePrice4.Currency property" Url="html/da4331e9-bad2-f5b3-0991-243d90a18912.htm" />
+  <HelpKINode Title="IndicativePrice4.IndicativePrice4 constructor" Url="html/33e6d885-d530-69c5-ce30-aa6bf7a14602.htm" />
+  <HelpKINode Title="IndicativePrice4.IsFreeTransfer property" Url="html/c7d0abaa-1af8-009a-2e93-66dfb7c384bc.htm" />
+  <HelpKINode Title="IndicativePrice4.Price property" Url="html/d85cc323-af78-fa91-b9f7-296262aa8d1e.htm" />
+  <HelpKINode Title="IsFreeTransfer property">
+    <HelpKINode Title="IndicativePrice.IsFreeTransfer Property " Url="html/ac149cb0-bf8a-36f9-9366-43cbc936390f.htm" />
+    <HelpKINode Title="IndicativePrice2.IsFreeTransfer Property " Url="html/579edbb6-7380-d93a-7b75-fb1165bfc85f.htm" />
+    <HelpKINode Title="IndicativePrice3.IsFreeTransfer Property " Url="html/bb78399c-3e8b-d717-8204-86812f6004e5.htm" />
+    <HelpKINode Title="IndicativePrice4.IsFreeTransfer Property " Url="html/c7d0abaa-1af8-009a-2e93-66dfb7c384bc.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IsHidden property" Url="html/75a08bba-aae3-f12b-4f6a-204051cf50a3.htm" />
+  <HelpKINode Title="IsImperial property" Url="html/df8a38f1-6900-c914-f009-1ade1438e01e.htm" />
+  <HelpKINode Title="IsMajor property" Url="html/9c87cf8f-4c25-6dad-0909-81df41dadae7.htm" />
+  <HelpKINode Title="Itineraries property" Url="html/a14f6f55-94e2-da0e-89d6-8da3c2f2e147.htm" />
+  <HelpKINode Title="Itinerary class">
+    <HelpKINode Title="Itinerary Class" Url="html/b3fa65bc-0745-e74b-abb2-a196edbd251b.htm" />
+    <HelpKINode Title="about Itinerary class" Url="html/b3fa65bc-0745-e74b-abb2-a196edbd251b.htm" />
+    <HelpKINode Title="constructor" Url="html/ee5132cd-3a47-305f-a932-6be6eb85e354.htm" />
+    <HelpKINode Title="properties" Url="html/76a705fc-bd61-25d7-44c1-b2f06b4ca2eb.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Itinerary.IsHidden property" Url="html/75a08bba-aae3-f12b-4f6a-204051cf50a3.htm" />
+  <HelpKINode Title="Itinerary.Itinerary constructor" Url="html/ee5132cd-3a47-305f-a932-6be6eb85e354.htm" />
+  <HelpKINode Title="Itinerary.Legs property" Url="html/a5cb1d48-9225-966f-4f04-53da0ec683bb.htm" />
+  <HelpKINode Title="Itinerary.OuterItinerary property" Url="html/5c245a1f-268e-41dd-353b-5b0c636e93d8.htm" />
+  <HelpKINode Title="Itinerary.ValidForSchedule property" Url="html/fc2ab4aa-4deb-38f1-c4d3-4a27a28e0b56.htm" />
+  <HelpKINode Title="ItineraryDates class">
+    <HelpKINode Title="ItineraryDates Class" Url="html/6591d286-6cc8-ec6a-d31c-9af28c13d5f2.htm" />
+    <HelpKINode Title="about ItineraryDates class" Url="html/6591d286-6cc8-ec6a-d31c-9af28c13d5f2.htm" />
+    <HelpKINode Title="constructor" Url="html/66ca27ec-69af-1d2d-714f-fe62965e83a6.htm" />
+    <HelpKINode Title="fields" Url="html/e8f5bd2c-885d-0924-7104-ef4abaceb4ec.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ItineraryDates.arrivalDateTime field" Url="html/d6ccdee3-c255-0f81-8f5b-541265895ddd.htm" />
+  <HelpKINode Title="ItineraryDates.departureDateTime field" Url="html/d5c95709-a38f-65af-52f5-3839a2f7e640.htm" />
+  <HelpKINode Title="ItineraryDates.ItineraryDates constructor" Url="html/66ca27ec-69af-1d2d-714f-fe62965e83a6.htm" />
+  <HelpKINode Title="key field" Url="html/8acd059e-5a6a-8189-5699-250545b71392.htm" />
+  <HelpKINode Title="Kind property">
+    <HelpKINode Title="Segment.Kind Property " Url="html/72f29ff6-e554-747b-a37a-4a4556a5702e.htm" />
+    <HelpKINode Title="Stop.Kind Property " Url="html/4940c518-c8b2-bff9-e0c0-fb8baf327f37.htm" />
+  </HelpKINode>
+  <HelpKINode Title="lat property" Url="html/56e4495d-a615-0e8e-6438-7c060b70a49e.htm" />
+  <HelpKINode Title="Leg class">
+    <HelpKINode Title="Leg Class" Url="html/936d2b53-a35a-ba58-dbc7-d4a550b691c8.htm" />
+    <HelpKINode Title="about Leg class" Url="html/936d2b53-a35a-ba58-dbc7-d4a550b691c8.htm" />
+    <HelpKINode Title="constructor" Url="html/506bca5b-444f-ce6c-2ec6-171c03956aaa.htm" />
+    <HelpKINode Title="properties" Url="html/a161568b-e43d-0883-367c-84d51d8f18cc.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Leg.Days property" Url="html/e4c28dad-22b9-65d4-f08b-9a795181fd1d.htm" />
+  <HelpKINode Title="Leg.Hops property" Url="html/931c0860-3c73-d1b4-c96c-8d473992ff8f.htm" />
+  <HelpKINode Title="Leg.Host property" Url="html/f460bb8a-5c8c-03d1-3f14-b9d37d02c787.htm" />
+  <HelpKINode Title="Leg.IndicativePrice property" Url="html/234a5605-2b83-c603-c2cd-284581116e0b.htm" />
+  <HelpKINode Title="Leg.Leg constructor" Url="html/506bca5b-444f-ce6c-2ec6-171c03956aaa.htm" />
+  <HelpKINode Title="Leg.Url property" Url="html/b261b1cc-67cb-86b2-6fa5-02164eb39b71.htm" />
+  <HelpKINode Title="LegResponse property" Url="html/421fb84e-3e33-a915-ae15-8a4fcca67f5c.htm" />
+  <HelpKINode Title="Legs property" Url="html/a5cb1d48-9225-966f-4f04-53da0ec683bb.htm" />
+  <HelpKINode Title="Line class">
+    <HelpKINode Title="Line Class" Url="html/c8607b12-f78a-eb3d-bebc-a2d187dea063.htm" />
+    <HelpKINode Title="about Line class" Url="html/c8607b12-f78a-eb3d-bebc-a2d187dea063.htm" />
+    <HelpKINode Title="constructor" Url="html/0c57c4db-98cc-4c42-4cc9-efa2b90fdeea.htm" />
+    <HelpKINode Title="properties" Url="html/bd1df398-95af-a53b-a267-7f4f7da9647a.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Line.Agency property" Url="html/57cb9cc6-414d-d633-bd79-9433cd2c7190.htm" />
+  <HelpKINode Title="Line.Days property" Url="html/1add4e6b-50be-7ca4-fe57-50766c9aad5e.htm" />
+  <HelpKINode Title="Line.Duration property" Url="html/bcc2da18-23eb-736f-33ed-800ed60fd6f4.htm" />
+  <HelpKINode Title="Line.Frequency property" Url="html/43257e90-2e03-a7ec-255d-71d1c039cdc3.htm" />
+  <HelpKINode Title="Line.Line constructor" Url="html/0c57c4db-98cc-4c42-4cc9-efa2b90fdeea.htm" />
+  <HelpKINode Title="Line.Name property" Url="html/9fc0bd29-7fc3-7eb8-f0f8-18d0c9ccf1b7.htm" />
+  <HelpKINode Title="Line.Vehicle property" Url="html/f35072ec-8498-53d9-f3e2-fa43f9dd9b54.htm" />
+  <HelpKINode Title="Lines property" Url="html/d9d6758c-2a3a-2d71-f3c0-37067df18444.htm" />
+  <HelpKINode Title="lng property" Url="html/7f92e96e-6f23-5372-45fc-1dcebc5e48eb.htm" />
+  <HelpKINode Title="location property" Url="html/89ee7c64-b8a2-4213-31a0-c2be053b61ec.htm" />
+  <HelpKINode Title="marketingAirline property" Url="html/47c0096b-dc2b-b76c-cb49-469bbecf1b1a.htm" />
+  <HelpKINode Title="maxDriveKm property" Url="html/f269b0d7-8a0a-9584-a0e4-62b16df0ed22.htm" />
+  <HelpKINode Title="Name property">
+    <HelpKINode Title="Line.Name Property " Url="html/9fc0bd29-7fc3-7eb8-f0f8-18d0c9ccf1b7.htm" />
+    <HelpKINode Title="Route.Name Property " Url="html/4c839f30-a29c-60da-6f68-e8a77f820629.htm" />
+    <HelpKINode Title="Stop.Name Property " Url="html/b436c5d5-abb3-c572-daa0-35823782961d.htm" />
+  </HelpKINode>
+  <HelpKINode Title="NativeCurrency property">
+    <HelpKINode Title="IndicativePrice2.NativeCurrency Property " Url="html/9035350c-ea59-27f5-96ac-31b9c1027466.htm" />
+    <HelpKINode Title="IndicativePrice3.NativeCurrency Property " Url="html/5364135a-619f-a94e-7c0c-1de576a2ade2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="NativePrice property">
+    <HelpKINode Title="IndicativePrice2.NativePrice Property " Url="html/040902c1-25ff-f6a5-2d4e-9deb9acd995a.htm" />
+    <HelpKINode Title="IndicativePrice3.NativePrice Property " Url="html/3b7e7033-52f2-af1b-d8ed-103480b340e8.htm" />
+  </HelpKINode>
+  <HelpKINode Title="number property" Url="html/c1cb6b3c-92fa-c8ef-250d-7bda37906e7b.htm" />
+  <HelpKINode Title="NumberOfTaxisOnStay property" Url="html/6c9a04ef-20e5-a62d-2ba6-edc93eae91bd.htm" />
+  <HelpKINode Title="operatingAirline property" Url="html/6c106137-26bd-5808-4465-c34fa74ba259.htm" />
+  <HelpKINode Title="origin property" Url="html/2e32cc6b-3a1f-3ea5-0bb7-c3985023b7e1.htm" />
+  <HelpKINode Title="oriLocation property" Url="html/03e9640a-f5df-aad1-dc4a-a659d4a5402a.htm" />
+  <HelpKINode Title="other enumeration member" Url="html/cb1f51c9-04d5-a275-8010-358fa3567a28.htm" />
+  <HelpKINode Title="outboundDateKind property" Url="html/377cdfcf-0f31-fa74-8cf2-a4dd21a22d01.htm" />
+  <HelpKINode Title="OuterFlightLeg class">
+    <HelpKINode Title="OuterFlightLeg Class" Url="html/83188ca9-2a2f-7f03-7bcf-1d5deacab6a8.htm" />
+    <HelpKINode Title="about OuterFlightLeg class" Url="html/83188ca9-2a2f-7f03-7bcf-1d5deacab6a8.htm" />
+    <HelpKINode Title="constructor" Url="html/26e73344-6f5c-3e35-fb4e-b7a669df7b8f.htm" />
+    <HelpKINode Title="properties" Url="html/c71239e4-8de1-9082-93be-beadbaf0b19c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="OuterFlightLeg.arrivalDate property" Url="html/a4627ac1-b49e-1d15-44b2-32219ebc9027.htm" />
+  <HelpKINode Title="OuterFlightLeg.departureDate property" Url="html/8402ebec-cbc1-eb22-ccf9-52e9c2963f48.htm" />
+  <HelpKINode Title="OuterFlightLeg.destination property" Url="html/5a1668fc-3115-24e9-020f-8952d7d37314.htm" />
+  <HelpKINode Title="OuterFlightLeg.distance property" Url="html/974f0eef-7809-f3ca-95d6-7b6ae15a735e.htm" />
+  <HelpKINode Title="OuterFlightLeg.duration property" Url="html/09a3a476-1173-7a75-a8ea-fca9fb32fa43.htm" />
+  <HelpKINode Title="OuterFlightLeg.fareBasis property" Url="html/8a6f1db0-ff5d-a779-d3c8-147541e0a34b.htm" />
+  <HelpKINode Title="OuterFlightLeg.fareClass property" Url="html/b9983d0c-23b1-cb69-c180-f0646ad7d272.htm" />
+  <HelpKINode Title="OuterFlightLeg.marketingAirline property" Url="html/47c0096b-dc2b-b76c-cb49-469bbecf1b1a.htm" />
+  <HelpKINode Title="OuterFlightLeg.number property" Url="html/c1cb6b3c-92fa-c8ef-250d-7bda37906e7b.htm" />
+  <HelpKINode Title="OuterFlightLeg.operatingAirline property" Url="html/6c106137-26bd-5808-4465-c34fa74ba259.htm" />
+  <HelpKINode Title="OuterFlightLeg.origin property" Url="html/2e32cc6b-3a1f-3ea5-0bb7-c3985023b7e1.htm" />
+  <HelpKINode Title="OuterFlightLeg.OuterFlightLeg constructor" Url="html/26e73344-6f5c-3e35-fb4e-b7a669df7b8f.htm" />
+  <HelpKINode Title="OuterFlightOption class">
+    <HelpKINode Title="OuterFlightOption Class" Url="html/1cc159fb-7876-baed-a11d-f5b1743b8af8.htm" />
+    <HelpKINode Title="about OuterFlightOption class" Url="html/1cc159fb-7876-baed-a11d-f5b1743b8af8.htm" />
+    <HelpKINode Title="constructor" Url="html/42ebc9bd-d9a3-4e17-063a-69e772b4b4f3.htm" />
+    <HelpKINode Title="properties" Url="html/f2638e7a-6c2b-e487-2d04-f79fc186dfb6.htm" />
+  </HelpKINode>
+  <HelpKINode Title="OuterFlightOption.currency property" Url="html/52b52477-8095-c1a1-da33-88e601d86b40.htm" />
+  <HelpKINode Title="OuterFlightOption.flightSegment property" Url="html/a4c29f8f-2bd3-bc12-e433-ffa96c6eb3fc.htm" />
+  <HelpKINode Title="OuterFlightOption.OuterFlightOption constructor" Url="html/42ebc9bd-d9a3-4e17-063a-69e772b4b4f3.htm" />
+  <HelpKINode Title="OuterFlightOption.price property" Url="html/56002808-d5c5-92e6-b1e9-92731b3e0b75.htm" />
+  <HelpKINode Title="OuterFlightOption.routeIndex property" Url="html/4b6640cc-5330-0507-4c10-5ed9f39a044c.htm" />
+  <HelpKINode Title="OuterFlightOption.segmentIndex property" Url="html/d6ed43cc-28de-ded2-dc28-894c71ea6f44.htm" />
+  <HelpKINode Title="OuterFlightSegment class">
+    <HelpKINode Title="OuterFlightSegment Class" Url="html/d801f847-e199-f475-34ec-9e4e210b842f.htm" />
+    <HelpKINode Title="about OuterFlightSegment class" Url="html/d801f847-e199-f475-34ec-9e4e210b842f.htm" />
+    <HelpKINode Title="constructor" Url="html/4cd97d0d-fa63-3742-c789-ac759f0664dd.htm" />
+    <HelpKINode Title="properties" Url="html/00e51a6c-74c6-370f-79af-40f5cb06d074.htm" />
+  </HelpKINode>
+  <HelpKINode Title="OuterFlightSegment.flightLegs property" Url="html/e2ae12c2-dd12-f070-8292-14f202e836fa.htm" />
+  <HelpKINode Title="OuterFlightSegment.OuterFlightSegment constructor" Url="html/4cd97d0d-fa63-3742-c789-ac759f0664dd.htm" />
+  <HelpKINode Title="OuterHotelOption class">
+    <HelpKINode Title="OuterHotelOption Class" Url="html/6902ad4c-413e-7c34-5876-d96241d1eae3.htm" />
+    <HelpKINode Title="about OuterHotelOption class" Url="html/6902ad4c-413e-7c34-5876-d96241d1eae3.htm" />
+    <HelpKINode Title="constructor" Url="html/71c8e7d5-8c10-9389-f56f-4d5246bda4b3.htm" />
+    <HelpKINode Title="properties" Url="html/077bfe0b-3401-f034-5f28-14b12581b562.htm" />
+  </HelpKINode>
+  <HelpKINode Title="OuterHotelOption.checkinDate property" Url="html/49f17e09-d3ff-1436-044e-5a32637fd8cf.htm" />
+  <HelpKINode Title="OuterHotelOption.checkoutDate property" Url="html/638946fd-b4e9-e4cc-c4fb-3ba17f43a236.htm" />
+  <HelpKINode Title="OuterHotelOption.completeStay property" Url="html/c69ce7a1-6505-ec9d-98dd-3bbfda85a85a.htm" />
+  <HelpKINode Title="OuterHotelOption.location property" Url="html/89ee7c64-b8a2-4213-31a0-c2be053b61ec.htm" />
+  <HelpKINode Title="OuterHotelOption.OuterHotelOption constructor" Url="html/71c8e7d5-8c10-9389-f56f-4d5246bda4b3.htm" />
+  <HelpKINode Title="OuterHotelOption.totalPrice property" Url="html/5859ccce-5f39-3fe8-f5a6-dfac9ef58b01.htm" />
+  <HelpKINode Title="OuterItinerary property" Url="html/5c245a1f-268e-41dd-353b-5b0c636e93d8.htm" />
+  <HelpKINode Title="Path property" Url="html/3410f5ae-d712-7960-3b00-208a38a619e7.htm" />
+  <HelpKINode Title="Pos property" Url="html/279b5399-e52e-7ef6-2d92-58907e24bd11.htm" />
+  <HelpKINode Title="Price property">
+    <HelpKINode Title="IndicativePrice.Price Property " Url="html/affd6a96-c456-8f47-3dcc-82cd04baad74.htm" />
+    <HelpKINode Title="IndicativePrice2.Price Property " Url="html/3ee5458e-1b33-7d7e-8216-835da2709138.htm" />
+    <HelpKINode Title="IndicativePrice3.Price Property " Url="html/344900f4-fb31-e88d-f2f4-fefae37d55bf.htm" />
+    <HelpKINode Title="IndicativePrice4.Price Property " Url="html/d85cc323-af78-fa91-b9f7-296262aa8d1e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="price property" Url="html/56002808-d5c5-92e6-b1e9-92731b3e0b75.htm" />
+  <HelpKINode Title="provedor " Url="html/exemplo_5.htm" />
+  <HelpKINode Title="provedor esterno" Url="html/exemplo_8.htm" />
+  <HelpKINode Title="provedor externo" Url="html/exemplo_6.htm" />
+  <HelpKINode Title="quem" Url="html/para_quem.htm" />
+  <HelpKINode Title="r2r enumeration member" Url="html/cb1f51c9-04d5-a275-8010-358fa3567a28.htm" />
+  <HelpKINode Title="Req property" Url="html/e8c18e0e-5cbf-dce7-19f1-492fdefb28df.htm" />
+  <HelpKINode Title="requestType field" Url="html/60a3334b-bfa0-a1da-87bb-4132769718bb.htm" />
+  <HelpKINode Title="Resp property" Url="html/17eba4f2-434f-1b4f-7fd6-f2f42c719577.htm" />
+  <HelpKINode Title="Route class">
+    <HelpKINode Title="Route Class" Url="html/a590e690-190f-d66c-cad4-627c443f76fc.htm" />
+    <HelpKINode Title="about Route class" Url="html/a590e690-190f-d66c-cad4-627c443f76fc.htm" />
+    <HelpKINode Title="constructor" Url="html/4dfd6063-0801-fca2-fb32-2b4fe3250425.htm" />
+    <HelpKINode Title="properties" Url="html/0753ff04-d6a7-5e73-9c3d-323ec1ba3b47.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Route.Distance property" Url="html/e741ec33-145e-15de-ba66-e63a194436b7.htm" />
+  <HelpKINode Title="Route.Duration property" Url="html/1cffdd48-a96a-c284-ce0f-2e3ad6ebf150.htm" />
+  <HelpKINode Title="Route.IndicativePrice property" Url="html/49338167-38c2-f7bd-b2f1-2a0204f2e95b.htm" />
+  <HelpKINode Title="Route.Name property" Url="html/4c839f30-a29c-60da-6f68-e8a77f820629.htm" />
+  <HelpKINode Title="Route.Route constructor" Url="html/4dfd6063-0801-fca2-fb32-2b4fe3250425.htm" />
+  <HelpKINode Title="Route.RouteTotals property" Url="html/ce87ef43-7d68-8706-2a80-5e9583899830.htm" />
+  <HelpKINode Title="Route.Segments property" Url="html/47688cac-453b-fdd6-f0d4-6a5629e66d90.htm" />
+  <HelpKINode Title="Route.Stops property" Url="html/fe4e5362-279b-2143-3532-17f660664142.htm" />
+  <HelpKINode Title="Route.ValidForSchedule property" Url="html/8835faa8-6ff5-1f53-70fc-ba0113505bb3.htm" />
+  <HelpKINode Title="routeIndex property" Url="html/4b6640cc-5330-0507-4c10-5ed9f39a044c.htm" />
+  <HelpKINode Title="Routes property" Url="html/83706af5-2713-de1a-3341-5f6a156ffacf.htm" />
+  <HelpKINode Title="RouteTotals class">
+    <HelpKINode Title="RouteTotals Class" Url="html/8ff7e5c1-6597-57dd-27cf-e1c10f2f6aaa.htm" />
+    <HelpKINode Title="about RouteTotals class" Url="html/8ff7e5c1-6597-57dd-27cf-e1c10f2f6aaa.htm" />
+    <HelpKINode Title="constructor" Url="html/2c2d7fad-5ec0-c643-6020-0246a582d25f.htm" />
+    <HelpKINode Title="properties" Url="html/971700da-0792-21a4-7895-96a776698ab7.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RouteTotals property" Url="html/ce87ef43-7d68-8706-2a80-5e9583899830.htm" />
+  <HelpKINode Title="RouteTotals.RouteTotals constructor" Url="html/2c2d7fad-5ec0-c643-6020-0246a582d25f.htm" />
+  <HelpKINode Title="RouteTotals.TotalDistance property" Url="html/a7832c23-47cc-6deb-f854-57831a0ac339.htm" />
+  <HelpKINode Title="RouteTotals.TotalPriceOfBus property" Url="html/5c16b391-df76-56a7-85f9-c7b3b259d66c.htm" />
+  <HelpKINode Title="RouteTotals.TotalPriceOfCar property" Url="html/3daf7da3-3df4-b564-7123-e91daa09a8e9.htm" />
+  <HelpKINode Title="RouteTotals.TotalPriceOfFlight property" Url="html/d4c59c8b-ee42-5a54-42ce-73baf6f9810b.htm" />
+  <HelpKINode Title="RouteTotals.TotalPriceOfTrain property" Url="html/7ed31003-c599-a9aa-0e04-6cd83186f2f7.htm" />
+  <HelpKINode Title="RouteTotals.TotalTimeOnBus property" Url="html/9e5f4451-1f9e-6000-44a4-c8cdc2661ab6.htm" />
+  <HelpKINode Title="RouteTotals.TotalTimeOnCar property" Url="html/ae090b66-fe83-84e8-d57d-b43dd31657fd.htm" />
+  <HelpKINode Title="RouteTotals.TotalTimeOnFlight property" Url="html/1755d7c8-cbd9-b9ee-769e-a8a1526f00ea.htm" />
+  <HelpKINode Title="RouteTotals.TotalTimeOnTrain property" Url="html/e94ba367-a8b9-b228-91f2-7dfcacdcdae5.htm" />
+  <HelpKINode Title="RouteTotals.TotalTimeOnWalk property" Url="html/99cf137d-36fd-687b-b00b-3cb5faf987d8.htm" />
+  <HelpKINode Title="RouteTotals.TotalTimeWaiting property" Url="html/ad889813-e496-b391-1bcc-966947d60795.htm" />
+  <HelpKINode Title="SCode property">
+    <HelpKINode Title="Hop.SCode Property " Url="html/0e04df1e-19a4-7bcb-a987-d02455fc5f3a.htm" />
+    <HelpKINode Title="Segment.SCode Property " Url="html/1c3729ff-d383-17f4-3532-c70fae304b0c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Segment class">
+    <HelpKINode Title="Segment Class" Url="html/a74e132b-d102-dfdd-364c-c792756d34db.htm" />
+    <HelpKINode Title="about Segment class" Url="html/a74e132b-d102-dfdd-364c-c792756d34db.htm" />
+    <HelpKINode Title="constructor" Url="html/1d457f99-acfa-14f6-03be-aac6044c513c.htm" />
+    <HelpKINode Title="properties" Url="html/8de79bc0-65ba-45f0-ef3d-f961843ade24.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Segment.ArrivalDateTime property" Url="html/0b6dc3b6-02af-73a0-d687-8187c41440be.htm" />
+  <HelpKINode Title="Segment.ChosenItinerary property" Url="html/ce98f56a-2582-5ad2-4a56-66e5e66f0f43.htm" />
+  <HelpKINode Title="Segment.DepartureDateTime property" Url="html/8465d46a-b87d-37a1-f19d-1e496bc46837.htm" />
+  <HelpKINode Title="Segment.Distance property" Url="html/f9d1084f-6c00-58d5-a9fc-1ebabd42a5e5.htm" />
+  <HelpKINode Title="Segment.Duration property" Url="html/6fd0de5a-294e-ffb4-7a0d-8934bd9808cd.htm" />
+  <HelpKINode Title="Segment.Frequency property" Url="html/019923f5-3e20-f126-023f-36ca90b25d6b.htm" />
+  <HelpKINode Title="Segment.IndicativePrice property" Url="html/1e3e6531-f621-0fb9-8435-a32873586194.htm" />
+  <HelpKINode Title="Segment.IsImperial property" Url="html/df8a38f1-6900-c914-f009-1ade1438e01e.htm" />
+  <HelpKINode Title="Segment.IsMajor property" Url="html/9c87cf8f-4c25-6dad-0909-81df41dadae7.htm" />
+  <HelpKINode Title="Segment.Itineraries property" Url="html/a14f6f55-94e2-da0e-89d6-8da3c2f2e147.htm" />
+  <HelpKINode Title="Segment.Kind property" Url="html/72f29ff6-e554-747b-a37a-4a4556a5702e.htm" />
+  <HelpKINode Title="Segment.Path property" Url="html/3410f5ae-d712-7960-3b00-208a38a619e7.htm" />
+  <HelpKINode Title="Segment.SCode property" Url="html/1c3729ff-d383-17f4-3532-c70fae304b0c.htm" />
+  <HelpKINode Title="Segment.Segment constructor" Url="html/1d457f99-acfa-14f6-03be-aac6044c513c.htm" />
+  <HelpKINode Title="Segment.SName property" Url="html/b2e54476-c4b3-bbe0-7628-a419818374e2.htm" />
+  <HelpKINode Title="Segment.SPos property" Url="html/39b167f6-c85b-89f4-f590-2e7c9fd729ea.htm" />
+  <HelpKINode Title="Segment.Subkind property" Url="html/1b083424-0dd3-f90f-d95f-e3125443d450.htm" />
+  <HelpKINode Title="Segment.TCode property" Url="html/fafbeb1d-e9f9-c47a-2bc4-614261b01b4a.htm" />
+  <HelpKINode Title="Segment.TName property" Url="html/eae38357-8e61-baca-4bd9-b40366d476ed.htm" />
+  <HelpKINode Title="Segment.TPos property" Url="html/9c31042e-c7ef-b008-f5f5-4737d4f999b4.htm" />
+  <HelpKINode Title="Segment.Vehicle property" Url="html/44ada827-d7a8-fce1-6666-2219f4b08f0a.htm" />
+  <HelpKINode Title="segmentIndex property" Url="html/d6ed43cc-28de-ded2-dc28-894c71ea6f44.htm" />
+  <HelpKINode Title="Segments property" Url="html/47688cac-453b-fdd6-f0d4-6a5629e66d90.htm" />
+  <HelpKINode Title="ServeTime property" Url="html/804a6639-2ab2-fbdf-d2d6-18bedb3dedb1.htm" />
+  <HelpKINode Title="SName property">
+    <HelpKINode Title="Hop.SName Property " Url="html/04052acc-b3a9-e514-28f1-b44f84484a59.htm" />
+    <HelpKINode Title="Segment.SName Property " Url="html/b2e54476-c4b3-bbe0-7628-a419818374e2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="somente ida">
+    <HelpKINode Title="Exemplo 1 - Somente ida, informando a data de chegada desejada ao destino" Url="html/exemplo_1.htm" />
+    <HelpKINode Title="Exemplo 2 - Somente ida, informando a data de sa&#237;da do endere&#231;o de origem" Url="html/exemplo_2.htm" />
+    <HelpKINode Title="Exemplo 3 - Somente ida, informando o retorno de transporte publico na resposta" Url="html/exemplo_3.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SPos property">
+    <HelpKINode Title="Hop.SPos Property " Url="html/060b20da-09bc-d0aa-d933-0c7bb9544b6b.htm" />
+    <HelpKINode Title="Segment.SPos Property " Url="html/39b167f6-c85b-89f4-f590-2e7c9fd729ea.htm" />
+  </HelpKINode>
+  <HelpKINode Title="STerminal property" Url="html/f67a1f30-fb4c-8f74-71c2-09cf7c8d5447.htm" />
+  <HelpKINode Title="STime property" Url="html/0b186803-8e81-8f7a-9ba5-54ccc823a997.htm" />
+  <HelpKINode Title="Stop class">
+    <HelpKINode Title="Stop Class" Url="html/036503e0-d8ce-63b2-345d-65d6fd4ee491.htm" />
+    <HelpKINode Title="about Stop class" Url="html/036503e0-d8ce-63b2-345d-65d6fd4ee491.htm" />
+    <HelpKINode Title="constructor" Url="html/5e98daf2-0082-a8bd-dc3e-2442bb14f19d.htm" />
+    <HelpKINode Title="properties" Url="html/18a852f4-1b3d-4bc6-f6d1-1663b32c663f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Stop.Code property" Url="html/44b2da85-41ff-6978-013b-a8c0830116f8.htm" />
+  <HelpKINode Title="Stop.Kind property" Url="html/4940c518-c8b2-bff9-e0c0-fb8baf327f37.htm" />
+  <HelpKINode Title="Stop.Name property" Url="html/b436c5d5-abb3-c572-daa0-35823782961d.htm" />
+  <HelpKINode Title="Stop.Pos property" Url="html/279b5399-e52e-7ef6-2d92-58907e24bd11.htm" />
+  <HelpKINode Title="Stop.Stop constructor" Url="html/5e98daf2-0082-a8bd-dc3e-2442bb14f19d.htm" />
+  <HelpKINode Title="Stops property" Url="html/fe4e5362-279b-2143-3532-17f660664142.htm" />
+  <HelpKINode Title="Subkind property" Url="html/1b083424-0dd3-f90f-d95f-e3125443d450.htm" />
+  <HelpKINode Title="TCode property">
+    <HelpKINode Title="Hop.TCode Property " Url="html/de2005c8-b5f5-7b76-3349-cb528446b7b6.htm" />
+    <HelpKINode Title="Segment.TCode Property " Url="html/fafbeb1d-e9f9-c47a-2bc4-614261b01b4a.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TName property">
+    <HelpKINode Title="Hop.TName Property " Url="html/3c5f43d5-c71d-feaf-7f91-eb04177c651d.htm" />
+    <HelpKINode Title="Segment.TName Property " Url="html/eae38357-8e61-baca-4bd9-b40366d476ed.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TotalDistance property" Url="html/a7832c23-47cc-6deb-f854-57831a0ac339.htm" />
+  <HelpKINode Title="totalPrice property" Url="html/5859ccce-5f39-3fe8-f5a6-dfac9ef58b01.htm" />
+  <HelpKINode Title="TotalPriceOfAlimentation property" Url="html/fc910502-16bd-86ed-3888-c63e20a3220a.htm" />
+  <HelpKINode Title="TotalPriceOfBus property" Url="html/5c16b391-df76-56a7-85f9-c7b3b259d66c.htm" />
+  <HelpKINode Title="TotalPriceOfCar property" Url="html/3daf7da3-3df4-b564-7123-e91daa09a8e9.htm" />
+  <HelpKINode Title="TotalPriceOfFlight property" Url="html/d4c59c8b-ee42-5a54-42ce-73baf6f9810b.htm" />
+  <HelpKINode Title="TotalPriceOfHotel property" Url="html/7ce756a6-e97a-eadd-f6f5-ee8da5d554f3.htm" />
+  <HelpKINode Title="TotalPriceOfLocalTaxi property" Url="html/c736f751-e104-16a1-a7e5-3147955ee343.htm" />
+  <HelpKINode Title="TotalPriceOfTrain property" Url="html/7ed31003-c599-a9aa-0e04-6cd83186f2f7.htm" />
+  <HelpKINode Title="TotalTimeOnBus property" Url="html/9e5f4451-1f9e-6000-44a4-c8cdc2661ab6.htm" />
+  <HelpKINode Title="TotalTimeOnCar property" Url="html/ae090b66-fe83-84e8-d57d-b43dd31657fd.htm" />
+  <HelpKINode Title="TotalTimeOnFlight property" Url="html/1755d7c8-cbd9-b9ee-769e-a8a1526f00ea.htm" />
+  <HelpKINode Title="TotalTimeOnTrain property" Url="html/e94ba367-a8b9-b228-91f2-7dfcacdcdae5.htm" />
+  <HelpKINode Title="TotalTimeOnWalk property" Url="html/99cf137d-36fd-687b-b00b-3cb5faf987d8.htm" />
+  <HelpKINode Title="TotalTimeWaiting property" Url="html/ad889813-e496-b391-1bcc-966947d60795.htm" />
+  <HelpKINode Title="TPos property">
+    <HelpKINode Title="Hop.TPos Property " Url="html/f820548e-c1bc-d7e6-7e43-654bef7f99d0.htm" />
+    <HelpKINode Title="Segment.TPos Property " Url="html/9c31042e-c7ef-b008-f5f5-4737d4f999b4.htm" />
+  </HelpKINode>
+  <HelpKINode Title="transporte publico" Url="html/exemplo_3.htm" />
+  <HelpKINode Title="TTime property" Url="html/f0387912-3e2f-2818-08e2-caa140401b99.htm" />
+  <HelpKINode Title="type property" Url="html/4ca809b4-4f2c-c0cd-49d8-204f4d31b81f.htm" />
+  <HelpKINode Title="url field" Url="html/bb02b833-045b-f925-8d45-91fdadea3ea8.htm" />
+  <HelpKINode Title="Url property" Url="html/b261b1cc-67cb-86b2-6fa5-02164eb39b71.htm" />
+  <HelpKINode Title="ValidForSchedule property">
+    <HelpKINode Title="Itinerary.ValidForSchedule Property " Url="html/fc2ab4aa-4deb-38f1-c4d3-4a27a28e0b56.htm" />
+    <HelpKINode Title="Route.ValidForSchedule Property " Url="html/8835faa8-6ff5-1f53-70fc-ba0113505bb3.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Vehicle property">
+    <HelpKINode Title="Line.Vehicle Property " Url="html/f35072ec-8498-53d9-f3e2-fa43f9dd9b54.htm" />
+    <HelpKINode Title="Segment.Vehicle Property " Url="html/44ada827-d7a8-fce1-6666-2219f4b08f0a.htm" />
+  </HelpKINode>
+  <HelpKINode Title="visao" Url="html/visao_geral.htm" />
+  <HelpKINode Title="vis&#227;o" Url="html/visao_geral.htm" />
+  <HelpKINode Title="voo">
+    <HelpKINode Title="Exemplo 5 - Ida e volta com conte&#250;do do voo de ida vindo de um provedor externo" Url="html/exemplo_5.htm" />
+    <HelpKINode Title="Exemplo 8 - Ida e volta, especificando voos e hospedagem" Url="html/exemplo_8.htm" />
+  </HelpKINode>
+</HelpKI>
