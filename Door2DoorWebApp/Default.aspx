@@ -31,6 +31,7 @@
                     <label id="lblIdaDateKindArriveAt"><input type="radio" id="rdIdaDateKindArriveAt" name="rdIdaDateKind" value="1"  checked/>Horário de chegada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     <label id="lblVoltaDateKindDepartureAt" style="visibility:hidden"><input type="radio" id="rdVoltaDateKindDepartureAt"name="rdVoltaDateKind" value="0"  checked style="visibility:hidden"/>Horário de saída</label>
                     <label id="lblVoltaDateKindArrivalAt" style="visibility:hidden"><input type="radio" id="rdVoltaDateKindArrivalAt"name="rdVoltaDateKind" value="1"  style="visibility:hidden"/>Horário de chegada</label>
+                    <input type="button" id="btnChoseStay" onclick="informarHotel();" value="+ Hotel" style="height: 32px;visibility:hidden;"/>
                 </p>
             </div>
 
@@ -53,6 +54,11 @@
             </div>
 
             <div style="display: none" id="divFlightOptionsAlternatives" title=""></div>
+            <div style="display: none" id="divChoseStay" title="Informe qual o seu hotel e o preço da estadia.">
+                <input id="txtHotel" class="controleOrigem" type="text" placeholder="Digite seu hotel:" />
+                <input id="txtValorHotel" class="controleOrigem" type="text" placeholder="Custo da estadia:" />
+
+            </div>
         </div>
 
         <form id="frmChangeItin" name="frmChangeItin" method="post" style="display:none" target="iFrameChangeItin">
@@ -80,6 +86,7 @@
         <script src="Js/Door2Door.js"></script>
         <script src="Js/Auxiliar.js"></script>
         <script src="Js/Busca.js"></script>
+        <script src="Js/InformarHotel.js"></script>
         <script src="Js/Messaging.js"></script>
     </body>
 </html>

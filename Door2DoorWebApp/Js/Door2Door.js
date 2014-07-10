@@ -24,7 +24,8 @@ function Door2DoorSender(requestOptions) {
                 lng: requestOptions.destLng,
                 type: requestOptions.destType
             },
-            chosenRoute: requestOptions.chosenRoute
+            chosenRoute: requestOptions.chosenRoute,
+            chosenStay: requestOptions.chosenStay
         },
         // code to run if the request succeeds;
         // the response is passed to the function

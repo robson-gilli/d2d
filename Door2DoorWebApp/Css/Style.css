@@ -44,6 +44,37 @@
 		padding-left: 14px; /* Regular padding-left + 1. */
 		width: 401px;
 	}
+#txtHotel {
+	background-color: #fff;
+	padding: 0 11px 0 13px;
+	width: 500px;
+	font-family: Roboto;
+	font-size: 15px;
+	font-weight: 300;
+	text-overflow: ellipsis;
+}
+	#txtHotel:focus {
+		border-color: #4d90fe;
+		margin-left: -1px;
+		padding-left: 14px; /* Regular padding-left + 1. */
+		width: 501px;
+	}
+#txtValorHotel {
+	background-color: #fff;
+	padding: 0 11px 0 13px;
+	width: 140px;
+	font-family: Roboto;
+	font-size: 15px;
+	font-weight: 300;
+	text-overflow: ellipsis;
+}
+	#txtValorHotel:focus {
+		border-color: #4d90fe;
+		margin-left: -1px;
+		padding-left: 14px; /* Regular padding-left + 1. */
+		width: 141px;
+	}
+
 .dataChegada {
 	margin-top: 0px;
 	border: 1px solid transparent;

@@ -53,9 +53,9 @@ namespace Door2DoorCore
             get { return r2r.Resp; }
         }
         /// <summary>
-        ///     Routes and schedules for the desired itinerary request. <see cref="Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>
+        ///     Door2Door request data.
         /// </summary>
-        public D2DRequest _Req
+        public D2DRequest Req
         {
             get { return r2r.Req; }
             set 

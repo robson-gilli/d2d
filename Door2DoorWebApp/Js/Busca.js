@@ -40,6 +40,7 @@ function buscar(originalRoute) {
 	        destLng: _placeDestino.geometry.location.lng(),
 	        destType: (_placeDestino.types != null && _placeDestino.types.length > 0) ? _placeDestino.types[0] : "",
 	        chosenRoute: _chosenRoute,
+	        chosenStay: _chosenStay,
 	        successCallback: handleSuccessSearch,
 	        errorCallback: function (xhr, status, errorThrown) {
 	            $("#divDetalhesItinerario").text("There was an error :( See console for details.");
@@ -154,7 +155,7 @@ function renderTotals() {
         htmlResult += '  </tr>';
 
     }
-    htmlResult += '</table><br/><br/>';
+    htmlResult += '</table><br/>';
     //
     // CUSTOS
     //
@@ -193,7 +194,7 @@ function renderTotals() {
     htmlResult += '         <td align="right"><strong>R$ ' + custoTotalVoo.toFixed(2) + '</strong></td>';
     htmlResult += '         <td align="right"><strong>R$ ' + custoTotal.toFixed(2) + '</strong></td>';
     htmlResult += '     </tr>';
-    htmlResult += '</table><br/><br/>';
+    htmlResult += '</table><br/>';
     if (isAnyReturnValid) {
         var dataSaida = Date.parse(routeIda.segments[0].departureDateTime);
         var dataChegada = Date.parse(routeVolta.segments[routeVolta.segments.length - 1].arrivalDateTime);
@@ -212,8 +213,25 @@ function renderTotals() {
         htmlResult += '         <td>' + duracaoTotalViagem.days + '.' + duracaoTotalViagem.hours.toString().padLeft(2, '0') + ':' + duracaoTotalViagem.minutes.toString().padLeft(2, '0') + ':' + duracaoTotalViagem.seconds.toString().padLeft(2, '0') + '</td>';
         htmlResult += '         <td>' + duracaoDestino.days + '.' + duracaoDestino.hours.toString().padLeft(2, '0') + ':' + duracaoDestino.minutes.toString().padLeft(2, '0') + ':' + duracaoDestino.seconds.toString().padLeft(2, '0') + '</td>';
         htmlResult += '     </tr>';
-        htmlResult += '</table>';
+        htmlResult += '</table><br/>';
     }
+
+    if (isAnyReturnValid && _chosenStay) {
+        htmlResult += '<table>';
+        htmlResult += '     <tr class="ui-widget-header ">'
+        htmlResult += '         <th>Custo total de hoteis</th>';
+        htmlResult += '         <th>Custo com transporte no destino</th>';
+        htmlResult += '         <th>Quantidade de transportes no destino</th>';
+        htmlResult += '     </tr>';
+        htmlResult += '     <tr>'
+        htmlResult += '         <td>' + _resp.totalPriceOfHotel.toFixed(2) + '</td>';
+        htmlResult += '         <td>' + _resp.totalPriceOfLocalTaxi.toFixed(2) + '</td>';
+        htmlResult += '         <td>' + _resp.numberOfTaxisOnStay + '</td>';
+        htmlResult += '     </tr>';
+
+
+    }
+
     $("#divTotais").html(htmlResult);
 }
 

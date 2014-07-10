@@ -33,9 +33,9 @@ function dateToString(date) {
 function getTimeDiff(initialDate, finalDate) {
     var date = { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
-    if (finalDate < initialDate) {
-        finalDate.setDate(finalDate.getDate() + 1);
-    }
+    //if (finalDate < initialDate) {
+    //    finalDate.setDate(finalDate.getDate() + 1);
+    //}
     var leftMsec = finalDate - initialDate;//milliseconds
 
     var dd = Math.floor(leftMsec / 24 / 60 / 60 / 1000);// total de dias

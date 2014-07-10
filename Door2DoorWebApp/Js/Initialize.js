@@ -15,6 +15,8 @@ var _chosenRoute;
 var _reqObj;//handles request policies
 
 var _chosenLeg;
+var autocompleteOrigem;
+var autocompleteDestino;
 
 //disable all clickable elements untill page is loaded
 jQuery("#divSearchBox").find("input, select, button, textarea").attr("disabled", true);
@@ -90,6 +92,9 @@ $(document).ready(function(){
 	$('#rdVoltaDateKindArrivalAt').css('visibility', 'hidden');
 	$('#lblVoltaDateKindDepartureAt').css('visibility', 'hidden');
 	$('#lblVoltaDateKindArrivalAt').css('visibility', 'hidden');
+	$('#btnChoseStay').css('visibility', 'hidden');
+
+	
 
 
 	$('#rdSomenteIda').click(function(){
@@ -99,6 +104,8 @@ $(document).ready(function(){
 	    $('#rdVoltaDateKindArrivalAt').css('visibility', 'hidden');
 	    $('#lblVoltaDateKindDepartureAt').css('visibility', 'hidden');
 	    $('#lblVoltaDateKindArrivalAt').css('visibility', 'hidden');
+	    $('#btnChoseStay').css('visibility', 'hidden');
+
 	});
 
 	$('#rdIdaeVolta').click(function () {
@@ -108,6 +115,8 @@ $(document).ready(function(){
 	    $('#rdVoltaDateKindArrivalAt').css('visibility', 'visible');
 	    $('#lblVoltaDateKindDepartureAt').css('visibility', 'visible');
 	    $('#lblVoltaDateKindArrivalAt').css('visibility', 'visible');
+	    $('#btnChoseStay').css('visibility', 'visible');
+
 	});
 
 	//ajusta o tamanho da div do streetview
@@ -131,16 +140,17 @@ function getRequestObject() {
 //
 function initializeGoogle() {
 
-    var componentRestrictions = {};
+    var mapOptions = { bounds: new google.maps.LatLngBounds() };
     if (_reqObj != null && _reqObj.allowInter == false) {
-        componentRestrictions = {
+        mapOptions = {
+            bounds: new google.maps.LatLngBounds(),
             componentRestrictions: {
                 country: 'br'
             }
         };
     }
-    var autocompleteOrigem = new google.maps.places.Autocomplete(document.getElementById('txtOrigem'), componentRestrictions);
-    var autocompleteDestino = new google.maps.places.Autocomplete(document.getElementById('txtDestino'), componentRestrictions);
+    autocompleteOrigem = new google.maps.places.Autocomplete(document.getElementById('txtOrigem'), mapOptions);
+    autocompleteDestino = new google.maps.places.Autocomplete(document.getElementById('txtDestino'), mapOptions);
 
     //listener do autocomplete de origem
     google.maps.event.addListener(autocompleteOrigem, 'place_changed', function () {
