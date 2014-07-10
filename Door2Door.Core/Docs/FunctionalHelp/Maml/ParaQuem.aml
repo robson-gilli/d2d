@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="para_quem" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+
+		<para>Este documento foi criado com o intuito de auxiliar equipes t&#233;cnicas e de neg&#243;cios na integra&#231;&#227;o do componente Door2Door com projetos de software para o segmento de lazer e corporativo de viagens.</para>
+
+    </introduction>
+
+    <relatedTopics>
+    </relatedTopics>
+
+  </developerConceptualDocument>
+</topic>

@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Door2DoorWebApp</name>
+    </assembly>
+    <members>
+        <member name="M:Door2DoorWebApp.Default.Page_Load(System.Object,System.EventArgs)">
+            <summary>
+            
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Door2DoorWebApp.Default.PopulatePage">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Door2DoorWebApp.Default.litJsonRq">
+            <summary>
+            litJsonRq control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="M:Door2DoorWebApp.Controllers.Door2DoorController.Getd2d(Door2DoorCore.Types.Door2DoorRequest.D2DRequest)">
+            <summary>
+            
+            </summary>
+            <param name="req"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Door2DoorWebApp.TestPages.ItineraryInputPage.Page_Load(System.Object,System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Door2DoorWebApp.TestPages.ItineraryInputPage.VerifyRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Door2DoorWebApp.TestPages.ItineraryInputPage.GetMockJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Door2DoorWebApp.TestPages.ItineraryInputPage.litJsonRq">
+            <summary>
+            litJsonRq control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:Door2DoorWebApp.OutputPage.form1">
+            <summary>
+            form1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:Door2DoorWebApp.OutputPage.litJsonRq">
+            <summary>
+            litJsonRq control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+    </members>
+</doc>

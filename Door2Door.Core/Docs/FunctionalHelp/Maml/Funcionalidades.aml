@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="funcionalidades" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+		<para>O projeto Door2Door foi criado como uma <legacyItalic>Class Library </legacyItalic>em C# para ser incorporada &#224; outros projetos.</para>
+		<para>Deve-se informar &#224; classe Door2Door os par&#226;metros da viagem desejada, que incluem basicamente as coordenadas de origem e destino (latitude e longitude), as datas da viagem, que pode ser somente ida ou <legacyItalic>round trip. </legacyItalic>Alguns parametros adicionais, que s&#227;o explicados em detalhes na se&#231;&#227;o <link xlink:href="exemplos">exemplos</link>, podem tamb&#233;m ser informados.</para>
+		<para>A resposta desta consulta traz uma&#160;lista de rotas (<legacyItalic>Routes</legacyItalic>) poss&#237;veis para se chegar da origem ao destino informados.&#160;Cada rota pode conter um ou mais segmentos (<legacyItalic>Segments</legacyItalic>), que representam uma parte do trajeto e possuem um tipo de transporte espec&#237;fico (<legacyItalic>Kind</legacyItalic>), que pode indicar um trajeto a p&#233; (<legacyItalic>walk</legacyItalic>), um taxi (<legacyItalic>taxi</legacyItalic>), um voo(<legacyItalic>flight</legacyItalic>), um &#244;nibus (<legacyItalic>bus</legacyItalic>), trem (<legacyItalic>trais</legacyItalic>), entre outros. A rota pode conter tamb&#233;m um valor estimado (<legacyItalic>IndicativePrice.Price),</legacyItalic> a dist&#226;ncia (<legacyItalic>Distance</legacyItalic>) &#160;e tamb&#233;m a dura&#231;&#227;o em minutos (<legacyItalic>Duration</legacyItalic>).</para>
+		<para>Cada segmento possu&#237; uma data estimada de partida e de chegada (<legacyItalic>DepartureDateTime </legacyItalic>e <legacyItalic>ArrivalDateTime</legacyItalic>), um tipo (<legacyItalic>Kind</legacyItalic>), a dist&#226;ncia (<legacyItalic>distance</legacyItalic>) e a dura&#231;&#227;o (<legacyItalic>duration</legacyItalic>) como principais elementos.&#160;Os sementos podem conter ou n&#227;o um valor(<legacyItalic>IndicativePrice.Price</legacyItalic>), que representa o pre&#231;o estimado daquele trajeto.</para>
+		<para>Al&#233;m das informa&#231;&#245;es dos segmentos que comp&#245;em a viagem, &#233; retornado tamb&#233;m um resumo dos totais para cada rota (RouteTotals). Este resumo compila as seguintes informa&#231;&#245;es:</para>
+		<list class="bullet">
+			<listItem>Distancia Total percorrida (<legacyItalic>TotalDistance</legacyItalic>);</listItem>
+			<listItem>Tempo total de&#160;viagens&#160;em&#160;trens (<legacyItalic>TotalTimeOnTrain</legacyItalic>);</listItem>
+			<listItem>Tempo total de viagens em carros (<legacyItalic>TotalTimeOnCar</legacyItalic>);</listItem>
+			<listItem>Tempo total de viagens em voos (<legacyItalic>TotalTimeOnFlight</legacyItalic>);</listItem>
+			<listItem>Tempo total de viagens em &#244;nibus (<legacyItalic>TotalTimeOnBus</legacyItalic>);</listItem>
+			<listItem>Tempo total andando (<legacyItalic>TotalTimeOnWalk</legacyItalic>);</listItem>
+			<listItem>Tempo total esperando entre as conex&#245;es (<legacyItalic>TotalTimeWaiting</legacyItalic>);</listItem>
+			<listItem>Custo total&#160;com trens (<legacyItalic>TotalPriceOfTrain</legacyItalic>);</listItem>
+			<listItem>Custo total com carros (<legacyItalic>TotalPriceOfCar</legacyItalic>);</listItem>
+			<listItem>Custo total com voos (<legacyItalic>TotalPriceOfFlight</legacyItalic>);</listItem>
+			<listItem>Custo total com &#244;nibus (<legacyItalic>TotalPriceOfBus</legacyItalic>);</listItem>
+		</list>
+		<para>Veja em <link xlink:href="exemplos">exemplos</link>, mais detalhes de como montar um request e interpretar uma resposta.</para>
+		<para>&#160;</para>
+		
+    </introduction>
+
+
+    <relatedTopics>
+    </relatedTopics>
+
+  </developerConceptualDocument>
+</topic>

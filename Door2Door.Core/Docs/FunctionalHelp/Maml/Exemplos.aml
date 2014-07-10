@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="exemplos" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+		<para>Esta se&#231;&#227;o ilustra diversos tipos de request que podem ser passados para a consulta Door2Door, e suas respectivas respostas.</para>
+    </introduction>
+
+	<section><!--h1-->
+	  <title>Exemplos:</title>
+	  <content>
+		<list class="ordered">
+			<listItem><link xlink:href="exemplo_1">Somente ida, informando a data de chegada desejada ao destino;</link></listItem><!--exemplo_1-->
+			<listItem><link xlink:href="exemplo_2">Somente ida, informando a data de sa&#237;da do endere&#231;o de origem;</link></listItem><!--exemplo_2-->
+			<listItem><link xlink:href="exemplo_3">Somente ida, informando o retorno de transporte publico na resposta;</link></listItem><!--exemplo_3-->
+			<listItem><link xlink:href="exemplo_4">Ida e volta. Ida informada com data de chegada e volta informada com data de sa&#237;da;</link></listItem><!--exemplo_4-->
+			<listItem><link xlink:href="exemplo_5">Ida e volta com conte&#250;do do voo de ida vindo de um provedor externo;</link></listItem><!--exemplo_5-->
+			<listItem><link xlink:href="exemplo_6">Ida e volta com conte&#250;do dos voos de ida e de volta&#160;vindos de um provedor externo;</link></listItem><!--exemplo_6-->
+			<listItem><link xlink:href="exemplo_7">Ida e volta, especificando localiza&#231;&#227;o da hospedagem;</link></listItem><!--exemplo_7-->
+			<listItem><link xlink:href="exemplo_8">Ida e volta, especificando voos e hospedagem;</link></listItem><!--exemplo_8-->
+		</list>
+	  </content>
+	</section>
+
+	<section><!--h1-->
+	  <title>Requests e Responses explicados:</title>
+	  <content>
+		<list class="bullet">
+			<listItem><link xlink:href="request_completo">Request completo.</link></listItem>
+			<listItem><link xlink:href="response_completo">Response completo.</link></listItem>
+		</list>
+	  </content>
+	</section>
+
+  </developerConceptualDocument>
+</topic>

@@ -715,7 +715,7 @@ namespace Door2DoorCore.Types.Door2DoorResponse
         /// <summary>
         /// Estimated total amout spent in meals.
         /// </summary>
-        [JsonProperty("TotalPriceOfAlimentation")]
+        [JsonProperty("totalPriceOfAlimentation")]
         public decimal totalPriceOfAlimentation { get; set; }
         /// <summary>
         /// Hotel total amount.

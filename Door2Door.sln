@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Door2DoorWebApp", "Door2Doo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Door2DoorCore", "Door2Door.Core\Door2DoorCore.csproj", "{D38A87E3-3797-4CE1-BFE2-23F69B124AC6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Door2DoorConsoleApp", "Door2DoorConsoleApp\Door2DoorConsoleApp.csproj", "{C6D0A1C0-BE92-4F4B-851A-0B71771A38B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D38A87E3-3797-4CE1-BFE2-23F69B124AC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D38A87E3-3797-4CE1-BFE2-23F69B124AC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D38A87E3-3797-4CE1-BFE2-23F69B124AC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6D0A1C0-BE92-4F4B-851A-0B71771A38B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6D0A1C0-BE92-4F4B-851A-0B71771A38B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6D0A1C0-BE92-4F4B-851A-0B71771A38B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6D0A1C0-BE92-4F4B-851A-0B71771A38B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,32 @@
+{
+	"desiredOutboundDate": "2014-10-25T21:00:00",
+	"outboundDateKind":0,
+	"desiredInboundDate": "2014-10-28T21:00:00",
+	"inboundDateKind":1,
+	"flags": {
+		"includePublicTransp": false
+	},
+	"oriLocation": {
+		"lat": -23.5438541,
+		"lng": -46.75598000000002,
+		"type": "locality"
+	},
+	"destLocation": {
+		"lat": -30.060709,
+		"lng": -51.17095699999999,
+		"type": "locality"
+	},
+	"chosenRoute": [null,
+	null],
+	"chosenStay":{
+		"location":{
+			"lat": -30.032387,
+			"lng": -51.17801399999996,	
+			"type": "lodging"
+		},
+		totalPrice:0,
+		completeStay:true,
+		checkinDate:null,
+		checkoutDate:null
+	}
+}

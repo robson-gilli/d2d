@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="visao_geral" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+		
+		<para>Um aeroporto nunca &#233; uma origem ou um destino final de uma viagem. N&#227;o importa se estamos viajando &#224; lazer ou neg&#243;cios, sempre precisaremos percorrer o &#250;ltimo trecho da vigem, - o chamado <legacyItalic>last mile</legacyItalic> -, para chegarmos ao nosso destino final.</para>
+		
+		<para>J&#225; &#233; poss&#237;vel obter informa&#231;&#245;es online sobre trajetos, sobre disponibilidade de taxis, transportes p&#250;blicos, aluguel de carros e at&#233; de bicicletas nos maiores centros urbanos. Apesar destes dados estarem dispon&#237;veis, seu conte&#250;do &#233; altamente fragmentado, dificultando o planejamento de uma viagem completa. Al&#233;m disto, o custo total da viagem deve tamb&#233;m ser calculado levando em conta o <legacyItalic>last mile</legacyItalic>, pois este valor pode ser significativo.</para>
+		
+		<para>Para o segmento corporativo de viagens o problema&#160;&#233; ainda mais s&#233;rio.&#160;Compromissos&#160;com hora marcada, <legacyItalic>budget</legacyItalic>, entre outros pontos,&#160;fazem com que seja muito importante&#160;a estimativa correta do tempo necess&#225;rio para se ir de um ponto a outro. Al&#233;m disto, devemos prever corretamente&#160;o&#160;valor&#160;necess&#225;rio para cobrir certas despesas locais que, por vezes, devem ser pagas em esp&#233;cie.</para>
+		
+		<para>&#160;Diante deste cen&#225;rio, uma solu&#231;&#227;o capaz de fornecer trajetos door-to-door; ou seja, ter a habilidade de calcular os meios de locomo&#231;&#227;o, custos e tempos necess&#225;rios para se ir do endere&#231;o de origem ao endere&#231;o de destino; tudo isto levando em conta pol&#237;ticas comerciais de um sistema de gest&#227;o de viagens, agregar&#225; enorme valor &#224;s ag&#234;ncias, reduzindo custos e tamb&#233;m o tempo gasto no planejamento das viagens.</para>
+		
+		<para>Com a inten&#231;&#227;o de ajudar o viajante no processo de planejamento de trajetos e custos, foi criado o projeto Door2Door, uma iniciativa da <externalLink>
+		  <linkText>Clic Holding</linkText>
+		  <linkUri>http://www.clicholding.com.br</linkUri>
+		</externalLink>&#160;para o segmento corporativo e de lazer.</para>
+
+    </introduction>
+
+<section><!--h1-->
+  <title>Principais benef&#237;cios:</title>
+  <content>
+
+<list class="bullet">
+	<listItem>
+	<para>Estimar corretamente as despesas de transporte.</para>
+	</listItem>
+	<listItem>
+	<para>Encontrar meios de transporte alternativos.</para>
+	</listItem>
+	<listItem>
+	<para>Estimar corretamente os tempos de locomo&#231;&#227;o.</para>
+	</listItem>
+	<listItem>
+	<para>Avaliar o custo-benef&#237;cio da viagem.</para>
+	</listItem>
+</list>
+
+<para>&#160;</para>
+
+  </content>
+</section>
+
+    <relatedTopics>
+    </relatedTopics>
+
+  </developerConceptualDocument>
+</topic>
