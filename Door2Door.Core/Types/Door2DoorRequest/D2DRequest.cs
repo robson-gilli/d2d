@@ -36,7 +36,7 @@ namespace Door2DoorCore.Types.Door2DoorRequest
         /// <summary>
         ///     Return type. ('json' / 'xml')
         /// </summary>
-        public string dataTye = "json";
+        public string dataType = "json";
         /// <summary>
         ///     Max distance for driving (not used for now).
         /// </summary>
