@@ -34,8 +34,8 @@
   <HelpKINode Title="currency field" Url="html/2e980f6b-a00a-056e-af55-6db7a91608a4.htm" />
   <HelpKINode Title="Currency property">
     <HelpKINode Title="IndicativePrice.Currency Property " Url="html/e171a575-3730-3b2a-497c-e8324ffb0d0e.htm" />
-    <HelpKINode Title="IndicativePrice3.Currency Property " Url="html/efa22344-84c2-1cd6-c50a-7b42ffaa5fef.htm" />
     <HelpKINode Title="IndicativePrice2.Currency Property " Url="html/285a3eac-7d45-37d7-d80b-b581e48a395e.htm" />
+    <HelpKINode Title="IndicativePrice3.Currency Property " Url="html/efa22344-84c2-1cd6-c50a-7b42ffaa5fef.htm" />
     <HelpKINode Title="IndicativePrice4.Currency Property " Url="html/da4331e9-bad2-f5b3-0991-243d90a18912.htm" />
   </HelpKINode>
   <HelpKINode Title="currency property" Url="html/52b52477-8095-c1a1-da33-88e601d86b40.htm" />
@@ -113,8 +113,8 @@
   <HelpKINode Title="destination property" Url="html/5a1668fc-3115-24e9-020f-8952d7d37314.htm" />
   <HelpKINode Title="destLocation property" Url="html/cb3f7830-c553-c5ac-6ab2-0158f522882d.htm" />
   <HelpKINode Title="Distance property">
-    <HelpKINode Title="Route.Distance Property " Url="html/e741ec33-145e-15de-ba66-e63a194436b7.htm" />
     <HelpKINode Title="Segment.Distance Property " Url="html/f9d1084f-6c00-58d5-a9fc-1ebabd42a5e5.htm" />
+    <HelpKINode Title="Route.Distance Property " Url="html/e741ec33-145e-15de-ba66-e63a194436b7.htm" />
   </HelpKINode>
   <HelpKINode Title="distance property" Url="html/974f0eef-7809-f3ca-95d6-7b6ae15a735e.htm" />
   <HelpKINode Title="Door2Door class">
@@ -180,13 +180,13 @@
   <HelpKINode Title="Door2DoorResponse.Door2DoorResponse constructor" Url="html/36d75aca-691b-16fc-a7f9-ac0262e3a8b4.htm" />
   <HelpKINode Title="Door2DoorResponse.LegResponse property" Url="html/421fb84e-3e33-a915-ae15-8a4fcca67f5c.htm" />
   <HelpKINode Title="Door2DoorResponse.NumberOfTaxisOnStay property" Url="html/6c9a04ef-20e5-a62d-2ba6-edc93eae91bd.htm" />
-  <HelpKINode Title="Door2DoorResponse.TotalPriceOfAlimentation property" Url="html/fc910502-16bd-86ed-3888-c63e20a3220a.htm" />
+  <HelpKINode Title="Door2DoorResponse.totalPriceOfAlimentation property" Url="html/ad501144-4fcd-0152-e1db-c00f614286a6.htm" />
   <HelpKINode Title="Door2DoorResponse.TotalPriceOfHotel property" Url="html/7ce756a6-e97a-eadd-f6f5-ee8da5d554f3.htm" />
   <HelpKINode Title="Door2DoorResponse.TotalPriceOfLocalTaxi property" Url="html/c736f751-e104-16a1-a7e5-3147955ee343.htm" />
   <HelpKINode Title="Duration property">
+    <HelpKINode Title="Hop.Duration Property " Url="html/8e6a5545-6be6-39a8-995c-4c8b46ce35bc.htm" />
     <HelpKINode Title="Line.Duration Property " Url="html/bcc2da18-23eb-736f-33ed-800ed60fd6f4.htm" />
     <HelpKINode Title="Route.Duration Property " Url="html/1cffdd48-a96a-c284-ce0f-2e3ad6ebf150.htm" />
-    <HelpKINode Title="Hop.Duration Property " Url="html/8e6a5545-6be6-39a8-995c-4c8b46ce35bc.htm" />
     <HelpKINode Title="Segment.Duration Property " Url="html/6fd0de5a-294e-ffb4-7a0d-8934bd9808cd.htm" />
   </HelpKINode>
   <HelpKINode Title="duration property" Url="html/09a3a476-1173-7a75-a8ea-fca9fb32fa43.htm" />
@@ -568,7 +568,7 @@
   </HelpKINode>
   <HelpKINode Title="TotalDistance property" Url="html/a7832c23-47cc-6deb-f854-57831a0ac339.htm" />
   <HelpKINode Title="totalPrice property" Url="html/5859ccce-5f39-3fe8-f5a6-dfac9ef58b01.htm" />
-  <HelpKINode Title="TotalPriceOfAlimentation property" Url="html/fc910502-16bd-86ed-3888-c63e20a3220a.htm" />
+  <HelpKINode Title="totalPriceOfAlimentation property" Url="html/ad501144-4fcd-0152-e1db-c00f614286a6.htm" />
   <HelpKINode Title="TotalPriceOfBus property" Url="html/5c16b391-df76-56a7-85f9-c7b3b259d66c.htm" />
   <HelpKINode Title="TotalPriceOfCar property" Url="html/3daf7da3-3df4-b564-7123-e91daa09a8e9.htm" />
   <HelpKINode Title="TotalPriceOfFlight property" Url="html/d4c59c8b-ee42-5a54-42ce-73baf6f9810b.htm" />

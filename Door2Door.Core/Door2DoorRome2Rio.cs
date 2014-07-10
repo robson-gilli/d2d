@@ -251,7 +251,7 @@ namespace Door2DoorCore
                 {
                     Segment seg = route.Segments[i];
 
-                    if (seg.Kind == "flight")
+                    if (seg.Kind.ToLower().Equals("flight"))
                     {
                         bool achouVoo = false;
                         ItineraryDates itineraryDates = new ItineraryDates();
@@ -398,7 +398,7 @@ namespace Door2DoorCore
                         //  A API tem um bug, as vezes manda caminhar, 50 minutos, as vezes mais de uma hora
                         //  Eles ficaram de resolver, mas até lá, eu desconstruí a conta de taxi e caminhada deles.
                         //  Se for caminhada e tiver mais que x minutos, eu transformo em Taxi ;)
-                        if (seg.Kind == "walk" && seg.Duration > _maxWalkingMinutes && route.Segments.Length > 1)
+                        if (seg.Kind.ToLower().Equals("walk") && seg.Duration > _maxWalkingMinutes && route.Segments.Length > 1)
                         {
                             WalkIntoTaxiTransformation(ref seg);
                         }
@@ -477,7 +477,7 @@ namespace Door2DoorCore
 
                     // Se for voo procura um voo que possibilite chegada no horário
                     // no futuro devera pegar de uma fonte externa
-/*voo*/             if (route.Segments[i].Kind == "flight")
+/*voo*/             if (route.Segments[i].Kind.ToLower().Equals("flight"))
                     {
                         bool achouVoo = false;
                         ItineraryDates itineraryDates = new ItineraryDates();
@@ -568,7 +568,7 @@ namespace Door2DoorCore
                         //  A API tem um bug, as vezes manda caminhar, 50 minutos, as vezes mais de uma hora.
                         //  Eles ficaram de resolver, mas até lá, eu desconstruí a conta de taxi e caminhada deles.
                         //  Se for caminhada e tiver mais que x minutos, eu transformo em Taxi ;)
-                        if (route.Segments[i].Kind == "walk" && route.Segments[i].Duration > _maxWalkingMinutes && route.Segments.Length > 1)
+                        if (route.Segments[i].Kind.ToLower().Equals("walk") && route.Segments[i].Duration > _maxWalkingMinutes && route.Segments.Length > 1)
                         {
                             WalkIntoTaxiTransformation(ref route.Segments[i]);
                         }
@@ -591,7 +591,7 @@ namespace Door2DoorCore
 
                         int anticipation = 0; // em minutos
                         // se o proximo segmento é voo, calcular chegada com antecipacao
-                        if (i < route.Segments.Length - 1 && route.Segments[i + 1].Kind == "flight")
+                        if (i < route.Segments.Length - 1 && route.Segments[i + 1].Kind.ToLower().Equals("flight"))
                         {
                             anticipation = _flightAntecipation;
                         }
@@ -1025,7 +1025,7 @@ namespace Door2DoorCore
         ///         <item><description>Flights only: 0x000FFFF0 (0x000FFFFF - 0x0000000F)</description></item>
         ///         <item><description>Not via road: 0x00010100 (0x00000100 + 0x00010000)</description></item>
         ///     </list>
-        ///     <para>NOTE: You can pass these flags either as a hexadecimal value (&flags=0x00010100) or simply as a decimal (&flags=65792).</para> 
+        ///     <para>NOTE: You can pass these flags either as a hexadecimal value (flags=0x00010100) or simply as a decimal (flags=65792).</para> 
         /// </summary>
         /// <param name="carOnly">
         ///     If car only, eliminates all other options

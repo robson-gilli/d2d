@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder" version="2014.5.31.0" projectFile="C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Door2DoorDocs.shfbproj" started="10/07/2014 14:48:27">
+<shfbBuild product="Sandcastle Help File Builder" version="2014.5.31.0" projectFile="C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Door2DoorDocs.shfbproj" started="10/07/2014 17:01:07">
 <buildStep step="Initializing">
 Finding tools...
 The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
@@ -31,16 +31,16 @@ Copying XML comments files
 <buildStep step="GenerateSharedContent">
 Generating shared content files (en-US, Ingl&#234;s (Estados Unidos))...
 <plugIn name="Lightweight Website Style" behavior="After" priority="1000">
-</plugIn>    Last step completed in 00:00:00.0090
+</plugIn>    Last step completed in 00:00:00.0080
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
-    Last step completed in 00:00:00.0020
+    Last step completed in 00:00:00.0030
 </buildStep>
 <buildStep step="GenerateReflectionInfo">
 Generating reflection information...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe]
-Compila‡&#198;o de 10/07/2014 14:48:28 iniciada.
+Compila‡&#198;o de 10/07/2014 17:01:08 iniciada.
 Projeto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\GenerateRefInfo.proj&quot; no n&#162; 1 (destinos padr&#198;o).
 PrepareForBuild:
   Criando o diret&#162;rio &quot;obj\Debug\&quot;.
@@ -59,13 +59,13 @@ Projeto de compila‡&#198;o pronto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Do
 
 Compila‡&#198;o com ˆxito.
 
-Tempo Decorrido 00:00:01.16
-    Last step completed in 00:00:01.3730
+Tempo Decorrido 00:00:01.65
+    Last step completed in 00:00:02.1807
 </buildStep>
 <buildStep step="TransformReflectionInfo">
 Transforming reflection output...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe]
-Compila‡&#198;o de 10/07/2014 14:48:30 iniciada.
+Compila‡&#198;o de 10/07/2014 17:01:10 iniciada.
 Projeto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\TransformManifest.proj&quot; no n&#162; 1 (destinos padr&#198;o).
 TransformManifest:
   XslTransform (v2014.5.31.0)
@@ -85,12 +85,12 @@ Projeto de compila‡&#198;o pronto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Do
 
 Compila‡&#198;o com ˆxito.
 
-Tempo Decorrido 00:00:00.84
-    Last step completed in 00:00:01.0458
+Tempo Decorrido 00:00:01.13
+    Last step completed in 00:00:01.3740
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
-    Last step completed in 00:00:00.0300
+    Last step completed in 00:00:00.0470
 </buildStep>
 <buildStep step="CopyConceptualContent">
 Copying conceptual content...
@@ -129,14 +129,14 @@ Generating conceptual topic files
     C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\FunctionalHelp\Maml\Exemplos\Response_Completo.aml -&gt; C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\ddueXml\response_completo.xml
     Parsing topic file &#39;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\FunctionalHelp\Maml\Exemplos\CSharp_Basic_RoundTrip.aml&#39;
     C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\FunctionalHelp\Maml\Exemplos\CSharp_Basic_RoundTrip.aml -&gt; C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\ddueXml\csharp_basic_roundtrip.xml
-    Last step completed in 00:00:00.2882
+    Last step completed in 00:00:00.4763
 </buildStep>
 <buildStep step="CreateConceptualTopicConfigs">
 Creating conceptual topic configuration files...
     Companion files
     _ContentMetadata_.xml
     ConceptualManifest.xml
-    Last step completed in 00:00:00.0210
+    Last step completed in 00:00:00.0220
 </buildStep>
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
@@ -150,7 +150,7 @@ Merging conceptual and additional tables of contents...
 <buildStep step="GenerateIntermediateTableOfContents">
 Generating intermediate table of contents file...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe]
-Compila‡&#198;o de 10/07/2014 14:48:31 iniciada.
+Compila‡&#198;o de 10/07/2014 17:01:12 iniciada.
 Projeto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\GenerateIntermediateTOC.proj&quot; no n&#162; 1 (destinos padr&#198;o).
 GenerateIntermediateTOC:
   XslTransform (v2014.5.31.0)
@@ -161,31 +161,31 @@ Projeto de compila‡&#198;o pronto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Do
 
 Compila‡&#198;o com ˆxito.
 
-Tempo Decorrido 00:00:00.21
+Tempo Decorrido 00:00:00.23
 Generating conceptual content intermediate TOC file...
 <plugIn name="Hierarchical Table of Contents" behavior="After" priority="1000">
 Retrieving namespace topic title from shared content...
 SHFB: Warning HTP0003: Unable to locate namespace topic title in reference content file.  Using default.
 Creating namespace hierarchy...
-</plugIn>    Last step completed in 00:00:00.4423
+</plugIn>    Last step completed in 00:00:00.4954
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
     sandcastle.config
     conceptual.config
-    Last step completed in 00:00:00.1311
+    Last step completed in 00:00:00.1491
 </buildStep>
 <buildStep step="MergeCustomConfigs">
 Merging custom build component configurations
 C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\sandcastle.config
 C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\conceptual.config
     Removing unused ExampleComponent.
-    Last step completed in 00:00:00.0420
+    Last step completed in 00:00:00.0560
 </buildStep>
 <buildStep step="BuildConceptualTopics">
 Building conceptual help topics...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe]
-Compila‡&#198;o de 10/07/2014 14:48:32 iniciada.
+Compila‡&#198;o de 10/07/2014 17:01:13 iniciada.
 Projeto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\BuildConceptualTopics.proj&quot; no n&#162; 1 (destinos padr&#198;o).
 BuildConceptualTopics:
   BuildAssembler (v2014.5.31.0)
@@ -199,13 +199,13 @@ Projeto de compila‡&#198;o pronto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Do
 
 Compila‡&#198;o com ˆxito.
 
-Tempo Decorrido 00:01:29.75
-    Last step completed in 00:01:30.0042
+Tempo Decorrido 00:01:23.79
+    Last step completed in 00:01:24.1095
 </buildStep>
 <buildStep step="BuildReferenceTopics">
 Building reference help topics...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe]
-Compila‡&#198;o de 10/07/2014 14:50:02 iniciada.
+Compila‡&#198;o de 10/07/2014 17:02:37 iniciada.
 Projeto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\BuildReferenceTopics.proj&quot; no n&#162; 1 (destinos padr&#198;o).
 BuildReferenceTopics:
   BuildAssembler (v2014.5.31.0)
@@ -220,14 +220,14 @@ Projeto de compila‡&#198;o pronto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Do
 
 Compila‡&#198;o com ˆxito.
 
-Tempo Decorrido 00:00:16.53
-    Last step completed in 00:00:16.8940
+Tempo Decorrido 00:00:15.73
+    Last step completed in 00:00:16.1181
 </buildStep>
 <buildStep step="CombiningIntermediateTocFiles">
 Combining conceptual and API intermediate TOC files...
 
 Clearing any prior web output
-    Last step completed in 00:00:00.4986
+    Last step completed in 00:00:00.8596
 </buildStep>
 <buildStep step="ExtractingHtmlInfo">
 Extracting HTML info for HTML Help 1 and/or website...
@@ -243,7 +243,7 @@ Processed 256 HTML files
 Sorting keywords and generating See Also indices
 Saving website keyword index to C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\WebKI.xml
 Saving website table of contents to C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\WebTOC.xml
-    Last step completed in 00:00:01.3730
+    Last step completed in 00:00:03.3052
 </buildStep>
 <buildStep step="CopyStandardHelpContent">
 Copying standard help content...
@@ -323,18 +323,18 @@ C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyle
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\icons\TocOpen.gif -&gt; C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\Output\Website\icons\TocOpen.gif
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\scripts\branding-Website.js -&gt; C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\Output\Website\scripts\branding-Website.js
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\scripts\jquery-1.11.0.min.js -&gt; C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\Output\Website\scripts\jquery-1.11.0.min.js
-    Last step completed in 00:00:00.8903
+    Last step completed in 00:00:02.7186
 </buildStep>
 <buildStep step="GenerateHelpFormatTableOfContents">
 Generating website table of contents file...
-    Last step completed in 00:00:00.0020
+    Last step completed in 00:00:00.0030
 </buildStep>
 <buildStep step="GenerateFullTextIndex">
 Generating full-text index for the website...
 
 <plugIn name="Lightweight Website Style" behavior="After" priority="1000">
 Adding lightweight search and TOC elements to each topic...
-</plugIn>    Last step completed in 00:00:07.5053
+</plugIn>    Last step completed in 00:00:11.1836
 </buildStep>
 <buildStep step="CopyingWebsiteFiles">
 Copying website files to output folder...
@@ -344,15 +344,15 @@ Copied 200 files
 Copied 300 files
 Copied 400 files
 Copied 429 files for the website content
-    Last step completed in 00:00:03.2473
+    Last step completed in 00:00:02.0114
 </buildStep>
 <buildStep step="CleanIntermediates">
 Removing intermediate files...
-    Last step completed in 00:00:02.6588
+    Last step completed in 00:00:01.1405
 </buildStep>
 <buildStep step="Completed">
 
-Build completed successfully at 07/10/2014 02:50 .  Total time: 00:02:07,2576
+Build completed successfully at 07/10/2014 05:03 .  Total time: 00:02:07,2209
 
 </buildStep>
 </shfbBuild>

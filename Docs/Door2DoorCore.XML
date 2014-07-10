@@ -409,7 +409,39 @@
                 Arrival and Departure dates
             </returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Door2DoorCore.Door2DoorRome2Rio.BuildSearchRequestFlags(System.Boolean)" -->
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.BuildSearchRequestFlags(System.Boolean)">
+            <summary>
+                <list type="bullet">
+                    <item><description>0x00000000	Include all kinds of segments (Default)</description></item>
+                    <item><description>0x000FFFFF	Exclude all kinds of segments (See example below)</description></item>
+                    <item><description>0x00000001	Exclude flight segments</description></item>
+                    <item><description>0x00000002	Exclude flight itineraries</description></item>
+                    <item><description>0x00000010	Exclude train segments</description></item>
+                    <item><description>0x00000020	Exclude train itineraries</description></item>
+                    <item><description>0x00000100	Exclude bus segments</description></item>
+                    <item><description>0x00000200	Exclude bus itineraries</description></item>
+                    <item><description>0x00001000	Exclude ferry segments</description></item>
+                    <item><description>0x00002000	Exclude ferry itineraries</description></item>
+                    <item><description>0x00010000	Exclude car segments</description></item>
+                    <item><description>0x00100000	Exclude commuter hops (commuter = local bus, train, trams, subways, etc.)</description></item>
+                    <item><description>0x00200000	Exclude special hops (special = funiculars, steam trains, tours, etc.)</description></item>
+                    <item><description>0x00400000	Exclude minor start segments</description></item>
+                    <item><description>0x00800000	Exclude minor end segments</description></item>
+                    <item><description>0x01000000	Exclude paths (saves bandwidth)</description></item>
+                    <item><description>0x04000000	Exclude indicative prices (saves bandwidth)</description></item>
+                    <item><description>0x10000000	Disable scoring and pruning (debug only)</description></item>
+                    <item><description>Flights only: 0x000FFFF0 (0x000FFFFF - 0x0000000F)</description></item>
+                    <item><description>Not via road: 0x00010100 (0x00000100 + 0x00010000)</description></item>
+                </list>
+                <para>NOTE: You can pass these flags either as a hexadecimal value (flags=0x00010100) or simply as a decimal (flags=65792).</para> 
+            </summary>
+            <param name="carOnly">
+                If car only, eliminates all other options
+            </param>
+            <returns>
+                Integer flag
+            </returns>
+        </member>
         <member name="T:Door2DoorCore.Exceptions.D2DResponseException">
             <summary>
                 Exception thrown when some error occurred during the response processing
