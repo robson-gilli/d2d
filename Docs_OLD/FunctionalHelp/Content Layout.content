@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Topics>
+  <Topic id="visao_geral" visible="True" isDefault="true" title="Visão geral">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="visao" />
+      <HelpKeyword index="K" term="visão" />
+      <HelpKeyword index="K" term="geral" />
+    </HelpKeywords>
+  </Topic>
+  <Topic id="para_quem" visible="True" title="Para quem se destina este documento">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="quem" />
+    </HelpKeywords>
+  </Topic>
+  <Topic id="funcionalidades" visible="True" title="Funcionalidades">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="funcionalidade" />
+    </HelpKeywords>
+  </Topic>
+  <Topic id="exemplos" visible="True" isExpanded="true">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="exemplo" />
+      <HelpKeyword index="K" term="exemplos" />
+    </HelpKeywords>
+    <Topic id="exemplo_1" visible="True" title="Exemplo 1 - Somente ida, informando a data de chegada desejada ao destino">
+      <HelpKeywords>
+        <HelpKeyword index="K" term="exemplo 1" />
+        <HelpKeyword index="K" term="somente ida" />
+        <HelpKeyword index="K" term="data chegada" />
+      </HelpKeywords>
+    </Topic>
+    <Topic id="exemplo_2" visible="True" title="Exemplo 2 - Somente ida, informando a data de saída do endereço de origem">
+      <HelpKeywords>
+        <HelpKeyword index="K" term="exemplo 2" />
+        <HelpKeyword index="K" term="somente ida" />
+        <HelpKeyword index="K" term="data saida" />
+      </HelpKeywords>
+    </Topic>
+    <Topic id="exemplo_3" visible="True" title="Exemplo 3 - Somente ida, informando o retorno de transporte publico na resposta">
+      <HelpKeywords>
+        <HelpKeyword index="K" term="exemplo 3" />
+        <HelpKeyword index="K" term="somente ida" />
+        <HelpKeyword index="K" term="transporte publico" />
+      </HelpKeywords>
+    </Topic>
+    <Topic id="exemplo_4" visible="True" title="Exemplo 4 - Ida e volta. Ida informada com data de chegada e volta informada com data de saída">
+      <HelpKeywords>
+        <HelpKeyword index="K" term="exemplo 4" />
+        <HelpKeyword index="K" term="ida e volta" />
+      </HelpKeywords>
+    </Topic>
+    <Topic id="exemplo_5" visible="True" title="Exemplo 5 - Ida e volta com conteúdo do voo de ida vindo de um provedor externo">
+      <HelpKeywords>
+        <HelpKeyword index="K" term="ida e volta" />
+        <HelpKeyword index="K" term="exemplo 5" />
+        <HelpKeyword index="K" term="voo" />
+        <HelpKeyword index="K" term="provedor " />
+        <HelpKeyword index="K" term="esterno" />
+        <HelpKeyword index="K" term="chosenroute" />
+      </HelpKeywords>
+    </Topic>
+    <Topic id="exemplo_6" visible="True" title="Exemplo 6 - Ida e volta com conteúdo dos voos de ida e de volta vindos de um provedor externo">
+      <HelpKeywords>
+        <HelpKeyword index="K" term="exemplo 6" />
+        <HelpKeyword index="K" term="ida e volta" />
+        <HelpKeyword index="K" term="provedor externo" />
+        <HelpKeyword index="K" term="chosenroute" />
+      </HelpKeywords>
+    </Topic>
+    <Topic id="exemplo_7" visible="True" title="Exemplo 7 - Ida e volta, especificando localização da hospedagem">
+      <HelpKeywords>
+        <HelpKeyword index="K" term="exemplo 7" />
+        <HelpKeyword index="K" term="chosenStay" />
+        <HelpKeyword index="K" term="hospedagem" />
+      </HelpKeywords>
+    </Topic>
+    <Topic id="exemplo_8" visible="True" title="Exemplo 8 - Ida e volta, especificando voos e hospedagem">
+      <HelpKeywords>
+        <HelpKeyword index="K" term="exemplo 8" />
+        <HelpKeyword index="K" term="ida e volta" />
+        <HelpKeyword index="K" term="hospedagem" />
+        <HelpKeyword index="K" term="provedor esterno" />
+        <HelpKeyword index="K" term="voo" />
+      </HelpKeywords>
+    </Topic>
+    <Topic id="request_completo" visible="True" title="Request completo" />
+    <Topic id="response_completo" visible="True" title="Response completo" />
+    <Topic id="csharp_basic_roundtrip" visible="True" isSelected="true" title="Exemplo basico em C# - RoundTrip" />
+  </Topic>
+  <Topic id="591a0a9d-a902-4c4c-bc35-5a11523b9b38" visible="True" noFile="true" apiParentMode="InsertAsChild" title="Especificações técnicas" />
+</Topics>

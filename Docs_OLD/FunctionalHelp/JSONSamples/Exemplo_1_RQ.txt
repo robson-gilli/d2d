@@ -1,0 +1,21 @@
+{
+	"desiredOutboundDate": "2014-10-23T20:00:00",
+	"outboundDateKind": "1",
+	"desiredInboundDate": null,
+	"inboundDateKind": "0",
+	"flags": {
+		"includePublicTransp": false
+	},
+	"oriLocation": {
+		"lat": -23.5732853,
+		"lng": -46.64167550000002,
+		"type": "street_address"
+	},
+	"destLocation": {
+		"lat": 52.3661876,
+		"lng": 4.899111500000004,
+		"type": "route"
+	},
+	"chosenRoute": [null,
+	null]
+}

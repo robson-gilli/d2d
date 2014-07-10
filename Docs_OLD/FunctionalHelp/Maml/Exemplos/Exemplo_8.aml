@@ -1,0 +1,6542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="exemplo_8" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>Exemplo 8 - Ida e volta, especificando voos e hospedagem;</para>
+      <para>Neste exemplo são especificados tando o 'chosenStay' quanto o 'chosenRoute'</para>
+    </introduction>
+    <!-- Add one or more top-level section elements.  These are collapsible.
+         If using <autoOutline />, add an address attribute to identify it
+         and specify a title so that it can be jumped to with a hyperlink. -->
+    <section address="Request">
+      <title>Request</title>
+      <content>
+      	<para>
+      		<code language="JavaScript" outlining="true">
+{
+	"desiredOutboundDate": "2014-10-15T20:00:00",
+	"outboundDateKind": "1",
+	"desiredInboundDate": "2014-10-30T09:00:00",
+	"inboundDateKind": "0",
+	"flags": {
+		"includePublicTransp": false
+	},
+	"oriLocation": {
+		"lat": -23.5732853,
+		"lng": -46.64167550000002,
+		"type": "street_address"
+	},
+	"destLocation": {
+		"lat": 52.3661876,
+		"lng": 4.899111500000004,
+		"type": "route"
+	},
+	"chosenRoute": [{
+		"flightSegment": {
+			"flightLegs": [{
+				"origin": "GRU",
+				"destination": "LHR",
+				"number": "246",
+				"marketingAirline": "BA",
+				"operatingAirline": "",
+				"departureDate": "2014-10-14T16:15:00",
+				"arrivalDate": "2014-10-15T07:20:00",
+				"fareClass": "",
+				"fareBasis": "",
+				"duration": 665,
+				"distance": 0
+			},
+			{
+				"origin": "LHR",
+				"destination": "AMS",
+				"number": "430",
+				"marketingAirline": "BA",
+				"operatingAirline": "",
+				"departureDate": "2014-10-15T08:20:00",
+				"arrivalDate": "2014-10-15T10:40:00",
+				"fareClass": "",
+				"fareBasis": "",
+				"duration": 80,
+				"distance": 0
+			}]
+		},
+		"segmentIndex": 1,
+		"routeIndex": 0,
+		"price": 2700,
+		"currency": "BRL"
+	},
+	{
+		"flightSegment": {
+			"flightLegs": [{
+				"origin": "AMS",
+				"destination": "FRA",
+				"number": "999",
+				"marketingAirline": "LH",
+				"operatingAirline": "",
+				"departureDate": "2014-10-30T19:45:00",
+				"arrivalDate": "2014-10-30T20:55:00",
+				"fareClass": "",
+				"fareBasis": "",
+				"duration": 70,
+				"distance": 0
+			},
+			{
+				"origin": "FRA",
+				"destination": "GRU",
+				"number": "506",
+				"marketingAirline": "LH",
+				"operatingAirline": "",
+				"departureDate": "2014-10-30T21:55:00",
+				"arrivalDate": "2014-10-31T04:55:00",
+				"fareClass": "",
+				"fareBasis": "",
+				"duration": 720,
+				"distance": 0
+			}]
+		},
+		"segmentIndex": 1,
+		"routeIndex": 0,
+		"price": 2200,
+		"currency": "BRL"
+	}],
+	"chosenStay":{
+		"location":{
+			"lat": -30.032387,
+			"lng": -51.17801399999996,	
+			"type": "lodging"
+		},
+		totalPrice:0,
+		completeStay:true,
+		checkinDate:null,
+		checkoutDate:null
+	}
+}
+      		</code>
+		</para>	
+      </content>
+    </section>
+    <section address="Response">
+      <title>Response</title>
+      <content>
+      	<para>
+      		<code language="JavaScript" outlining="true">
+{
+	"legResponse": [{
+		"serveTime": 16,
+		"routes": [{
+			"name": "Fly from Sao Paulo Congonhas",
+			"distance": 863.68,
+			"duration": 248,
+			"indicativePrice": {
+				"price": 585.0,
+				"currency": "BRL",
+				"isFreeTransfer": 0
+			},
+			"stops": [{
+				"name": "Origin",
+				"pos": "-23.54385,-46.75598",
+				"kind": "locality",
+				"code": null
+			},
+			{
+				"name": "Sao Paulo Congonhas",
+				"pos": "-23.62711,-46.65939",
+				"kind": "airport",
+				"code": "CGH"
+			},
+			{
+				"name": "Porto Alegre",
+				"pos": "-29.98969,-51.17646",
+				"kind": "airport",
+				"code": "POA"
+			},
+			{
+				"name": "Destination",
+				"pos": "-30.06071,-51.17096",
+				"kind": "locality",
+				"code": null
+			}],
+			"segments": [{
+				"kind": "car",
+				"isMajor": 0,
+				"isImperial": 0,
+				"distance": 16.61,
+				"duration": 25,
+				"sName": "Origin",
+				"sPos": "-23.54385,-46.75598",
+				"tName": "Sao Paulo Congonhas",
+				"tPos": "-23.62711,-46.65939",
+				"vehicle": "taxi",
+				"path": null,
+				"indicativePrice": {
+					"price": 60.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": null,
+				"tCode": null,
+				"itineraries": null,
+				"arrivalDateTime": "2014-10-25T21:25:00",
+				"departureDateTime": "2014-10-25T21:00:00",
+				"chosenItinerary": null,
+				"frequency": null
+			},
+			{
+				"kind": "flight",
+				"isMajor": 1,
+				"isImperial": 0,
+				"distance": 837.29,
+				"duration": 82,
+				"sName": null,
+				"sPos": null,
+				"tName": null,
+				"tPos": null,
+				"vehicle": null,
+				"path": null,
+				"indicativePrice": {
+					"price": 470.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": "CGH",
+				"tCode": "POA",
+				"itineraries": [{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 82,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "06:25",
+							"tTime": "07:47",
+							"flight": "1200",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 62,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 86,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "20:50",
+							"tTime": "22:16",
+							"flight": "1216",
+							"airline": "G3",
+							"aircraft": "73G",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 88,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "16:24",
+							"tTime": "17:52",
+							"flight": "1210",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 92,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "16:20",
+							"tTime": "17:52",
+							"flight": "1208",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 95,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "10:25",
+							"tTime": "12:00",
+							"flight": "1187",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 64,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 95,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "15:24",
+							"tTime": "16:59",
+							"flight": "3055",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 119,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 95,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "22:02",
+							"tTime": "23:37",
+							"flight": "3049",
+							"airline": "JJ",
+							"aircraft": "319",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 47,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 96,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "15:30",
+							"tTime": "17:06",
+							"flight": "1388",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 64,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 97,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "17:21",
+							"tTime": "18:58",
+							"flight": "1800",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 97,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "12:58",
+							"tTime": "14:35",
+							"flight": "3091",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 98,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "08:45",
+							"tTime": "10:23",
+							"flight": "1202",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 126,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 98,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "09:38",
+							"tTime": "11:16",
+							"flight": "3045",
+							"airline": "JJ",
+							"aircraft": "319",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 99,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "11:34",
+							"tTime": "13:13",
+							"flight": "3279",
+							"airline": "JJ",
+							"aircraft": "319",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 99,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "20:23",
+							"tTime": "22:02",
+							"flight": "3051",
+							"airline": "JJ",
+							"aircraft": "319",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 101,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "17:25",
+							"tTime": "19:05",
+							"flight": "3085",
+							"airline": "JJ",
+							"aircraft": "319",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 101,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "07:25",
+							"tTime": "09:06",
+							"flight": "3059",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 101,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "08:28",
+							"tTime": "10:09",
+							"flight": "3865",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 126,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 101,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "18:44",
+							"tTime": "20:25",
+							"flight": "3063",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 1,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 102,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "10:05",
+							"tTime": "11:47",
+							"flight": "1204",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 105,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "11:30",
+							"tTime": "13:15",
+							"flight": "1206",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 62,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 110,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "POA",
+							"sTime": "18:45",
+							"tTime": "20:35",
+							"flight": "1214",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 69,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "CWB",
+							"sTime": "11:25",
+							"tTime": "12:34",
+							"flight": "1376",
+							"airline": "G3",
+							"aircraft": "73G",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 69,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CWB",
+							"tCode": "POA",
+							"sTime": "13:45",
+							"tTime": "14:54",
+							"flight": "1127",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 64,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 1,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 59,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "CWB",
+							"sTime": "10:32",
+							"tTime": "11:31",
+							"flight": "3017",
+							"airline": "JJ",
+							"aircraft": "319",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 70,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CWB",
+							"tCode": "POA",
+							"sTime": "12:55",
+							"tTime": "14:05",
+							"flight": "3859",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 64,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 1,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 71,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "FLN",
+							"sTime": "17:55",
+							"tTime": "19:06",
+							"flight": "1510",
+							"airline": "G3",
+							"aircraft": "73G",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 62,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "FLN",
+							"tCode": "POA",
+							"sTime": "20:30",
+							"tTime": "21:32",
+							"flight": "1951",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 1,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 60,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CGH",
+							"tCode": "CWB",
+							"sTime": "10:28",
+							"tTime": "11:28",
+							"flight": "3237",
+							"airline": "JJ",
+							"aircraft": "319",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 70,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CWB",
+							"tCode": "POA",
+							"sTime": "12:55",
+							"tTime": "14:05",
+							"flight": "3859",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 58,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 1,
+					"validForSchedule": true,
+					"outerItinerary": false
+				}],
+				"arrivalDateTime": "2014-10-26T07:47:00",
+				"departureDateTime": "2014-10-26T06:25:00",
+				"chosenItinerary": 0,
+				"frequency": null
+			},
+			{
+				"kind": "car",
+				"isMajor": 0,
+				"isImperial": 0,
+				"distance": 9.78,
+				"duration": 20,
+				"sName": "Porto Alegre",
+				"sPos": "-29.98969,-51.17646",
+				"tName": "Destination",
+				"tPos": "-30.06071,-51.17096",
+				"vehicle": "taxi",
+				"path": null,
+				"indicativePrice": {
+					"price": 25.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": null,
+				"tCode": null,
+				"itineraries": null,
+				"arrivalDateTime": "2014-10-26T08:37:00",
+				"departureDateTime": "2014-10-26T08:17:00",
+				"chosenItinerary": null,
+				"frequency": null
+			}],
+			"routeTotals": {
+				"totalDistance": 863.68,
+				"totalTimeOnTrain": "00:00:00",
+				"totalTimeOnCar": "00:45:00",
+				"totalTimeOnFlight": "01:22:00",
+				"totalTimeOnBus": "00:00:00",
+				"totalTimeOnWalk": "00:00:00",
+				"totalTimeWaiting": "09:30:00",
+				"totalPriceOfTrain": 0.0,
+				"totalPriceOfCar": 85.0,
+				"totalPriceOfBus": 0.0,
+				"totalPriceOfFlight": 500.0
+			},
+			"validForSchedule": true
+		},
+		{
+			"name": "Fly from Sao Paulo",
+			"distance": 915.21,
+			"duration": 266,
+			"indicativePrice": {
+				"price": 455.0,
+				"currency": "BRL",
+				"isFreeTransfer": 0
+			},
+			"stops": [{
+				"name": "Origin",
+				"pos": "-23.54385,-46.75598",
+				"kind": "locality",
+				"code": null
+			},
+			{
+				"name": "Sao Paulo",
+				"pos": "-23.42592,-46.4823",
+				"kind": "airport",
+				"code": "GRU"
+			},
+			{
+				"name": "Porto Alegre",
+				"pos": "-29.98969,-51.17646",
+				"kind": "airport",
+				"code": "POA"
+			},
+			{
+				"name": "Destination",
+				"pos": "-30.06071,-51.17096",
+				"kind": "locality",
+				"code": null
+			}],
+			"segments": [{
+				"kind": "car",
+				"isMajor": 0,
+				"isImperial": 0,
+				"distance": 39.63,
+				"duration": 40,
+				"sName": "Origin",
+				"sPos": "-23.54385,-46.75598",
+				"tName": "Sao Paulo",
+				"tPos": "-23.42592,-46.4823",
+				"vehicle": "taxi",
+				"path": null,
+				"indicativePrice": {
+					"price": 130.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": null,
+				"tCode": null,
+				"itineraries": null,
+				"arrivalDateTime": "2014-10-25T21:40:00",
+				"departureDateTime": "2014-10-25T21:00:00",
+				"chosenItinerary": null,
+				"frequency": null
+			},
+			{
+				"kind": "flight",
+				"isMajor": 1,
+				"isImperial": 0,
+				"distance": 865.79,
+				"duration": 85,
+				"sName": null,
+				"sPos": null,
+				"tName": null,
+				"tPos": null,
+				"vehicle": null,
+				"path": null,
+				"indicativePrice": {
+					"price": 300.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": "GRU",
+				"tCode": "POA",
+				"itineraries": [{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 85,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "13:20",
+							"tTime": "14:45",
+							"flight": "2026",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "2",
+							"codeshares": [{
+								"airline": "DL"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 420.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 96,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "12:30",
+							"tTime": "14:06",
+							"flight": "5019",
+							"airline": "AD",
+							"aircraft": "E90",
+							"sTerminal": "4",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 300.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 99,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "19:00",
+							"tTime": "20:39",
+							"flight": "1860",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "2",
+							"codeshares": [{
+								"airline": "AF"
+							}],
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 420.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "06:35",
+							"tTime": "08:15",
+							"flight": "5005",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "4",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 126,
+						"indicativePrice": {
+							"price": 300.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "07:45",
+							"tTime": "09:25",
+							"flight": "6126",
+							"airline": "O6",
+							"aircraft": "100",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 370.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "13:20",
+							"tTime": "15:00",
+							"flight": "3161",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "AC"
+							},
+							{
+								"airline": "AM"
+							},
+							{
+								"airline": "LA"
+							}],
+							"dayChange": null
+						}],
+						"days": 125,
+						"indicativePrice": {
+							"price": 330.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "16:40",
+							"tTime": "18:20",
+							"flight": "3507",
+							"airline": "JJ",
+							"aircraft": "321",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "LA"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 330.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 101,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "16:20",
+							"tTime": "18:01",
+							"flight": "5008",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "4",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 300.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 102,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "08:45",
+							"tTime": "10:27",
+							"flight": "5186",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "4",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 300.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 102,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "06:45",
+							"tTime": "08:27",
+							"flight": "1850",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "2",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 126,
+						"indicativePrice": {
+							"price": 420.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 102,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "16:35",
+							"tTime": "18:17",
+							"flight": "1858",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "2",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 420.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 103,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "20:00",
+							"tTime": "21:43",
+							"flight": "5023",
+							"airline": "AD",
+							"aircraft": "E90",
+							"sTerminal": "4",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 300.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 103,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "08:00",
+							"tTime": "09:43",
+							"flight": "3509",
+							"airline": "JJ",
+							"aircraft": "330",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "LA"
+							},
+							{
+								"airline": "LH"
+							},
+							{
+								"airline": "LX"
+							}],
+							"dayChange": null
+						}],
+						"days": 64,
+						"indicativePrice": {
+							"price": 330.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 104,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "22:25",
+							"tTime": "00:09",
+							"flight": "3295",
+							"airline": "JJ",
+							"aircraft": "321",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "CA"
+							},
+							{
+								"airline": "LA"
+							},
+							{
+								"airline": "SA"
+							}],
+							"dayChange": 1
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 330.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 105,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "07:55",
+							"tTime": "09:40",
+							"flight": "2020",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "2",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 420.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 105,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "11:10",
+							"tTime": "12:55",
+							"flight": "1854",
+							"airline": "G3",
+							"aircraft": "73G",
+							"sTerminal": "2",
+							"codeshares": [{
+								"airline": "AF"
+							},
+							{
+								"airline": "IB"
+							},
+							{
+								"airline": "AZ"
+							},
+							{
+								"airline": "DL"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 420.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 105,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "14:25",
+							"tTime": "16:10",
+							"flight": "3293",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "AC"
+							},
+							{
+								"airline": "AM"
+							},
+							{
+								"airline": "LA"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 330.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 107,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "15:40",
+							"tTime": "17:27",
+							"flight": "4212",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "4",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 64,
+						"indicativePrice": {
+							"price": 300.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 107,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "08:10",
+							"tTime": "09:57",
+							"flight": "3299",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "LA"
+							},
+							{
+								"airline": "LH"
+							},
+							{
+								"airline": "LX"
+							},
+							{
+								"airline": "SA"
+							}],
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 330.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 107,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "09:15",
+							"tTime": "11:02",
+							"flight": "3289",
+							"airline": "JJ",
+							"aircraft": "321",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "AM"
+							},
+							{
+								"airline": "LA"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 330.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 110,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "19:40",
+							"tTime": "21:30",
+							"flight": "3849",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "AA"
+							},
+							{
+								"airline": "CA"
+							},
+							{
+								"airline": "LA"
+							},
+							{
+								"airline": "SA"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 330.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 114,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "19:35",
+							"tTime": "21:29",
+							"flight": "2931",
+							"airline": "AD",
+							"aircraft": "E90",
+							"sTerminal": "4",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 64,
+						"indicativePrice": {
+							"price": 300.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 114,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "17:20",
+							"tTime": "19:14",
+							"flight": "6128",
+							"airline": "O6",
+							"aircraft": "100",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 370.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 115,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "21:45",
+							"tTime": "23:40",
+							"flight": "1862",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "2",
+							"codeshares": [{
+								"airline": "AF"
+							},
+							{
+								"airline": "KL"
+							},
+							{
+								"airline": "IB"
+							},
+							{
+								"airline": "QR"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 420.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 120,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "POA",
+							"sTime": "12:10",
+							"tTime": "14:10",
+							"flight": "6122",
+							"airline": "O6",
+							"aircraft": "318",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 370.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 80,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "FLN",
+							"sTime": "19:55",
+							"tTime": "21:15",
+							"flight": "2080",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "2",
+							"codeshares": [{
+								"airline": "AF"
+							},
+							{
+								"airline": "KL"
+							},
+							{
+								"airline": "QR"
+							}],
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 59,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "FLN",
+							"tCode": "POA",
+							"sTime": "22:10",
+							"tTime": "23:09",
+							"flight": "1916",
+							"airline": "G3",
+							"aircraft": "73G",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 420.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 62,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GRU",
+							"tCode": "CWB",
+							"sTime": "19:45",
+							"tTime": "20:47",
+							"flight": "3555",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "AA"
+							},
+							{
+								"airline": "CA"
+							},
+							{
+								"airline": "LA"
+							},
+							{
+								"airline": "SA"
+							}],
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 77,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CWB",
+							"tCode": "POA",
+							"sTime": "21:45",
+							"tTime": "23:02",
+							"flight": "3555",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 61,
+						"indicativePrice": {
+							"price": 330.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				}],
+				"arrivalDateTime": "2014-10-26T08:15:00",
+				"departureDateTime": "2014-10-26T06:35:00",
+				"chosenItinerary": 3,
+				"frequency": null
+			},
+			{
+				"kind": "car",
+				"isMajor": 0,
+				"isImperial": 0,
+				"distance": 9.78,
+				"duration": 20,
+				"sName": "Porto Alegre",
+				"sPos": "-29.98969,-51.17646",
+				"tName": "Destination",
+				"tPos": "-30.06071,-51.17096",
+				"vehicle": "taxi",
+				"path": null,
+				"indicativePrice": {
+					"price": 25.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": null,
+				"tCode": null,
+				"itineraries": null,
+				"arrivalDateTime": "2014-10-26T09:05:00",
+				"departureDateTime": "2014-10-26T08:45:00",
+				"chosenItinerary": null,
+				"frequency": null
+			}],
+			"routeTotals": {
+				"totalDistance": 915.19999999999993,
+				"totalTimeOnTrain": "00:00:00",
+				"totalTimeOnCar": "01:00:00",
+				"totalTimeOnFlight": "01:40:00",
+				"totalTimeOnBus": "00:00:00",
+				"totalTimeOnWalk": "00:00:00",
+				"totalTimeWaiting": "09:25:00",
+				"totalPriceOfTrain": 0.0,
+				"totalPriceOfCar": 155.0,
+				"totalPriceOfBus": 0.0,
+				"totalPriceOfFlight": 300.0
+			},
+			"validForSchedule": true
+		},
+		{
+			"name": "Taxi to Sao Paulo Viracopos, fly",
+			"distance": 970.57,
+			"duration": 308,
+			"indicativePrice": {
+				"price": 645.0,
+				"currency": "BRL",
+				"isFreeTransfer": 0
+			},
+			"stops": [{
+				"name": "Origin",
+				"pos": "-23.54385,-46.75598",
+				"kind": "locality",
+				"code": null
+			},
+			{
+				"name": "Sao Paulo Viracopos",
+				"pos": "-23.0094,-47.14199",
+				"kind": "airport",
+				"code": "VCP"
+			},
+			{
+				"name": "Porto Alegre",
+				"pos": "-29.98969,-51.17646",
+				"kind": "airport",
+				"code": "POA"
+			},
+			{
+				"name": "Destination",
+				"pos": "-30.06071,-51.17096",
+				"kind": "locality",
+				"code": null
+			}],
+			"segments": [{
+				"kind": "car",
+				"isMajor": 1,
+				"isImperial": 0,
+				"distance": 87.18,
+				"duration": 68,
+				"sName": "Origin",
+				"sPos": "-23.54385,-46.75598",
+				"tName": "Sao Paulo Viracopos",
+				"tPos": "-23.0094,-47.14199",
+				"vehicle": "taxi",
+				"path": null,
+				"indicativePrice": {
+					"price": 280.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": null,
+				"tCode": null,
+				"itineraries": null,
+				"arrivalDateTime": "2014-10-25T22:08:00",
+				"departureDateTime": "2014-10-25T21:00:00",
+				"chosenItinerary": null,
+				"frequency": null
+			},
+			{
+				"kind": "flight",
+				"isMajor": 1,
+				"isImperial": 0,
+				"distance": 873.61,
+				"duration": 99,
+				"sName": null,
+				"sPos": null,
+				"tName": null,
+				"tPos": null,
+				"vehicle": null,
+				"path": null,
+				"indicativePrice": {
+					"price": 400.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": "VCP",
+				"tCode": "POA",
+				"itineraries": [{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 99,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "POA",
+							"sTime": "14:55",
+							"tTime": "16:34",
+							"flight": "4476",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "POA",
+							"sTime": "13:35",
+							"tTime": "15:15",
+							"flight": "4123 4119",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "POA",
+							"sTime": "17:30",
+							"tTime": "19:10",
+							"flight": "5046",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "POA",
+							"sTime": "21:00",
+							"tTime": "22:40",
+							"flight": "4152",
+							"airline": "AD",
+							"aircraft": "E90",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 64,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "POA",
+							"sTime": "22:42",
+							"tTime": "00:22",
+							"flight": "4249",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": 1
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 106,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "POA",
+							"sTime": "06:18",
+							"tTime": "08:04",
+							"flight": "4031",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 126,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 106,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "POA",
+							"sTime": "15:56",
+							"tTime": "17:42",
+							"flight": "4061",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 107,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "POA",
+							"sTime": "08:48",
+							"tTime": "10:35",
+							"flight": "4058",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 126,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 107,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "POA",
+							"sTime": "19:29",
+							"tTime": "21:16",
+							"flight": "4286",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 59,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 108,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "POA",
+							"sTime": "16:12",
+							"tTime": "18:00",
+							"flight": "4279",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 64,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 113,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "POA",
+							"sTime": "19:23",
+							"tTime": "21:16",
+							"flight": "4139",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 4,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 150,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "POA",
+							"sTime": "07:25",
+							"tTime": "09:55",
+							"flight": "4063",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 70,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "NVT",
+							"sTime": "10:05",
+							"tTime": "11:15",
+							"flight": "4074",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 57,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "NVT",
+							"tCode": "POA",
+							"sTime": "11:45",
+							"tTime": "12:42",
+							"flight": "4074",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 1,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 72,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "NVT",
+							"sTime": "19:48",
+							"tTime": "21:00",
+							"flight": "4164 4110",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 61,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "NVT",
+							"tCode": "POA",
+							"sTime": "21:25",
+							"tTime": "22:26",
+							"flight": "4164",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 71,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "NVT",
+							"sTime": "11:34",
+							"tTime": "12:45",
+							"flight": "4001",
+							"airline": "AD",
+							"aircraft": "E90",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 64,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "NVT",
+							"tCode": "POA",
+							"sTime": "13:10",
+							"tTime": "14:14",
+							"flight": "4001",
+							"airline": "AD",
+							"aircraft": "E90",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 126,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 62,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "CWB",
+							"sTime": "11:19",
+							"tTime": "12:21",
+							"flight": "4146",
+							"airline": "AD",
+							"aircraft": "E90",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 83,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CWB",
+							"tCode": "POA",
+							"sTime": "13:35",
+							"tTime": "14:58",
+							"flight": "4253",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 1,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 1,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 150,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "PFB",
+							"sTime": "16:55",
+							"tTime": "19:25",
+							"flight": "5164",
+							"airline": "AD",
+							"aircraft": "AT7",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 53,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "PFB",
+							"tCode": "POA",
+							"sTime": "19:50",
+							"tTime": "20:43",
+							"flight": "2599",
+							"airline": "AD",
+							"aircraft": "AT7",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 62,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 1,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 49,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "GIG",
+							"sTime": "18:26",
+							"tTime": "19:15",
+							"flight": "1225",
+							"airline": "G3",
+							"aircraft": "73G",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 130,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GIG",
+							"tCode": "POA",
+							"sTime": "20:20",
+							"tTime": "22:30",
+							"flight": "1278",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 65,
+						"indicativePrice": {
+							"price": 550.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 1,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 60,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "VCP",
+							"tCode": "GIG",
+							"sTime": "18:19",
+							"tTime": "19:19",
+							"flight": "1761",
+							"airline": "G3",
+							"aircraft": "73G",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 130,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "GIG",
+							"tCode": "POA",
+							"sTime": "20:20",
+							"tTime": "22:30",
+							"flight": "1278",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 62,
+						"indicativePrice": {
+							"price": 550.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 1,
+					"validForSchedule": true,
+					"outerItinerary": false
+				}],
+				"arrivalDateTime": "2014-10-26T08:04:00",
+				"departureDateTime": "2014-10-26T06:18:00",
+				"chosenItinerary": 5,
+				"frequency": null
+			},
+			{
+				"kind": "car",
+				"isMajor": 0,
+				"isImperial": 0,
+				"distance": 9.78,
+				"duration": 20,
+				"sName": "Porto Alegre",
+				"sPos": "-29.98969,-51.17646",
+				"tName": "Destination",
+				"tPos": "-30.06071,-51.17096",
+				"vehicle": "taxi",
+				"path": null,
+				"indicativePrice": {
+					"price": 25.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": null,
+				"tCode": null,
+				"itineraries": null,
+				"arrivalDateTime": "2014-10-26T08:54:00",
+				"departureDateTime": "2014-10-26T08:34:00",
+				"chosenItinerary": null,
+				"frequency": null
+			}],
+			"routeTotals": {
+				"totalDistance": 970.56999999999994,
+				"totalTimeOnTrain": "00:00:00",
+				"totalTimeOnCar": "01:28:00",
+				"totalTimeOnFlight": "01:46:00",
+				"totalTimeOnBus": "00:00:00",
+				"totalTimeOnWalk": "00:00:00",
+				"totalTimeWaiting": "08:40:00",
+				"totalPriceOfTrain": 0.0,
+				"totalPriceOfCar": 305.0,
+				"totalPriceOfBus": 0.0,
+				"totalPriceOfFlight": 340.0
+			},
+			"validForSchedule": true
+		},
+		{
+			"name": "Drive",
+			"distance": 1120.77,
+			"duration": 756,
+			"indicativePrice": {
+				"price": 300.0,
+				"currency": "BRL",
+				"isFreeTransfer": 0
+			},
+			"stops": [{
+				"name": "Origin",
+				"pos": "-23.54385,-46.75598",
+				"kind": "locality",
+				"code": null
+			},
+			{
+				"name": "Destination",
+				"pos": "-30.06071,-51.17096",
+				"kind": "locality",
+				"code": null
+			}],
+			"segments": [{
+				"kind": "car",
+				"isMajor": 1,
+				"isImperial": 0,
+				"distance": 1120.77,
+				"duration": 756,
+				"sName": "Origin",
+				"sPos": "-23.54385,-46.75598",
+				"tName": "Destination",
+				"tPos": "-30.06071,-51.17096",
+				"vehicle": "car",
+				"path": null,
+				"indicativePrice": {
+					"price": 300.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": null,
+				"tCode": null,
+				"itineraries": null,
+				"arrivalDateTime": "2014-10-26T09:36:00",
+				"departureDateTime": "2014-10-25T21:00:00",
+				"chosenItinerary": null,
+				"frequency": null
+			}],
+			"routeTotals": {
+				"totalDistance": 1120.77,
+				"totalTimeOnTrain": "00:00:00",
+				"totalTimeOnCar": "12:36:00",
+				"totalTimeOnFlight": "00:00:00",
+				"totalTimeOnBus": "00:00:00",
+				"totalTimeOnWalk": "00:00:00",
+				"totalTimeWaiting": "00:00:00",
+				"totalPriceOfTrain": 0.0,
+				"totalPriceOfCar": 300.0,
+				"totalPriceOfBus": 0.0,
+				"totalPriceOfFlight": 0.0
+			},
+			"validForSchedule": true
+		}]
+	},
+	{
+		"serveTime": 14,
+		"routes": [{
+			"name": "Fly to Sao Paulo Congonhas",
+			"distance": 863.68,
+			"duration": 242,
+			"indicativePrice": {
+				"price": 585.0,
+				"currency": "BRL",
+				"isFreeTransfer": 0
+			},
+			"stops": [{
+				"name": "Origin",
+				"pos": "-30.06071,-51.17096",
+				"kind": "locality",
+				"code": null
+			},
+			{
+				"name": "Porto Alegre",
+				"pos": "-29.98969,-51.17646",
+				"kind": "airport",
+				"code": "POA"
+			},
+			{
+				"name": "Sao Paulo Congonhas",
+				"pos": "-23.62711,-46.65939",
+				"kind": "airport",
+				"code": "CGH"
+			},
+			{
+				"name": "Destination",
+				"pos": "-23.54385,-46.75598",
+				"kind": "locality",
+				"code": null
+			}],
+			"segments": [{
+				"kind": "car",
+				"isMajor": 0,
+				"isImperial": 0,
+				"distance": 9.78,
+				"duration": 21,
+				"sName": "Origin",
+				"sPos": "-30.06071,-51.17096",
+				"tName": "Porto Alegre",
+				"tPos": "-29.98969,-51.17646",
+				"vehicle": "taxi",
+				"path": null,
+				"indicativePrice": {
+					"price": 25.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": null,
+				"tCode": null,
+				"itineraries": null,
+				"arrivalDateTime": "2014-10-28T16:31:00",
+				"departureDateTime": "2014-10-28T16:10:00",
+				"chosenItinerary": null,
+				"frequency": null
+			},
+			{
+				"kind": "flight",
+				"isMajor": 1,
+				"isImperial": 0,
+				"distance": 837.29,
+				"duration": 75,
+				"sName": null,
+				"sPos": null,
+				"tName": null,
+				"tPos": null,
+				"vehicle": null,
+				"path": null,
+				"indicativePrice": {
+					"price": 470.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": "POA",
+				"tCode": "CGH",
+				"itineraries": [{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 75,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "17:00",
+							"tTime": "18:15",
+							"flight": "1213",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 79,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "18:31",
+							"tTime": "19:50",
+							"flight": "1215",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 88,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "07:44",
+							"tTime": "09:12",
+							"flight": "3090",
+							"airline": "JJ",
+							"aircraft": "319",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 1,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 90,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "12:18",
+							"tTime": "13:48",
+							"flight": "3044",
+							"airline": "JJ",
+							"aircraft": "319",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 90,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "07:00",
+							"tTime": "08:30",
+							"flight": "1201",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 90,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "13:10",
+							"tTime": "14:40",
+							"flight": "1209",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 54,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 90,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "13:20",
+							"tTime": "14:50",
+							"flight": "1389",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 64,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 91,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "09:50",
+							"tTime": "11:21",
+							"flight": "3166",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 92,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "06:27",
+							"tTime": "07:59",
+							"flight": "3048",
+							"airline": "JJ",
+							"aircraft": "319",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 90,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 93,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "19:57",
+							"tTime": "21:30",
+							"flight": "3162",
+							"airline": "JJ",
+							"aircraft": "319",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": false,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 94,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "17:15",
+							"tTime": "18:49",
+							"flight": "3046",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 95,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "05:52",
+							"tTime": "07:27",
+							"flight": "3050",
+							"airline": "JJ",
+							"aircraft": "319",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 110,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 95,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "08:25",
+							"tTime": "10:00",
+							"flight": "1203",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 62,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 97,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "11:02",
+							"tTime": "12:39",
+							"flight": "3836",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 126,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 97,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "16:25",
+							"tTime": "18:02",
+							"flight": "3278",
+							"airline": "JJ",
+							"aircraft": "319",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 98,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "12:12",
+							"tTime": "13:50",
+							"flight": "1207",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 98,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "20:02",
+							"tTime": "21:40",
+							"flight": "1217",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": false,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "15:22",
+							"tTime": "17:02",
+							"flight": "3060",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 1,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 102,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "14:08",
+							"tTime": "15:50",
+							"flight": "1211",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 105,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CGH",
+							"sTime": "13:20",
+							"tTime": "15:05",
+							"flight": "3036",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 390.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 62,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "CWB",
+							"sTime": "06:07",
+							"tTime": "07:09",
+							"flight": "1122",
+							"airline": "G3",
+							"aircraft": "73G",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 62,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "CWB",
+							"tCode": "CGH",
+							"sTime": "08:28",
+							"tTime": "09:30",
+							"flight": "1105",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 500.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				}],
+				"arrivalDateTime": "2014-10-28T19:50:00",
+				"departureDateTime": "2014-10-28T18:31:00",
+				"chosenItinerary": 1,
+				"frequency": null
+			},
+			{
+				"kind": "car",
+				"isMajor": 0,
+				"isImperial": 0,
+				"distance": 16.61,
+				"duration": 26,
+				"sName": "Sao Paulo Congonhas",
+				"sPos": "-23.62711,-46.65939",
+				"tName": "Destination",
+				"tPos": "-23.54385,-46.75598",
+				"vehicle": "taxi",
+				"path": null,
+				"indicativePrice": {
+					"price": 60.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": null,
+				"tCode": null,
+				"itineraries": null,
+				"arrivalDateTime": "2014-10-28T21:00:00",
+				"departureDateTime": "2014-10-28T20:34:00",
+				"chosenItinerary": null,
+				"frequency": null
+			}],
+			"routeTotals": {
+				"totalDistance": 863.68,
+				"totalTimeOnTrain": "00:00:00",
+				"totalTimeOnCar": "00:47:00",
+				"totalTimeOnFlight": "01:19:00",
+				"totalTimeOnBus": "00:00:00",
+				"totalTimeOnWalk": "00:00:00",
+				"totalTimeWaiting": "02:44:00",
+				"totalPriceOfTrain": 0.0,
+				"totalPriceOfCar": 85.0,
+				"totalPriceOfBus": 0.0,
+				"totalPriceOfFlight": 500.0
+			},
+			"validForSchedule": true
+		},
+		{
+			"name": "Fly to Sao Paulo",
+			"distance": 915.21,
+			"duration": 272,
+			"indicativePrice": {
+				"price": 575.0,
+				"currency": "BRL",
+				"isFreeTransfer": 0
+			},
+			"stops": [{
+				"name": "Origin",
+				"pos": "-30.06071,-51.17096",
+				"kind": "locality",
+				"code": null
+			},
+			{
+				"name": "Porto Alegre",
+				"pos": "-29.98969,-51.17646",
+				"kind": "airport",
+				"code": "POA"
+			},
+			{
+				"name": "Sao Paulo",
+				"pos": "-23.42592,-46.4823",
+				"kind": "airport",
+				"code": "GRU"
+			},
+			{
+				"name": "Destination",
+				"pos": "-23.54385,-46.75598",
+				"kind": "locality",
+				"code": null
+			}],
+			"segments": [{
+				"kind": "car",
+				"isMajor": 0,
+				"isImperial": 0,
+				"distance": 9.78,
+				"duration": 21,
+				"sName": "Origin",
+				"sPos": "-30.06071,-51.17096",
+				"tName": "Porto Alegre",
+				"tPos": "-29.98969,-51.17646",
+				"vehicle": "taxi",
+				"path": null,
+				"indicativePrice": {
+					"price": 25.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": null,
+				"tCode": null,
+				"itineraries": null,
+				"arrivalDateTime": "2014-10-28T16:06:00",
+				"departureDateTime": "2014-10-28T15:45:00",
+				"chosenItinerary": null,
+				"frequency": null
+			},
+			{
+				"kind": "flight",
+				"isMajor": 1,
+				"isImperial": 0,
+				"distance": 865.79,
+				"duration": 90,
+				"sName": null,
+				"sPos": null,
+				"tName": null,
+				"tPos": null,
+				"vehicle": null,
+				"path": null,
+				"indicativePrice": {
+					"price": 300.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": "POA",
+				"tCode": "GRU",
+				"itineraries": [{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 90,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "11:20",
+							"tTime": "12:50",
+							"flight": "9166",
+							"airline": "G3",
+							"aircraft": "73G",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 1,
+						"indicativePrice": {
+							"price": 420.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 90,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "16:05",
+							"tTime": "17:35",
+							"flight": "6940",
+							"airline": "AD",
+							"aircraft": "E90",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 64,
+						"indicativePrice": {
+							"price": 300.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 92,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "10:38",
+							"tTime": "12:10",
+							"flight": "3508",
+							"airline": "JJ",
+							"aircraft": "330",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "LA"
+							}],
+							"dayChange": null
+						}],
+						"days": 64,
+						"indicativePrice": {
+							"price": 330.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 93,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "13:02",
+							"tTime": "14:35",
+							"flight": "3294",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "CA"
+							},
+							{
+								"airline": "LA"
+							},
+							{
+								"airline": "LH"
+							},
+							{
+								"airline": "SA"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 330.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 95,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "06:30",
+							"tTime": "08:05",
+							"flight": "1851",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 126,
+						"indicativePrice": {
+							"price": 420.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 95,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "10:25",
+							"tTime": "12:00",
+							"flight": "6127",
+							"airline": "O6",
+							"aircraft": "100",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 400.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 97,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "08:18",
+							"tTime": "09:55",
+							"flight": "3848",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "LA"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 330.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 99,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "09:16",
+							"tTime": "10:55",
+							"flight": "5006",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 126,
+						"indicativePrice": {
+							"price": 300.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "05:55",
+							"tTime": "07:35",
+							"flight": "3297",
+							"airline": "JJ",
+							"aircraft": "321",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "AM"
+							},
+							{
+								"airline": "LA"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 330.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "10:40",
+							"tTime": "12:20",
+							"flight": "3502",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "CA"
+							},
+							{
+								"airline": "LA"
+							}],
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 330.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "11:55",
+							"tTime": "13:35",
+							"flight": "3288",
+							"airline": "JJ",
+							"aircraft": "321",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "CA"
+							},
+							{
+								"airline": "LA"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 330.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "14:55",
+							"tTime": "16:35",
+							"flight": "3160",
+							"airline": "JJ",
+							"aircraft": "320",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "AA"
+							},
+							{
+								"airline": "AC"
+							},
+							{
+								"airline": "LA"
+							},
+							{
+								"airline": "LH"
+							},
+							{
+								"airline": "LX"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 330.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "19:30",
+							"tTime": "21:10",
+							"flight": "3296",
+							"airline": "JJ",
+							"aircraft": "321",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "AA"
+							},
+							{
+								"airline": "AC"
+							},
+							{
+								"airline": "AM"
+							},
+							{
+								"airline": "LA"
+							},
+							{
+								"airline": "SA"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 330.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": false,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "10:20",
+							"tTime": "12:00",
+							"flight": "2025",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "AZ"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 420.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "13:30",
+							"tTime": "15:10",
+							"flight": "2029",
+							"airline": "G3",
+							"aircraft": "73G",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "KL"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 420.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "07:40",
+							"tTime": "09:20",
+							"flight": "5048 5011",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 300.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "18:40",
+							"tTime": "20:20",
+							"flight": "5009",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 300.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": false,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "14:40",
+							"tTime": "16:20",
+							"flight": "6123",
+							"airline": "O6",
+							"aircraft": "318",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 400.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 101,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "08:44",
+							"tTime": "10:25",
+							"flight": "1853",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 420.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 103,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "16:02",
+							"tTime": "17:45",
+							"flight": "5015",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 300.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 109,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "12:26",
+							"tTime": "14:15",
+							"flight": "1857",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "AF"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 420.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 110,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "10:30",
+							"tTime": "12:20",
+							"flight": "2948",
+							"airline": "AD",
+							"aircraft": "E90",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 1,
+						"indicativePrice": {
+							"price": 300.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 112,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "11:38",
+							"tTime": "13:30",
+							"flight": "5187",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 300.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 120,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "18:45",
+							"tTime": "20:45",
+							"flight": "1863",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "DL"
+							},
+							{
+								"airline": "QR"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 420.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": false,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 120,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "21:00",
+							"tTime": "23:00",
+							"flight": "6129",
+							"airline": "O6",
+							"aircraft": "100",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "TA"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 400.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": false,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 129,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "GRU",
+							"sTime": "18:06",
+							"tTime": "20:15",
+							"flight": "1861",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": "1",
+							"codeshares": [{
+								"airline": "AF"
+							},
+							{
+								"airline": "DL"
+							},
+							{
+								"airline": "QR"
+							}],
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 420.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 45,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "FLN",
+							"sTime": "19:38",
+							"tTime": "20:23",
+							"flight": "1827",
+							"airline": "G3",
+							"aircraft": "73G",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 60,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "FLN",
+							"tCode": "GRU",
+							"sTime": "21:45",
+							"tTime": "22:45",
+							"flight": "1273",
+							"airline": "G3",
+							"aircraft": "738",
+							"sTerminal": null,
+							"codeshares": [{
+								"airline": "QR"
+							}],
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 420.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": false,
+					"outerItinerary": false
+				}],
+				"arrivalDateTime": "2014-10-28T20:15:00",
+				"departureDateTime": "2014-10-28T18:06:00",
+				"chosenItinerary": 25,
+				"frequency": null
+			},
+			{
+				"kind": "car",
+				"isMajor": 0,
+				"isImperial": 0,
+				"distance": 39.63,
+				"duration": 41,
+				"sName": "Sao Paulo",
+				"sPos": "-23.42592,-46.4823",
+				"tName": "Destination",
+				"tPos": "-23.54385,-46.75598",
+				"vehicle": "taxi",
+				"path": null,
+				"indicativePrice": {
+					"price": 130.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": null,
+				"tCode": null,
+				"itineraries": null,
+				"arrivalDateTime": "2014-10-28T21:00:00",
+				"departureDateTime": "2014-10-28T20:19:00",
+				"chosenItinerary": null,
+				"frequency": null
+			}],
+			"routeTotals": {
+				"totalDistance": 915.19999999999993,
+				"totalTimeOnTrain": "00:00:00",
+				"totalTimeOnCar": "01:02:00",
+				"totalTimeOnFlight": "02:09:00",
+				"totalTimeOnBus": "00:00:00",
+				"totalTimeOnWalk": "00:00:00",
+				"totalTimeWaiting": "02:04:00",
+				"totalPriceOfTrain": 0.0,
+				"totalPriceOfCar": 155.0,
+				"totalPriceOfBus": 0.0,
+				"totalPriceOfFlight": 420.0
+			},
+			"validForSchedule": true
+		},
+		{
+			"name": "Fly to Sao Paulo Viracopos, taxi",
+			"distance": 970.57,
+			"duration": 297,
+			"indicativePrice": {
+				"price": 645.0,
+				"currency": "BRL",
+				"isFreeTransfer": 0
+			},
+			"stops": [{
+				"name": "Origin",
+				"pos": "-30.06071,-51.17096",
+				"kind": "locality",
+				"code": null
+			},
+			{
+				"name": "Porto Alegre",
+				"pos": "-29.98969,-51.17646",
+				"kind": "airport",
+				"code": "POA"
+			},
+			{
+				"name": "Sao Paulo Viracopos",
+				"pos": "-23.0094,-47.14199",
+				"kind": "airport",
+				"code": "VCP"
+			},
+			{
+				"name": "Destination",
+				"pos": "-23.54385,-46.75598",
+				"kind": "locality",
+				"code": null
+			}],
+			"segments": [{
+				"kind": "car",
+				"isMajor": 0,
+				"isImperial": 0,
+				"distance": 9.78,
+				"duration": 21,
+				"sName": "Origin",
+				"sPos": "-30.06071,-51.17096",
+				"tName": "Porto Alegre",
+				"tPos": "-29.98969,-51.17646",
+				"vehicle": "taxi",
+				"path": null,
+				"indicativePrice": {
+					"price": 25.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": null,
+				"tCode": null,
+				"itineraries": null,
+				"arrivalDateTime": "2014-10-28T15:30:00",
+				"departureDateTime": "2014-10-28T15:09:00",
+				"chosenItinerary": null,
+				"frequency": null
+			},
+			{
+				"kind": "flight",
+				"isMajor": 1,
+				"isImperial": 0,
+				"distance": 873.61,
+				"duration": 89,
+				"sName": null,
+				"sPos": null,
+				"tName": null,
+				"tPos": null,
+				"vehicle": null,
+				"path": null,
+				"indicativePrice": {
+					"price": 400.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": "POA",
+				"tCode": "VCP",
+				"itineraries": [{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 89,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "VCP",
+							"sTime": "17:11",
+							"tTime": "18:40",
+							"flight": "4495",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 4,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 93,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "VCP",
+							"sTime": "11:40",
+							"tTime": "13:13",
+							"flight": "4059",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 126,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 96,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "VCP",
+							"sTime": "21:46",
+							"tTime": "23:22",
+							"flight": "4287",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": false,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "VCP",
+							"sTime": "06:05",
+							"tTime": "07:45",
+							"flight": "4134",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 126,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "VCP",
+							"sTime": "07:10",
+							"tTime": "08:50",
+							"flight": "4188 4042",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "VCP",
+							"sTime": "14:30",
+							"tTime": "16:10",
+							"flight": "4443",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 64,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 100,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "VCP",
+							"sTime": "19:40",
+							"tTime": "21:20",
+							"flight": "4099 4062",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 127,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": false,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 101,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "VCP",
+							"sTime": "14:42",
+							"tTime": "16:23",
+							"flight": "4482",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 62,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 103,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "VCP",
+							"sTime": "09:29",
+							"tTime": "11:12",
+							"flight": "4079",
+							"airline": "AD",
+							"aircraft": "E90",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 1,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 105,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "VCP",
+							"sTime": "14:55",
+							"tTime": "16:40",
+							"flight": "4122",
+							"airline": "AD",
+							"aircraft": "E90",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 105,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "VCP",
+							"sTime": "17:11",
+							"tTime": "18:56",
+							"flight": "4483",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 32,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 105,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "VCP",
+							"sTime": "17:11",
+							"tTime": "18:56",
+							"flight": "4478",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 2,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 106,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "VCP",
+							"sTime": "08:39",
+							"tTime": "10:25",
+							"flight": "4403",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 126,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 107,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "VCP",
+							"sTime": "17:30",
+							"tTime": "19:17",
+							"flight": "4477",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 24,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 110,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "VCP",
+							"sTime": "13:13",
+							"tTime": "15:03",
+							"flight": "4075",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 1,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 112,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "VCP",
+							"sTime": "17:11",
+							"tTime": "19:03",
+							"flight": "4479",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 1,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 61,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "NVT",
+							"sTime": "09:44",
+							"tTime": "10:45",
+							"flight": "4163",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 68,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "NVT",
+							"tCode": "VCP",
+							"sTime": "11:10",
+							"tTime": "12:18",
+							"flight": "4163",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 62,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 65,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "NVT",
+							"sTime": "18:12",
+							"tTime": "19:17",
+							"flight": "4165",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 72,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "NVT",
+							"tCode": "VCP",
+							"sTime": "19:43",
+							"tTime": "20:55",
+							"flight": "4165",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 63,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": false,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 72,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "NVT",
+							"sTime": "07:23",
+							"tTime": "08:35",
+							"flight": "4996",
+							"airline": "AD",
+							"aircraft": "E90",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 63,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "NVT",
+							"tCode": "VCP",
+							"sTime": "09:40",
+							"tTime": "10:43",
+							"flight": "4486",
+							"airline": "AD",
+							"aircraft": "E90",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 64,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 65,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "NVT",
+							"sTime": "13:30",
+							"tTime": "14:35",
+							"flight": "4272",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 68,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "NVT",
+							"tCode": "VCP",
+							"sTime": "15:55",
+							"tTime": "17:03",
+							"flight": "4268",
+							"airline": "AD",
+							"aircraft": "E95",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 64,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": true,
+					"outerItinerary": false
+				},
+				{
+					"legs": [{
+						"url": null,
+						"host": null,
+						"hops": [{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 52,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "POA",
+							"tCode": "PFB",
+							"sTime": "18:33",
+							"tTime": "19:25",
+							"flight": "2598",
+							"airline": "AD",
+							"aircraft": "AT7",
+							"sTerminal": "1",
+							"codeshares": null,
+							"dayChange": null
+						},
+						{
+							"sName": null,
+							"sPos": null,
+							"tName": null,
+							"tPos": null,
+							"frequency": 0,
+							"duration": 140,
+							"indicativePrice": null,
+							"lines": null,
+							"sCode": "PFB",
+							"tCode": "VCP",
+							"sTime": "19:55",
+							"tTime": "22:15",
+							"flight": "5165",
+							"airline": "AD",
+							"aircraft": "AT7",
+							"sTerminal": null,
+							"codeshares": null,
+							"dayChange": null
+						}],
+						"days": 62,
+						"indicativePrice": {
+							"price": 340.0,
+							"currency": "BRL",
+							"isFreeTransfer": 0
+						}
+					}],
+					"isHidden": 0,
+					"validForSchedule": false,
+					"outerItinerary": false
+				}],
+				"arrivalDateTime": "2014-10-28T19:17:00",
+				"departureDateTime": "2014-10-28T17:30:00",
+				"chosenItinerary": 13,
+				"frequency": null
+			},
+			{
+				"kind": "car",
+				"isMajor": 1,
+				"isImperial": 0,
+				"distance": 87.18,
+				"duration": 67,
+				"sName": "Sao Paulo Viracopos",
+				"sPos": "-23.0094,-47.14199",
+				"tName": "Destination",
+				"tPos": "-23.54385,-46.75598",
+				"vehicle": "taxi",
+				"path": null,
+				"indicativePrice": {
+					"price": 280.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": null,
+				"tCode": null,
+				"itineraries": null,
+				"arrivalDateTime": "2014-10-28T21:00:00",
+				"departureDateTime": "2014-10-28T19:53:00",
+				"chosenItinerary": null,
+				"frequency": null
+			}],
+			"routeTotals": {
+				"totalDistance": 970.56999999999994,
+				"totalTimeOnTrain": "00:00:00",
+				"totalTimeOnCar": "01:28:00",
+				"totalTimeOnFlight": "01:47:00",
+				"totalTimeOnBus": "00:00:00",
+				"totalTimeOnWalk": "00:00:00",
+				"totalTimeWaiting": "02:36:00",
+				"totalPriceOfTrain": 0.0,
+				"totalPriceOfCar": 305.0,
+				"totalPriceOfBus": 0.0,
+				"totalPriceOfFlight": 340.0
+			},
+			"validForSchedule": true
+		},
+		{
+			"name": "Drive",
+			"distance": 1120.77,
+			"duration": 759,
+			"indicativePrice": {
+				"price": 300.0,
+				"currency": "BRL",
+				"isFreeTransfer": 0
+			},
+			"stops": [{
+				"name": "Origin",
+				"pos": "-30.06071,-51.17096",
+				"kind": "locality",
+				"code": null
+			},
+			{
+				"name": "Destination",
+				"pos": "-23.54385,-46.75598",
+				"kind": "locality",
+				"code": null
+			}],
+			"segments": [{
+				"kind": "car",
+				"isMajor": 1,
+				"isImperial": 0,
+				"distance": 1120.77,
+				"duration": 759,
+				"sName": "Origin",
+				"sPos": "-30.06071,-51.17096",
+				"tName": "Destination",
+				"tPos": "-23.54385,-46.75598",
+				"vehicle": "car",
+				"path": null,
+				"indicativePrice": {
+					"price": 300.0,
+					"currency": "BRL",
+					"isFreeTransfer": 0,
+					"nativePrice": 0.0,
+					"nativeCurrency": null
+				},
+				"subkind": null,
+				"sCode": null,
+				"tCode": null,
+				"itineraries": null,
+				"arrivalDateTime": "2014-10-28T21:00:00",
+				"departureDateTime": "2014-10-28T08:21:00",
+				"chosenItinerary": null,
+				"frequency": null
+			}],
+			"routeTotals": {
+				"totalDistance": 1120.77,
+				"totalTimeOnTrain": "00:00:00",
+				"totalTimeOnCar": "12:39:00",
+				"totalTimeOnFlight": "00:00:00",
+				"totalTimeOnBus": "00:00:00",
+				"totalTimeOnWalk": "00:00:00",
+				"totalTimeWaiting": "00:00:00",
+				"totalPriceOfTrain": 0.0,
+				"totalPriceOfCar": 300.0,
+				"totalPriceOfBus": 0.0,
+				"totalPriceOfFlight": 0.0
+			},
+			"validForSchedule": true
+		}]
+	}],
+	"TotalPriceOfAlimentation": 0.0,
+	"totalPriceOfHotel": 0.0,
+	"totalPriceOfLocalTaxi": 52.0,
+	"numberOfTaxisOnStay": 4
+}
+      		</code>
+		</para>	
+      </content>
+    </section>
+
+  </developerConceptualDocument>
+</topic>

@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="response_completo" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>Request completo comentado.</para>
+    </introduction>
+    <section address="Request">
+      <title>Request completo comentado.</title>
+      <content>
+        <para>
+      		<code language="JavaScript" outlining="true">
+{
+	"legResponse": [{										// Array. One response for the outbound and another for the inbound routes.
+		"serveTime": 17,									// Milliseconds.
+		"routes": [{										// Array. On Route is one possible way to get from the origin to de destination.
+			"name": "Taxi to Sao Paulo Viracopos, fly",		// Route name.
+			"distance": 977.1,								// Total distance.
+			"duration": 310,								// Total duration in minutes.
+			"indicativePrice": {							// Estimated price for the Route.
+				"price": 665.0,								// Amount.
+				"currency": "BRL"							// Currency.
+			},
+			"stops": [{										// Array. Locations of the stops for this Route.
+				"name": "Origin",							// Name of the Stop.
+				"pos": "-23.57404,-46.63879",				// Position of the Stop.
+				"kind": "route"								// Kind
+			}],
+			"segments": [{									// One part of the Route.
+				"kind": "flight",							// Segment kind can have many types. See technical documentation.
+				"isMajor": 1,								// Is this the major Segment of the Route?
+				"isImperial": 0,							// If 0 means that the distance is expressed in Kilometers.
+				"distance": 873.61,							// Distance.
+				"duration": 99,								// Duration in minutes.
+				"sName": null,								// Source display name.
+				"sPos": null,								// Source latitude/longitude.
+				"tName": null,								// Target display name.
+				"tPos": null,								// Target latitude/longitude.
+				"vehicle": null,							// Vehicle display name.
+				"indicativePrice": {						// Estimated price for the Segment.
+					"price": 400.0,							// Estimated amount.
+					"currency": "BRL",						// Currency.
+					"isFreeTransfer": 0,					// Is this a free transfer?
+					"nativePrice": 0.0,						// Indicative price in native currency (optional)
+					"nativeCurrency": null					// Native currency code (ISO 4217) (optional)
+				},
+				"subkind": null,							// More specific for new transit types, eg. "train", "bus", "ferry", "carferry", "cablecar", "helicopter".
+				"sCode": "VCP",								// Source airport code (IATA)
+				"tCode": "POA",								// Target airport code (IATA)
+				"itineraries": [{							// Array of alternative flight itineraries.
+					"legs": [{								// Array of flight legs
+						"hops": [{							// Array of flight hops
+							"sName": null,					// Source display name.
+							"sPos": null,					// Source latitude/longitude.
+							"tName": null,					// Target display name.
+							"tPos": null,					// Target latitude/longitude.
+							"frequency": 0,					// Estimated frequency (per week).
+							"duration": 99,					// Minutes.
+							"sCode": "VCP",					// Source airport code (IATA)
+							"tCode": "POA",					// Target airport code (IATA)
+							"sTime": "14:55",				// Departure time (24-hour local time - hh:mm)
+							"tTime": "16:34",				// Arrival time (24-hour local time - hh:mm)
+							"flight": "4476",				// Flight number
+							"airline": "AD",				// Airline
+							"aircraft": "E95",				// Aircraft code (IATA) (optional)
+							"sTerminal": null,				// Source airport terminal (optional)
+							"codeshares": null,				// Target airport terminal (optional)
+							"dayChange": 0					// Num day changes during flight (optional)
+						}],
+						"days": 63,							// Days of operation bitmask
+						"indicativePrice": {				// Estimated price for the Itinerary.
+							"price": 340.0,					// Estimated amount.
+							"currency": "BRL",				// Currency.
+							"isFreeTransfer": 0				// Is this a free transfer?
+						}
+					}],
+					"validForSchedule": true,				// Sometimes a itinerary may not be valid due to the desired arrival or departure date 
+					"outerItinerary": false					// Is this a itinerary from a outer provider?
+				}],
+				"arrivalDateTime": "2014-10-16T19:10:00",	// Arrival datetime
+				"departureDateTime": "2014-10-16T17:30:00", // Departure datetime
+				"chosenItinerary": 2,						// Which one of the itineraries was automatically chosen (index zero based).
+				"frequency": null							// Estimated frequency (per week).
+			}],
+			"routeTotals": {								// Summary of the Route
+				"totalDistance": 977.09,					// Meters.
+				"totalTimeOnTrain": "00:00:00",				// Total time inside trains.
+				"totalTimeOnCar": "01:30:00",				// Total time inside cars(taxis as well).
+				"totalTimeOnFlight": "01:40:00",			// Total time inside flights.
+				"totalTimeOnBus": "00:00:00",				// Total time inside buses.
+				"totalTimeOnWalk": "00:00:00",				// Total time walking.
+				"totalTimeWaiting": "03:30:00",				// Total time waiting between connections.
+				"totalPriceOfTrain": 0.0,					// Total amount spent on trains.
+				"totalPriceOfCar": 325.0,					// Total amount spent on cars (taxis as well).
+				"totalPriceOfBus": 0.0,						// Total amount spent on buses.
+				"totalPriceOfFlight": 340.0					// Total amount spent on flights.
+			},
+			"validForSchedule": true						// Is this route valid?
+		}]
+	}],
+	"TotalPriceOfAlimentation": 0.0,						// If a chosenStay was informed on the request, and according to the policies, it's possible to calculate the total amount of alimentation. 
+	"totalPriceOfHotel": 500.0,								// If a chosenStay was informed on the request, calculates the hotel price.
+	"totalPriceOfLocalTaxi": 312.0,							// If a chosenStay was informed on the request, the system will calculate taxis fares from hotel to office during the stay.
+	"numberOfTaxisOnStay": 24								// How many taxis were taken.
+}
+
+      		</code>
+        </para>
+      </content>
+    </section>
+    
+     
+    
+  </developerConceptualDocument>
+</topic>

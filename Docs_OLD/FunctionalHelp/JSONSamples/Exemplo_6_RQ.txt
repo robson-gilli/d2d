@@ -1,0 +1,87 @@
+{
+	"desiredOutboundDate": "2014-10-15T20:00:00",
+	"outboundDateKind": "1",
+	"desiredInboundDate": "2014-10-30T09:00:00",
+	"inboundDateKind": "0",
+	"flags": {
+		"includePublicTransp": false
+	},
+	"oriLocation": {
+		"lat": -23.5732853,
+		"lng": -46.64167550000002,
+		"type": "street_address"
+	},
+	"destLocation": {
+		"lat": 52.3661876,
+		"lng": 4.899111500000004,
+		"type": "route"
+	},
+	"chosenRoute": [{
+		"flightSegment": {
+			"flightLegs": [{
+				"origin": "GRU",
+				"destination": "LHR",
+				"number": "246",
+				"marketingAirline": "BA",
+				"operatingAirline": "",
+				"departureDate": "2014-10-14T16:15:00",
+				"arrivalDate": "2014-10-15T07:20:00",
+				"fareClass": "",
+				"fareBasis": "",
+				"duration": 665,
+				"distance": 0
+			},
+			{
+				"origin": "LHR",
+				"destination": "AMS",
+				"number": "430",
+				"marketingAirline": "BA",
+				"operatingAirline": "",
+				"departureDate": "2014-10-15T08:20:00",
+				"arrivalDate": "2014-10-15T10:40:00",
+				"fareClass": "",
+				"fareBasis": "",
+				"duration": 80,
+				"distance": 0
+			}]
+		},
+		"segmentIndex": 1,
+		"routeIndex": 0,
+		"price": 2700,
+		"currency": "BRL"
+	},
+	{
+		"flightSegment": {
+			"flightLegs": [{
+				"origin": "AMS",
+				"destination": "FRA",
+				"number": "999",
+				"marketingAirline": "LH",
+				"operatingAirline": "",
+				"departureDate": "2014-10-30T19:45:00",
+				"arrivalDate": "2014-10-30T20:55:00",
+				"fareClass": "",
+				"fareBasis": "",
+				"duration": 70,
+				"distance": 0
+			},
+			{
+				"origin": "FRA",
+				"destination": "GRU",
+				"number": "506",
+				"marketingAirline": "LH",
+				"operatingAirline": "",
+				"departureDate": "2014-10-30T21:55:00",
+				"arrivalDate": "2014-10-31T04:55:00",
+				"fareClass": "",
+				"fareBasis": "",
+				"duration": 720,
+				"distance": 0
+			}]
+		},
+		"segmentIndex": 1,
+		"routeIndex": 0,
+		"price": 2200,
+		"currency": "BRL"
+	}]
+}

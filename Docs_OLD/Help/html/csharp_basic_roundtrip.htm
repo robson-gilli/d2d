@@ -1,0 +1,131 @@
+﻿<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="../icons/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../styles/branding.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/branding-en-US.css" />
+    <script type="text/javascript" src="../scripts/branding.js"> </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Exemplo basico em C# - RoundTrip</title>
+    <meta name="Language" content="en-us" />
+    <meta name="Microsoft.Help.Id" content="csharp_basic_roundtrip" />
+    <meta name="Description" content="Exemplo em C# de uma requisição de ida de volta básica" />
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    <meta name="BrandingAware" content="true" />
+    
+    
+    <link type="text/css" rel="stylesheet" href="../styles/highlight.css" />
+    <script type="text/javascript" src="../scripts/highlight.js"> </script>
+    <link rel="stylesheet" type="text/css" href="../styles/branding-Website.css" />
+    <script type="text/javascript" src="../scripts/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../scripts/branding-Website.js"></script>
+  </head>
+  <body onload="OnLoad('cs')">
+    <input type="hidden" id="userDataCache" class="userDataStyle" />
+    <div class="pageHeader" id="PageHeader">Door2Door project Documetation<form id="SearchForm" method="get" action="#" onsubmit="javascript:TransferToSearchPage(); return false;"><input id="SearchTextBox" type="text" maxlength="200" /><button id="SearchButton" type="submit"></button></form></div>
+    <div class="pageBody">
+      <div class="leftNav" id="leftNav"><div id="tocNav"><div class="toclevel0" data-toclevel="0"><a class="tocCollapsed" onclick="javascript: Toggle(this);" href="#!"></a><a data-tochassubtree="true" href="visao_geral.htm" title="Door2Door project Documetation" tocid="roottoc">Door2Door project Documetation</a></div><div class="toclevel1" data-toclevel="1" data-childrenloaded="true"><a class="tocExpanded" onclick="javascript: Toggle(this);" href="#!"></a><a data-tochassubtree="true" href="exemplos.htm" title="Exemplos" tocid="exemplos">Exemplos</a></div><div class="toclevel2" data-toclevel="2"><a data-tochassubtree="false" href="exemplo_1.htm" title="Exemplo 1 - Somente ida, informando a data de chegada desejada ao destino" tocid="exemplo_1">Exemplo 1 - Somente ida, informando a data de chegada desejada ao destino</a></div><div class="toclevel2" data-toclevel="2"><a data-tochassubtree="false" href="exemplo_2.htm" title="Exemplo 2 - Somente ida, informando a data de saída do endereço de origem" tocid="exemplo_2">Exemplo 2 - Somente ida, informando a data de saída do endereço de origem</a></div><div class="toclevel2" data-toclevel="2"><a data-tochassubtree="false" href="exemplo_3.htm" title="Exemplo 3 - Somente ida, informando o retorno de transporte publico na resposta" tocid="exemplo_3">Exemplo 3 - Somente ida, informando o retorno de transporte publico na resposta</a></div><div class="toclevel2" data-toclevel="2"><a data-tochassubtree="false" href="exemplo_4.htm" title="Exemplo 4 - Ida e volta. Ida informada com data de chegada e volta informada com data de saída" tocid="exemplo_4">Exemplo 4 - Ida e volta. Ida informada com data de chegada e volta informada com data de saída</a></div><div class="toclevel2" data-toclevel="2"><a data-tochassubtree="false" href="exemplo_5.htm" title="Exemplo 5 - Ida e volta com conteúdo do voo de ida vindo de um provedor externo" tocid="exemplo_5">Exemplo 5 - Ida e volta com conteúdo do voo de ida vindo de um provedor externo</a></div><div class="toclevel2" data-toclevel="2"><a data-tochassubtree="false" href="exemplo_6.htm" title="Exemplo 6 - Ida e volta com conteúdo dos voos de ida e de volta vindos de um provedor externo" tocid="exemplo_6">Exemplo 6 - Ida e volta com conteúdo dos voos de ida e de volta vindos de um provedor externo</a></div><div class="toclevel2" data-toclevel="2"><a data-tochassubtree="false" href="exemplo_7.htm" title="Exemplo 7 - Ida e volta, especificando localização da hospedagem" tocid="exemplo_7">Exemplo 7 - Ida e volta, especificando localização da hospedagem</a></div><div class="toclevel2" data-toclevel="2"><a data-tochassubtree="false" href="exemplo_8.htm" title="Exemplo 8 - Ida e volta, especificando voos e hospedagem" tocid="exemplo_8">Exemplo 8 - Ida e volta, especificando voos e hospedagem</a></div><div class="toclevel2" data-toclevel="2"><a data-tochassubtree="false" href="request_completo.htm" title="Request completo" tocid="request_completo">Request completo</a></div><div class="toclevel2" data-toclevel="2"><a data-tochassubtree="false" href="response_completo.htm" title="Response completo" tocid="response_completo">Response completo</a></div><div class="toclevel2 current" data-toclevel="2"><a data-tochassubtree="false" href="csharp_basic_roundtrip.htm" title="Exemplo basico em C# - RoundTrip" tocid="csharp_basic_roundtrip">Exemplo basico em C# - RoundTrip</a></div></div></div><div id="TocResize" class="tocResize" onmousedown="OnMouseDown(event);"><img id="ResizeImageIncrease" src="../icons/TocOpen.gif" onclick="OnIncreaseToc()" alt="Click or drag to resize" title="Click or drag to resize"><img id="ResizeImageReset" src="../icons/TocClose.gif" style="display:none" onclick="OnResetToc()" alt="Click or drag to resize" title="Click or drag to resize"></div><div class="topicContent" id="TopicContent">
+        <table class="titleTable">
+          <tr>
+            <td class="titleColumn">Exemplo basico em C# - RoundTrip</td>
+          </tr>
+        </table>
+        <span class="introStyle"></span>
+        <div class="introduction">
+          <p>Exemplo em C# de uma requisição de ida de volta básica</p>
+        </div>
+        <div class="collapsibleAreaRegion" id="Request">
+          <span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('ID1RB')" onkeypress="SectionExpandCollapse_CheckKey('ID1RB', event)" tabindex="0">
+            <img id="ID1RBToggle" class="collapseToggle" src="../icons/SectionExpanded.png" />Response completo comentado.</span>
+        </div>
+        <div id="ID1RBSection" class="collapsibleSection">
+          <p>
+            <div class="codeSnippetContainer">
+              <div class="codeSnippetContainerTabs">
+                <div id="ID0EAAAAAAAA_tab1" class="codeSnippetContainerTabSingle">C#</div>
+              </div>
+              <div class="codeSnippetContainerCodeContainer">
+                <div class="codeSnippetToolBar">
+                  <div class="codeSnippetToolBarText">
+                    <a id="ID0EAAAAAAAA_copyCode" href="#" onclick="javascript:CopyToClipboard('ID0EAAAAAAAA');return false;" title="Copy">Copy</a>
+                  </div>
+                </div>
+                <div id="ID0EAAAAAAAA_code_Div1" class="codeSnippetContainerCode" style="display: block">
+                  <pre xml:space="preserve">
+                    <span class="highlight-spacerShort"></span>
+                    <span class="highlight-keyword">using</span> System;
+<span class="highlight-spacerShort"></span><span class="highlight-keyword">using</span> System.Collections.Generic;
+<span class="highlight-spacerShort"></span><span class="highlight-keyword">using</span> System.Linq;
+<span class="highlight-spacerShort"></span><span class="highlight-keyword">using</span> System.Text;
+<span class="highlight-spacerShort"></span><span class="highlight-keyword">using</span> System.Threading.Tasks;
+<span class="highlight-spacerShort"></span><span class="highlight-comment">/************** Door2Door Namespaces *********************/</span>
+<span class="highlight-spacerShort"></span><span class="highlight-keyword">using</span> Door2DoorCore;
+<span class="highlight-spacerShort"></span><span class="highlight-keyword">using</span> Door2DoorCore.Exceptions;
+<span class="highlight-spacerShort"></span><span class="highlight-keyword">using</span> Door2DoorCore.Types;
+<span class="highlight-spacerShort"></span><span class="highlight-keyword">using</span> Door2DoorCore.Types.Door2DoorRequest;
+<span class="highlight-spacerShort"></span><span class="highlight-keyword">using</span> Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption;
+<span class="highlight-spacerShort"></span><span class="highlight-keyword">using</span> Door2DoorCore.Types.Door2DoorRequest.OuterHotelOption;
+<span class="highlight-spacerShort"></span><span class="highlight-keyword">using</span> Door2DoorCore.Types.Door2DoorResponse;
+<span class="highlight-spacerShort"></span><span class="highlight-keyword">using</span> Door2DoorCore.Types.Door2DoorResponse;
+<span class="highlight-spacerShort"></span><span class="highlight-keyword">using</span> System.Globalization;
+<span class="highlight-spacerShort"></span><span class="highlight-keyword">using</span> Newtonsoft.Json;
+<span class="highlight-spacerShort"></span><span class="highlight-comment">/*********************************************************/</span>
+<span class="highlight-spacerShort"></span>
+<span class="highlight-spacerShort"></span><span class="highlight-keyword">namespace</span> Door2DoorConsoleApp
+<span class="highlight-spacerShort"></span>{
+<span class="highlight-spacerShort"></span>    <span class="highlight-keyword">class</span> Program
+<span class="highlight-spacerShort"></span>    {
+<span class="highlight-spacerShort"></span>        <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> Main(<span class="highlight-keyword">string</span>[] args)
+<span class="highlight-spacerShort"></span>        {
+<span class="highlight-spacerShort"></span>            <span class="highlight-comment">// request object</span>
+<span class="highlight-spacerShort"></span>            D2DRequest req = <span class="highlight-keyword">new</span> D2DRequest(); 
+<span class="highlight-spacerShort"></span>
+<span class="highlight-spacerShort"></span>            <span class="highlight-comment">// I want to get to my destination at the datetime bellow</span>
+<span class="highlight-spacerShort"></span>            req.desiredOutboundDate = DateTime.ParseExact(<span class="highlight-literal">"2014-10-15T20:00:00"</span>, <span class="highlight-literal">"yyyy-MM-ddTHH:mm:ss"</span>, CultureInfo.InvariantCulture);
+<span class="highlight-spacerShort"></span>            req.outboundDateKind = D2dRequestTripDateKind.arriveAt;
+<span class="highlight-spacerShort"></span>
+<span class="highlight-spacerShort"></span>            <span class="highlight-comment">// I want to leave my destination at the datetime bellow</span>
+<span class="highlight-spacerShort"></span>            req.desiredInboundDate = DateTime.ParseExact(<span class="highlight-literal">"2014-10-17T20:00:00"</span>, <span class="highlight-literal">"yyyy-MM-ddTHH:mm:ss"</span>, CultureInfo.InvariantCulture);
+<span class="highlight-spacerShort"></span>            req.outboundDateKind = D2dRequestTripDateKind.departureAt;
+<span class="highlight-spacerShort"></span>
+<span class="highlight-spacerShort"></span>            <span class="highlight-comment">// specifying the origin</span>
+<span class="highlight-spacerShort"></span>            req.oriLocation = <span class="highlight-keyword">new</span> D2DRequestLocation();
+<span class="highlight-spacerShort"></span>            req.oriLocation.lat = <span class="highlight-literal">"-23.5732853"</span>;
+<span class="highlight-spacerShort"></span>            req.oriLocation.lng = <span class="highlight-literal">"-46.64167550000002"</span>;
+<span class="highlight-spacerShort"></span>            req.oriLocation.type = <span class="highlight-literal">"street_address"</span>;
+<span class="highlight-spacerShort"></span>
+<span class="highlight-spacerShort"></span>            <span class="highlight-comment">// specifying the destination</span>
+<span class="highlight-spacerShort"></span>            req.destLocation = <span class="highlight-keyword">new</span> D2DRequestLocation();
+<span class="highlight-spacerShort"></span>            req.destLocation.lat = <span class="highlight-literal">"52.3661876"</span>;
+<span class="highlight-spacerShort"></span>            req.destLocation.lng = <span class="highlight-literal">"4.899111500000004"</span>;
+<span class="highlight-spacerShort"></span>            req.destLocation.type = <span class="highlight-literal">"route"</span>;
+<span class="highlight-spacerShort"></span>
+<span class="highlight-spacerShort"></span>            <span class="highlight-comment">// requesting public transp info as well</span>
+<span class="highlight-spacerShort"></span>            req.flags = <span class="highlight-keyword">new</span> D2DRequestFlags();
+<span class="highlight-spacerShort"></span>            req.flags.includePublicTransp = <span class="highlight-keyword">true</span>;
+<span class="highlight-spacerShort"></span>
+<span class="highlight-spacerShort"></span>            <span class="highlight-comment">// submitting the request</span>
+<span class="highlight-spacerShort"></span>            Door2Door d2d = <span class="highlight-keyword">new</span> Door2Door(req);
+<span class="highlight-spacerShort"></span>            Door2DoorResponse resp = d2d.GetResponse();
+<span class="highlight-spacerShort"></span>
+<span class="highlight-spacerShort"></span>            Console.WriteLine(JsonConvert.SerializeObject(resp));
+<span class="highlight-spacerShort"></span>
+<span class="highlight-spacerShort"></span>        }
+<span class="highlight-spacerShort"></span>    }
+<span class="highlight-spacerShort"></span>}</pre>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">AddLanguageTabSet("ID0EAAAAAAAA");</script>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="pageFooter" class="pageFooter">
+      <img src="http://www.clicholding.com.br/img/logo.png" />
+      <p>
+        <a href="http://www.clicholding.com.br" target="_blank">ClicHolding.com.br, all rights reserved.</a>
+      </p>
+    </div>
+  </body>
+</html>

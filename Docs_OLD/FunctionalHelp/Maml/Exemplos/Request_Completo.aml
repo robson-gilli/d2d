@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="request_completo" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>Request completo comentado.</para>
+    </introduction>
+    <section address="Request">
+      <title>Response completo comentado.</title>
+      <content>
+        <para>
+      		<code language="JavaScript" outlining="true">
+{
+	"desiredOutboundDate": "2014-10-15T20:00:00",			// Mandatory. The date for the outbound segment. The way this information will be treated depends on the 'outboundDateKind' attribute
+	"outboundDateKind": "1",								// Mandatory. 1 = The 'desiredOutboundDate' is the desired arrival date time at the destination. / 0 = The 'desiredOutboundDate' is the desired departure date time from the origin.
+	"desiredInboundDate": "2014-10-30T09:00:00",			// Optional. The date for the inbound segment. The way this information will be treated depends on the 'inboundDateKind' attribute
+	"inboundDateKind": "0",									// Optional. 1 = The 'desiredInboundDate' is the desired arrival date time at the origin(oriLocation). / 0 = The 'desiredInboundDate' is the desired departure date time from the destination(destLocation).
+	"flags": {
+		"includePublicTransp": false						// Mandatory. Whether public transportation should be considered in the response.
+	},
+	"oriLocation": {										// Mandatory. Origin location data
+		"lat": -23.5732853,									// Mandatory. Origin latitude
+		"lng": -46.64167550000002,							// Mandatory. Origin longitude
+		"type": "street_address"							// Mandatory. Supported values include Rome2rio Place kinds, Google Geocoding result types and Yahoo WOEID place types.
+	},
+	"destLocation": {										// Mandatory. Destination location data
+		"lat": 52.3661876,									// Mandatory. Destination latitude
+		"lng": 4.899111500000004,							// Mandatory. Destination longitude
+		"type": "route"										// Mandatory. Supported values include Rome2rio Place kinds, Google Geocoding result types and Yahoo WOEID place types.
+	},
+	"chosenRoute": [{										// Optional. It is possible to pass a flight information from an external provider. When informed, the calculation of schedules and costs will take these values into account, instead of the internal flight results.
+		"flightSegment": {									// A Flight Segment is an array of Flight Legs, taking from the origin to de final destination.
+			"flightLegs": [{								// A flight leg is one single flight.
+				"origin": "GRU",							// IATA origin
+				"destination": "LHR",						// IATA destination
+				"number": "246",							// Flight number
+				"marketingAirline": "BA",					// Marketing Airline
+				"operatingAirline": "",						// Operatin Airline
+				"departureDate": "2014-10-14T16:15:00",		// Departure Datetime fo the flight
+				"arrivalDate": "2014-10-15T07:20:00",		// Arrival Datetime fo the flight
+				"fareClass": "",							// Class of service
+				"fareBasis": "",							// Fare basis
+				"duration": 665,							// Duration in minutes
+				"distance": 0								// Distance in Kilometers
+			}]
+		},
+		"segmentIndex": 1,									// As there could be flights in more than one segment for the same route, it's mandatory to tell in which segment should this option be inserted.
+		"routeIndex": 0,									// As there could be more than one Route in the response , it's mandatory to tell in which route should this option be inserted.
+		"price": 2700,										// Total price of the option.
+		"currency": "BRL"									// Currency
+	}],
+	"chosenStay": {											// Optional. It's possible to inform an hotel data in the request. he system will try to calculate Taxi fares for the amount of days that the trip takes and sum it in the response.
+		"location": {										// Stay location date
+			"lat": -30.032387,								// Stay latitude
+			"lng": -51.17801399999996,						// Stay longitude
+			"type": "lodging"								// Supported values include Rome2rio Place kinds, Google Geocoding result types and Yahoo WOEID place types.
+		},
+		totalPrice: 0,										// Total price of the Stay
+		completeStay: true,									// If true, considers the inboundDate and outboundDate as the checkin and checkout dates. If false, checkin and checkou dates must be informed and must be inside the trip date range.
+		checkinDate: null,									// If 'completeStay' is false, this date will be considered as the checkin date. Obs.: It must be greater than the outboundDate of the trip.
+		checkoutDate: null									// If 'completeStay' is false, this date will be considered as the checkout date. Obs.: It must be smaller than the inboundDate of the trip.
+	},
+	dailyAlimentationBudget: 80								// Estimated daily alimentation amount.
+}
+      		</code>
+        </para>
+      </content>
+    </section>
+  </developerConceptualDocument>
+</topic>

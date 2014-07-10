@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="06c6ff0f-ef04-4915-8014-a4a79eff6cbf" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>TODO: Move introduction text here</para>
+    </introduction>
+
+
+
+
+<para>AnÃ¡lise inicial de opÃ§Ãµes door-to-door existentes no mercado e suas possÃ­veis aplicaÃ§Ãµes no contexto dos produtos ArgoIT</para>
+<para>SÃ£o Paulo, Abril de 2014</para>
+
+
+
+
+<table>
+<row>
+	<entry><para>SumÃ¡rio</para></entry>
+	<entry><para>&#160;</para></entry>
+</row>
+<row>
+	<entry><para>HistÃ³rico..................................................................................................................................................</para></entry>
+	<entry><para>3</para></entry>
+</row>
+<row>
+	<entry><para>Objetivo...................................................................................................................................................</para></entry>
+	<entry><para>3</para></entry>
+</row>
+<row>
+	<entry><para>BenefÃ­cios................................................................................................................................................</para></entry>
+	<entry><para>3</para></entry>
+</row>
+<row>
+	<entry><para>SoluÃ§Ãµes existentes no mercado ............................................................................................................</para></entry>
+	<entry><para>4</para></entry>
+</row>
+<row>
+	<entry><para>ConcorrÃªncia...........................................................................................................................................</para></entry>
+	<entry><para>6</para></entry>
+</row>
+<row>
+	<entry><para>Complexidade .........................................................................................................................................</para></entry>
+	<entry><para>7</para></entry>
+</row>
+<row>
+	<entry><para>ConclusÃ£o................................................................................................................................................</para></entry>
+	<entry><para>8</para></entry>
+</row>
+</table>
+
+
+
+
+<para>HistÃ³rico</para>
+<para>Um aeroporto nunca Ã© uma origem ou um destino final de uma viagem. NÃ£o importa se estamos viajando Ã  lazer ou negÃ³cios, sempre precisaremos percorrer o Ãºltimo trecho da vigem, - o chamado last mile -, para chegarmos ao nosso destino final.</para>
+<para>JÃ¡ Ã© possÃ­vel obter informaÃ§Ãµes online sobre trajetos a pÃ©, sobre disponibilidade de taxis, transportes pÃºblicos, aluguel de carros e atÃ© de bicicletas nos maiores centros urbanos do planeta. Apesar destes dados estarem disponÃ­veis, seu conteÃºdo Ã© altamente fragmentado, dificultando o planejamento de uma viagem completa. AlÃ©m disto, o custo total da viagem deve tambÃ©m ser calculado levando em conta o last mile, pois este valor pode ser significativo em relaÃ§Ã£o ao todo.</para>
+<para>Se analisarmos a situaÃ§Ã£o sob a Ã³tica do segmento corporativo de viagens, o problema torna-se mais sÃ©rio. ReuniÃµes tÃªm hora certa para comeÃ§ar, por isto torna- se vital a estimativa correta do tempo necessÃ¡rio para se ir de um ponto a outro. AlÃ©m disto, devemos prever corretamente quanto serÃ¡ necessÃ¡rio para cobrir certas despesas locais que, por vezes, devem ser pagas em espÃ©cie.</para>
+<para>Diante deste cenÃ¡rio, uma soluÃ§Ã£o capaz de fornecer trajetos door-to-door; ou seja, ter a habilidade de calcular os meios de locomoÃ§Ã£o, custos e tempos necessÃ¡rios para se ir do endereÃ§o de origem ao endereÃ§o de destino; tudo isto levando em conta polÃ­ticas comerciais de um sistema de gestÃ£o de viagens, agregarÃ¡ enorme valor Ã s agÃªncias, reduzindo custos e tambÃ©m o tempo gasto no planejamento das viagens.</para>
+<para>Objetivo</para>
+<para>Como etapa inicial da anÃ¡lise de viabilidade de implantaÃ§Ã£o desta funcionalidade dentro dos produtos fornecidos pela ArgoIT, soluÃ§Ãµes existentes no mercado serÃ£o avaliadas e descritas.</para>
+<para>O objetivo principal Ã© tentar encontrar possibilidades de parceria com empresas que jÃ¡ tenham expertise em produtos door-to-door, reduzindo assim o custo, o tempo e a complexidade de desenvolvimento e de manutenÃ§Ã£o por parte da ArgoIT.</para>
+<para>O desafio de um possÃ­vel desenvolvimento completo por parte da ArgoIT tambÃ©m serÃ¡ levado em conta, caso nenhuma das alternativas disponÃ­veis se mostre completa o suficiente.</para>
+<para>BenefÃ­cios</para>
+<para>â€¢Estimar corretamente as despesas de transporte.</para>
+<para>â€¢Meios de transporte alternativos.</para>
+<para>â€¢Estimar corretamente os tempos de locomoÃ§Ã£o.</para>
+<para>â€¢IntegraÃ§Ã£o de resultados com as polÃ­ticas dos clientes.</para>
+<para>â€¢Avaliar o custo-benefÃ­cio da viagem.</para>
+<para>3</para>
+
+
+
+
+<para>SoluÃ§Ãµes existentes no mercado</para>
+<para>NÃ£o existem muitas opÃ§Ãµes completas no mercado. Como estamos lidando com alguns conceitos mistos, como a possibilidade de podermos planejar o trajeto e ao mesmo tempo estimar os custos, tudo isto para o segmento corporativo, torna-se necessÃ¡rio encontrar um ou mais parceiros que nos forneÃ§am estes conteÃºdos na forma de uma API ou Webservice.</para>
+<para>Foi possÃ­vel encontrar alguns parceiros em potencial, alÃ©m de alguns sites que nÃ£o fornecem uma API mas podem servir de inspiraÃ§Ã£o, por terem uma Ã³tima interface e fornecerem uma boa experiÃªncia ao usuÃ¡rio. Abaixo segue uma lista destas empresas.</para>
+<para>Rome2rio</para>
+<para>Empresa Australiana com sede em Melbourne, foi fundada em 2010 por Bernhard Tschirren e Michael Cameron, dois ex-engenheiros da Microsoft. Em 2012, conseguiu um investimento de US$450.000,00 e contratou Rod Cuthbert, fundador da viator.com, como CEO.</para>
+<para>Rome2rio vem desenvolvendo uma Ã³tima tecnologia de busca multimodal para itinerÃ¡rios de viagens desde entÃ£o. Ganharam os prÃªmios People's Choice Award no</para>
+<para>PhocusWright Travel Innovation Sumit de 2012 e o Australiaâ€™s Travel Website Of The Year de 2013. A tecnologia estÃ¡ disponÃ­vel e pode ser acessada gratuitamente, atÃ© certo limite, em seu site www.rome2rio.com.</para>
+<para>Eles oferecem uma nova abordagem para a busca de viagens online, aceitando qualquer endereÃ§o, ponto de referÃªncia, cidade, parque ou outros tipos de entrada como origem e destino. Seu resultado inclui um vasto repositÃ³rio de voos, trens, barcos, taxis, Ã´nibus, trajetos de carros particulares e rotas a pÃ© como alternativa para o modelo largamente utilizado hoje, onde apenas um tipo de conteÃºdo Ã© apresentado por vez. Cada itinerÃ¡rio pode apresentar uma combinaÃ§Ã£o de vÃ¡rios tipos de transporte para conectar um determinado ponto do globo ao outro.</para>
+<para>Existe uma API disponÃ­vel com alguns players jÃ¡ integrados, como Luftansa, Migo e WaytoGo, por exemplo. Sua licenÃ§a comercial tem um custo estimado de US$3.000,00 mensais, para um limite de 250.000 transaÃ§Ãµes/mÃªs. TransaÃ§Ãµes excedentes tÃªm um custo de US$0,01 cada.</para>
+<para>Uma anÃ¡lise volumÃ©trica ainda nÃ£o pÃ´de ser feita, porÃ©m os tempos de respostas sÃ£o Ã³timos (0,5s em mÃ©dia) e eles dizem suportar um volume grande de transaÃ§Ãµes simultÃ¢neas. Apesar dos vÃ¡rios pontos positivos em relaÃ§Ã£o Ã  performance, abrangÃªncia, funcionalidades e custos, sua solidez e capacidade de se manter no mercado a longo prazo devem ser avaliadas com atenÃ§Ã£o, pois se trata de uma empresa criada como uma startup.</para>
+<para>Para ter acesso ao estudo detalhado sobre as funcionalidades do rome2rio, ler documento relacionado â€˜Levantamento_rome2rio.docxâ€™.</para>
+<para>routeRank</para>
+<para>Um dos pioneiros no setor multimodal, routeRank Ã© uma empresa SuÃ­Ã§a fundada em 2006, diferindo um pouco dos outros players Europeus pelo foco no segmento B2B.</para>
+<para>4</para>
+
+
+
+
+<para>Seu site B2C (http://www.routerank.com/en), apesar de funcional, Ã© basicamente um atrativo para a versÃ£o coorporativa. Eles possuem grandes clientes como BCD, Hogg Robinson (HRG), Zurich Insurance, o governo SuÃ­Ã§o e o World Economic Forum, entre outros.</para>
+<para>SÃ£o vencedores de vÃ¡rias premiaÃ§Ãµes por inovaÃ§Ã£o, como por exemplo: Winner of the Association of Corporate Travel Executives (ACTE) of 2012, Winner of the MIT Technology Review's TR35 Young Innovators 2010, Winner of the Best of Swiss Web 2010, entre outros. A lista completa pode ser vista no site http://www.routerank.com/en/awards.</para>
+<para>Eles possuem uma API para integraÃ§Ã£o (http://www.routerank.com/en/customized/), que Ã© desenvolvida exclusivamente para atender o segmento corporativo. Ã‰ possÃ­vel integrar esta API com o conteÃºdo de aÃ©reo e hotel da ArgoIT, sendo necessÃ¡rio para isto ter um webservice que forneÃ§a o resultado.</para>
+<para>Esta API tem um custo inicial de setup, valor este que pode variar de acordo com a complexidade da integraÃ§Ã£o com o Webservice em questÃ£o. AlÃ©m do preÃ§o do setup, tem um custo mensal variando entre â‚¬ 500,00 e â‚¬ 2.000,00 + â‚¬ 0,03 por transaÃ§Ã£o, em mÃ©dia.</para>
+<para>Eles fornecem opÃ§Ãµes door-to-door, porÃ©m a abrangÃªncia da conteÃºdo ainda Ã© uma incerteza. Pelo que pudemos olhar em sites que utilizam a soluÃ§Ã£o door-to-door do routerank (viatcs.ch por exemplo), a regiÃ£o da AmÃ©rica do Sul nÃ£o estava de todo coberta. Todos os grandes aeroportos do mundo estÃ£o presentes, vias pÃºblicas e preÃ§os de transporte pÃºblico na Europa e AmÃ©rica no Norte tambÃ©m.</para>
+<para>Com clientes de peso jÃ¡ integrados, mostra-se a primeiro momento uma empresa com solidez no mercado. Apesar disto, o esforÃ§o de integraÃ§Ã£o e a abrangÃªncia do conteÃºdo ainda devem ser analisados mais profundamente.</para>
+<para>Open Trip Planner</para>
+<para>Um pouco diferente das duas opÃ§Ãµes anteriores, o Open Trip Planner (http://www.opentripplanner.org/) Ã© uma plataforma open source para planejamento de rotas de forma multimodal. Ele depende de dados externos em formatos preestabelecidos, como o GTFS (https://developers.google.com/transit/gtfs) para os cÃ¡lculos das rotas e conta com o Open Street Map (http://www.openstreetmap.org) para a apresentaÃ§Ã£o dos mapas.</para>
+<para>LanÃ§ado em 2009, atraiu investimentos de agÃªncias e startups. Foi originalmente desenvolvido para o TriMet (http://trimet.org), que hoje o usa como base para seu website.</para>
+<para>Tem como vantagem ser open source, eliminando custos com licenÃ§as. A contrapartida disto Ã© que deve-se baixar, instalar e manter dados de rotas e trÃ¢nsitos manualmente. Como o conteÃºdo Ã© fragmentado, para uma ampla cobertura Ã© necessÃ¡rio manter milhares de arquivos, que podem sofrer alteraÃ§Ãµes a qualquer momento. AlÃ©m disto, Ã© aconselhÃ¡vel ter um servidor Linux configurado para hospedar o serviÃ§o, que Ã© desenvolvido em Java.</para>
+<para>Alguns produtos que utilizam o OTP como motor:</para>
+<para>5</para>
+
+
+
+
+<para>â€¢Portland, Oregon, USA - TriMet Map Trip Planner;</para>
+<para>â€¢Valencia, Spain - Municipal Transport Company of Valencia S.A.U;</para>
+<para>â€¢Poznan, Poland - Urban Transport Authority in Poznan (ZTM Poznan);</para>
+<para>â€¢Lublin, Poland - Urban Transport Authority in Poznan (ZTM Lublin);</para>
+<para>â€¢Adelaide, Australia - Adelaide Metro Journey Planner;</para>
+<para>â€¢ViaggiaTrento;</para>
+<para>â€¢ViaggiaRovereto;</para>
+<para>Outros sites que seguem o conceito door-to-door</para>
+<para>O conceito multimodal jÃ¡ nÃ£o Ã© novidade na Europa, talvez devido Ã  grande oferta de trens como alternativa de transporte, e tambÃ©m pelo fato das distÃ¢ncias serem mais curtas. JÃ¡ existem alguns websites Europeus muito bem desenhados, que podem servir como possÃ­vel inspiraÃ§Ã£o. SÃ£o eles:</para>
+<para>â€¢https://www.waymate.de: Site AlemÃ£o com Interface intuitiva e elegante, fornece alternativas para viagens na Europa. Apesar de ser multimodal, nÃ£o Ã© door-to-door por nÃ£o aceitar endereÃ§os, somente cidades.</para>
+<para>â€¢http://www.fromatob.com: Uma das maiores no segmento multimodal Europeu, atende bem o mercado local. Apesar de aceitar endereÃ§os como origem e destino, nÃ£o calcula o trajeto atÃ© a estaÃ§Ã£o de partida ou chegada.</para>
+<para>â€¢http://www.goeuro.com: Site tambÃ©m europeu, com conteÃºdo das seguintes localidades: Reino Unido, Alemanha, Espanha, BÃ©lgica, Holanda e Luxemburgo. Pesquisa trens, Ã´nibus e aviÃµes. Consegue mesclar bem ressuados de trens e Ã´nibus com aviÃµes e carros.</para>
+<para>â€¢http://www.wanderio.com: Site Italiano com layout muito interessante, utiliza a API do Rome2rio para apresentar parte do resultado.</para>
+<para>â€¢http://www.qixxit.de: Site alemÃ£o da DB Bahn(http://www.bahn.de/i/view/USA/en/index.shtml). Design bem feito, e door-to-door realmente funcional. Ã‰ somente no idioma alemÃ£o para o territÃ³rio alemÃ£o, e nÃ£o tem voos como opÃ§Ã£o.</para>
+<para>â€¢http://www.transportdirect.info: OpÃ§Ã£o door-to-door para o Reino Unido, se conecta com APIs de fornecedores de transporte pÃºblico e com walkit.com, api para trajetos a pÃ©.</para>
+<para>â€¢http://www.makemytrip.com/routeplanner: Site Indiano com bom conteÃºdo asiÃ¡tico multimodal.</para>
+<para>â€¢http://mytripset.voyages-sncf.com: Excelente site door-to-door francÃªs.</para>
+<para>ConcorrÃªncia</para>
+<para>JÃ¡ existem ao menos duas empresas trabalhando para oferecer este tipo de benefÃ­cio aos seus clientes. SÃ£o elas a BCD Travel utilizando o routeRank, e o KDS neo, aparentemente desenvolvendo sua soluÃ§Ã£o prÃ³pria.</para>
+<para>Total Trip Planning</para>
+<para>6</para>
+
+
+
+
+<para>Em meados de Julho de 2012, a BCD Travel firmou uma parceria com o routeRank, a fim de construir uma soluÃ§Ã£o door-to-door chamada Total Trip Planning, inicialmente direcionado para o mercado Europeu.</para>
+<para>Apesar da BCD nÃ£o ser um concorrente, seu peso no mercado global pode ajudÃ¡- la a influenciar algum parceiro de tecnologia a integrar esta ferramenta.</para>
+<para>NÃ£o se sabe ao certo se esta funcionalidade jÃ¡ estÃ¡ em produÃ§Ã£o. Mais detalhes podem ser obtidos neste vÃ­deo (http://player.vimeo.com/video/78649877), e nestes dois documentos (http://www.bcdtravel.com/global/show_document.asp?id=aaaaaaaaaaffjtd) e (http://www.bcdtravel.de/global/show_document.asp?id=aaaaaaaaaaevzpk).</para>
+<para>KDS Neo</para>
+<para>No evento â€œKDS now 2013â€, Dean Forbes, CEO da KDS, apresentou o novo KDS Neo, uma soluÃ§Ã£o door-to-door totalmente integrada com o sistema corporativo de viagens da KDS.</para>
+<para>Com um layout interessante, intuitivo e totalmente adaptado a dispositivos mÃ³veis, o conceito do KDS Neo oferece uma visÃ£o pioneira para agencias corporativas. Apesar de totalmente integrado com as polÃ­ticas comerciais do KDS, Ã© flexÃ­vel e permite a alteraÃ§Ã£o das sugestÃµes de viagens oferecidas.</para>
+<para>Para saber mais detalhes, acessar pÃ¡gina do KDS Neo em http://www.kds.com/products/kds-neo-travel, a apresentaÃ§Ã£o do KDS Neo no PhocusWright 2013 em http://www.youtube.com/watch?v=dg9vWLp6FTI, e veja tambÃ©m http://page.kds.com/rs/kds/images/Brochure-EN-KDS-Neo.pdf.</para>
+<para>Complexidade</para>
+<para>Analisando o cenÃ¡rio descrito acima, pode-se fazer uma estimativa grosseira do esforÃ§o necessÃ¡rio para se construir uma soluÃ§Ã£o eficiente no modelo door-to-door.</para>
+<para>O problema mostra uma complexidade alta, tanto em relaÃ§Ã£o ao cÃ¡lculo das inÃºmeras opÃ§Ãµes de rotas (que devem ser representadas e calculadas utilizando-se a teoria dos grafos), quanto ao gerenciamento do conteÃºdo, que como visto anteriormente, Ã© altamente fragmentado.</para>
+<para>O que podemos extrair das trÃªs soluÃ§Ãµes existentes apresentadas:</para>
+<para>â€¢Rome2rio tem quase 4 anos de existÃªncia e foi criada por um Ph.D em search engine e um engenheiro sÃªnior da Microsoft. O desenvolvimento inicial levou cerca de um ano, e a empresa teve incentivo do governo Australiano como startup, antes de conseguir investimento para continuar em atividade.</para>
+<para>â€¢RouteRank foi desenvolvido por um matemÃ¡tico chamado Jochen Mundinger, pesquisador no Swiss Federal Institute of Technology (EPFL). A ideia surgiu em Junho de 2006. No inÃ­cio de 2007, Jochen recrutou um time para apoia-lo e lanÃ§ou a versÃ£o beta do routeRank em Julho de 2007. No final do ano de 2007 recebeu incentivo do governos SuÃ­Ã§o.</para>
+<para>7</para>
+
+
+
+
+<para>â€¢OpenTripPlanner foi criado originalmente por um Ã³rgÃ£o pÃºblico dos Estados Unidos, o TriMet (Tri-County Metropolitan Transportation District of Oregon) e por ser open source, tem recebido contribuiÃ§Ãµes de centenas de desenvolvedores com experiÃªncia em diferentes Ã¡reas.</para>
+<para>ConclusÃ£o</para>
+<para>O desenvolvimento de uma soluÃ§Ã£o door-to-door completa Ã© um desafio possÃ­vel. O tempo de desenvolvimento pode variar bastante em relaÃ§Ã£o Ã  complexidade da interface, que ainda nÃ£o foi definida, mas levando por base as soluÃ§Ãµes jÃ¡ existentes, estima-se que uma equipe de tamanho mÃ©dio pode levar cerca de um ano para desenvolver uma primeira versÃ£o comercial.</para>
+<para>Apesar de possÃ­vel, o custo do investimento pode tornar a construÃ§Ã£o inhouse inviÃ¡vel. O ideal seria entÃ£o encontrar um parceiro, talvez um dos jÃ¡ descritos acima, que possa abstrair a complexidade de rotas e mapas, para que a ArgoIt possa manter o foco em seu core business: atender as necessidades do setor de viagens corporativas.</para>
+<para>8</para>
+
+
+    <relatedTopics>
+    </relatedTopics>
+
+  </developerConceptualDocument>
+</topic>

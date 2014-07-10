@@ -1,0 +1,1563 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Door2DoorCore</name>
+    </assembly>
+    <members>
+        <member name="T:Door2DoorCore.Door2Door">
+            <summary>
+                <para>
+                The Door2Door Class Library searches for itineraries from and to any location.
+                </para>
+                <para>
+                Just inform the coordinates for the origin and destination, the desired arrival date at the destination and a list of routes will be returned.
+                </para>
+                <para>
+                The routes may include several means of transportation, including walking, flights, taxis, cars, buses, trains, ferrys trams and more.
+                </para>
+                <para>
+                A desired return date can also be specified. In this case two sets of routes will be returned, one for the outbound and another for the inbound segment.
+                </para>
+                <para>
+                You can also filter wheter you want or not include public transportation on the response.
+                </para>
+                <para>
+                NOTE: All schedules and pricing are estimatives, It's impossible to predict with perfect accuracy the correct time walking or the price of the taxi, for instance.
+                </para>
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Door2Door.r2r">
+            <summary>
+            Rome2Rio component instance
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Door2Door.newRequest">
+            <summary>
+            Indicates if a new request was informed to the same instance of this class, in order to control if it should or not get a new response from the provider.
+            </summary>
+        </member>
+        <member name="M:Door2DoorCore.Door2Door.#ctor(Door2DoorCore.Types.Door2DoorRequest.D2DRequest)">
+            <summary>
+                Constructor of the class. <see cref="T:Door2DoorCore.Door2Door"/>
+            </summary>
+            <param name="d2dReq">
+                <para><see cref="T:Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/></para>
+                Parameters for the request include coordinates of origin and destination,
+                arrival and return dates, external flight options and filters.
+            </param>
+        </member>
+        <member name="M:Door2DoorCore.Door2Door.#ctor(Door2DoorCore.Types.Door2DoorRequest.D2DRequest,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor of the class. <see cref="T:Door2DoorCore.Door2Door"/>
+            </summary>
+            <param name="d2dReq">
+                <para><see cref="T:Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/></para>
+                Parameters for the request include coordinates of origin and destination,
+                arrival and return dates, external flight options and filters.
+            </param>
+            <param name="maxWalkingMinutes">
+                Max walking minutes. Controls how much time is acceptable for a walk <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Segment"/>. If not informed, the default is 10 min.
+            </param>
+            <param name="flightAntecipation">
+                How many minutes should be considered as antecipation to get to the airport. If not informed, the default is 120 (two hours).
+            </param>
+            <param name="minutesAfterFlight">
+                How many minutes should be considered after the Arriving time of a flight. If not informed, the default is 30.
+            </param>
+        </member>
+        <member name="M:Door2DoorCore.Door2Door.GetResponse">
+            <summary>
+                <para>After instantiating the <see cref="T:Door2DoorCore.Door2Door"/> class, you should invoke this method.</para>
+                <para>It calculates all possible routes, itineraries and schedules for the given request.</para>
+            </summary>
+            <returns>
+                <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>. Complete itinerary with indicative pricing and schedules.
+            </returns>
+        </member>
+        <member name="P:Door2DoorCore.Door2Door.Resp">
+            <summary>
+                Routes and schedules for the desired itinerary request. <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Door2Door.Req">
+            <summary>
+                Door2Door request data.
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Door2DoorBase">
+            <summary>
+            Base class with common methods and attrubutes. It also forces children classes to implement private methods not exposed on the interface <see cref="T:Door2DoorCore.Interfaces.IDoor2DoorProvider"/>.
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Door2DoorBase._maxWalkingMinutes">
+            <summary>
+            Max walking minutes. Controls how much time is acceptable for a walk <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Segment"/>. If not informed, the default is 10 min.
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Door2DoorBase._flightAntecipation">
+            <summary>
+            How many minutes should be considered as antecipation to get to the airport. If not informed, the default is 120 (two hours).
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Door2DoorBase._minutesAfterFlight">
+            <summary>
+            How many minutes should be considered after the Arriving time of a flight. If not informed, the default is 30.
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Door2DoorBase._req">
+            <summary>
+            A <see cref="T:Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>. Holds the request of the itinerary.
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Door2DoorBase._resp">
+            <summary>
+            A <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>. Complete Door2Door response.
+            </summary>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorBase.#ctor(Door2DoorCore.Types.Door2DoorRequest.D2DRequest,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="d2dReq">
+            The request. A <see cref="T:Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>
+            </param>
+            <param name="maxWalkingMinutes">
+            Max walking minutes. Controls how much time is acceptable for a walk <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Segment"/>. If not informed, the default is 10 min.
+            </param>
+            <param name="flightAntecipation">
+            How many minutes should be considered as antecipation to get to the airport. If not informed, the default is 120 (two hours).
+            </param>
+            <param name="minutesAfterFlight">
+            How many minutes should be considered after the Arriving time of a flight. If not informed, the default is 30.
+            </param>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorBase.#ctor(Door2DoorCore.Types.Door2DoorRequest.D2DRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="d2dReq">
+            The request. A <see cref="T:Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>
+            </param>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorBase.VerifyRequest(Door2DoorCore.Types.Door2DoorRequest.D2DRequest)">
+            <summary>
+            Verify if the minimum information was specified in the request
+            </summary>
+            <param name="d2dReq">The request</param>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorBase.RequestIsOK(Door2DoorCore.Types.Door2DoorRequest.D2DRequest)">
+            <summary>
+                Verifies if all necessary data from the request are correctly informed
+            </summary>
+            <param name="d2dReq">
+                Route request. <see cref="T:Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>
+            </param>
+            <returns>
+                Whether the request is ok or not
+            </returns>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorBase.BuildCompleteItinerarySchedule">
+            <summary>
+            Forces children classes to implement this private method to build the <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Door2DoorBase.Req">
+            <summary>
+            A <see cref="T:Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>. Holds the request of the itinerary.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Door2DoorBase.Resp">
+            <summary>
+                Routes and schedules for the desired itinerary request. <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Door2DoorRome2Rio">
+            <summary>
+            Class responsible for creating the itineraries for rome2rio api
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Interfaces.IDoor2DoorProvider">
+            <summary>
+            Sets a pattern for future providers implementation.
+            </summary>
+        </member>
+        <member name="M:Door2DoorCore.Interfaces.IDoor2DoorProvider.GetResponse">
+            <summary>
+            <para>If it's a new instance, it you communicate to the providers an calculate the routes. </para>
+            <para>If it's the second call to an existing istance, it will only recalculate, but not communicate to the providers </para>
+            </summary>
+            <returns>
+            A <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>.
+            </returns>
+        </member>
+        <member name="M:Door2DoorCore.Interfaces.IDoor2DoorProvider.GetResponse(System.Boolean)">
+            <summary>
+            <para>If 'getNewResponse' is true, it you communicate to the providers even if it is an existing instance.</para>
+            </summary>
+            <param name="getNewResponse">
+            Bool. It's possible to force the communication to the providers.
+            </param>
+            <returns>
+            A <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>.
+            </returns>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.#ctor(Door2DoorCore.Types.Door2DoorRequest.D2DRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="d2d">
+            The request. A <see cref="T:Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>
+            </param>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.#ctor(Door2DoorCore.Types.Door2DoorRequest.D2DRequest,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="d2d">
+            The request. A <see cref="T:Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>
+            </param>
+            <param name="maxWalkingMinutes">
+            Max walking minutes. Controls how much time is acceptable for a walk <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Segment"/>. If not informed, the default is 10 min.
+            </param>
+            <param name="flightAntecipation">
+            How many minutes should be considered as antecipation to get to the airport. If not informed, the default is 120 (two hours).
+            </param>
+            <param name="minutesAfterFlight">
+            How many minutes should be considered after the Arriving time of a flight. If not informed, the default is 30.
+            </param>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.GetResponse(System.Boolean)">
+            <summary>
+            <para>If 'getNewResponse' is true, it you communicate to the providers even if it is an existing instance.</para>
+            </summary>
+            <param name="getNewResponse">
+            Bool. It's possible to force the communication to the providers.
+            </param>
+            <returns>
+            A <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>.
+            </returns>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.GetResponse">
+            <summary>
+            <para>If it's a new instance, it you communicate to the providers an calculate the routes. </para>
+            <para>If it's the second call to an existing istance, it will only recalculate, but not communicate to the providers </para>
+            </summary>
+            <returns>
+            A <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>.
+            </returns>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.GetRome2RioResponse(System.Boolean)">
+            <summary>
+            Returns the response from rome2rio
+            </summary>
+            <param name="getNewResponse">
+                If it should get the response from rome2rio or used the stored one, if available
+            </param>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.BuildItineraryStay">
+            <summary>
+            If it is roundtrip and a <see cref="T:Door2DoorCore.Types.Door2DoorRequest.OuterHotelOption.OuterHotelOption"/> is informed, calculates the taxis amount.
+            </summary>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.BuildCompleteItinerarySchedule">
+            <summary>
+            Builds the <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/> based on the response obtained from rome2rio api.
+            </summary>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.BuildItineraryScheduleDepartingAt(Door2DoorCore.Types.Door2DoorResponse.Route@,System.DateTime,System.Boolean,System.Int32)">
+            <summary>
+                <para>Completes the response with schedule information, considering that the client informed the <see cref="T:Door2DoorCore.Types.Door2DoorRequest.D2dRequestTripDateKind"/> attributes as the departing dates.</para>
+                <para>This method also takes into account any external flight option that might have been informed in the request.</para>
+            </summary>
+            <param name="route">
+                Route: <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Route"/>.
+            </param>
+            <param name="departureDateTime">
+                Desired departure date.
+            </param>
+            <param name="flightChosen">
+                If an external flight was informed for this route. <see cref="N:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption"/>
+            </param>
+            <param name="legIndex">
+                Whether this is the inbound(0) or outbound(1) leg of the trip
+            </param>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.BuildItineraryScheduleArrivingAt(Door2DoorCore.Types.Door2DoorResponse.Route@,System.DateTime,System.Boolean,System.Int32)">
+            <summary>
+                <para>Completes the response with schedule information, considering that the client informed the <see cref="T:Door2DoorCore.Types.Door2DoorRequest.D2dRequestTripDateKind"/> attributes as the arrival dates.</para>
+                <para>This method also takes into account any external flight option that might have been informed in the request.</para>
+            </summary>
+            <param name="route">
+                Route: <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Route"/>
+            </param>
+            <param name="arrivalDateTime">
+                Desired arrival date at destination
+            </param>
+            <param name="flightChosen">
+                If an external flight was informed for this route. <see cref="N:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption"/>
+            </param>
+            <param name="legIndex">
+                Whether this is the inbound(0) or outbound(1) leg of the trip
+            </param>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.WalkIntoTaxiTransformation(Door2DoorCore.Types.Door2DoorResponse.Segment@)">
+            <summary>
+                <para>Sometimes Rome2Rio API calculates lonk walking segments.</para>
+                <para>When a situation like this is identified, the 'walk' segment is transformed into a 'taxi' segment.</para>
+                <para>This is intended to be transitory, as they stated that this behavior will be fixed, but we never know.</para>
+                <para><seealso cref="F:Door2DoorCore.Door2DoorBase._maxWalkingMinutes"/></para>
+            </summary>
+            <param name="segment">
+            Segment to be transformed
+            </param>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.CalcRouteTotals(Door2DoorCore.Types.Door2DoorResponse.Route@,System.Int32,System.Boolean)">
+            <summary>
+                Total times and costs fo the informed segment
+            </summary>
+            <param name="route">
+                 <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Route"/>
+            </param>
+            <param name="segmentIndex">
+                Which segment of the informed route.
+            </param>
+            <param name="departingAt">
+                Is this a <see cref="T:Door2DoorCore.Types.Door2DoorRequest.D2dRequestTripDateKind"/> indicating a departure date or not?
+            </param>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.BuildINewtinFromChosenRoute(Door2DoorCore.Types.Door2DoorResponse.Segment@,System.Int32)">
+            <summary>
+                Builds a Itinerary <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Itinerary"/> based on the D2DRequestChosenRoute on the request.
+            </summary>
+            <param name="segment">
+                Which segment the itinerary will be included
+            </param>
+            <param name="legIndex">
+                Whether this is the inbound(0) or outbound(1) leg of the trip
+            </param>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.CalcFrequency(System.Int32)">
+            <summary>
+                Calculetes a TimeSpan indicating a weekly frequency of a type of transportation.
+            </summary>
+            <param name="weeklyFrequency">
+                Estimated feequency per week. (How many times per week) 
+            </param>
+            <returns>
+                TimeSpan indicating the frequency. (How long untill the next transport to arrive)
+            </returns>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.GetSegmentFrequency(Door2DoorCore.Types.Door2DoorResponse.Segment)">
+            <summary>
+                Gets the total frequency (in minutes) of the segment
+            </summary>
+            <param name="segment">
+                Door2DoorCore.Types.Door2DoorResponse.Segment.
+            </param>
+            <returns>
+                Nullable TimeSpan indicating the total frequency. ('null' if the segment does not have a frequency attribute)
+            </returns>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.GetWeeklyFrequency(Door2DoorCore.Types.Door2DoorResponse.Segment)">
+            <summary>
+                Gets the weekly frequency (in minutes) of the segment. <see cref="M:Door2DoorCore.Door2DoorRome2Rio.CalcFrequency(System.Int32)"/>
+            </summary>
+            <param name="segment">
+                Door2DoorCore.Types.Door2DoorResponse.Segment.
+            </param>
+            <returns>
+                int WeeklyFrequency
+            </returns>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.FindLatestItinerary(Door2DoorCore.Types.Door2DoorResponse.Segment@)">
+            <summary>
+                Finds the Itinerary that arrives at the latest time.
+            </summary>
+            <param name="segment">
+                The current <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Segment"/>.
+            </param>
+            <returns>
+                Leg (Itinerary)
+            </returns>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.MatchflightToSchedule(Door2DoorCore.Types.Door2DoorResponse.Leg,System.DateTime)">
+            <summary>
+                Tries to Match the given Itinerary to the desired Arrival Date at the destination.
+                Return an empty object if the itinerary does not match.
+            </summary>
+            <param name="itinerary">
+                Itinerary desired to be matched
+            </param>
+            <param name="arrivalDateNextStop">
+                DateTime to match
+            </param>
+            <returns>
+                <see cref="N:Door2DoorCore.Types.Door2DoorResponse"/> indicating Arrival and Departure dates. Both 'null' if not valid.
+            </returns>
+        </member>
+        <member name="M:Door2DoorCore.Door2DoorRome2Rio.CalcItineraryArrivalDates(Door2DoorCore.Types.Door2DoorResponse.Leg,System.DateTime)">
+            <summary>
+                Calculate departure and arrival dates of a valid itinerary
+            </summary>
+            <param name="itinerary">
+                Itinerary
+            </param>
+            <param name="arrivalDateNextStop">
+                Arrival date for the next itinerary
+            </param>
+            <returns>
+                Arrival and Departure dates
+            </returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Door2DoorCore.Door2DoorRome2Rio.BuildSearchRequestFlags(System.Boolean)" -->
+        <member name="T:Door2DoorCore.Exceptions.D2DResponseException">
+            <summary>
+                Exception thrown when some error occurred during the response processing
+            </summary>
+        </member>
+        <member name="M:Door2DoorCore.Exceptions.D2DResponseException.#ctor">
+            <summary>
+                Exception thrown when some error occurred during the response processing
+            </summary>
+        </member>
+        <member name="M:Door2DoorCore.Exceptions.D2DResponseException.#ctor(System.String)">
+            <summary>
+                Exception thrown when some error occurred during the response processing
+            </summary>
+            <param name="message">Exception message</param>
+        </member>
+        <member name="M:Door2DoorCore.Exceptions.D2DResponseException.#ctor(System.Exception)">
+            <summary>
+                Exception thrown when some error occurred during the response processing
+            </summary>
+            <param name="exception">Exception to be thrown</param>
+        </member>
+        <member name="T:Door2DoorCore.Exceptions.D2DRequestException">
+            <summary>
+                Exception thrown when there is wrong or missing information on the <see cref="T:Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>.
+            </summary>
+        </member>
+        <member name="M:Door2DoorCore.Exceptions.D2DRequestException.#ctor">
+            <summary>
+                Exception thrown when there is wrong or missing information on the <see cref="T:Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>.
+            </summary>
+        </member>
+        <member name="M:Door2DoorCore.Exceptions.D2DRequestException.#ctor(System.String)">
+            <summary>
+            Exception thrown when there is wrong or missing information on the <see cref="T:Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>.
+            </summary>
+            <param name="message">Message to be thrown</param>
+        </member>
+        <member name="T:Door2DoorCore.Rome2RioComm">
+            <summary>
+                Responsible for communicating with Rome2rio REST API.
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Rome2RioComm._req">
+            <summary>
+            A <see cref="T:Door2DoorCore.Types.Door2DoorRequest.D2DRequest"/>. Holds the request of the itinerary.
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Rome2RioComm.mutex">
+            <summary>
+            Preventing critical region
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Rome2RioComm._respIda">
+            <summary>
+                Outbound Response.
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Rome2RioComm._respVolta">
+            <summary>
+                Inbound Response.
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Rome2RioComm._resp">
+            <summary>
+            Raw <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>, before schedules and totals addition.
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Rome2RioComm._requestFlags">
+            <summary>
+            Request flags informed on the request
+            </summary>
+        </member>
+        <member name="M:Door2DoorCore.Rome2RioComm.#ctor(Door2DoorCore.Types.Door2DoorRequest.D2DRequest,System.Int32)">
+            <summary>
+                Handles the communication between client and Rome2rio api.
+            </summary>
+            <param name="req">
+                Parameters for the request include coordinates of origin and destination,
+                arrival and return dates, external flight options and filters.
+            </param>
+            <param name="requestFlags">
+                Filters the response segment types.
+            </param>
+        </member>
+        <member name="M:Door2DoorCore.Rome2RioComm.Download(System.Boolean)">
+            <summary>
+            Downloads the response from the API, according to the stay informed.
+            </summary>
+            <param name="useStayAsDestination">
+            If it was informed a stay, it calculates de routes between the hotel and the destination
+            </param>
+            <returns>Door2Door response <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/></returns>
+        </member>
+        <member name="M:Door2DoorCore.Rome2RioComm.Download">
+            <summary>
+                Downloads the response from the API, according to the request informed.
+            </summary>
+            <returns>
+                Raw response, before schedules and totals addition.
+            </returns>
+        </member>
+        <member name="M:Door2DoorCore.Rome2RioComm.DownloadAsync">
+            <summary>
+             Performs the operation asynchronously.
+             When all reponse come, the event 'OnMessageReceived' will be raised
+            </summary>
+        </member>
+        <member name="M:Door2DoorCore.Rome2RioComm.OnInboundDownloadStringCompleted(System.Object,System.Net.DownloadStringCompletedEventArgs)">
+            <summary>
+            Event raised when the inbound message comes asynchronously
+            </summary>
+            <param name="sender">Object sender</param>
+            <param name="e">DownloadStringCompletedEventArgs e </param>
+        </member>
+        <member name="M:Door2DoorCore.Rome2RioComm.OnOutboundDownloadStringCompleted(System.Object,System.Net.DownloadStringCompletedEventArgs)">
+            <summary>
+            Event raised when the outbound message comes asynchronously
+            </summary>
+            <param name="sender">Object sender</param>
+            <param name="e">DownloadStringCompletedEventArgs e </param>
+        </member>
+        <member name="M:Door2DoorCore.Rome2RioComm.BuildQueryString(System.Boolean)">
+            <summary>
+                Builds parameters for the API request
+            </summary>
+            <param name="isReturnRoute">
+                Whether this is a inbound leg
+            </param>
+            <returns>
+                NameValueCollection with the querystring
+            </returns>
+        </member>
+        <member name="M:Door2DoorCore.Rome2RioComm.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="E:Door2DoorCore.Rome2RioComm.OnMessageReceived">
+            <summary>
+            Event raised when the response arrives if it was requested asynchronously
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Rome2RioComm.Resp">
+            <summary>
+                Raw <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>, before schedules and totals addition.
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Rome2RioComm.MessageReceivedEventHandler">
+            <summary>
+            Delegate for asynchronous use
+            </summary>
+            <param name="resp">
+            <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse"/>
+            </param>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorRequest.D2DRequestLocation">
+            <summary>
+                Coordenates: latitude, longitude and place type.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequestLocation.lat">
+            <summary>
+            Location latitude.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequestLocation.lng">
+            <summary>
+            Location longitude.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequestLocation.type">
+            <summary>
+                Supported values include Rome2rio Place kinds, Google Geocoding result types and Yahoo WOEID place types.
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorRequest.D2DRequestFlags">
+            <summary>
+                Filters allowed transportation types
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequestFlags.includePublicTransp">
+            <summary>
+                Should it include public transportation?
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorRequest.D2DRequest">
+            <summary>
+            Information about the desired itinerary.
+            </summary>
+        </member>
+        <member name="M:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.#ctor">
+            <summary>
+            Information about the desired itinerary.
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.requestType">
+            <summary>
+                For now only accepting Rome2rio (r2r).
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.url">
+            <summary>
+                API endpoint. (Will change when in production)
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.key">
+            <summary>
+                API access key. (Will change when in production)
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.currency">
+            <summary>
+                Desired currency
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.dataType">
+            <summary>
+                Return type. ('json' / 'xml')
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.maxDriveKm">
+            <summary>
+                Max distance for driving (not used for now).
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredOutboundDate">
+            <summary>
+                DateTime indicating when the user wants to be at the destination
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.outboundDateKind">
+            <summary>
+                How to interpret the outbound date.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredInboundDate">
+            <summary>
+                Nullable - If RoundTrip, indicates when the user wants to be back at the origin
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.inboundDateKind">
+            <summary>
+                How to interpret the inbound date.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.flags">
+            <summary>
+                SearchRequestFlags iindicating to include or exclude forms of transportation
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.oriLocation">
+            <summary>
+                Latitude and Longitude of the origin
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.destLocation">
+            <summary>
+            Latitude and Longitude of the destination
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.chosenRoute">
+            <summary>
+                It's possible to inform a FlightOption from an external source.
+                When informed, the calculation of schedules and costs will take these values into account,
+                instead of the Rome2rio flight results.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.dailyAlimentationBudget">
+            <summary>
+            Estimated amout spent in meals per day.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.chosenStay">
+            <summary>
+            <para>It's possible to inform an hotel data in the request.</para>
+            <para>The system will try to calculate Taxi fares for the amount of days that the trip takes and sum it in the response.</para>
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorRequest.D2DRequestType">
+            <summary>
+                For now only Rome2rio, r2r will be accepted
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Types.Door2DoorRequest.D2DRequestType.r2r">
+            <summary>
+            Rome2Rio
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Types.Door2DoorRequest.D2DRequestType.other">
+            <summary>
+            Not used
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightLeg">
+            <summary>
+                A leg (single flight) from an external source
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightLeg.origin">
+            <summary>
+            IATA of Origin
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightLeg.destination">
+            <summary>
+            IATA of Destination
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightLeg.number">
+            <summary>
+            Flight number
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightLeg.marketingAirline">
+            <summary>
+            Marketing Airline
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightLeg.operatingAirline">
+            <summary>
+            Operatin Airline
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightLeg.departureDate">
+            <summary>
+            Departure Datetime fo the flight
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightLeg.arrivalDate">
+            <summary>
+            Arrival Datetime fo the flight
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightLeg.fareClass">
+            <summary>
+            Class of service
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightLeg.fareBasis">
+            <summary>
+            Fare Basis of the class
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightLeg.duration">
+            <summary>
+                Duration in minutes
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightLeg.distance">
+            <summary>
+                Distance in kilometers
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightOption">
+            <summary>
+                A Complete FlightOption. Inbound or Outbound
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightOption.flightSegment">
+            <summary>
+            <see cref="T:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightSegment"/>. External flight segment.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightOption.segmentIndex">
+            <summary>
+                In which segment should this option be inserted
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightOption.routeIndex">
+            <summary>
+                In which route should this option be inserted
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightOption.price">
+            <summary>
+            Price for the option
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightOption.currency">
+            <summary>
+            Cuurency for the option
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightSegment">
+            <summary>
+                 Aggregates flights when a trip have connections.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightSegment.flightLegs">
+            <summary>
+                List of <see cref="T:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightLeg"/>, each one indicating one flight connection.
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorRequest.D2dRequestTripDateKind">
+            <summary>
+                How to interpret dates in the request.
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Types.Door2DoorRequest.D2dRequestTripDateKind.departureAt">
+            <summary>
+            The date informed is the departure date.
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Types.Door2DoorRequest.D2dRequestTripDateKind.arriveAt">
+            <summary>
+            The date informed is the arrival date.
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorRequest.OuterHotelOption.OuterHotelOption">
+            <summary>
+            <para>It's possible to inform the hotel location for roundtrip jouneys.</para>
+            <para>The cost of the stay and the local taxi transfers will be included into the <see cref="T:Door2DoorCore.Types.Door2DoorResponse.RouteTotals"/>.</para>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterHotelOption.OuterHotelOption.location">
+            <summary>
+            Hotel coordinates
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterHotelOption.OuterHotelOption.totalPrice">
+            <summary>
+            Total cost of the entire stay
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterHotelOption.OuterHotelOption.completeStay">
+            <summary>
+            <para>If true, considers the inboundDate and outboundDate as the checkin and checkout dates.</para>
+            <para>If false, checkin and checkou dates must be informed and must be inside the trip date range.</para>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterHotelOption.OuterHotelOption.checkinDate">
+            <summary>
+            If 'completeStay' is false, this date will be considered as the checkin date. 
+            Obs.: It must be greater than the outboundDate of the trip.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorRequest.OuterHotelOption.OuterHotelOption.checkoutDate">
+            <summary>
+            If 'completeStay' is false, this date will be considered as the checkout date. 
+            Obs.: It must be smaller than the inboundDate of the trip.
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorResponse.ItineraryDates">
+            <summary>
+                Aux to the itinerary calculation.
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Types.Door2DoorResponse.ItineraryDates.arrivalDateTime">
+            <summary>
+            Itinerary Arrival
+            </summary>
+        </member>
+        <member name="F:Door2DoorCore.Types.Door2DoorResponse.ItineraryDates.departureDateTime">
+            <summary>
+            Itinerary Departure
+            </summary>
+        </member>
+        <member name="M:Door2DoorCore.Types.Door2DoorResponse.ItineraryDates.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice">
+            <summary>
+            Price of the segment.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice.Price">
+            <summary>
+            Indicative price (optional)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice.Currency">
+            <summary>
+            Currency code (ISO 4217) (optional)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice.IsFreeTransfer">
+            <summary>
+            Is this price zero due to a transfer? (optional)
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorResponse.Stop">
+            <summary>
+                Assigns one stop inside a <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Route"/>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Stop.Name">
+            <summary>
+            Stop display name
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Stop.Pos">
+            <summary>
+            Stop latitude/longitude
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Stop.Kind">
+            <summary>
+            <para>Stop kind:</para>
+            <para>
+            Currently, the following kinds are supported: 
+            unknown, continent, country, admin3, admin2, admin1, island, village, town, city, capital, landmark, place, road, 
+            accomodation, station, airport, seaport, sea, lake and river. 
+            </para>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Stop.Code">
+            <summary>
+            Stop code (eg: airport or station code) (optional)
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice2">
+            <summary>
+            Price of the segment.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice2.Price">
+            <summary>
+            Indicative price (optional)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice2.Currency">
+            <summary>
+            Currency code (ISO 4217) (optional)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice2.IsFreeTransfer">
+            <summary>
+            Is this price zero due to a transfer? (optional)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice2.NativePrice">
+            <summary>
+            Indicative price in native currency (optional)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice2.NativeCurrency">
+            <summary>
+            Native currency code (ISO 4217) (optional)
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice3">
+            <summary>
+            Price of the segment.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice3.Price">
+            <summary>
+            Indicative price (optional)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice3.Currency">
+            <summary>
+            Currency code (ISO 4217) (optional)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice3.IsFreeTransfer">
+            <summary>
+            Indicative price in native currency (optional)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice3.NativePrice">
+            <summary>
+            Indicative price in native currency (optional)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice3.NativeCurrency">
+            <summary>
+            Native currency code (ISO 4217) (optional)
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorResponse.Line">
+            <summary>
+            Line information for transportation.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Line.Name">
+            <summary>
+            Line display name.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Line.Vehicle">
+            <summary>
+            Vehicle display name.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Line.Agency">
+            <summary>
+            Agency code (optional).
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Line.Frequency">
+            <summary>
+            Estimated feequency (per week).
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Line.Duration">
+            <summary>
+            Estimated duration (in minutes)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Line.Days">
+            <summary>
+                <para>Days of operation bitmask:</para>
+                <list type="bullet">
+                    <item>
+                        <description>0x01	Sunday</description>
+                    </item>
+                    <item>
+                        <description>0x02	Monday</description>
+                    </item>
+                    <item>
+                        <description>0x04	Tuesday</description>
+                    </item>
+                    <item>
+                        <description>0x08	Wednesday</description>
+                    </item>
+                    <item>
+                        <description>0x10	Thursday</description>
+                    </item>
+                    <item>
+                        <description>0x20	Friday</description>
+                    </item>
+                    <item>
+                        <description>0x40	Saturday</description>
+                    </item>
+                    <item>
+                        <description>Weekdays: 0x3E (0x02 + 0x04 + 0x08 + 0x10 + 0x20)</description>
+                    </item>
+                    <item>
+                        <description>Weekends: 0x41 (0x01 + 0x40)</description>
+                    </item>
+                    <item>
+                        <description>Every day: 0x7F</description>
+                    </item>
+            </list>
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorResponse.Codeshare">
+            <summary>
+            A code share between airlines.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Codeshare.Airline">
+            <summary>
+            Airline code (IATA).
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorResponse.Hop">
+            <summary>
+            A Hop is a step of an <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Leg"/>, usually indicating one single flight.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.SName">
+            <summary>
+            Source airport code (IATA)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.SPos">
+            <summary>
+            Source latitude/longitude
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.TName">
+            <summary>
+            Target display name
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.TPos">
+            <summary>
+            Target latitude/longitude
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.Frequency">
+            <summary>
+            Estimated feequency (per week)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.Duration">
+            <summary>
+            Estimated duration (in minutes)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.IndicativePrice">
+            <summary>
+            An <see cref="T:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice3"/>. Indicative price.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.Lines">
+            <summary>
+            <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Line"/>. Array of transit lines.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.SCode">
+            <summary>
+            Source airport code (IATA)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.TCode">
+            <summary>
+            Target airport code (IATA)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.STime">
+            <summary>
+            Departure time (24-hour local time - hh:mm)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.TTime">
+            <summary>
+            Arrival time (24-hour local time - hh:mm)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.Flight">
+            <summary>
+            Flight number
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.Airline">
+            <summary>
+            Airline code (IATA)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.Aircraft">
+            <summary>
+            Aircraft code (IATA) (optional)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.STerminal">
+            <summary>
+            Source airport terminal (optional)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.Codeshares">
+            <summary>
+            A list of <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Codeshare"/>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Hop.DayChange">
+            <summary>
+            Num day changes during flight (optional)
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice4">
+            <summary>
+            Price of the Leg.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice4.Price">
+            <summary>
+            Indicative price (optional)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice4.Currency">
+            <summary>
+            Currency code (ISO 4217) (optional)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice4.IsFreeTransfer">
+            <summary>
+            Is this price zero due to a transfer? (optional)
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorResponse.Leg">
+            <summary>
+            A Leg is a set of flights with prices.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Leg.Url">
+            <summary>
+            Schedule URL (optional)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Leg.Host">
+            <summary>
+            Host
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Leg.Hops">
+            <summary>
+            A list of <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Hop"/>.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Leg.Days">
+            <summary>
+                <para>Days of operation bitmask:</para>
+                <list type="bullet">
+                    <item>
+                        <description>0x01	Sunday</description>
+                    </item>
+                    <item>
+                        <description>0x02	Monday</description>
+                    </item>
+                    <item>
+                        <description>0x04	Tuesday</description>
+                    </item>
+                    <item>
+                        <description>0x08	Wednesday</description>
+                    </item>
+                    <item>
+                        <description>0x10	Thursday</description>
+                    </item>
+                    <item>
+                        <description>0x20	Friday</description>
+                    </item>
+                    <item>
+                        <description>0x40	Saturday</description>
+                    </item>
+                    <item>
+                        <description>Weekdays: 0x3E (0x02 + 0x04 + 0x08 + 0x10 + 0x20)</description>
+                    </item>
+                    <item>
+                        <description>Weekends: 0x41 (0x01 + 0x40)</description>
+                    </item>
+                    <item>
+                        <description>Every day: 0x7F</description>
+                    </item>
+            </list>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Leg.IndicativePrice">
+            <summary>
+            An <see cref="T:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice4"/>.
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorResponse.Itinerary">
+            <summary>
+            One of the possibles options inside a <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Segment"/>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Itinerary.Legs">
+            <summary>
+            Array of <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Leg"/>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Itinerary.IsHidden">
+            <summary>
+            isHidden?
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Itinerary.ValidForSchedule">
+            <summary>
+            PostAdded: Indicates if this particular Itinerary is valid for the schedule informed by the custumer. See <see cref="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredOutboundDate"/> and <see cref="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredInboundDate"/>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Itinerary.OuterItinerary">
+            <summary>
+            PostAdded: Indicates if this Itinerary came from an external source. See <see cref="T:Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption.OuterFlightOption"/>
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorResponse.Segment">
+            <summary>
+             A part of a Door2Door route. It may be one of serveral means of transportation.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.Kind">
+            <summary>
+            <para>Kind of the segment:</para>
+                <list type="bullet">
+                    <item>
+                        <description>walk</description>
+                    </item>
+                    <item>
+                        <description>car</description>
+                    </item>
+                    <item>
+                        <description>train</description>
+                    </item>
+                    <item>
+                        <description>bus</description>
+                    </item>
+                    <item>
+                        <description>ferry</description>
+                    </item>
+                    <item>
+                        <description>carferry</description>
+                    </item>
+                    <item>
+                        <description>cablecar</description>
+                    </item>
+                    <item>
+                        <description>helicopter</description>
+                    </item>
+                    <item>
+                        <description>flight</description>
+                    </item>
+                    <item>
+                        <description>unknown</description>
+                    </item>
+                    <item>
+                        <description>etc</description>
+                    </item>
+            </list>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.IsMajor">
+            <summary>
+            Is this a dominant segment in the route?
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.IsImperial">
+            <summary>
+            Is this segment in a location where imperial unit are used (eg: miles)?
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.Distance">
+            <summary>
+            Estimated distance (in km)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.Duration">
+            <summary>
+            Estimated duration (in minutes)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.SName">
+            <summary>
+            Source display name
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.SPos">
+            <summary>
+            Source latitude/longitude
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.TName">
+            <summary>
+            Target display name
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.TPos">
+            <summary>
+            Target latitude/longitude
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.Vehicle">
+            <summary>
+            Vehicle display name
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.Path">
+            <summary>
+            Path followed by vehicle
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.IndicativePrice">
+            <summary>
+            An <see cref="T:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice2"/>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.Subkind">
+            <summary>
+            More specific for new transit types, eg. "train", "bus", "ferry", "carferry", "cablecar", "helicopter"
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.SCode">
+            <summary>
+            Source airport code (IATA)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.TCode">
+            <summary>
+            Target airport code (IATA)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.Itineraries">
+            <summary>
+            Array of <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Itinerary"/>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.ArrivalDateTime">
+            <summary>
+            PostAdded: Segment calculated arrival date time
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.DepartureDateTime">
+            <summary>
+            PostAdded: Segment calculated departure date time
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.ChosenItinerary">
+            <summary>
+            PostAdded: Index of the chosen <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Itinerary"/>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Segment.Frequency">
+            <summary>
+            Segment frequency
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorResponse.Route">
+            <summary>
+            One possible Door2Door Route to get from Origin to Destination.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Route.Name">
+            <summary>
+            Route display name
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Route.Distance">
+            <summary>
+            Estimated total distance (in km)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Route.Duration">
+            <summary>
+            Estimated total duration (in minutes)
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Route.IndicativePrice">
+            <summary>
+            An <see cref="T:Door2DoorCore.Types.Door2DoorResponse.IndicativePrice"/>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Route.Stops">
+            <summary>
+            Array of <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Stop"/>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Route.Segments">
+            <summary>
+            Array of <see cref="T:Door2DoorCore.Types.Door2DoorResponse.Segment"/>
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Route.RouteTotals">
+            <summary>
+            PostAdded: A <see cref="T:Door2DoorCore.Types.Door2DoorResponse.RouteTotals"/>. A Summary with pricing and total times.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Route.ValidForSchedule">
+            <summary>
+            Is this route valid for the desired schedule? See <see cref="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredOutboundDate"/> and <see cref="P:Door2DoorCore.Types.Door2DoorRequest.D2DRequest.desiredInboundDate"/>
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorResponse.Door2DoorLegResponse">
+            <summary>
+            One response from Rome2Rio. It may be the Outbound or Inbound Route.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Door2DoorLegResponse.ServeTime">
+            <summary>
+            Time taken in milliseconds
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Door2DoorLegResponse.Routes">
+            <summary>
+                PostAdded: The Route object indicates one possile way of getting from orgin to destination.
+                It may include several stops (Segments), to complete the route.
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse">
+            <summary>
+            Complete Response
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse.LegResponse">
+            <summary>
+                One response for the outbound and another for the inbound option if applicable
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse.totalPriceOfAlimentation">
+            <summary>
+            Estimated total amout spent in meals.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse.TotalPriceOfHotel">
+            <summary>
+            Hotel total amount.
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse.TotalPriceOfLocalTaxi">
+            <summary>
+            According to the stay period information in <see cref="T:Door2DoorCore.Types.Door2DoorRequest.OuterHotelOption.OuterHotelOption"/>, 
+            calculates the total amount spent on taxis between hotel and office, if applicable. 
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.Door2DoorResponse.NumberOfTaxisOnStay">
+            <summary>
+            The quantity of taxis taken upon the stay period.
+            </summary>
+        </member>
+        <member name="T:Door2DoorCore.Types.Door2DoorResponse.RouteTotals">
+            <summary>
+                Summary of one route. Including total durations and costs
+            </summary>
+        </member>
+        <member name="M:Door2DoorCore.Types.Door2DoorResponse.RouteTotals.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.RouteTotals.TotalDistance">
+            <summary>
+            Total Distance of the route from origin to destination
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.RouteTotals.TotalTimeOnTrain">
+            <summary>
+            Total time on train segments
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.RouteTotals.TotalTimeOnCar">
+            <summary>
+            Total time on car segments
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.RouteTotals.TotalTimeOnFlight">
+            <summary>
+            Total time on flight segments
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.RouteTotals.TotalTimeOnBus">
+            <summary>
+            Total time on bus segments
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.RouteTotals.TotalTimeOnWalk">
+            <summary>
+            Total time walking
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.RouteTotals.TotalTimeWaiting">
+            <summary>
+            Total time waiting between connections
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.RouteTotals.TotalPriceOfTrain">
+            <summary>
+            Total cost of trains inside this route
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.RouteTotals.TotalPriceOfCar">
+            <summary>
+            Total cost of cars inside this route
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.RouteTotals.TotalPriceOfBus">
+            <summary>
+            Total cost of buses inside this route
+            </summary>
+        </member>
+        <member name="P:Door2DoorCore.Types.Door2DoorResponse.RouteTotals.TotalPriceOfFlight">
+            <summary>
+            Total cost of flights inside this route
+            </summary>
+        </member>
+    </members>
+</doc>
