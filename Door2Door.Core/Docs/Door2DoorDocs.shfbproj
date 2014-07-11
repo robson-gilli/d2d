@@ -25,7 +25,7 @@
     <CppCommentsFixup>False</CppCommentsFixup>
     <CleanIntermediates>True</CleanIntermediates>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\Door2Door.Core\Door2DoorCore.csproj" />
+      <DocumentationSource sourceFile="..\Door2DoorCore.csproj" />
     </DocumentationSources>
     <MaximumGroupParts>2</MaximumGroupParts>
     <NamespaceGrouping>False</NamespaceGrouping>
@@ -43,18 +43,19 @@
     <BinaryTOC>True</BinaryTOC>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="Door2DoorCore" isDocumented="True">Builds a complete itinerary with schedules and pricing informaition based on the request.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Door2DoorCore.Exceptions" isDocumented="True">Custom Exceptions for proper handling</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Door2DoorCore.Types.Door2DoorRequest" isDocumented="True">Request data to get the door to door routes</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption" isDocumented="True">&lt;para&gt;It's possible to inform a FlightOption from an external source.&lt;/para&gt;
+      <NamespaceSummaryItem name="Door2DoorCore.Exceptions" isDocumented="True">Custom Exceptions for proper handling</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="Door2DoorCore.Types.Door2DoorRequest" isDocumented="True">Request data to get the door to door routes</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption" isDocumented="True">&lt;para&gt;It's possible to inform a FlightOption from an external source.&lt;/para&gt;
 &lt;para&gt;When informed, the calculation of schedules and costs will take these values into account,
 instead of the Rome2rio flight results.&lt;/para&gt;</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Door2DoorCore.Types.Door2DoorResponse" isDocumented="True">Complete door to door response</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Door2DoorCore.Interfaces" isDocumented="False">Defines</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Door2DoorCore.Types.Door2DoorRequest.OuterHotelOption" isDocumented="True">&lt;para&gt;It's possible to inform an hotel data in the request.&lt;/para&gt;
-&lt;para&gt;The system will try to calculate Taxi fares for the amount of days that the trip takes and sum it in the response.&lt;/para&gt;</NamespaceSummaryItem></NamespaceSummaries>
+      <NamespaceSummaryItem name="Door2DoorCore.Types.Door2DoorResponse" isDocumented="True">Complete door to door response</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="Door2DoorCore.Interfaces" isDocumented="False">Defines</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="Door2DoorCore.Types.Door2DoorRequest.OuterHotelOption" isDocumented="True">&lt;para&gt;It's possible to inform an hotel data in the request.&lt;/para&gt;
+&lt;para&gt;The system will try to calculate Taxi fares for the amount of days that the trip takes and sum it in the response.&lt;/para&gt;</NamespaceSummaryItem>
+    </NamespaceSummaries>
     <RootNamespaceTitle>Door2Door project documentation</RootNamespaceTitle>
     <CopyrightHref>http://www.clicholding.com.br</CopyrightHref>
-    <CopyrightText>ClicHolding.com.br, all rights reserved.</CopyrightText>
+    <CopyrightText>Clic Holding, all rights reserved.</CopyrightText>
     <ProjectSummary>
     </ProjectSummary>
     <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
@@ -62,7 +63,7 @@ instead of the Rome2rio flight results.&lt;/para&gt;</NamespaceSummaryItem>
       <Filter entryType="Namespace" fullName="" isExposed="False" />
     </ApiFilter>
     <TransformComponentArguments>
-      <Argument Key="logoFile" Value="" />
+      <Argument Key="logoFile" Value="clic.jpg" />
       <Argument Key="logoHeight" Value="" />
       <Argument Key="logoWidth" Value="" />
       <Argument Key="logoAltText" Value="" />
@@ -73,7 +74,8 @@ instead of the Rome2rio flight results.&lt;/para&gt;</NamespaceSummaryItem>
     </TransformComponentArguments>
     <HeaderText>
     </HeaderText>
-    <FooterText>&amp;lt%3bimg src=&amp;#39%3bhttp://www.clicholding.com.br/img/logo.png&amp;#39%3b  /&amp;gt%3b</FooterText>
+    <FooterText>
+    </FooterText>
     <ComponentConfigurations>
     </ComponentConfigurations>
     <PlugInConfigurations>
@@ -84,6 +86,19 @@ instead of the Rome2rio flight results.&lt;/para&gt;</NamespaceSummaryItem>
       </PlugInConfig>
     </PlugInConfigurations>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <CatalogName>VisualStudio12</CatalogName>
+    <TocParentId>-1</TocParentId>
+    <TocParentVersion>100</TocParentVersion>
+    <TopicVersion>100</TopicVersion>
+    <TocOrder>-1</TocOrder>
+    <ProductTitle>Door2Door</ProductTitle>
+    <VendorName>Clic Holding</VendorName>
+    <MSHelpViewerSdkLinkType>Msdn</MSHelpViewerSdkLinkType>
+    <CatalogVersion>100</CatalogVersion>
+    <CatalogProductId>VS</CatalogProductId>
+    <FeedbackEMailLinkText>leave a feedback</FeedbackEMailLinkText>
+    <FeedbackEMailAddress>robson.gilli%40clicholding.com.br</FeedbackEMailAddress>
+    <PostBuildEvent>xcopy "C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\icons\clic.jpg" "C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\help\icons\"</PostBuildEvent>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
@@ -104,12 +119,7 @@ instead of the Rome2rio flight results.&lt;/para&gt;</NamespaceSummaryItem>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Door2Door.Core\Door2DoorCore.csproj">
-      <Name>Door2DoorCore</Name>
-      <Project>{D38A87E3-3797-4CE1-BFE2-23F69B124AC6}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <Folder Include="icons\" />
     <Folder Include="FunctionalHelp\Maml\Exemplos\" />
     <Folder Include="FunctionalHelp\Maml\" />
     <Folder Include="FunctionalHelp\" />
@@ -133,6 +143,18 @@ instead of the Rome2rio flight results.&lt;/para&gt;</NamespaceSummaryItem>
     <None Include="FunctionalHelp\Maml\VisaoGeral.aml" />
     <None Include="FunctionalHelp\Maml\ParaQuem.aml" />
     <None Include="FunctionalHelp\Maml\Funcionalidades.aml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Door2DoorCore.csproj">
+      <Name>Door2DoorCore</Name>
+      <Project>{D38A87E3-3797-4CE1-BFE2-23F69B124AC6}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icons\clic.jpg">
+      <ImageId>clic</ImageId>
+      <AlternateText>clic</AlternateText>
+    </Image>
   </ItemGroup>
   <!-- Import the SHFB build targets -->
   <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />

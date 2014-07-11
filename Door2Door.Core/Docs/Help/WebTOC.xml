@@ -4,7 +4,7 @@
   <HelpTOCNode Title="Vis&#227;o geral" Url="html/visao_geral.htm" />
   <HelpTOCNode Title="Para quem se destina este documento" Url="html/para_quem.htm" />
   <HelpTOCNode Title="Funcionalidades" Url="html/funcionalidades.htm" />
-  <HelpTOCNode Id="af1f970e-c07c-4151-8082-b2d3c619f35e" Title="Exemplos" Url="html/exemplos.htm">
+  <HelpTOCNode Id="2bf8b633-c8ef-448d-801a-b56441b101be" Title="Exemplos" Url="html/exemplos.htm">
     <HelpTOCNode Title="Exemplo 1 - Somente ida, informando a data de chegada desejada ao destino" Url="html/exemplo_1.htm" />
     <HelpTOCNode Title="Exemplo 2 - Somente ida, informando a data de sa&#237;da do endere&#231;o de origem" Url="html/exemplo_2.htm" />
     <HelpTOCNode Title="Exemplo 3 - Somente ida, informando o retorno de transporte publico na resposta" Url="html/exemplo_3.htm" />
@@ -17,49 +17,49 @@
     <HelpTOCNode Title="Response completo" Url="html/response_completo.htm" />
     <HelpTOCNode Title="Exemplo basico em C# - RoundTrip" Url="html/csharp_basic_roundtrip.htm" />
   </HelpTOCNode>
-  <HelpTOCNode Id="2c561b85-b1a9-4ec2-90a8-171226f0a553" Title="Especifica&#231;&#245;es t&#233;cnicas">
-    <HelpTOCNode Id="c2e4ea5f-94c5-43ef-ba31-3774074179ad" Title="Door2Door project documentation" Url="html/9d31bd54-6767-be5f-31fb-d4825b7e5eca.htm">
-      <HelpTOCNode Id="4ac02bc6-ed67-4a21-8610-0e651833bf76" Title="Door2DoorCore" Url="html/36e2c038-4cff-7528-d224-1794f2e692f1.htm">
-        <HelpTOCNode Id="a8f418d8-3f87-4415-a6ed-822b65046adb" Title="Door2Door Class" Url="html/79589a4f-890c-39a5-bd1d-c4b5c4078a04.htm">
-          <HelpTOCNode Id="82a72211-b756-4d71-818f-6f28f068ab06" Title="Door2Door Constructor " Url="html/46a0e07d-315e-9646-3aaa-67cc84a7c33e.htm">
+  <HelpTOCNode Id="9a4c9632-639d-4f2c-85eb-20736aabc6dc" Title="Especifica&#231;&#245;es t&#233;cnicas">
+    <HelpTOCNode Id="25f3ea8b-b094-41da-a254-f7f9e8a6bd13" Title="Door2Door project documentation" Url="html/9d31bd54-6767-be5f-31fb-d4825b7e5eca.htm">
+      <HelpTOCNode Id="8843a0ea-ef40-4ed4-aa34-df7125ac1274" Title="Door2DoorCore" Url="html/36e2c038-4cff-7528-d224-1794f2e692f1.htm">
+        <HelpTOCNode Id="ce7ca201-fb68-4ddf-bf4a-51a9b703eff8" Title="Door2Door Class" Url="html/79589a4f-890c-39a5-bd1d-c4b5c4078a04.htm">
+          <HelpTOCNode Id="8a6074fb-a1a7-4145-9e4a-7b8a88be78fb" Title="Door2Door Constructor " Url="html/46a0e07d-315e-9646-3aaa-67cc84a7c33e.htm">
             <HelpTOCNode Title="Door2Door Constructor (D2DRequest)" Url="html/83f121bb-948a-25da-7b3f-29995cfb0746.htm" />
             <HelpTOCNode Title="Door2Door Constructor (D2DRequest, Int32, Int32, Int32)" Url="html/4611af4c-18d2-315c-dafb-f0dd1e87524f.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="7525c5a3-395d-4b21-a6d6-804a61091f3c" Title="Door2Door Methods" Url="html/1a5a36d5-af1b-89e4-7abb-57875e01c63e.htm">
+          <HelpTOCNode Id="2629948d-efe8-4b21-b909-35c7c163dfff" Title="Door2Door Methods" Url="html/1a5a36d5-af1b-89e4-7abb-57875e01c63e.htm">
             <HelpTOCNode Title="GetResponse Method " Url="html/0930f737-2c51-f8b1-e36c-bfeb84232cc1.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="b330367c-1c61-4a7e-8120-019604465a48" Title="Door2Door Properties" Url="html/246f9d4a-1ba1-6ff8-4e97-c745c4ffd2d3.htm">
+          <HelpTOCNode Id="033f1c55-16eb-4669-847d-2111e1c53d90" Title="Door2Door Properties" Url="html/246f9d4a-1ba1-6ff8-4e97-c745c4ffd2d3.htm">
             <HelpTOCNode Title="Req Property " Url="html/e8c18e0e-5cbf-dce7-19f1-492fdefb28df.htm" />
             <HelpTOCNode Title="Resp Property " Url="html/17eba4f2-434f-1b4f-7fd6-f2f42c719577.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
-        <HelpTOCNode Id="a836549f-b5d3-4fe5-974a-2f2916f7411f" Title="Door2DoorCore.Exceptions" Url="html/07f6a8fb-7856-c496-abb9-fb0539d3c7dd.htm">
-          <HelpTOCNode Id="2db80914-f80f-4476-bc99-034f911af310" Title="D2DRequestException Class" Url="html/33080e99-72ee-e9e1-b684-b03cb62a9e22.htm">
-            <HelpTOCNode Id="07658a2f-6f4c-4d7f-aa11-049f6c8e9b97" Title="D2DRequestException Constructor " Url="html/af6d3aad-54c7-1ad9-5345-b4eef0fd7fa8.htm">
+        <HelpTOCNode Id="cf9a020c-e963-4168-b49e-0b561e47a884" Title="Door2DoorCore.Exceptions" Url="html/07f6a8fb-7856-c496-abb9-fb0539d3c7dd.htm">
+          <HelpTOCNode Id="397ab16a-42d7-4f1c-a2bf-d43cfcc3f0f4" Title="D2DRequestException Class" Url="html/33080e99-72ee-e9e1-b684-b03cb62a9e22.htm">
+            <HelpTOCNode Id="d65971e6-3dbc-44a2-bd94-7481603d0fee" Title="D2DRequestException Constructor " Url="html/af6d3aad-54c7-1ad9-5345-b4eef0fd7fa8.htm">
               <HelpTOCNode Title="D2DRequestException Constructor " Url="html/f6c3e36e-343e-6432-c2d5-5ee3d5d22e2d.htm" />
               <HelpTOCNode Title="D2DRequestException Constructor (String)" Url="html/76356cc8-1602-d6b5-7d18-891506481804.htm" />
             </HelpTOCNode>
           </HelpTOCNode>
-          <HelpTOCNode Id="56d0019a-8dcc-42fa-9af4-33258825d4e6" Title="D2DResponseException Class" Url="html/9a046528-9e5f-2e33-3e09-bf14adb91d61.htm">
-            <HelpTOCNode Id="2f3c6a05-1a67-48f0-b75a-64db2cb12b8d" Title="D2DResponseException Constructor " Url="html/2b0dfd43-dfad-1fa7-ac72-ff5ddfedd264.htm">
+          <HelpTOCNode Id="3900d779-5a2b-4a79-b270-c992ed876d00" Title="D2DResponseException Class" Url="html/9a046528-9e5f-2e33-3e09-bf14adb91d61.htm">
+            <HelpTOCNode Id="b1385063-b461-46e7-97ad-2d17fcd1133f" Title="D2DResponseException Constructor " Url="html/2b0dfd43-dfad-1fa7-ac72-ff5ddfedd264.htm">
               <HelpTOCNode Title="D2DResponseException Constructor " Url="html/7aa72dd1-ed38-582d-b8a7-7d923c3a86f6.htm" />
               <HelpTOCNode Title="D2DResponseException Constructor (Exception)" Url="html/ee06d2ab-37aa-f391-dd84-19ae42a745eb.htm" />
               <HelpTOCNode Title="D2DResponseException Constructor (String)" Url="html/a56e5942-496f-c4f5-038f-2c3c335569c1.htm" />
             </HelpTOCNode>
           </HelpTOCNode>
         </HelpTOCNode>
-        <HelpTOCNode Id="1086fc49-51c8-4f55-9651-2b6c5208497d" Title="Door2DoorCore.Types Namespace">
-          <HelpTOCNode Id="d0dca583-3907-4deb-bb2a-6acf637cb71a" Title="Door2DoorCore.Types.Door2DoorRequest" Url="html/112b736b-c7a6-45e5-817c-22a97a54f81e.htm">
-            <HelpTOCNode Id="f3c89fe5-6bc9-4bf2-8886-46692f291cc2" Title="D2DRequest Class" Url="html/d7f32599-ca2c-f8d4-ab32-5840ef6fe840.htm">
+        <HelpTOCNode Id="4a95b8f2-2bf3-4d4b-afa0-306a206537b6" Title="Door2DoorCore.Types Namespace">
+          <HelpTOCNode Id="99cb303a-3204-4bf5-be62-b3ebf5036168" Title="Door2DoorCore.Types.Door2DoorRequest" Url="html/112b736b-c7a6-45e5-817c-22a97a54f81e.htm">
+            <HelpTOCNode Id="498d022c-c2d2-4074-a346-4d64d5f4314f" Title="D2DRequest Class" Url="html/d7f32599-ca2c-f8d4-ab32-5840ef6fe840.htm">
               <HelpTOCNode Title="D2DRequest Constructor " Url="html/ca0e6ac1-76bb-0e6f-3c3b-b2c4951618b0.htm" />
-              <HelpTOCNode Id="5ddd2d90-5ac1-469d-a542-85148ef7b072" Title="D2DRequest Fields" Url="html/d442d8d6-2252-2f63-70a7-3f25585afb5f.htm">
+              <HelpTOCNode Id="2bf84134-9376-4322-8c35-15aec76977c5" Title="D2DRequest Fields" Url="html/d442d8d6-2252-2f63-70a7-3f25585afb5f.htm">
                 <HelpTOCNode Title="currency Field" Url="html/2e980f6b-a00a-056e-af55-6db7a91608a4.htm" />
                 <HelpTOCNode Title="dataType Field" Url="html/f387418f-ae68-94fd-ed3b-381ba0521e88.htm" />
                 <HelpTOCNode Title="key Field" Url="html/8acd059e-5a6a-8189-5699-250545b71392.htm" />
                 <HelpTOCNode Title="requestType Field" Url="html/60a3334b-bfa0-a1da-87bb-4132769718bb.htm" />
                 <HelpTOCNode Title="url Field" Url="html/bb02b833-045b-f925-8d45-91fdadea3ea8.htm" />
               </HelpTOCNode>
-              <HelpTOCNode Id="a7fb7d5c-b458-43b2-a287-daab23241137" Title="D2DRequest Properties" Url="html/62f2d4cb-9c4d-0de7-d1eb-c638950eed58.htm">
+              <HelpTOCNode Id="5d33c349-96f9-49a0-b4dd-32f490219734" Title="D2DRequest Properties" Url="html/62f2d4cb-9c4d-0de7-d1eb-c638950eed58.htm">
                 <HelpTOCNode Title="chosenRoute Property " Url="html/9f80dfaf-3675-157a-3f68-70f2f494c71f.htm" />
                 <HelpTOCNode Title="chosenStay Property " Url="html/bc8371de-4dbf-1310-c59a-d15c7214b608.htm" />
                 <HelpTOCNode Title="dailyAlimentationBudget Property " Url="html/daa4aac7-15d4-f899-eaa3-717d3950a81e.htm" />
@@ -73,15 +73,15 @@
                 <HelpTOCNode Title="outboundDateKind Property " Url="html/377cdfcf-0f31-fa74-8cf2-a4dd21a22d01.htm" />
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="3865b268-9cc8-4504-94c5-5d8580696776" Title="D2DRequestFlags Class" Url="html/5057823f-c8f0-f1a5-595e-056fcdb7b2a0.htm">
+            <HelpTOCNode Id="72ca15ab-69a9-4f3d-bee8-23755a1d13c2" Title="D2DRequestFlags Class" Url="html/5057823f-c8f0-f1a5-595e-056fcdb7b2a0.htm">
               <HelpTOCNode Title="D2DRequestFlags Constructor " Url="html/43e931ed-8c2f-cea0-9eb8-b9206b35f1cc.htm" />
-              <HelpTOCNode Id="537a212e-6103-4382-928f-556287160dfa" Title="D2DRequestFlags Properties" Url="html/cb058d95-4c72-0759-cdd8-27edd46cedf0.htm">
+              <HelpTOCNode Id="7e1570c6-262d-4e9c-b357-8d4f2ea25313" Title="D2DRequestFlags Properties" Url="html/cb058d95-4c72-0759-cdd8-27edd46cedf0.htm">
                 <HelpTOCNode Title="includePublicTransp Property " Url="html/35d2a300-bb22-45d5-86f1-8af651b275f0.htm" />
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="b630d59c-ffc7-4676-ba65-81ec036f0f42" Title="D2DRequestLocation Class" Url="html/53128484-85b7-45e2-26fa-bdc76fde108a.htm">
+            <HelpTOCNode Id="54c3ceb5-7c55-4324-a9e5-bf8d9172e977" Title="D2DRequestLocation Class" Url="html/53128484-85b7-45e2-26fa-bdc76fde108a.htm">
               <HelpTOCNode Title="D2DRequestLocation Constructor " Url="html/7db3d5cb-9d01-63c9-24bd-5c8eb0edbaa5.htm" />
-              <HelpTOCNode Id="e6b524db-4c38-457a-8750-12337ea2dde0" Title="D2DRequestLocation Properties" Url="html/39fb098f-9ab7-fb0f-4d8a-9640f7ac2819.htm">
+              <HelpTOCNode Id="37553736-08a3-4ae4-9f43-0894fca280f9" Title="D2DRequestLocation Properties" Url="html/39fb098f-9ab7-fb0f-4d8a-9640f7ac2819.htm">
                 <HelpTOCNode Title="lat Property " Url="html/56e4495d-a615-0e8e-6438-7c060b70a49e.htm" />
                 <HelpTOCNode Title="lng Property " Url="html/7f92e96e-6f23-5372-45fc-1dcebc5e48eb.htm" />
                 <HelpTOCNode Title="type Property " Url="html/4ca809b4-4f2c-c0cd-49d8-204f4d31b81f.htm" />
@@ -89,10 +89,10 @@
             </HelpTOCNode>
             <HelpTOCNode Title="D2dRequestTripDateKind Enumeration" Url="html/af07b1b5-e0ee-33fb-826b-c87eb28a5558.htm" />
             <HelpTOCNode Title="D2DRequestType Enumeration" Url="html/cb1f51c9-04d5-a275-8010-358fa3567a28.htm" />
-            <HelpTOCNode Id="cc867a96-6313-4f47-8991-ef1062f4a209" Title="Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption" Url="html/2c7d39d3-49a4-f8c3-ac8a-8d92e9c52499.htm">
-              <HelpTOCNode Id="db3c015e-7b10-40cf-8c7b-3a1eb740c686" Title="OuterFlightLeg Class" Url="html/83188ca9-2a2f-7f03-7bcf-1d5deacab6a8.htm">
+            <HelpTOCNode Id="e7b4ed98-3dd5-4d4b-8275-3b620a0f60fc" Title="Door2DoorCore.Types.Door2DoorRequest.OuterFlightOption" Url="html/2c7d39d3-49a4-f8c3-ac8a-8d92e9c52499.htm">
+              <HelpTOCNode Id="89d46f1a-69c2-4066-9f77-b4743f841a86" Title="OuterFlightLeg Class" Url="html/83188ca9-2a2f-7f03-7bcf-1d5deacab6a8.htm">
                 <HelpTOCNode Title="OuterFlightLeg Constructor " Url="html/26e73344-6f5c-3e35-fb4e-b7a669df7b8f.htm" />
-                <HelpTOCNode Id="6942389a-51b8-49a7-b816-2084eb281144" Title="OuterFlightLeg Properties" Url="html/c71239e4-8de1-9082-93be-beadbaf0b19c.htm">
+                <HelpTOCNode Id="1a0be24a-0be1-44d3-920d-2ab0bfdae3f5" Title="OuterFlightLeg Properties" Url="html/c71239e4-8de1-9082-93be-beadbaf0b19c.htm">
                   <HelpTOCNode Title="arrivalDate Property " Url="html/a4627ac1-b49e-1d15-44b2-32219ebc9027.htm" />
                   <HelpTOCNode Title="departureDate Property " Url="html/8402ebec-cbc1-eb22-ccf9-52e9c2963f48.htm" />
                   <HelpTOCNode Title="destination Property " Url="html/5a1668fc-3115-24e9-020f-8952d7d37314.htm" />
@@ -106,9 +106,9 @@
                   <HelpTOCNode Title="origin Property " Url="html/2e32cc6b-3a1f-3ea5-0bb7-c3985023b7e1.htm" />
                 </HelpTOCNode>
               </HelpTOCNode>
-              <HelpTOCNode Id="d28faf79-7f47-4f36-acae-1e58f008518a" Title="OuterFlightOption Class" Url="html/1cc159fb-7876-baed-a11d-f5b1743b8af8.htm">
+              <HelpTOCNode Id="e05eeafe-329a-41fd-b5a3-568642f88753" Title="OuterFlightOption Class" Url="html/1cc159fb-7876-baed-a11d-f5b1743b8af8.htm">
                 <HelpTOCNode Title="OuterFlightOption Constructor " Url="html/42ebc9bd-d9a3-4e17-063a-69e772b4b4f3.htm" />
-                <HelpTOCNode Id="4b506a86-5782-4fc6-9d18-4652657231d5" Title="OuterFlightOption Properties" Url="html/f2638e7a-6c2b-e487-2d04-f79fc186dfb6.htm">
+                <HelpTOCNode Id="32b255af-79e8-4a6c-8410-39ce4f9b8a48" Title="OuterFlightOption Properties" Url="html/f2638e7a-6c2b-e487-2d04-f79fc186dfb6.htm">
                   <HelpTOCNode Title="currency Property " Url="html/52b52477-8095-c1a1-da33-88e601d86b40.htm" />
                   <HelpTOCNode Title="flightSegment Property " Url="html/a4c29f8f-2bd3-bc12-e433-ffa96c6eb3fc.htm" />
                   <HelpTOCNode Title="price Property " Url="html/56002808-d5c5-92e6-b1e9-92731b3e0b75.htm" />
@@ -116,17 +116,17 @@
                   <HelpTOCNode Title="segmentIndex Property " Url="html/d6ed43cc-28de-ded2-dc28-894c71ea6f44.htm" />
                 </HelpTOCNode>
               </HelpTOCNode>
-              <HelpTOCNode Id="6af9d299-75d1-4873-a67a-379535d33139" Title="OuterFlightSegment Class" Url="html/d801f847-e199-f475-34ec-9e4e210b842f.htm">
+              <HelpTOCNode Id="c98247d9-b3b3-4e33-8798-79de0ca1cbb1" Title="OuterFlightSegment Class" Url="html/d801f847-e199-f475-34ec-9e4e210b842f.htm">
                 <HelpTOCNode Title="OuterFlightSegment Constructor " Url="html/4cd97d0d-fa63-3742-c789-ac759f0664dd.htm" />
-                <HelpTOCNode Id="c768b9c2-2117-4225-9201-e63046b8c7f5" Title="OuterFlightSegment Properties" Url="html/00e51a6c-74c6-370f-79af-40f5cb06d074.htm">
+                <HelpTOCNode Id="f49f87bb-78ac-4fd4-b7ac-ead6120bb195" Title="OuterFlightSegment Properties" Url="html/00e51a6c-74c6-370f-79af-40f5cb06d074.htm">
                   <HelpTOCNode Title="flightLegs Property " Url="html/e2ae12c2-dd12-f070-8292-14f202e836fa.htm" />
                 </HelpTOCNode>
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="95f0240c-b525-4ae2-b6c7-8394f33c051e" Title="Door2DoorCore.Types.Door2DoorRequest.OuterHotelOption" Url="html/4982239f-c409-4ec5-43a3-24b19a7eb927.htm">
-              <HelpTOCNode Id="7684624a-b767-492c-ac9e-89ea9d222937" Title="OuterHotelOption Class" Url="html/6902ad4c-413e-7c34-5876-d96241d1eae3.htm">
+            <HelpTOCNode Id="f90e5488-204a-44ec-a4ee-b9d3eb63f384" Title="Door2DoorCore.Types.Door2DoorRequest.OuterHotelOption" Url="html/4982239f-c409-4ec5-43a3-24b19a7eb927.htm">
+              <HelpTOCNode Id="b48a19d4-0e9c-45e4-9174-f1587a9e401e" Title="OuterHotelOption Class" Url="html/6902ad4c-413e-7c34-5876-d96241d1eae3.htm">
                 <HelpTOCNode Title="OuterHotelOption Constructor " Url="html/71c8e7d5-8c10-9389-f56f-4d5246bda4b3.htm" />
-                <HelpTOCNode Id="b2223df4-c9ba-48c8-ac40-38042cafdcb6" Title="OuterHotelOption Properties" Url="html/077bfe0b-3401-f034-5f28-14b12581b562.htm">
+                <HelpTOCNode Id="51d824c5-9cbf-450e-89a7-852adcb18df4" Title="OuterHotelOption Properties" Url="html/077bfe0b-3401-f034-5f28-14b12581b562.htm">
                   <HelpTOCNode Title="checkinDate Property " Url="html/49f17e09-d3ff-1436-044e-5a32637fd8cf.htm" />
                   <HelpTOCNode Title="checkoutDate Property " Url="html/638946fd-b4e9-e4cc-c4fb-3ba17f43a236.htm" />
                   <HelpTOCNode Title="completeStay Property " Url="html/c69ce7a1-6505-ec9d-98dd-3bbfda85a85a.htm" />
@@ -136,23 +136,23 @@
               </HelpTOCNode>
             </HelpTOCNode>
           </HelpTOCNode>
-          <HelpTOCNode Id="18c6dfb7-ec4c-4762-bdba-11ddbdf5249d" Title="Door2DoorCore.Types.Door2DoorResponse" Url="html/b4faae15-91fc-4a99-cf15-87b700af64fb.htm">
-            <HelpTOCNode Id="a403d40d-db5d-4105-a2a4-c2ca9da10745" Title="Codeshare Class" Url="html/98cd0b3e-5dd4-a6d6-32fd-f4d0621f5159.htm">
+          <HelpTOCNode Id="e8e965d0-8834-4af0-b26d-18b0898a3cb3" Title="Door2DoorCore.Types.Door2DoorResponse" Url="html/b4faae15-91fc-4a99-cf15-87b700af64fb.htm">
+            <HelpTOCNode Id="efc3fabb-5ef9-4145-a976-d08eee6c17ed" Title="Codeshare Class" Url="html/98cd0b3e-5dd4-a6d6-32fd-f4d0621f5159.htm">
               <HelpTOCNode Title="Codeshare Constructor " Url="html/00f6fbb6-e0ef-c2bd-05ba-2583b9758ff5.htm" />
-              <HelpTOCNode Id="024a41c4-346a-4bb8-9a80-6639b554b6d8" Title="Codeshare Properties" Url="html/6b111113-1e5a-19bb-9b63-d1e6a3dd5fe0.htm">
+              <HelpTOCNode Id="fad53322-961e-47ef-84a4-dff87beaf7b8" Title="Codeshare Properties" Url="html/6b111113-1e5a-19bb-9b63-d1e6a3dd5fe0.htm">
                 <HelpTOCNode Title="Airline Property " Url="html/4135c8d0-cf59-a563-1fa2-6c6511e93ec6.htm" />
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="42b359f4-1f70-474e-98e1-e164a25ac7b4" Title="Door2DoorLegResponse Class" Url="html/7ea0a1bd-e663-4248-5417-b8b3dcf08ed2.htm">
+            <HelpTOCNode Id="a8275af1-1322-4200-aae9-a43e1c8fd43f" Title="Door2DoorLegResponse Class" Url="html/7ea0a1bd-e663-4248-5417-b8b3dcf08ed2.htm">
               <HelpTOCNode Title="Door2DoorLegResponse Constructor " Url="html/f61361a9-5ba1-fc98-f049-961c207e673e.htm" />
-              <HelpTOCNode Id="2183fd61-6802-4593-8cea-ddcb8d1e1f1c" Title="Door2DoorLegResponse Properties" Url="html/c11189e1-3feb-9504-8299-ff09ea34d06a.htm">
+              <HelpTOCNode Id="34c3f797-3d9f-43ce-b06c-5fd8ce09987f" Title="Door2DoorLegResponse Properties" Url="html/c11189e1-3feb-9504-8299-ff09ea34d06a.htm">
                 <HelpTOCNode Title="Routes Property " Url="html/83706af5-2713-de1a-3341-5f6a156ffacf.htm" />
                 <HelpTOCNode Title="ServeTime Property " Url="html/804a6639-2ab2-fbdf-d2d6-18bedb3dedb1.htm" />
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="d38187f9-7ead-4d72-8b81-c445d8023b7b" Title="Door2DoorResponse Class" Url="html/32721075-0a75-2624-45ac-408597ed7ead.htm">
+            <HelpTOCNode Id="e98ac191-a645-4947-b4f1-7552261716ff" Title="Door2DoorResponse Class" Url="html/32721075-0a75-2624-45ac-408597ed7ead.htm">
               <HelpTOCNode Title="Door2DoorResponse Constructor " Url="html/36d75aca-691b-16fc-a7f9-ac0262e3a8b4.htm" />
-              <HelpTOCNode Id="f3193791-92e9-4a5e-a410-dbbbd45e7e93" Title="Door2DoorResponse Properties" Url="html/13f3cab7-d43f-5a37-a32b-f7b5b677e070.htm">
+              <HelpTOCNode Id="00fa333d-2af2-4b53-8ed6-0f63d30f265c" Title="Door2DoorResponse Properties" Url="html/13f3cab7-d43f-5a37-a32b-f7b5b677e070.htm">
                 <HelpTOCNode Title="LegResponse Property " Url="html/421fb84e-3e33-a915-ae15-8a4fcca67f5c.htm" />
                 <HelpTOCNode Title="NumberOfTaxisOnStay Property " Url="html/6c9a04ef-20e5-a62d-2ba6-edc93eae91bd.htm" />
                 <HelpTOCNode Title="totalPriceOfAlimentation Property " Url="html/ad501144-4fcd-0152-e1db-c00f614286a6.htm" />
@@ -160,9 +160,9 @@
                 <HelpTOCNode Title="TotalPriceOfLocalTaxi Property " Url="html/c736f751-e104-16a1-a7e5-3147955ee343.htm" />
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="034e78c7-1355-4ab4-803d-78184caecac0" Title="Hop Class" Url="html/b6ed7f75-a090-1fe2-541e-bf195cd4b42a.htm">
+            <HelpTOCNode Id="f0d05169-d683-460e-a796-29ed8ff7df26" Title="Hop Class" Url="html/b6ed7f75-a090-1fe2-541e-bf195cd4b42a.htm">
               <HelpTOCNode Title="Hop Constructor " Url="html/bbb21273-b83d-3dcf-e0f5-14668c19f02e.htm" />
-              <HelpTOCNode Id="d9af98ca-8575-4d2e-8713-2f235d940a74" Title="Hop Properties" Url="html/c41b64ab-0bda-bf74-95d5-b499f0f61bc6.htm">
+              <HelpTOCNode Id="f1b0e36d-bad7-4ad5-8d3c-3f3bc0023f7e" Title="Hop Properties" Url="html/c41b64ab-0bda-bf74-95d5-b499f0f61bc6.htm">
                 <HelpTOCNode Title="Aircraft Property " Url="html/f14cfe26-9c6c-2231-ffee-192482e26c41.htm" />
                 <HelpTOCNode Title="Airline Property " Url="html/cc1ebfb1-15c7-576a-c40e-2f66c2c2ce96.htm" />
                 <HelpTOCNode Title="Codeshares Property " Url="html/48bc0c97-5951-ea3c-749d-cf70674abd41.htm" />
@@ -183,17 +183,17 @@
                 <HelpTOCNode Title="TTime Property " Url="html/f0387912-3e2f-2818-08e2-caa140401b99.htm" />
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="3ed17524-bf0a-4fa2-b83b-a2319218a779" Title="IndicativePrice Class" Url="html/2224e75d-b447-fdab-5a7d-d828c8502c3a.htm">
+            <HelpTOCNode Id="4cadd8cf-a4ce-4e20-9ef4-2a56f05026d6" Title="IndicativePrice Class" Url="html/2224e75d-b447-fdab-5a7d-d828c8502c3a.htm">
               <HelpTOCNode Title="IndicativePrice Constructor " Url="html/fb66ad10-8deb-347c-ad1b-9623e069655d.htm" />
-              <HelpTOCNode Id="d3aa9319-605c-4a10-99f5-8e518b0929b1" Title="IndicativePrice Properties" Url="html/0396433d-e027-76f3-fbf5-748364f18065.htm">
+              <HelpTOCNode Id="3f666ab6-cb0b-463f-98c5-33052958813f" Title="IndicativePrice Properties" Url="html/0396433d-e027-76f3-fbf5-748364f18065.htm">
                 <HelpTOCNode Title="Currency Property " Url="html/e171a575-3730-3b2a-497c-e8324ffb0d0e.htm" />
                 <HelpTOCNode Title="IsFreeTransfer Property " Url="html/ac149cb0-bf8a-36f9-9366-43cbc936390f.htm" />
                 <HelpTOCNode Title="Price Property " Url="html/affd6a96-c456-8f47-3dcc-82cd04baad74.htm" />
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="cca2f983-6219-46ef-be58-0bd788624b2b" Title="IndicativePrice2 Class" Url="html/786a8688-2a3c-4c9f-5532-575c7bf60002.htm">
+            <HelpTOCNode Id="3f8a001b-5e57-4434-9ea7-0541baed8c1f" Title="IndicativePrice2 Class" Url="html/786a8688-2a3c-4c9f-5532-575c7bf60002.htm">
               <HelpTOCNode Title="IndicativePrice2 Constructor " Url="html/1a35aee4-2347-fa4e-34f9-9bcf8bfc5d3e.htm" />
-              <HelpTOCNode Id="eed1222a-148e-45aa-82c2-d06357e4f47b" Title="IndicativePrice2 Properties" Url="html/2faf937a-3bf0-3030-7d35-1b76d639982f.htm">
+              <HelpTOCNode Id="ffb9189c-4e85-4a91-97e4-55bfec88bff3" Title="IndicativePrice2 Properties" Url="html/2faf937a-3bf0-3030-7d35-1b76d639982f.htm">
                 <HelpTOCNode Title="Currency Property " Url="html/285a3eac-7d45-37d7-d80b-b581e48a395e.htm" />
                 <HelpTOCNode Title="IsFreeTransfer Property " Url="html/579edbb6-7380-d93a-7b75-fb1165bfc85f.htm" />
                 <HelpTOCNode Title="NativeCurrency Property " Url="html/9035350c-ea59-27f5-96ac-31b9c1027466.htm" />
@@ -201,9 +201,9 @@
                 <HelpTOCNode Title="Price Property " Url="html/3ee5458e-1b33-7d7e-8216-835da2709138.htm" />
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="3a454436-aaa9-4e35-ad14-a27cc2d66a78" Title="IndicativePrice3 Class" Url="html/df4a92a5-58e9-bb12-d1e2-3f011fcbb34d.htm">
+            <HelpTOCNode Id="3fa922a2-a360-482b-843e-71b7d13e9a17" Title="IndicativePrice3 Class" Url="html/df4a92a5-58e9-bb12-d1e2-3f011fcbb34d.htm">
               <HelpTOCNode Title="IndicativePrice3 Constructor " Url="html/47ea4ad9-136a-35bb-7bb9-2b1ee7c508d7.htm" />
-              <HelpTOCNode Id="cd26f228-6d23-4781-96b2-2b182e5fd4f7" Title="IndicativePrice3 Properties" Url="html/11f1f527-cd5b-2555-7c3d-e3bd7e9ce42e.htm">
+              <HelpTOCNode Id="86c9c377-db20-418e-91a8-62b320a59689" Title="IndicativePrice3 Properties" Url="html/11f1f527-cd5b-2555-7c3d-e3bd7e9ce42e.htm">
                 <HelpTOCNode Title="Currency Property " Url="html/efa22344-84c2-1cd6-c50a-7b42ffaa5fef.htm" />
                 <HelpTOCNode Title="IsFreeTransfer Property " Url="html/bb78399c-3e8b-d717-8204-86812f6004e5.htm" />
                 <HelpTOCNode Title="NativeCurrency Property " Url="html/5364135a-619f-a94e-7c0c-1de576a2ade2.htm" />
@@ -211,33 +211,33 @@
                 <HelpTOCNode Title="Price Property " Url="html/344900f4-fb31-e88d-f2f4-fefae37d55bf.htm" />
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="fd55ca58-f890-49e3-86dd-3a0fba8d9b58" Title="IndicativePrice4 Class" Url="html/a2a8d951-9188-2b83-169a-b2f142adafd4.htm">
+            <HelpTOCNode Id="b768cddb-145b-48fb-a6a9-5094cd25e844" Title="IndicativePrice4 Class" Url="html/a2a8d951-9188-2b83-169a-b2f142adafd4.htm">
               <HelpTOCNode Title="IndicativePrice4 Constructor " Url="html/33e6d885-d530-69c5-ce30-aa6bf7a14602.htm" />
-              <HelpTOCNode Id="6745869b-5e7a-4c30-8b34-6d79018b9bbf" Title="IndicativePrice4 Properties" Url="html/e469b1c6-711f-5b23-0a61-b1db692a0b62.htm">
+              <HelpTOCNode Id="089f38d2-28e6-4357-bb88-9ed7676a127d" Title="IndicativePrice4 Properties" Url="html/e469b1c6-711f-5b23-0a61-b1db692a0b62.htm">
                 <HelpTOCNode Title="Currency Property " Url="html/da4331e9-bad2-f5b3-0991-243d90a18912.htm" />
                 <HelpTOCNode Title="IsFreeTransfer Property " Url="html/c7d0abaa-1af8-009a-2e93-66dfb7c384bc.htm" />
                 <HelpTOCNode Title="Price Property " Url="html/d85cc323-af78-fa91-b9f7-296262aa8d1e.htm" />
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="3ac8db6f-9a64-4271-9300-60f2d1042ffe" Title="Itinerary Class" Url="html/b3fa65bc-0745-e74b-abb2-a196edbd251b.htm">
+            <HelpTOCNode Id="3d917557-4953-4323-a401-8820093df2c8" Title="Itinerary Class" Url="html/b3fa65bc-0745-e74b-abb2-a196edbd251b.htm">
               <HelpTOCNode Title="Itinerary Constructor " Url="html/ee5132cd-3a47-305f-a932-6be6eb85e354.htm" />
-              <HelpTOCNode Id="710c3eb7-086d-4d9d-837a-6a6c71c254a4" Title="Itinerary Properties" Url="html/76a705fc-bd61-25d7-44c1-b2f06b4ca2eb.htm">
+              <HelpTOCNode Id="a31fb873-531d-4ba1-9500-b98e22912cce" Title="Itinerary Properties" Url="html/76a705fc-bd61-25d7-44c1-b2f06b4ca2eb.htm">
                 <HelpTOCNode Title="IsHidden Property " Url="html/75a08bba-aae3-f12b-4f6a-204051cf50a3.htm" />
                 <HelpTOCNode Title="Legs Property " Url="html/a5cb1d48-9225-966f-4f04-53da0ec683bb.htm" />
                 <HelpTOCNode Title="OuterItinerary Property " Url="html/5c245a1f-268e-41dd-353b-5b0c636e93d8.htm" />
                 <HelpTOCNode Title="ValidForSchedule Property " Url="html/fc2ab4aa-4deb-38f1-c4d3-4a27a28e0b56.htm" />
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="49b39e10-1128-4fba-b20e-fb65521ff153" Title="ItineraryDates Class" Url="html/6591d286-6cc8-ec6a-d31c-9af28c13d5f2.htm">
+            <HelpTOCNode Id="cf6b716c-c5f1-46b0-89fe-57a4829f53bd" Title="ItineraryDates Class" Url="html/6591d286-6cc8-ec6a-d31c-9af28c13d5f2.htm">
               <HelpTOCNode Title="ItineraryDates Constructor " Url="html/66ca27ec-69af-1d2d-714f-fe62965e83a6.htm" />
-              <HelpTOCNode Id="559b7f74-4ed1-4d12-a84e-34c22c27e334" Title="ItineraryDates Fields" Url="html/e8f5bd2c-885d-0924-7104-ef4abaceb4ec.htm">
+              <HelpTOCNode Id="1993f4de-cd76-43c8-8f02-8a73323544c3" Title="ItineraryDates Fields" Url="html/e8f5bd2c-885d-0924-7104-ef4abaceb4ec.htm">
                 <HelpTOCNode Title="arrivalDateTime Field" Url="html/d6ccdee3-c255-0f81-8f5b-541265895ddd.htm" />
                 <HelpTOCNode Title="departureDateTime Field" Url="html/d5c95709-a38f-65af-52f5-3839a2f7e640.htm" />
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="3dfed85a-2bfd-4f42-a304-6b9016024903" Title="Leg Class" Url="html/936d2b53-a35a-ba58-dbc7-d4a550b691c8.htm">
+            <HelpTOCNode Id="fe5787e0-3c80-48c9-ab04-a2f5bd0b591d" Title="Leg Class" Url="html/936d2b53-a35a-ba58-dbc7-d4a550b691c8.htm">
               <HelpTOCNode Title="Leg Constructor " Url="html/506bca5b-444f-ce6c-2ec6-171c03956aaa.htm" />
-              <HelpTOCNode Id="11f124a6-6426-4459-bcc2-5c6f34ae2a96" Title="Leg Properties" Url="html/a161568b-e43d-0883-367c-84d51d8f18cc.htm">
+              <HelpTOCNode Id="63a30a4c-957f-480d-a2de-e3507d4e812d" Title="Leg Properties" Url="html/a161568b-e43d-0883-367c-84d51d8f18cc.htm">
                 <HelpTOCNode Title="Days Property " Url="html/e4c28dad-22b9-65d4-f08b-9a795181fd1d.htm" />
                 <HelpTOCNode Title="Hops Property " Url="html/931c0860-3c73-d1b4-c96c-8d473992ff8f.htm" />
                 <HelpTOCNode Title="Host Property " Url="html/f460bb8a-5c8c-03d1-3f14-b9d37d02c787.htm" />
@@ -245,9 +245,9 @@
                 <HelpTOCNode Title="Url Property " Url="html/b261b1cc-67cb-86b2-6fa5-02164eb39b71.htm" />
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="c0a4d5b2-176d-42aa-b308-f9dbfdcd3c3c" Title="Line Class" Url="html/c8607b12-f78a-eb3d-bebc-a2d187dea063.htm">
+            <HelpTOCNode Id="285f8f98-8bb9-46eb-b18b-ee9d317d33ea" Title="Line Class" Url="html/c8607b12-f78a-eb3d-bebc-a2d187dea063.htm">
               <HelpTOCNode Title="Line Constructor " Url="html/0c57c4db-98cc-4c42-4cc9-efa2b90fdeea.htm" />
-              <HelpTOCNode Id="49a8478d-a4b2-48b8-a714-2c1ea42a468b" Title="Line Properties" Url="html/bd1df398-95af-a53b-a267-7f4f7da9647a.htm">
+              <HelpTOCNode Id="f6933a54-969c-44fc-93bd-bb0485d562b8" Title="Line Properties" Url="html/bd1df398-95af-a53b-a267-7f4f7da9647a.htm">
                 <HelpTOCNode Title="Agency Property " Url="html/57cb9cc6-414d-d633-bd79-9433cd2c7190.htm" />
                 <HelpTOCNode Title="Days Property " Url="html/1add4e6b-50be-7ca4-fe57-50766c9aad5e.htm" />
                 <HelpTOCNode Title="Duration Property " Url="html/bcc2da18-23eb-736f-33ed-800ed60fd6f4.htm" />
@@ -256,9 +256,9 @@
                 <HelpTOCNode Title="Vehicle Property " Url="html/f35072ec-8498-53d9-f3e2-fa43f9dd9b54.htm" />
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="8c9d9c0e-67cc-407e-a6fe-7691bf35914f" Title="Route Class" Url="html/a590e690-190f-d66c-cad4-627c443f76fc.htm">
+            <HelpTOCNode Id="e4dc88a6-2c18-4f00-b932-1b1aa47fd95c" Title="Route Class" Url="html/a590e690-190f-d66c-cad4-627c443f76fc.htm">
               <HelpTOCNode Title="Route Constructor " Url="html/4dfd6063-0801-fca2-fb32-2b4fe3250425.htm" />
-              <HelpTOCNode Id="a4cb42d6-74e9-48af-9512-bba3b0206784" Title="Route Properties" Url="html/0753ff04-d6a7-5e73-9c3d-323ec1ba3b47.htm">
+              <HelpTOCNode Id="5ae60534-00c3-4dde-afdb-06c3dbbffadd" Title="Route Properties" Url="html/0753ff04-d6a7-5e73-9c3d-323ec1ba3b47.htm">
                 <HelpTOCNode Title="Distance Property " Url="html/e741ec33-145e-15de-ba66-e63a194436b7.htm" />
                 <HelpTOCNode Title="Duration Property " Url="html/1cffdd48-a96a-c284-ce0f-2e3ad6ebf150.htm" />
                 <HelpTOCNode Title="IndicativePrice Property " Url="html/49338167-38c2-f7bd-b2f1-2a0204f2e95b.htm" />
@@ -269,9 +269,9 @@
                 <HelpTOCNode Title="ValidForSchedule Property " Url="html/8835faa8-6ff5-1f53-70fc-ba0113505bb3.htm" />
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="60cf676e-a556-409d-a00d-9577b4ee1a18" Title="RouteTotals Class" Url="html/8ff7e5c1-6597-57dd-27cf-e1c10f2f6aaa.htm">
+            <HelpTOCNode Id="fcf903b3-529d-45b4-be94-3d9ba7e6d0a3" Title="RouteTotals Class" Url="html/8ff7e5c1-6597-57dd-27cf-e1c10f2f6aaa.htm">
               <HelpTOCNode Title="RouteTotals Constructor " Url="html/2c2d7fad-5ec0-c643-6020-0246a582d25f.htm" />
-              <HelpTOCNode Id="4e139375-59c9-42c2-9140-c92ea80ba11e" Title="RouteTotals Properties" Url="html/971700da-0792-21a4-7895-96a776698ab7.htm">
+              <HelpTOCNode Id="e35ed6e6-2b74-4618-b9a0-d8e2fa3fcfe0" Title="RouteTotals Properties" Url="html/971700da-0792-21a4-7895-96a776698ab7.htm">
                 <HelpTOCNode Title="TotalDistance Property " Url="html/a7832c23-47cc-6deb-f854-57831a0ac339.htm" />
                 <HelpTOCNode Title="TotalPriceOfBus Property " Url="html/5c16b391-df76-56a7-85f9-c7b3b259d66c.htm" />
                 <HelpTOCNode Title="TotalPriceOfCar Property " Url="html/3daf7da3-3df4-b564-7123-e91daa09a8e9.htm" />
@@ -285,9 +285,9 @@
                 <HelpTOCNode Title="TotalTimeWaiting Property " Url="html/ad889813-e496-b391-1bcc-966947d60795.htm" />
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="f95a5ac4-da07-403a-8573-336d897cb712" Title="Segment Class" Url="html/a74e132b-d102-dfdd-364c-c792756d34db.htm">
+            <HelpTOCNode Id="caeb3fea-69d7-4c79-99ff-1a6b15e34195" Title="Segment Class" Url="html/a74e132b-d102-dfdd-364c-c792756d34db.htm">
               <HelpTOCNode Title="Segment Constructor " Url="html/1d457f99-acfa-14f6-03be-aac6044c513c.htm" />
-              <HelpTOCNode Id="b75cd1eb-158e-47ac-87da-d64261f1eda0" Title="Segment Properties" Url="html/8de79bc0-65ba-45f0-ef3d-f961843ade24.htm">
+              <HelpTOCNode Id="83cd8150-1e5c-42be-9aa5-04e87beddba4" Title="Segment Properties" Url="html/8de79bc0-65ba-45f0-ef3d-f961843ade24.htm">
                 <HelpTOCNode Title="ArrivalDateTime Property " Url="html/0b6dc3b6-02af-73a0-d687-8187c41440be.htm" />
                 <HelpTOCNode Title="ChosenItinerary Property " Url="html/ce98f56a-2582-5ad2-4a56-66e5e66f0f43.htm" />
                 <HelpTOCNode Title="DepartureDateTime Property " Url="html/8465d46a-b87d-37a1-f19d-1e496bc46837.htm" />
@@ -310,9 +310,9 @@
                 <HelpTOCNode Title="Vehicle Property " Url="html/44ada827-d7a8-fce1-6666-2219f4b08f0a.htm" />
               </HelpTOCNode>
             </HelpTOCNode>
-            <HelpTOCNode Id="cf7e49b2-7d51-4759-8b90-82aed4c975c8" Title="Stop Class" Url="html/036503e0-d8ce-63b2-345d-65d6fd4ee491.htm">
+            <HelpTOCNode Id="5c4c23de-792d-463a-886c-0cffd303cf43" Title="Stop Class" Url="html/036503e0-d8ce-63b2-345d-65d6fd4ee491.htm">
               <HelpTOCNode Title="Stop Constructor " Url="html/5e98daf2-0082-a8bd-dc3e-2442bb14f19d.htm" />
-              <HelpTOCNode Id="a50d6b8f-f235-4b9b-96ca-fc47b94a6792" Title="Stop Properties" Url="html/18a852f4-1b3d-4bc6-f6d1-1663b32c663f.htm">
+              <HelpTOCNode Id="27ed0490-8782-4835-9941-f1083f0bd78a" Title="Stop Properties" Url="html/18a852f4-1b3d-4bc6-f6d1-1663b32c663f.htm">
                 <HelpTOCNode Title="Code Property " Url="html/44b2da85-41ff-6978-013b-a8c0830116f8.htm" />
                 <HelpTOCNode Title="Kind Property " Url="html/4940c518-c8b2-bff9-e0c0-fb8baf327f37.htm" />
                 <HelpTOCNode Title="Name Property " Url="html/b436c5d5-abb3-c572-daa0-35823782961d.htm" />

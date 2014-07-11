@@ -113,8 +113,8 @@
   <HelpKINode Title="destination property" Url="html/5a1668fc-3115-24e9-020f-8952d7d37314.htm" />
   <HelpKINode Title="destLocation property" Url="html/cb3f7830-c553-c5ac-6ab2-0158f522882d.htm" />
   <HelpKINode Title="Distance property">
-    <HelpKINode Title="Segment.Distance Property " Url="html/f9d1084f-6c00-58d5-a9fc-1ebabd42a5e5.htm" />
     <HelpKINode Title="Route.Distance Property " Url="html/e741ec33-145e-15de-ba66-e63a194436b7.htm" />
+    <HelpKINode Title="Segment.Distance Property " Url="html/f9d1084f-6c00-58d5-a9fc-1ebabd42a5e5.htm" />
   </HelpKINode>
   <HelpKINode Title="distance property" Url="html/974f0eef-7809-f3ca-95d6-7b6ae15a735e.htm" />
   <HelpKINode Title="Door2Door class">
@@ -184,8 +184,8 @@
   <HelpKINode Title="Door2DoorResponse.TotalPriceOfHotel property" Url="html/7ce756a6-e97a-eadd-f6f5-ee8da5d554f3.htm" />
   <HelpKINode Title="Door2DoorResponse.TotalPriceOfLocalTaxi property" Url="html/c736f751-e104-16a1-a7e5-3147955ee343.htm" />
   <HelpKINode Title="Duration property">
-    <HelpKINode Title="Hop.Duration Property " Url="html/8e6a5545-6be6-39a8-995c-4c8b46ce35bc.htm" />
     <HelpKINode Title="Line.Duration Property " Url="html/bcc2da18-23eb-736f-33ed-800ed60fd6f4.htm" />
+    <HelpKINode Title="Hop.Duration Property " Url="html/8e6a5545-6be6-39a8-995c-4c8b46ce35bc.htm" />
     <HelpKINode Title="Route.Duration Property " Url="html/1cffdd48-a96a-c284-ce0f-2e3ad6ebf150.htm" />
     <HelpKINode Title="Segment.Duration Property " Url="html/6fd0de5a-294e-ffb4-7a0d-8934bd9808cd.htm" />
   </HelpKINode>

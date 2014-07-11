@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder" version="2014.5.31.0" projectFile="C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Door2DoorDocs.shfbproj" started="10/07/2014 17:01:07">
+<shfbBuild product="Sandcastle Help File Builder" version="2014.5.31.0" projectFile="C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Door2DoorDocs.shfbproj" started="7/11/2014 4:38:39 PM">
 <buildStep step="Initializing">
 Finding tools...
 The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
@@ -29,9 +29,9 @@ Copying XML comments files
     C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\bin\Debug\Door2DoorCore.XML -&gt; C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\Door2DoorCore.XML
 </buildStep>
 <buildStep step="GenerateSharedContent">
-Generating shared content files (en-US, Ingl&#234;s (Estados Unidos))...
+Generating shared content files (en-US, English (United States))...
 <plugIn name="Lightweight Website Style" behavior="After" priority="1000">
-</plugIn>    Last step completed in 00:00:00.0080
+</plugIn>    Last step completed in 00:00:00.0090
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
@@ -40,39 +40,39 @@ Generating API filter for MRefBuilder...
 <buildStep step="GenerateReflectionInfo">
 Generating reflection information...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe]
-Compila‡&#198;o de 10/07/2014 17:01:08 iniciada.
-Projeto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\GenerateRefInfo.proj&quot; no n&#162; 1 (destinos padr&#198;o).
+Build started 7/11/2014 4:38:40 PM.
+Project &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\GenerateRefInfo.proj&quot; on node 1 (default targets).
 PrepareForBuild:
-  Criando o diret&#162;rio &quot;obj\Debug\&quot;.
+  Creating directory &quot;obj\Debug\&quot;.
 GenerateRefInfo:
   MRefBuilder (v2014.5.31.0)
   Copyright &#184; 2006-2014, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
   Loaded 1 assemblies for reflection and 3 dependency assemblies.
   Wrote information on 6 namespaces, 28 types, and 181 members
-  Copiando o arquivo de &quot;reflection.org&quot; para &quot;reflection.all&quot;.
+  Copying file from &quot;reflection.org&quot; to &quot;reflection.all&quot;.
   XslTransform (v2014.5.31.0)
   Copyright &#184; 2006-2014, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\MergeDuplicates.xsl&#39;.
-Projeto de compila‡&#198;o pronto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\GenerateRefInfo.proj&quot; (destinos padr&#198;o).
+Done Building Project &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\GenerateRefInfo.proj&quot; (default targets).
 
-Compila‡&#198;o com ˆxito.
+Build succeeded.
 
-Tempo Decorrido 00:00:01.65
-    Last step completed in 00:00:02.1807
+Time Elapsed 00:00:01.45
+    Last step completed in 00:00:01.7242
 </buildStep>
 <buildStep step="TransformReflectionInfo">
 Transforming reflection output...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe]
-Compila‡&#198;o de 10/07/2014 17:01:10 iniciada.
-Projeto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\TransformManifest.proj&quot; no n&#162; 1 (destinos padr&#198;o).
+Build started 7/11/2014 4:38:41 PM.
+Project &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\TransformManifest.proj&quot; on node 1 (default targets).
 TransformManifest:
   XslTransform (v2014.5.31.0)
   Copyright &#184; 2006-2014, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\ApplyVSDocModel.xsl&#39;.
-  Copiando o arquivo de &quot;reflection.xml&quot; para &quot;reflection.nofilenames&quot;.
+  Copying file from &quot;reflection.xml&quot; to &quot;reflection.nofilenames&quot;.
   XslTransform (v2014.5.31.0)
   Copyright &#184; 2006-2014, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
@@ -81,16 +81,16 @@ TransformManifest:
   Copyright &#184; 2006-2014, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\ReflectionToManifest.xsl&#39;.
-Projeto de compila‡&#198;o pronto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\TransformManifest.proj&quot; (destinos padr&#198;o).
+Done Building Project &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\TransformManifest.proj&quot; (default targets).
 
-Compila‡&#198;o com ˆxito.
+Build succeeded.
 
-Tempo Decorrido 00:00:01.13
-    Last step completed in 00:00:01.3740
+Time Elapsed 00:00:01.14
+    Last step completed in 00:00:01.3659
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
-    Last step completed in 00:00:00.0470
+    Last step completed in 00:00:00.0420
 </buildStep>
 <buildStep step="CopyConceptualContent">
 Copying conceptual content...
@@ -98,6 +98,7 @@ Copying standard token shared content file...
 Checking for other token files...
 Checking for code snippets files...
 Copying images and creating the media map file...
+    C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\icons\clic.jpg -&gt; C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\Media\clic.jpg
 Generating conceptual topic files
     Parsing topic file &#39;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\FunctionalHelp\Maml\VisaoGeral.aml&#39;
     C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\FunctionalHelp\Maml\VisaoGeral.aml -&gt; C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\ddueXml\visao_geral.xml
@@ -129,14 +130,14 @@ Generating conceptual topic files
     C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\FunctionalHelp\Maml\Exemplos\Response_Completo.aml -&gt; C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\ddueXml\response_completo.xml
     Parsing topic file &#39;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\FunctionalHelp\Maml\Exemplos\CSharp_Basic_RoundTrip.aml&#39;
     C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\FunctionalHelp\Maml\Exemplos\CSharp_Basic_RoundTrip.aml -&gt; C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\ddueXml\csharp_basic_roundtrip.xml
-    Last step completed in 00:00:00.4763
+    Last step completed in 00:00:00.3002
 </buildStep>
 <buildStep step="CreateConceptualTopicConfigs">
 Creating conceptual topic configuration files...
     Companion files
     _ContentMetadata_.xml
     ConceptualManifest.xml
-    Last step completed in 00:00:00.0220
+    Last step completed in 00:00:00.0210
 </buildStep>
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
@@ -145,48 +146,48 @@ No additional content to copy
 </buildStep>
 <buildStep step="MergeTablesOfContents">
 Merging conceptual and additional tables of contents...
-    Last step completed in 00:00:00.0030
+    Last step completed in 00:00:00.0040
 </buildStep>
 <buildStep step="GenerateIntermediateTableOfContents">
 Generating intermediate table of contents file...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe]
-Compila‡&#198;o de 10/07/2014 17:01:12 iniciada.
-Projeto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\GenerateIntermediateTOC.proj&quot; no n&#162; 1 (destinos padr&#198;o).
+Build started 7/11/2014 4:38:43 PM.
+Project &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\GenerateIntermediateTOC.proj&quot; on node 1 (default targets).
 GenerateIntermediateTOC:
   XslTransform (v2014.5.31.0)
   Copyright &#184; 2006-2014, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\CreateVSToc.xsl&#39;.
-Projeto de compila‡&#198;o pronto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\GenerateIntermediateTOC.proj&quot; (destinos padr&#198;o).
+Done Building Project &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\GenerateIntermediateTOC.proj&quot; (default targets).
 
-Compila‡&#198;o com ˆxito.
+Build succeeded.
 
-Tempo Decorrido 00:00:00.23
+Time Elapsed 00:00:00.24
 Generating conceptual content intermediate TOC file...
 <plugIn name="Hierarchical Table of Contents" behavior="After" priority="1000">
 Retrieving namespace topic title from shared content...
 SHFB: Warning HTP0003: Unable to locate namespace topic title in reference content file.  Using default.
 Creating namespace hierarchy...
-</plugIn>    Last step completed in 00:00:00.4954
+</plugIn>    Last step completed in 00:00:00.4803
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
     sandcastle.config
     conceptual.config
-    Last step completed in 00:00:00.1491
+    Last step completed in 00:00:00.1541
 </buildStep>
 <buildStep step="MergeCustomConfigs">
 Merging custom build component configurations
 C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\sandcastle.config
 C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\conceptual.config
     Removing unused ExampleComponent.
-    Last step completed in 00:00:00.0560
+    Last step completed in 00:00:00.0580
 </buildStep>
 <buildStep step="BuildConceptualTopics">
 Building conceptual help topics...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe]
-Compila‡&#198;o de 10/07/2014 17:01:13 iniciada.
-Projeto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\BuildConceptualTopics.proj&quot; no n&#162; 1 (destinos padr&#198;o).
+Build started 7/11/2014 4:38:44 PM.
+Project &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\BuildConceptualTopics.proj&quot; on node 1 (default targets).
 BuildConceptualTopics:
   BuildAssembler (v2014.5.31.0)
   Copyright &#184; 2006-2014, Microsoft Corporation, All Rights Reserved.
@@ -195,18 +196,18 @@ BuildConceptualTopics:
   Processing topics...
   Processed 15 topic(s)
   CopyFromIndexComponent: &quot;metadata&quot; in-memory cache entries used: 1 of 15.
-Projeto de compila‡&#198;o pronto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\BuildConceptualTopics.proj&quot; (destinos padr&#198;o).
+Done Building Project &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\BuildConceptualTopics.proj&quot; (default targets).
 
-Compila‡&#198;o com ˆxito.
+Build succeeded.
 
-Tempo Decorrido 00:01:23.79
-    Last step completed in 00:01:24.1095
+Time Elapsed 00:01:40.70
+    Last step completed in 00:01:41.0036
 </buildStep>
 <buildStep step="BuildReferenceTopics">
 Building reference help topics...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe]
-Compila‡&#198;o de 10/07/2014 17:02:37 iniciada.
-Projeto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\BuildReferenceTopics.proj&quot; no n&#162; 1 (destinos padr&#198;o).
+Build started 7/11/2014 4:40:25 PM.
+Project &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\BuildReferenceTopics.proj&quot; on node 1 (default targets).
 BuildReferenceTopics:
   BuildAssembler (v2014.5.31.0)
   Copyright &#184; 2006-2014, Microsoft Corporation, All Rights Reserved.
@@ -216,18 +217,18 @@ BuildReferenceTopics:
   Processed 241 topic(s)
   CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 3 of 15.
   CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 1 of 30.
-Projeto de compila‡&#198;o pronto &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\BuildReferenceTopics.proj&quot; (destinos padr&#198;o).
+Done Building Project &quot;C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\BuildReferenceTopics.proj&quot; (default targets).
 
-Compila‡&#198;o com ˆxito.
+Build succeeded.
 
-Tempo Decorrido 00:00:15.73
-    Last step completed in 00:00:16.1181
+Time Elapsed 00:00:16.49
+    Last step completed in 00:00:16.7572
 </buildStep>
 <buildStep step="CombiningIntermediateTocFiles">
 Combining conceptual and API intermediate TOC files...
 
 Clearing any prior web output
-    Last step completed in 00:00:00.8596
+    Last step completed in 00:00:00.6086
 </buildStep>
 <buildStep step="ExtractingHtmlInfo">
 Extracting HTML info for HTML Help 1 and/or website...
@@ -243,7 +244,7 @@ Processed 256 HTML files
 Sorting keywords and generating See Also indices
 Saving website keyword index to C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\WebKI.xml
 Saving website table of contents to C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\WebTOC.xml
-    Last step completed in 00:00:03.3052
+    Last step completed in 00:00:02.2575
 </buildStep>
 <buildStep step="CopyStandardHelpContent">
 Copying standard help content...
@@ -323,7 +324,7 @@ C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyle
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\icons\TocOpen.gif -&gt; C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\Output\Website\icons\TocOpen.gif
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\scripts\branding-Website.js -&gt; C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\Output\Website\scripts\branding-Website.js
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\scripts\jquery-1.11.0.min.js -&gt; C:\GitHub\Door2Door\Door2DoorWebApp\Door2Door.Core\Docs\Help\Working\Output\Website\scripts\jquery-1.11.0.min.js
-    Last step completed in 00:00:02.7186
+    Last step completed in 00:00:00.7515
 </buildStep>
 <buildStep step="GenerateHelpFormatTableOfContents">
 Generating website table of contents file...
@@ -334,7 +335,7 @@ Generating full-text index for the website...
 
 <plugIn name="Lightweight Website Style" behavior="After" priority="1000">
 Adding lightweight search and TOC elements to each topic...
-</plugIn>    Last step completed in 00:00:11.1836
+</plugIn>    Last step completed in 00:00:09.2963
 </buildStep>
 <buildStep step="CopyingWebsiteFiles">
 Copying website files to output folder...
@@ -344,15 +345,15 @@ Copied 200 files
 Copied 300 files
 Copied 400 files
 Copied 429 files for the website content
-    Last step completed in 00:00:02.0114
+    Last step completed in 00:00:03.0000
 </buildStep>
 <buildStep step="CleanIntermediates">
 Removing intermediate files...
-    Last step completed in 00:00:01.1405
+    Last step completed in 00:00:07.9341
 </buildStep>
 <buildStep step="Completed">
 
-Build completed successfully at 07/10/2014 05:03 .  Total time: 00:02:07,2209
+Build completed successfully at 07/11/2014 04:41 PM.  Total time: 00:02:26.7094
 
 </buildStep>
 </shfbBuild>
